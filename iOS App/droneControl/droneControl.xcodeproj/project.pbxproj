@@ -14,6 +14,9 @@
 		A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF341AAD17D500C81065 /* Images.xcassets */; };
 		A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */; };
 		A6F4EF441AAD17D500C81065 /* droneControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF431AAD17D500C81065 /* droneControlTests.m */; };
+		A6F4EF4E1AAD3EA300C81065 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */; };
+		A6F4EF501AAD416900C81065 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4F1AAD416900C81065 /* Slt.framework */; };
+		A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		A6F4EF3D1AAD17D500C81065 /* droneControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = droneControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF421AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF431AAD17D500C81065 /* droneControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = droneControlTests.m; sourceTree = "<group>"; };
+		A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		A6F4EF4F1AAD416900C81065 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F4EF501AAD416900C81065 /* Slt.framework in Frameworks */,
+				A6F4EF4E1AAD3EA300C81065 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +89,9 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
+				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
+				A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */,
 				A6F4EF2B1AAD17D500C81065 /* AppDelegate.h */,
 				A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */,
 				A6F4EF2E1AAD17D500C81065 /* ViewController.h */,
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
+				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
 				A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */,
 			);
@@ -343,6 +355,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/droneControl",
+				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +369,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/droneControl",
+				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

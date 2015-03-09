@@ -2,6 +2,8 @@
 
 */build/*
 
+/build
+
 iOS App/droneControl/droneControl.xcodeproj/xcuserdata/Mikey.xcuserdatad/xcschemes/xcschememanagement.plist
 
 iOS App/droneControl/droneControl.xcodeproj/xcuserdata/Mikey.xcuserdatad/xcschemes/droneControl.xcscheme
