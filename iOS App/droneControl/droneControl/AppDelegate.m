@@ -47,8 +47,8 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     self.manager = [RemoteApplicationManager new];
     self.manager.lumDelegate = self;
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew;
-    [self.manager addObserver:self forKeyPath:RemoteApplicationStateKeyPath options:options context:nil];
-    // above line causes an "unrecognized selector sent to instance" error.
+    //[self.manager addObserver:self forKeyPath:RemoteApplicationStateKeyPath options:options context:nil];
+    // BUG: above line causes an "unrecognized selector sent to instance" error.
     [self startMonitoringA4ACompatibleAccessories];
     
     return YES;
