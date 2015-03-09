@@ -8,7 +8,6 @@
 @property (assign) RemoteApplicationState remoteApplicationState;
 @property (strong) id clickCountObserver;
 
-
 @end
 
 @implementation RootViewController

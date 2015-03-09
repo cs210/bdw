@@ -18,6 +18,6 @@
             focusEvent:(NSInteger)focusEvent
            hmiProvider:(id<IDHmiProvider>)hmiProvider;
 
-@property (strong, readonly) IDButton *flyDrone;
+@property (strong, readonly) IDButton *flyDroneButton;
 
 @end

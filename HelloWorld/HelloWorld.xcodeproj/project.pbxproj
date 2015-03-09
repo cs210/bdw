@@ -19,9 +19,8 @@
 		19D13B58164A792B00CB9030 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B52164A788B00CB9030 /* ImageIO.framework */; };
 		19D13B59164A792B00CB9030 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B4E164A784300CB9030 /* ExternalAccessory.framework */; };
 		19D13B5A164A792B00CB9030 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B4C164A783B00CB9030 /* Security.framework */; };
-		46841DDF1AAD8EC700BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDE1AAD8EC700BB0BF1 /* BMWAppKitResources.bundle */; };
-		46841DE11AAD8ECE00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DE01AAD8ECE00BB0BF1 /* BMWAppKit.framework */; };
-		46841DFA1AAD9EE700BB0BF1 /* FlyDroneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF91AAD9EE700BB0BF1 /* FlyDroneView.m */; };
+		46841DFD1AADABBB00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */; };
+		46841DFE1AADABBB00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */; };
 		8E18AD1D177B2320005E7CBF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E18AD1C177B2320005E7CBF /* Media.xcassets */; };
 		8E310940175F03B400288E61 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E31093F175F03B400288E61 /* Settings.bundle */; };
 		8E54FEB118B365C90077A893 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E54FEB018B365C90077A893 /* libc++.dylib */; };
@@ -59,10 +58,8 @@
 		19D13B52164A788B00CB9030 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		19D13B55164A78DC00CB9030 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3797D6721670996F003F3CF4 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
-		46841DDE1AAD8EC700BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
-		46841DE01AAD8ECE00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
-		46841DF81AAD9EE700BB0BF1 /* FlyDroneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyDroneView.h; sourceTree = "<group>"; };
-		46841DF91AAD9EE700BB0BF1 /* FlyDroneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyDroneView.m; sourceTree = "<group>"; };
+		46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
+		46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		8E18AD1C177B2320005E7CBF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../HelloWorld/Media.xcassets; sourceTree = "<group>"; };
 		8E31093F175F03B400288E61 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8E54FEB018B365C90077A893 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -101,10 +98,10 @@
 			files = (
 				8E54FEB118B365C90077A893 /* libc++.dylib in Frameworks */,
 				A39856721656171B001E324C /* SystemConfiguration.framework in Frameworks */,
-				46841DE11AAD8ECE00BB0BF1 /* BMWAppKit.framework in Frameworks */,
 				A3985670165616EA001E324C /* CFNetwork.framework in Frameworks */,
 				AE45435C1649210F00A068D5 /* UIKit.framework in Frameworks */,
 				19D13B57164A792B00CB9030 /* MobileCoreServices.framework in Frameworks */,
+				46841DFD1AADABBB00BB0BF1 /* BMWAppKit.framework in Frameworks */,
 				19D13B58164A792B00CB9030 /* ImageIO.framework in Frameworks */,
 				19D13B59164A792B00CB9030 /* ExternalAccessory.framework in Frameworks */,
 				19D13B5A164A792B00CB9030 /* Security.framework in Frameworks */,
@@ -164,8 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				19D13B39164A750B00CB9030 /* HelloWorldHmiProvider.h */,
-				46841DF81AAD9EE700BB0BF1 /* FlyDroneView.h */,
-				46841DF91AAD9EE700BB0BF1 /* FlyDroneView.m */,
 				19D13B3A164A750B00CB9030 /* HelloWorldHmiProvider.m */,
 				19D13B3B164A750B00CB9030 /* HelloWorldIdentifiers.h */,
 				A398567316564A8A001E324C /* HelloWorldView.h */,
@@ -225,8 +220,8 @@
 		AE45435A1649210F00A068D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				46841DE01AAD8ECE00BB0BF1 /* BMWAppKit.framework */,
-				46841DDE1AAD8EC700BB0BF1 /* BMWAppKitResources.bundle */,
+				46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */,
+				46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */,
 				8E54FEB018B365C90077A893 /* libc++.dylib */,
 				A398566F165616EA001E324C /* CFNetwork.framework */,
 				AE45435F1649210F00A068D5 /* CoreGraphics.framework */,
@@ -335,9 +330,9 @@
 				EEB922CA1965907C00BDCBFB /* HelloWorld.plist in Resources */,
 				D43A59DE16E9F3EC00B6B595 /* HelloWorld_HMI.xml in Resources */,
 				D43A59E616EA0B2A00B6B595 /* HelloWorld_common_Images.zip in Resources */,
+				46841DFE1AADABBB00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
 				8E18AD1D177B2320005E7CBF /* Media.xcassets in Resources */,
 				8E310940175F03B400288E61 /* Settings.bundle in Resources */,
-				46841DDF1AAD8EC700BB0BF1 /* BMWAppKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +345,6 @@
 			files = (
 				AE4543681649210F00A068D5 /* main.m in Sources */,
 				AE45436C1649210F00A068D5 /* AppDelegate.m in Sources */,
-				46841DFA1AAD9EE700BB0BF1 /* FlyDroneView.m in Sources */,
 				19D13B43164A750B00CB9030 /* RemoteApplicationManager.m in Sources */,
 				19D13B4B164A750B00CB9030 /* HelloWorldViewController.m in Sources */,
 				19D13B47164A750B00CB9030 /* HelloWorldHmiProvider.m in Sources */,
