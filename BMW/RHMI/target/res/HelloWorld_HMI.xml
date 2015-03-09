@@ -1,0 +1,38 @@
+<pluginApps>
+    <pluginApp applicationType="OnlineServices" text="HelloWorld" applicationWeight="700">
+        <actions>
+            <raAction id="7"/>
+            <raAction id="8"/>
+            <raAction id="3"/>
+            <raAction id="4"/>
+            <hmiAction id="20" target="16"/>
+        </actions>
+        <models>
+            <raDataModel id="6"/>
+            <raDataModel id="2"/>
+            <raDataModel id="9"/>
+            <raDataModel id="10"/>
+            <raDataModel id="11"/>
+            <raDataModel id="12"/>
+            <imageIdModel id="21" imageId="18"/>
+        </models>
+        <entryButton id="19" action="20" text="Drones are awesome (helloWorldEntryButton)" imageModel="21"/>
+        <events>
+            <focusEvent id="13" targetModel="9"/>
+            <multimediaInfoEvent id="14" textModel1="10" textModel2="11"/>
+            <statusbarEvent id="15" textModel="12"/>
+        </events>
+        <hmiStates>
+            <hmiState id="16" text="click to fly drone">
+                <components>
+                    <button id="1" action="3" selectAction="4" model="2"/>
+                </components>
+            </hmiState>
+            <hmiState id="17" text="Hello World (state HelloWorld)">
+                <components>
+                    <button id="5" action="7" selectAction="8" model="6"/>
+                </components>
+            </hmiState>
+        </hmiStates>
+    </pluginApp>
+</pluginApps>

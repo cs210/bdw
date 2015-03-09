@@ -1,0 +1,43 @@
+{
+	"localizedNames":{
+		"de":"Drones are awesome (helloWorldEntryButton)",
+		"en_GB":"Drones are awesome (helloWorldEntryButton)",
+		"en_US":"Drones are awesome (helloWorldEntryButton)",
+		"es_ES":"Drones are awesome (helloWorldEntryButton)",
+		"it":"Drones are awesome (helloWorldEntryButton)",
+		"fr_FR":"Drones are awesome (helloWorldEntryButton)",
+		"nl_BE":"Drones are awesome (helloWorldEntryButton)",
+		"nl_NL":"Drones are awesome (helloWorldEntryButton)",
+		"ar":"Drones are awesome (helloWorldEntryButton)",
+		"zh_TW":"Drones are awesome (helloWorldEntryButton)",
+		"zh_CN":"Drones are awesome (helloWorldEntryButton)",
+		"ko":"Drones are awesome (helloWorldEntryButton)",
+		"ja":"Drones are awesome (helloWorldEntryButton)",
+		"ru":"Drones are awesome (helloWorldEntryButton)",
+		"fr_CA":"Drones are awesome (helloWorldEntryButton)",
+		"es_US":"Drones are awesome (helloWorldEntryButton)",
+		"pt":"Drones are awesome (helloWorldEntryButton)",
+		"pl":"Drones are awesome (helloWorldEntryButton)",
+		"el":"Drones are awesome (helloWorldEntryButton)",
+		"tr":"Drones are awesome (helloWorldEntryButton)",
+		"hu":"Drones are awesome (helloWorldEntryButton)",
+		"ro":"Drones are awesome (helloWorldEntryButton)",
+		"sv":"Drones are awesome (helloWorldEntryButton)",
+		"sk":"Drones are awesome (helloWorldEntryButton)",
+		"cs":"Drones are awesome (helloWorldEntryButton)",
+		"sl":"Drones are awesome (helloWorldEntryButton)",
+		"da":"Drones are awesome (helloWorldEntryButton)",
+		"no":"Drones are awesome (helloWorldEntryButton)",
+		"fi":"Drones are awesome (helloWorldEntryButton)"
+	},
+	"hmiCategory":"OnlineServices",
+	"supportedBrands":[
+		"BMW",
+		"MINI"
+	],
+	"id":"FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A",
+	"launchUrl":"helloworldsample:\/\/com.bmw.a4a\/helloworld",
+	"icon":"img\/FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png",
+	"version":"1.3",
+	"name":"HelloWorld"
+}
