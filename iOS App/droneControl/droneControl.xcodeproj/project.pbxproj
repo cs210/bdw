@@ -68,6 +68,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46E4D3331AAD856E00C94072 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +96,7 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				46E4D3331AAD856E00C94072 /* Frameworks */,
 				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
 				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
 				A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */,
@@ -432,6 +440,7 @@
 				A6F4EF491AAD17D500C81065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6F4EF4A1AAD17D500C81065 /* Build configuration list for PBXNativeTarget "droneControlTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +449,7 @@
 				A6F4EF4C1AAD17D500C81065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
