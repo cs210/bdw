@@ -46,7 +46,7 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     // register for BMWAppKit specific notifications
     self.manager = [RemoteApplicationManager new];
     self.manager.lumDelegate = self;
-    NSKeyValueObservingOptions options = NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew;
+    //NSKeyValueObservingOptions options = NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew;
     //[self.manager addObserver:self forKeyPath:RemoteApplicationStateKeyPath options:options context:nil];
     // BUG: above line causes an "unrecognized selector sent to instance" error.
     [self startMonitoringA4ACompatibleAccessories];

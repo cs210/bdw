@@ -733,7 +733,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
-					/Users/ES/Desktop/BMW_SDK/Examples/HelloWorld,
 				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -748,7 +747,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
-					/Users/ES/Desktop/BMW_SDK/Examples/HelloWorld,
 				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
