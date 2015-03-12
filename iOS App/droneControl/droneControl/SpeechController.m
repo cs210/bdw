@@ -1,48 +1,56 @@
 //
-//  ViewController.m
+//  SpeechController.m
 //  droneControl
 //
-//  Created by Michael Weingert on 2015-03-08.
+//  Created by Michael Weingert on 2015-03-11.
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SpeechController.h"
+
 #import <OpenEars/OEPocketsphinxController.h>
 #import <OpenEars/OELanguageModelGenerator.h>
 #import <OpenEars/OELogging.h>
 #import <OpenEars/OEAcousticModel.h>
 #import <Slt/Slt.h>
 
-@interface ViewController ()
+@interface SpeechController ()
+{
+  
+}
 
-// These three are the important OpenEars objects that this class demonstrates the use of.
 @property (nonatomic, strong) Slt *slt;
 
 @property (nonatomic, strong) OEEventsObserver *openEarsEventsObserver;
 @property (nonatomic, strong) OEPocketsphinxController *pocketsphinxController;
 
-@property (nonatomic, assign) BOOL usingStartingLanguageModel;
 @property (nonatomic, assign) int restartAttemptsDueToPermissionRequests;
 @property (nonatomic, assign) BOOL startupFailedDueToLackOfPermissions;
 
 @property (nonatomic, copy) NSString *pathToFirstDynamicallyGeneratedLanguageModel;
 @property (nonatomic, copy) NSString *pathToFirstDynamicallyGeneratedDictionary;
-@property (nonatomic, copy) NSString *pathToSecondDynamicallyGeneratedLanguageModel;
-@property (nonatomic, copy) NSString *pathToSecondDynamicallyGeneratedDictionary;
 
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *microphoneImage;
-@property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
-
+@property (nonatomic, strong) id<SpeechDelegate> delegate;
 
 @end
 
-@implementation ViewController
+@implementation SpeechController
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
-  
+// These three are the important OpenEars objects that this class demonstrates the use of.
+
+-(instancetype) initWithDelegate:(id<SpeechDelegate>)delegate
+{
+  self = [super init];
+  if (self)
+  {
+    _delegate = delegate;
+  }
+  return self;
+}
+
+
+-(void) setupSpeechHandler
+{
   self.openEarsEventsObserver = [[OEEventsObserver alloc] init];
   self.openEarsEventsObserver.delegate = self;
   self.slt = [[Slt alloc] init];
@@ -60,20 +68,13 @@
   // This is the language model we're going to start up with. The only reason I'm making it a class property is that I reuse it a bunch of times in this example,
   // but you can pass the string contents directly to OEPocketsphinxController:startListeningWithLanguageModelAtPath:dictionaryAtPath:languageModelIsJSGF:
   
-  NSArray *firstLanguageArray = @[@"BACKWARD",
-                                  @"CHANGE",
-                                  @"FORWARD",
-                                  @"GO",
-                                  @"LEFT",
-                                  @"MODEL",
-                                  @"RIGHT",
-                                  @"TURN"];
+  NSArray * wordArray = [_delegate listOfWordsToDetect];
   
   OELanguageModelGenerator *languageModelGenerator = [[OELanguageModelGenerator alloc] init];
   
   // languageModelGenerator.verboseLanguageModelGenerator = TRUE; // Uncomment me for verbose language model generator debug output.
   
-  NSError *error = [languageModelGenerator generateLanguageModelFromArray:firstLanguageArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" in order to create a language model for Spanish recognition instead of English.
+  NSError *error = [languageModelGenerator generateLanguageModelFromArray:wordArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" in order to create a language model for Spanish recognition instead of English.
   
   
   if(error) {
@@ -83,45 +84,9 @@
     self.pathToFirstDynamicallyGeneratedDictionary = [languageModelGenerator pathToSuccessfullyGeneratedDictionaryWithRequestedName:@"FirstOpenEarsDynamicLanguageModel"];
   }
   
-  self.usingStartingLanguageModel = TRUE; // This is not an OpenEars thing, this is just so I can switch back and forth between the two models in this sample app.
-  
-  // Here is an example of dynamically creating an in-app grammar.
-  
-  // We want it to be able to response to the speech "CHANGE MODEL" and a few other things.  Items we want to have recognized as a whole phrase (like "CHANGE MODEL")
-  // we put into the array as one string (e.g. "CHANGE MODEL" instead of "CHANGE" and "MODEL"). This increases the probability that they will be recognized as a phrase. This works even better starting with version 1.0 of OpenEars.
-  
-  NSArray *secondLanguageArray = @[@"SUNDAY",
-                                   @"MONDAY",
-                                   @"TUESDAY",
-                                   @"WEDNESDAY",
-                                   @"THURSDAY",
-                                   @"FRIDAY",
-                                   @"SATURDAY",
-                                   @"QUIDNUNC",
-                                   @"CHANGE MODEL"];
-  
-  // The last entry, quidnunc, is an example of a word which will not be found in the lookup dictionary and will be passed to the fallback method. The fallback method is slower,
-  // so, for instance, creating a new language model from dictionary words will be pretty fast, but a model that has a lot of unusual names in it or invented/rare/recent-slang
-  // words will be slower to generate. You can use this information to give your users good UI feedback about what the expectations for wait times should be.
-  
   // I don't think it's beneficial to lazily instantiate OELanguageModelGenerator because you only need to give it a single message and then release it.
   // If you need to create a very large model or any size of model that has many unusual words that have to make use of the fallback generation method,
   // you will want to run this on a background thread so you can give the user some UI feedback that the task is in progress.
-  
-  // generateLanguageModelFromArray:withFilesNamed returns an NSError which will either have a value of noErr if everything went fine or a specific error if it didn't.
-  error = [languageModelGenerator generateLanguageModelFromArray:secondLanguageArray withFilesNamed:@"SecondOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" in order to create a language model for Spanish recognition instead of English.
-  
-  //    NSError *error = [languageModelGenerator generateLanguageModelFromTextFile:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath], @"OpenEarsCorpus.txt"] withFilesNamed:@"SecondOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Try this out to see how generating a language model from a corpus works.
-  
-  
-  if(error) {
-    NSLog(@"Dynamic language generator reported error %@", [error description]);
-  }	else {
-    
-    self.pathToSecondDynamicallyGeneratedLanguageModel = [languageModelGenerator pathToSuccessfullyGeneratedLanguageModelWithRequestedName:@"SecondOpenEarsDynamicLanguageModel"]; // We'll set our new .languagemodel file to be the one to get switched to when the words "CHANGE MODEL" are recognized.
-    self.pathToSecondDynamicallyGeneratedDictionary = [languageModelGenerator pathToSuccessfullyGeneratedDictionaryWithRequestedName:@"SecondOpenEarsDynamicLanguageModel"];; // We'll set our new dictionary to be the one to get switched to when the words "CHANGE MODEL" are recognized.
-    
-    // Next, an informative message.
     
     NSLog(@"\n\nWelcome to the OpenEars sample project. This project understands the words:\nBACKWARD,\nCHANGE,\nFORWARD,\nGO,\nLEFT,\nMODEL,\nRIGHT,\nTURN,\nand if you say \"CHANGE MODEL\" it will switch to its dynamically-generated model which understands the words:\nCHANGE,\nMODEL,\nMONDAY,\nTUESDAY,\nWEDNESDAY,\nTHURSDAY,\nFRIDAY,\nSATURDAY,\nSUNDAY,\nQUIDNUNC");
     
@@ -146,14 +111,6 @@
     // graphics API you choose.
     
     [self startDisplayingLevels];
-  }
-  
-  //Set up the UI
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -
@@ -180,6 +137,8 @@
 - (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
   
   NSLog(@"Local callback: The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID); // Log it.
+  
+  [_delegate didReceiveWord:hypothesis];
 }
 
 #ifdef kGetNbest
@@ -290,18 +249,6 @@
   NSLog(@"Local callback: Pocketsphinx is now using the following language model: \n%@ and the following dictionary: %@",newLanguageModelPathAsString,newDictionaryPathAsString);
 }
 
-// An optional delegate method of OEEventsObserver which informs that Flite is speaking, most likely to be useful if debugging a
-// complex interaction between sound classes. You don't have to do anything yourself in order to prevent Pocketsphinx from listening to Flite talk and trying to recognize the speech.
-- (void) fliteDidStartSpeaking {
-  NSLog(@"Local callback: Flite has started speaking"); // Log it.
-}
-
-// An optional delegate method of OEEventsObserver which informs that Flite is finished speaking, most likely to be useful if debugging a
-// complex interaction between sound classes.
-- (void) fliteDidFinishSpeaking {
-  NSLog(@"Local callback: Flite has finished speaking"); // Log it.
-}
-
 - (void) pocketSphinxContinuousSetupDidFailWithReason:(NSString *)reasonForFailure { // This can let you know that something went wrong with the recognition loop startup. Turn on [OELogging startOpenEarsLogging] to learn why.
   NSLog(@"Local callback: Setting up the continuous recognition loop has failed for the reason %@, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure); // Log it.
 }
@@ -346,18 +293,15 @@
 #pragma mark -
 #pragma mark UI
 
-// This is not OpenEars-specific stuff, just some UI behavior
-
-- (IBAction) suspendListeningButtonAction { // This is the action for the button which suspends listening without ending the recognition loop
-  [[OEPocketsphinxController sharedInstance] suspendRecognition];
-  
+-(void) startListening
+{
+  if(![OEPocketsphinxController sharedInstance].isListening) {
+    [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition if we aren't already listening.
+  }
 }
 
-- (IBAction) resumeListeningButtonAction { // This is the action for the button which resumes listening if it has been suspended
-  [[OEPocketsphinxController sharedInstance] resumeRecognition];
-}
-
-- (IBAction) stopButtonAction { // This is the action for the button which shuts down the recognition loop.
+-(void) stopListening
+{
   NSError *error = nil;
   if([OEPocketsphinxController sharedInstance].isListening) { // Stop if we are currently listening.
     error = [[OEPocketsphinxController sharedInstance] stopListening];
@@ -365,11 +309,16 @@
   }
 }
 
-- (IBAction) startButtonAction { // This is the action for the button which starts up the recognition loop again if it has been shut down.
-  if(![OEPocketsphinxController sharedInstance].isListening) {
-    [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition if we aren't already listening.
-  }
+// This is not OpenEars-specific stuff, just some UI behavior
+
+/*- (void) suspendListeningButtonAction { // This is the action for the button which suspends listening without ending the recognition loop
+  [[OEPocketsphinxController sharedInstance] suspendRecognition];
+  
 }
+
+- (void) resumeListeningButtonAction { // This is the action for the button which resumes listening if it has been suspended
+  [[OEPocketsphinxController sharedInstance] resumeRecognition];
+}*/
 
 #pragma mark -
 #pragma mark Example for reading out Pocketsphinx and Flite audio levels without locking the UI by using an NSTimer
@@ -393,12 +342,11 @@
 }
 
 - (void) stopDisplayingLevels { // Stop displaying the levels by stopping the timer if it's running.
- 
+  
 }
 
 - (void) updateLevelsUI { // And here is how we obtain the levels.  This method includes the actual OpenEars methods and uses their results to update the UI of this view controller.
-
+  
 }
-
 
 @end

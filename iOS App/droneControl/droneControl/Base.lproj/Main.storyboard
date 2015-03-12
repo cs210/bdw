@@ -2,8 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -30,49 +28,35 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SiriMicrophone.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-VG-dop">
-                                <rect key="frame" x="255" y="114.5" width="90" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Xam-VG-dop" secondAttribute="height" multiplier="1:1" id="5N1-Xt-tMf"/>
-                                    <constraint firstAttribute="width" constant="90" id="TrA-Ps-yY1"/>
-                                    <constraint firstAttribute="width" secondItem="Xam-VG-dop" secondAttribute="height" multiplier="1:1" id="pXp-Bu-b82"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5N1-Xt-tMf"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nothing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV6-FY-pFp">
                                 <rect key="frame" x="189" y="381" width="100" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Dq-DU5">
+                                <rect key="frame" x="154" y="102" width="314" height="182"/>
+                                <state key="normal" image="SiriMicrophone.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.60830965909090917" green="0.60830965909090917" blue="0.60830965909090917" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Xam-VG-dop" firstAttribute="top" secondItem="Ipt-70-Rkq" secondAttribute="bottom" constant="20" id="3HE-yX-ynU"/>
                             <constraint firstAttribute="centerX" secondItem="Ipt-70-Rkq" secondAttribute="centerX" id="7XH-8B-dpE"/>
+                            <constraint firstItem="aOy-Dq-DU5" firstAttribute="centerX" secondItem="Ipt-70-Rkq" secondAttribute="centerX" id="9jR-rm-7Us"/>
                             <constraint firstAttribute="centerY" secondItem="Ipt-70-Rkq" secondAttribute="centerY" id="Ble-Ez-lgR"/>
-                            <constraint firstAttribute="centerY" secondItem="Xam-VG-dop" secondAttribute="centerY" id="GIO-x5-Bqc"/>
-                            <constraint firstItem="Xam-VG-dop" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="UjY-7Q-zfO"/>
                             <constraint firstItem="Ipt-70-Rkq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="54" id="bIp-As-75l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xam-VG-dop" secondAttribute="trailing" constant="299" id="f2O-Ke-Hi2"/>
-                            <constraint firstItem="Xam-VG-dop" firstAttribute="centerX" secondItem="Ipt-70-Rkq" secondAttribute="centerX" id="zOp-1k-p1g"/>
+                            <constraint firstItem="aOy-Dq-DU5" firstAttribute="top" secondItem="Ipt-70-Rkq" secondAttribute="bottom" constant="20" id="hEo-td-dOZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Ble-Ez-lgR"/>
-                                <exclude reference="GIO-x5-Bqc"/>
-                                <exclude reference="UjY-7Q-zfO"/>
-                                <exclude reference="f2O-Ke-Hi2"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="lastHeardWord" destination="cV6-FY-pFp" id="Eub-s0-dJL"/>
-                        <outlet property="microphoneImage" destination="Xam-VG-dop" id="JLV-iQ-NWU"/>
                         <outlet property="statusLabel" destination="Ipt-70-Rkq" id="l6N-Ys-g6g"/>
                     </connections>
                 </viewController>
