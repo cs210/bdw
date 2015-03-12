@@ -51,6 +51,8 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     // BUG: above line causes an "unrecognized selector sent to instance" error.
     [self startMonitoringA4ACompatibleAccessories];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 
