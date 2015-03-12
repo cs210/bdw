@@ -1,0 +1,19 @@
+app  HelloWorld;
+hmi-version 1.0.1;
+
+
+entry HelloWorldEntryButton{
+	text "Fly the drone";
+	onSelect open flyDrone;
+	image <HelloWorldAppIcon_appswitcher> ;
+}
+
+state HelloWorld {
+	title "Fly the drone";
+	button sayHello;
+}
+
+state flyDrone {
+	title "Fly the drone";
+	button flyDroneButton;
+}

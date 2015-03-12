@@ -1,0 +1,43 @@
+{
+	"localizedNames":{
+		"de":"Hello World",
+		"en_GB":"Hello World",
+		"en_US":"Hello World",
+		"es_ES":"Hello World",
+		"it":"Hello World",
+		"fr_FR":"Hello World",
+		"nl_BE":"Hello World",
+		"nl_NL":"Hello World",
+		"ar":"Hello World",
+		"zh_TW":"Hello World",
+		"zh_CN":"Hello World",
+		"ko":"Hello World",
+		"ja":"Hello World",
+		"ru":"Hello World",
+		"fr_CA":"Hello World",
+		"es_US":"Hello World",
+		"pt":"Hello World",
+		"pl":"Hello World",
+		"el":"Hello World",
+		"tr":"Hello World",
+		"hu":"Hello World",
+		"ro":"Hello World",
+		"sv":"Hello World",
+		"sk":"Hello World",
+		"cs":"Hello World",
+		"sl":"Hello World",
+		"da":"Hello World",
+		"no":"Hello World",
+		"fi":"Hello World"
+	},
+	"hmiCategory":"OnlineServices",
+	"supportedBrands":[
+		"BMW",
+		"MINI"
+	],
+	"id":"FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A",
+	"launchUrl":"helloworldsample:\/\/com.bmw.a4a\/helloworld",
+	"icon":"img\/FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png",
+	"version":"1.3",
+	"name":"HelloWorld"
+}
