@@ -42,11 +42,13 @@ typedef enum
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
   // Do any additional setup after loading the view, typically from a nib.
   speechController = [[SpeechController alloc] initWithDelegate:self];
   [speechController setupSpeechHandler];
   
   _currentState = kNotListening;
+    
   //Set up the UI
   //Get the location of the microphone and add a 
 }
@@ -63,6 +65,7 @@ typedef enum
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+    
   // Dispose of any resources that can be recreated.
 }
 
