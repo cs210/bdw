@@ -30,6 +30,10 @@
 @property (nonatomic, copy) NSString *pathToSecondDynamicallyGeneratedLanguageModel;
 @property (nonatomic, copy) NSString *pathToSecondDynamicallyGeneratedDictionary;
 
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+@property (weak, nonatomic) IBOutlet UITableView *heardWords;
+
 @end
 
 @implementation ViewController
@@ -142,6 +146,8 @@
     
     [self startDisplayingLevels];
   }
+  
+  //Set up the UI
 }
 
 - (void)didReceiveMemoryWarning {
