@@ -7,22 +7,38 @@
 //
 
 #import "ViewController.h"
-
 #import "SpeechController.h"
+
+typedef enum
+{
+  kListening,
+  kNotListening
+} listeningStates;
 
 @interface ViewController() <SpeechDelegate>
 {
   SpeechController * speechController;
+  listeningStates _currentState;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *microphoneImage;
-@property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
 
 @end
 
 @implementation ViewController
+
+- (IBAction)microphoneClick:(UIButton *)sender
+{
+  if (_currentState == kNotListening)
+  {
+    _statusLabel.text = @"Listening";
+    [speechController startListening];
+    _currentState = kListening;
+  }
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -30,7 +46,7 @@
   speechController = [[SpeechController alloc] initWithDelegate:self];
   [speechController setupSpeechHandler];
   
-  
+  _currentState = kNotListening;
   //Set up the UI
   //Get the location of the microphone and add a 
 }
@@ -49,8 +65,5 @@
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
-
-
 
 @end
