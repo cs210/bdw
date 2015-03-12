@@ -43,6 +43,7 @@
 		46E4D3881AAD859900C94072 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3771AAD859900C94072 /* CoreGraphics.framework */; };
 		46E4D3891AAD859900C94072 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3781AAD859900C94072 /* ImageIO.framework */; };
 		46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3791AAD859900C94072 /* MobileCoreServices.framework */; };
+		A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = A600578C1AB163EB00BA64BF /* SiriMicrophone.png */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF301AAD17D500C81065 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2F1AAD17D500C81065 /* ViewController.m */; };
@@ -165,6 +166,7 @@
 		46E4D3771AAD859900C94072 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46E4D3781AAD859900C94072 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		46E4D3791AAD859900C94072 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A600578C1AB163EB00BA64BF /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SiriMicrophone.png; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		A6F4EF271AAD17D500C81065 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A600578C1AB163EB00BA64BF /* SiriMicrophone.png */,
 				A6F4EF281AAD17D500C81065 /* Info.plist */,
 				46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */,
 				A6F4EF291AAD17D500C81065 /* main.m */,
@@ -572,6 +575,7 @@
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				46841DD71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip in Resources */,
+				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
 				46841DD61AAD8DE500BB0BF1 /* HelloWorld.plist in Resources */,

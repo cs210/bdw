@@ -31,8 +31,9 @@
 @property (nonatomic, copy) NSString *pathToSecondDynamicallyGeneratedDictionary;
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *microphoneImage;
+@property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
 
-@property (weak, nonatomic) IBOutlet UITableView *heardWords;
 
 @end
 
