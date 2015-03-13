@@ -19,9 +19,7 @@ typedef enum {
 - (void)updateConnectionState:(ConnectionState)state;
 - (void)updateRemoteApplicationState:(RemoteApplicationState)state;
 
-- (id)initWithView:(IDView *)theView;
 
-@property (strong) HelloWorldView *view;
 @property (weak, readwrite) id<LastUserModeDelegate> lumDelegate;
 
 
