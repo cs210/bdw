@@ -10,9 +10,9 @@ entry HelloWorldEntryButton{
 
 state HelloWorld {
 	title "ConnectedDrone";
-	image <drone_oval_small>;
-
 	button sayHello;
 	button speechText; 
+	image <drone_oval_small>;
+	
 }
 
