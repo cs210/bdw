@@ -7,9 +7,8 @@
 @interface HelloWorldDataSource ()
 
 @property (readwrite, assign) NSUInteger clickCount;
-
+@property (readwrite, assign) NSString* mostRecentWord;
 @end
-
 NSString *const DataSourceClickCountKey = @"clickCount";
 
 @implementation HelloWorldDataSource
@@ -21,7 +20,7 @@ NSString *const DataSourceClickCountKey = @"clickCount";
     dispatch_once(&onceToken, ^{
         dataSource = [HelloWorldDataSource new];
     });
-
+    
     return dataSource;
 }
 
@@ -40,4 +39,10 @@ NSString *const DataSourceClickCountKey = @"clickCount";
     self.clickCount++;
 }
 
+/* the underscore is hear because I can't figure out how to get rid of warning
+ "writable property cannot pair a synthesized getter with a user defined setter" */
+-(void)set_MostRecentWord:(NSString *)mostRecentWord
+{
+    self.mostRecentWord = mostRecentWord;
+}
 @end

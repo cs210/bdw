@@ -9,9 +9,11 @@ extern NSString *const DataSourceClickCountKey;
 @interface HelloWorldDataSource : NSObject
 
 @property (readonly, assign) NSUInteger clickCount;
+@property (readonly, assign) NSString* mostRecentWord;
 
 + (HelloWorldDataSource *)sharedDataSource;
 
 - (void)increaseClickCount;
+- (void)set_MostRecentWord:(NSString *)mostRecentWord;
 
 @end

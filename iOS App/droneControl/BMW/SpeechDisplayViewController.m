@@ -89,6 +89,7 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
+    [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
 }
 
