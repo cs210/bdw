@@ -12,7 +12,9 @@
 
 @interface HelloWorldView()
 
+@property (strong, readwrite) IDImage *drone_oval_small;
 @property (strong, readwrite) IDButton *sayHello;
+@property (strong, readwrite) IDButton *speechText;
 
 @end
 
@@ -27,18 +29,38 @@
 {
     if (self = [super initWithHmiState:hmiState titleModel:titleModel focusEvent:focusEvent])
     {
-        _sayHello = [[IDButton alloc] initWithWidgetId:1
-                                                 model:[hmiProvider modelForId:2]
+        _drone_oval_small = [[IDImage alloc] initWithWidgetId:1
+                                                        model:[hmiProvider modelForId:2]];
+
+        _sayHello = [[IDButton alloc] initWithWidgetId:3
+                                                 model:[hmiProvider modelForId:4]
                                             imageModel:[hmiProvider modelForId:IDInvalidModelId]
                                            targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                              actionId:3
-                                               focusId:4];
+                                              actionId:5
+                                               focusId:6];
 
+        _speechText = [[IDButton alloc] initWithWidgetId:7
+                                                   model:[hmiProvider modelForId:8]
+                                              imageModel:[hmiProvider modelForId:IDInvalidModelId]
+                                             targetModel:[hmiProvider modelForId:IDInvalidModelId]
+                                                actionId:9
+                                                 focusId:10];
+
+
+        _drone_oval_small.visible = YES;
+        _drone_oval_small.enabled = YES;
+        _drone_oval_small.selectable = YES;
+        [self addWidget:_drone_oval_small];
 
         _sayHello.visible = YES;
         _sayHello.enabled = YES;
         _sayHello.selectable = YES;
         [self addWidget:_sayHello];
+
+        _speechText.visible = YES;
+        _speechText.enabled = YES;
+        _speechText.selectable = YES;
+        [self addWidget:_speechText];
 
     }
     return self;
@@ -46,7 +68,9 @@
 
 - (void)dealloc
 {
+    [self removeWidget:_drone_oval_small];
     [self removeWidget:_sayHello];
+    [self removeWidget:_speechText];
 }
 
 

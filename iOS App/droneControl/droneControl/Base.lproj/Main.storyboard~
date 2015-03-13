@@ -195,9 +195,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-gt-OPU" sceneMemberID="firstResponder"/>
             </objects>
-
+<<<<<<< HEAD
             <point key="canvasLocation" x="404" y="809"/>
-
+=======
+            <point key="canvasLocation" x="428" y="820"/>
+>>>>>>> edit rHMI to include ConnectedDrone, logo, second button, image
         </scene>
     </scenes>
     <resources>

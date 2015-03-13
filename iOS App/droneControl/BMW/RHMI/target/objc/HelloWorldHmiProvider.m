@@ -29,28 +29,30 @@
     if (self = [super init])
     {
         _modelDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     [IDModel modelWithId:2 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:2],
-                     [IDModel modelWithId:5 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:5],
-                     [IDModel modelWithId:6 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:6],
-                     [IDModel modelWithId:7 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:7],
-                     [IDModel modelWithId:8 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:8],
+                     [IDModel modelWithId:2 type:IDModelTypeImageId implicit:YES], [NSNumber numberWithInteger:2],
+                     [IDModel modelWithId:4 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:4],
+                     [IDModel modelWithId:8 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:8],
+                     [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
+                     [IDModel modelWithId:12 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:12],
+                     [IDModel modelWithId:13 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:13],
+                     [IDModel modelWithId:14 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:14],
                      nil];
 
         HelloWorldView *helloWorldView = [[HelloWorldView alloc] initWithHmiState:IDHelloWorldViewId
                                                                        titleModel:[self modelForId:IDInvalidModelId]
-                                                                       focusEvent:9
+                                                                       focusEvent:15
                                                                       hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                      helloWorldView, [NSNumber numberWithInteger:IDHelloWorldViewId],
                      nil];
 
-        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:6]
-                                                           secondLineModel:[self modelForId:7]
-                                                               updateEvent:10];
+        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:12]
+                                                           secondLineModel:[self modelForId:13]
+                                                               updateEvent:16];
 
-        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:8]
-                                                updateEvent:11];
+        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:14]
+                                                updateEvent:17];
 
     }
     return self;

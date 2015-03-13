@@ -2,7 +2,6 @@
 #import "HelloWorldDataSource.h"
 
 @implementation HelloWorldViewController
-
 - (id)initWithView:(IDView *)view
 {
     if (self = [super init])

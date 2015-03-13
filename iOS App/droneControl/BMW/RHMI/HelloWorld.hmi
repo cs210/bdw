@@ -3,13 +3,16 @@ hmi-version 1.0.1;
 
 
 entry HelloWorldEntryButton{
-	text "Hello World";
+	text "ConnectedDrone";
 	onSelect open HelloWorld;
-	image <HelloWorldAppIcon_appswitcher> ;
+	image <rounded_white_drone_icon> ;
 }
 
 state HelloWorld {
-	title "Hello World";
+	title "ConnectedDrone";
+	image <drone_oval_small>;
+
 	button sayHello;
+	button speechText; 
 }
 
