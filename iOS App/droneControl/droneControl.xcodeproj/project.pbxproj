@@ -25,7 +25,7 @@
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
 		46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */; };
-		46841DE91AAD8FA400BB0BF1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* RootViewController.m */; };
+		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
 		46A0A8D61AB2D036002DCDD5 /* SpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */; };
@@ -94,8 +94,8 @@
 		46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
 		46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldDataSource.h; sourceTree = "<group>"; };
 		46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldDataSource.m; sourceTree = "<group>"; };
-		46841DE61AAD8FA400BB0BF1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		46841DE71AAD8FA400BB0BF1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechDisplayViewController.h; sourceTree = "<group>"; };
+		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechDisplayViewController.m; sourceTree = "<group>"; };
 		46841DEB1AAD91C900BB0BF1 /* LoggerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerClient.h; sourceTree = "<group>"; };
 		46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggerClient.m; sourceTree = "<group>"; };
 		46841DED1AAD91C900BB0BF1 /* LoggerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerCommon.h; sourceTree = "<group>"; };
@@ -238,8 +238,8 @@
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
 				46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
-				46841DE61AAD8FA400BB0BF1 /* RootViewController.h */,
-				46841DE71AAD8FA400BB0BF1 /* RootViewController.m */,
+				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
+				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */,
 				46841DB11AAD8DE500BB0BF1 /* HelloWorldViewController.m */,
 				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
@@ -621,7 +621,7 @@
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DCC1AAD8DE500BB0BF1 /* HelloWorldViewController.m in Sources */,
-				46841DE91AAD8FA400BB0BF1 /* RootViewController.m in Sources */,
+				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				A6F4EF301AAD17D500C81065 /* ViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				46A0A8D61AB2D036002DCDD5 /* SpeechViewController.m in Sources */,

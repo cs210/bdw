@@ -29,7 +29,7 @@
         <!--Talk to the Drone-->
         <scene sceneID="ENV-ky-VLe">
             <objects>
-                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="vA3-hO-dtV" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="vA3-hO-dtV" customClass="SpeechDisplayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bXl-LO-Kou"/>
                         <viewControllerLayoutGuide type="bottom" id="J5b-yQ-j3C"/>

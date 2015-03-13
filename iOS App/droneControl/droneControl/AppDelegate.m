@@ -165,14 +165,14 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
 
 #pragma mark - Helper methods
 
-- (RootViewController *)rootViewController
+- (SpeechDisplayViewController *)rootViewController
 {
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     UIViewController *viewController = navigationController.viewControllers[0];
     
-    if ([viewController isKindOfClass:[RootViewController class]])
+    if ([viewController isKindOfClass:[SpeechDisplayViewController class]])
     {
-        return (RootViewController *)viewController;
+        return (SpeechDisplayViewController *)viewController;
     }
     
     return nil;

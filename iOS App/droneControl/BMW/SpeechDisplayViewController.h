@@ -7,7 +7,7 @@ typedef enum {
     ConnectionStateConnectedToVehicle = 2,
 } ConnectionState;
 
-@interface RootViewController : UIViewController
+@interface SpeechDisplayViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStateLabel;

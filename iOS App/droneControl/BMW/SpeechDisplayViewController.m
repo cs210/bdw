@@ -1,4 +1,4 @@
-#import "RootViewController.h"
+#import "SpeechDIsplayViewController.h"
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
 
@@ -10,7 +10,7 @@ typedef enum
 
 
 
-@interface RootViewController () <SpeechDelegate>
+@interface SpeechDisplayViewController () <SpeechDelegate>
 {
     SpeechController * speechController;
     listeningStates _currentState;
@@ -41,7 +41,7 @@ typedef enum
 
 @end
 
-@implementation RootViewController
+@implementation SpeechDisplayViewController
 
 
 
