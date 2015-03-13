@@ -1,8 +1,25 @@
 #import "RootViewController.h"
 #import "HelloWorldDataSource.h"
+#import "SpeechController.h"
 
 
-@interface RootViewController ()
+typedef enum
+{
+    kListening,
+    kNotListening
+} listeningStates;
+
+
+@interface RootViewController () <SpeechDelegate>
+
+{
+    SpeechController * speechController;
+    listeningStates _currentState;
+}
+
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
+
 
 @property (assign) ConnectionState connectionState;
 @property (assign) RemoteApplicationState remoteApplicationState;
@@ -12,6 +29,51 @@
 
 @implementation RootViewController
 
+
+/* speech stuff */
+
+
+
+
+- (IBAction)microphoneClick:(UIButton *)sender
+{
+    if (_currentState == kNotListening)
+    {
+        _statusLabel.text = @"Listening";
+        [speechController startListening];
+        _currentState = kListening;
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.navBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor], NSShadowAttributeName : [NSValue valueWithUIOffset:UIOffsetMake(0.0, 0.0)] }];
+    [self updateConnectionState:self.connectionState];
+    [self updateRemoteApplicationState:self.remoteApplicationState];
+
+    // Do any additional setup after loading the view, typically from a nib.
+    speechController = [[SpeechController alloc] initWithDelegate:self];
+    [speechController setupSpeechHandler];
+    
+    _currentState = kNotListening;
+    
+    //Set up the UI
+    //Get the location of the microphone and add a
+}
+
+-(NSArray * ) listOfWordsToDetect
+{
+    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
+}
+
+-(void) didReceiveWord: (NSString *) word
+{
+    _lastHeardWord.text = word;
+}
+
+
+
+
 - (void)awakeFromNib
 {
     self.connectionState = ConnectionStateNotConnectedToVehicle;
@@ -19,13 +81,6 @@
     [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self.navBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor], NSShadowAttributeName : [NSValue valueWithUIOffset:UIOffsetMake(0.0, 0.0)] }];
-    [self updateConnectionState:self.connectionState];
-    [self updateRemoteApplicationState:self.remoteApplicationState];
-}
 
 - (void)didReceiveMemoryWarning
 {

@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-319" y="804"/>
         </scene>
-        <!--Hello World-->
+        <!--Talk to the Drone-->
         <scene sceneID="ENV-ky-VLe">
             <objects>
                 <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="vA3-hO-dtV" customClass="RootViewController" sceneMemberID="viewController">
@@ -184,7 +184,7 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="69T-Bc-DU6"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Hello World" id="g0P-XX-cqA"/>
+                    <navigationItem key="navigationItem" title="Talk to the Drone" id="g0P-XX-cqA"/>
                     <connections>
                         <outlet property="clickCountButton" destination="MeG-ds-MHw" id="PLD-tK-jfg"/>
                         <outlet property="connectionStateLabel" destination="8Ff-WE-Yjq" id="b2b-LY-teR"/>
@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-gt-OPU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976" y="842"/>
+            <point key="canvasLocation" x="404" y="809"/>
         </scene>
     </scenes>
     <resources>

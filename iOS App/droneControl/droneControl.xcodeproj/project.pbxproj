@@ -28,6 +28,7 @@
 		46841DE91AAD8FA400BB0BF1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* RootViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
+		46A0A8D61AB2D036002DCDD5 /* SpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -101,6 +102,9 @@
 		46841DF01AAD91EC00BB0BF1 /* IDNSLoggerAppender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNSLoggerAppender.h; sourceTree = "<group>"; };
 		46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNSLoggerAppender.m; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
+		46A0A8D21AB2D01B002DCDD5 /* droneControl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "droneControl-Bridging-Header.h"; sourceTree = "<group>"; };
+		46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechViewController.m; path = ../SpeechViewController.m; sourceTree = "<group>"; };
+		46A0A8D71AB2D06C002DCDD5 /* SpeechViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechViewController.h; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
 				46841DB01AAD8DE500BB0BF1 /* HelloWorldViewController.h */,
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
+				46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
 				46841DE61AAD8FA400BB0BF1 /* RootViewController.h */,
 				46841DE71AAD8FA400BB0BF1 /* RootViewController.m */,
@@ -240,6 +245,7 @@
 				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
 				46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */,
 				46841DB41AAD8DE500BB0BF1 /* RHMI */,
+				46A0A8D21AB2D01B002DCDD5 /* droneControl-Bridging-Header.h */,
 			);
 			path = BMW;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
+				46A0A8D71AB2D06C002DCDD5 /* SpeechViewController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
 			);
 			path = droneControl;
@@ -617,6 +624,7 @@
 				46841DE91AAD8FA400BB0BF1 /* RootViewController.m in Sources */,
 				A6F4EF301AAD17D500C81065 /* ViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
+				46A0A8D61AB2D036002DCDD5 /* SpeechViewController.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 			);
@@ -740,6 +748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
@@ -748,6 +757,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BMW/droneControl-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -755,6 +766,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
@@ -763,6 +775,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BMW/droneControl-Bridging-Header.h";
 			};
 			name = Release;
 		};
