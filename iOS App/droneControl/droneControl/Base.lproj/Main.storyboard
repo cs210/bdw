@@ -188,7 +188,9 @@
                     <connections>
                         <outlet property="clickCountButton" destination="MeG-ds-MHw" id="PLD-tK-jfg"/>
                         <outlet property="connectionStateLabel" destination="8Ff-WE-Yjq" id="b2b-LY-teR"/>
+                        <outlet property="lastHeardWord" destination="cV6-FY-pFp" id="lYH-Ho-F0A"/>
                         <outlet property="remoteApplicationStateLabel" destination="CFw-so-fBE" id="6VV-yD-SSp"/>
+                        <outlet property="statusLabel" destination="Ipt-70-Rkq" id="oor-0o-24z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-gt-OPU" sceneMemberID="firstResponder"/>

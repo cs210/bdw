@@ -2,6 +2,20 @@
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
 
+typedef enum
+{
+    kListening,
+    kNotListening
+} listeningStates;
+
+
+
+@interface RootViewController () <SpeechDelegate>
+{
+    SpeechController * speechController;
+    listeningStates _currentState;
+}
+
 
 typedef enum
 {
@@ -30,6 +44,7 @@ typedef enum
 @implementation RootViewController
 
 
+
 /* speech stuff */
 
 
@@ -47,6 +62,12 @@ typedef enum
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    speechController = [[SpeechController alloc] initWithDelegate:self];
+    [speechController setupSpeechHandler];
+    
+    _currentState = kNotListening;
+    
     [self.navBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor], NSShadowAttributeName : [NSValue valueWithUIOffset:UIOffsetMake(0.0, 0.0)] }];
     [self updateConnectionState:self.connectionState];
     [self updateRemoteApplicationState:self.remoteApplicationState];
@@ -87,6 +108,38 @@ typedef enum
     [super didReceiveMemoryWarning];
 }
 
+
+/* speech detection stuff */
+- (IBAction)microphoneClick:(UIButton *)sender
+{
+    if (_currentState == kNotListening)
+    {
+        _statusLabel.text = @"Listening";
+        [speechController startListening];
+        _currentState = kListening;
+    }
+}
+
+
+-(NSArray * ) listOfWordsToDetect
+{
+    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
+}
+
+-(void) didReceiveWord: (NSString *) word
+{
+    _lastHeardWord.text = word;
+}
+
+
+/* click counting stuff */
+- (void)awakeFromNib
+{
+    self.connectionState = ConnectionStateNotConnectedToVehicle;
+    self.remoteApplicationState = RemoteApplicationStateStopped;
+    [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+}
+
 - (IBAction)handleClickCountButton
 {
     [[HelloWorldDataSource sharedDataSource] increaseClickCount];
@@ -98,10 +151,10 @@ typedef enum
     {
         return;
     }
-
+    
     self.connectionState = state;
     NSString *stateString = @"";
-
+    
     switch (state) {
         case ConnectionStateConnectedToVehicle:
             stateString = @"connected";
@@ -113,7 +166,7 @@ typedef enum
             stateString = @"unknown";
             break;
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         self.connectionStateLabel.text = stateString;
     });
@@ -125,10 +178,10 @@ typedef enum
     {
         return;
     }
-
+    
     self.remoteApplicationState = state;
     NSString *stateString = @"";
-
+    
     switch (state) {
         case RemoteApplicationStateStarting:
             stateString = @"starting ...";
@@ -146,7 +199,7 @@ typedef enum
             stateString = @"unknown";
             break;
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         self.remoteApplicationStateLabel.text = stateString;
     });
