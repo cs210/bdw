@@ -9,19 +9,18 @@
 
 // View IDs
 typedef enum {
-    IDFlyDroneViewId = 16,
-    IDHelloWorldViewId = 17,
+    IDHelloWorldViewId = 12,
 } IDHelloWorldViewIdentifier;
 
 // Event IDs
 typedef enum {
-    IDHelloWorldFocusEventId = 13,
-    IDHelloWorldMultimediaInfoEventId = 14,
-    IDHelloWorldStatusbarEventId = 15,
+    IDHelloWorldFocusEventId = 9,
+    IDHelloWorldMultimediaInfoEventId = 10,
+    IDHelloWorldStatusbarEventId = 11,
 } IDHelloWorldEventIdentifier;
 
 
 // Image IDs
 typedef enum {
-    IDHelloWorldAppIcon_appswitcherImageId = 18,
+    IDHelloWorldAppIcon_appswitcherImageId = 13,
 } IDHelloWorldImageIdentifier;

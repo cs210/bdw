@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "RemoteApplicationManager.h"
+#import "SpeechController.h"
 
 typedef enum {
     ConnectionStateUnknown = 0,

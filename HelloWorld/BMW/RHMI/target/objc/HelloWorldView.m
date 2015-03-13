@@ -27,12 +27,12 @@
 {
     if (self = [super initWithHmiState:hmiState titleModel:titleModel focusEvent:focusEvent])
     {
-        _sayHello = [[IDButton alloc] initWithWidgetId:5
-                                                 model:[hmiProvider modelForId:6]
+        _sayHello = [[IDButton alloc] initWithWidgetId:1
+                                                 model:[hmiProvider modelForId:2]
                                             imageModel:[hmiProvider modelForId:IDInvalidModelId]
                                            targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                              actionId:7
-                                               focusId:8];
+                                              actionId:3
+                                               focusId:4];
 
 
         _sayHello.visible = YES;

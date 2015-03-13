@@ -10,7 +10,6 @@
 #import "HelloWorldHmiProvider.h"
 
 #import "HelloWorldIdentifiers.h"
-#import "FlyDroneView.h"
 #import "HelloWorldView.h"
 
 // private property access
@@ -30,35 +29,28 @@
     if (self = [super init])
     {
         _modelDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     [IDModel modelWithId:6 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:6],
                      [IDModel modelWithId:2 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:2],
-                     [IDModel modelWithId:9 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:9],
-                     [IDModel modelWithId:10 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:10],
-                     [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
-                     [IDModel modelWithId:12 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:12],
+                     [IDModel modelWithId:5 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:5],
+                     [IDModel modelWithId:6 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:6],
+                     [IDModel modelWithId:7 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:7],
+                     [IDModel modelWithId:8 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:8],
                      nil];
-
-        FlyDroneView *flyDroneView = [[FlyDroneView alloc] initWithHmiState:IDFlyDroneViewId
-                                                                 titleModel:[self modelForId:IDInvalidModelId]
-                                                                 focusEvent:13
-                                                                hmiProvider:self];
 
         HelloWorldView *helloWorldView = [[HelloWorldView alloc] initWithHmiState:IDHelloWorldViewId
                                                                        titleModel:[self modelForId:IDInvalidModelId]
-                                                                       focusEvent:13
+                                                                       focusEvent:9
                                                                       hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     flyDroneView, [NSNumber numberWithInteger:IDFlyDroneViewId],
                      helloWorldView, [NSNumber numberWithInteger:IDHelloWorldViewId],
                      nil];
 
-        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:10]
-                                                           secondLineModel:[self modelForId:11]
-                                                               updateEvent:14];
+        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:6]
+                                                           secondLineModel:[self modelForId:7]
+                                                               updateEvent:10];
 
-        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:12]
-                                                updateEvent:15];
+        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:8]
+                                                updateEvent:11];
 
     }
     return self;

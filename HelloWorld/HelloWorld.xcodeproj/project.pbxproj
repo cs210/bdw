@@ -19,8 +19,15 @@
 		19D13B58164A792B00CB9030 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B52164A788B00CB9030 /* ImageIO.framework */; };
 		19D13B59164A792B00CB9030 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B4E164A784300CB9030 /* ExternalAccessory.framework */; };
 		19D13B5A164A792B00CB9030 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D13B4C164A783B00CB9030 /* Security.framework */; };
-		46841DFD1AADABBB00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */; };
-		46841DFE1AADABBB00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */; };
+		46A0A8BB1AB2B43A002DCDD5 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A0A8B91AB2B43A002DCDD5 /* BMWAppKit.framework */; };
+		46A0A8BC1AB2B43A002DCDD5 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A0A8BA1AB2B43A002DCDD5 /* BMWAppKitResources.bundle */; };
+		46A0A8C61AB2B63B002DCDD5 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A0A8C31AB2B63B002DCDD5 /* AcousticModelEnglish.bundle */; };
+		46A0A8C71AB2B63B002DCDD5 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A0A8C41AB2B63B002DCDD5 /* OpenEars.framework */; };
+		46A0A8C81AB2B63B002DCDD5 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A0A8C51AB2B63B002DCDD5 /* Slt.framework */; };
+		46A0A8CB1AB2B69A002DCDD5 /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8CA1AB2B69A002DCDD5 /* SpeechController.m */; };
+		46A0A8CD1AB2B822002DCDD5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A0A8CC1AB2B822002DCDD5 /* AVFoundation.framework */; };
+		46A0A8CF1AB2B850002DCDD5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A0A8CE1AB2B850002DCDD5 /* AudioToolbox.framework */; };
+		46A0A8D11AB2BE46002DCDD5 /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A0A8D01AB2BE46002DCDD5 /* SiriMicrophone.png */; };
 		8E18AD1D177B2320005E7CBF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E18AD1C177B2320005E7CBF /* Media.xcassets */; };
 		8E310940175F03B400288E61 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E31093F175F03B400288E61 /* Settings.bundle */; };
 		8E54FEB118B365C90077A893 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E54FEB018B365C90077A893 /* libc++.dylib */; };
@@ -58,8 +65,16 @@
 		19D13B52164A788B00CB9030 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		19D13B55164A78DC00CB9030 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3797D6721670996F003F3CF4 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
-		46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
-		46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
+		46A0A8B91AB2B43A002DCDD5 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
+		46A0A8BA1AB2B43A002DCDD5 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
+		46A0A8C31AB2B63B002DCDD5 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		46A0A8C41AB2B63B002DCDD5 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		46A0A8C51AB2B63B002DCDD5 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		46A0A8C91AB2B689002DCDD5 /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechController.h; path = ../SpeechController.h; sourceTree = "<group>"; };
+		46A0A8CA1AB2B69A002DCDD5 /* SpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechController.m; path = ../SpeechController.m; sourceTree = "<group>"; };
+		46A0A8CC1AB2B822002DCDD5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		46A0A8CE1AB2B850002DCDD5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		46A0A8D01AB2BE46002DCDD5 /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SiriMicrophone.png; path = "../../../../../bdw/bdw/iOS App/droneControl/droneControl/SiriMicrophone.png"; sourceTree = "<group>"; };
 		8E18AD1C177B2320005E7CBF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../HelloWorld/Media.xcassets; sourceTree = "<group>"; };
 		8E31093F175F03B400288E61 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8E54FEB018B365C90077A893 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -96,17 +111,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A0A8CF1AB2B850002DCDD5 /* AudioToolbox.framework in Frameworks */,
+				46A0A8CD1AB2B822002DCDD5 /* AVFoundation.framework in Frameworks */,
 				8E54FEB118B365C90077A893 /* libc++.dylib in Frameworks */,
 				A39856721656171B001E324C /* SystemConfiguration.framework in Frameworks */,
 				A3985670165616EA001E324C /* CFNetwork.framework in Frameworks */,
 				AE45435C1649210F00A068D5 /* UIKit.framework in Frameworks */,
 				19D13B57164A792B00CB9030 /* MobileCoreServices.framework in Frameworks */,
-				46841DFD1AADABBB00BB0BF1 /* BMWAppKit.framework in Frameworks */,
+				46A0A8BB1AB2B43A002DCDD5 /* BMWAppKit.framework in Frameworks */,
 				19D13B58164A792B00CB9030 /* ImageIO.framework in Frameworks */,
 				19D13B59164A792B00CB9030 /* ExternalAccessory.framework in Frameworks */,
+				46A0A8C81AB2B63B002DCDD5 /* Slt.framework in Frameworks */,
 				19D13B5A164A792B00CB9030 /* Security.framework in Frameworks */,
 				AE45435E1649210F00A068D5 /* Foundation.framework in Frameworks */,
 				19D13B54164A789E00CB9030 /* CoreGraphics.framework in Frameworks */,
+				46A0A8C71AB2B63B002DCDD5 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +198,13 @@
 			path = res;
 			sourceTree = "<group>";
 		};
+		46A0A8BF1AB2B5FC002DCDD5 /* droneControl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = droneControl;
+			sourceTree = "<group>";
+		};
 		A39856661656167C001E324C /* IDNSLoggerAppender */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +227,7 @@
 		AE45434C1649210F00A068D5 = {
 			isa = PBXGroup;
 			children = (
+				46A0A8BF1AB2B5FC002DCDD5 /* droneControl */,
 				19D13B30164A750B00CB9030 /* BMW */,
 				AE4543611649210F00A068D5 /* Source */,
 				19D13B27164A707D00CB9030 /* Resources */,
@@ -220,8 +247,13 @@
 		AE45435A1649210F00A068D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				46841DFB1AADABBB00BB0BF1 /* BMWAppKit.framework */,
-				46841DFC1AADABBB00BB0BF1 /* BMWAppKitResources.bundle */,
+				46A0A8CE1AB2B850002DCDD5 /* AudioToolbox.framework */,
+				46A0A8CC1AB2B822002DCDD5 /* AVFoundation.framework */,
+				46A0A8C31AB2B63B002DCDD5 /* AcousticModelEnglish.bundle */,
+				46A0A8C41AB2B63B002DCDD5 /* OpenEars.framework */,
+				46A0A8C51AB2B63B002DCDD5 /* Slt.framework */,
+				46A0A8B91AB2B43A002DCDD5 /* BMWAppKit.framework */,
+				46A0A8BA1AB2B43A002DCDD5 /* BMWAppKitResources.bundle */,
 				8E54FEB018B365C90077A893 /* libc++.dylib */,
 				A398566F165616EA001E324C /* CFNetwork.framework */,
 				AE45435F1649210F00A068D5 /* CoreGraphics.framework */,
@@ -242,6 +274,8 @@
 				A39856661656167C001E324C /* IDNSLoggerAppender */,
 				A39856671656168D001E324C /* NSLogger */,
 				3797D6721670996F003F3CF4 /* LastUserModeDelegate.h */,
+				46A0A8CA1AB2B69A002DCDD5 /* SpeechController.m */,
+				46A0A8C91AB2B689002DCDD5 /* SpeechController.h */,
 				AE45436A1649210F00A068D5 /* AppDelegate.h */,
 				AE45436B1649210F00A068D5 /* AppDelegate.m */,
 				A3985661165615AB001E324C /* RootViewController.h */,
@@ -257,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				AE4543671649210F00A068D5 /* main.m */,
+				46A0A8D01AB2BE46002DCDD5 /* SiriMicrophone.png */,
 				AE4543691649210F00A068D5 /* HelloWorld-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -326,11 +361,13 @@
 				19D13B44164A750B00CB9030 /* .project in Resources */,
 				19D13B45164A750B00CB9030 /* HelloWorld.hmi in Resources */,
 				19D13B46164A750B00CB9030 /* HelloWorld.rapp in Resources */,
+				46A0A8D11AB2BE46002DCDD5 /* SiriMicrophone.png in Resources */,
 				A3985665165615EA001E324C /* MainStoryboard.storyboard in Resources */,
 				EEB922CA1965907C00BDCBFB /* HelloWorld.plist in Resources */,
 				D43A59DE16E9F3EC00B6B595 /* HelloWorld_HMI.xml in Resources */,
 				D43A59E616EA0B2A00B6B595 /* HelloWorld_common_Images.zip in Resources */,
-				46841DFE1AADABBB00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
+				46A0A8BC1AB2B43A002DCDD5 /* BMWAppKitResources.bundle in Resources */,
+				46A0A8C61AB2B63B002DCDD5 /* AcousticModelEnglish.bundle in Resources */,
 				8E18AD1D177B2320005E7CBF /* Media.xcassets in Resources */,
 				8E310940175F03B400288E61 /* Settings.bundle in Resources */,
 			);
@@ -353,6 +390,7 @@
 				A398566E165616AC001E324C /* IDNSLoggerAppender.m in Sources */,
 				A398567516564A8A001E324C /* HelloWorldView.m in Sources */,
 				8EA22037166E3DD500F14043 /* HelloWorldDataSource.m in Sources */,
+				46A0A8CB1AB2B69A002DCDD5 /* SpeechController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

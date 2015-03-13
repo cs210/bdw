@@ -8,7 +8,7 @@
     if (self = [super init])
     {
         _view = (HelloWorldView *)view;
-        _view.sayHello.text = @"Click to fly the drone!";
+        _view.sayHello.text = @"Click Me!";
         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
     }
@@ -32,7 +32,7 @@
 {
     if ([clickCount compare:@0] == NSOrderedDescending) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.view.sayHello.text = [NSString stringWithFormat:@"Flew drone %@ %@!", clickCount, [clickCount compare:@1] == NSOrderedSame ? @"time" : @"times"];
+            self.view.sayHello.text = [NSString stringWithFormat:@"Clicked %@ %@!", clickCount, [clickCount compare:@1] == NSOrderedSame ? @"time" : @"times"];
         });
     }
 }

@@ -1,5 +1,6 @@
 #import "HelloWorldView.h"
 #import "LastUserModeDelegate.h"
+#import "SpeechController.h"
 
 @interface HelloWorldViewController : NSObject
 
