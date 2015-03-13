@@ -10,6 +10,7 @@
 @property (readwrite, assign) NSString* mostRecentWord;
 @end
 NSString *const DataSourceClickCountKey = @"clickCount";
+NSString *const DataSourceMostRecentWordKey = @"mostRecentWord";
 
 @implementation HelloWorldDataSource
 

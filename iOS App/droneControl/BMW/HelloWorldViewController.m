@@ -10,6 +10,8 @@
         _view.sayHello.text = @"Click Me!";
         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+        [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+
     }
     return self;
 }
@@ -17,6 +19,8 @@
 - (void)dealloc
 {
     [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceClickCountKey];
+    [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceMostRecentWordKey];
+
 }
 
 #pragma mark - IDButton callbacks
@@ -36,6 +40,17 @@
     }
 }
 
+- (void)updateMostRecentWord:(NSString *)mostRecentWord
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (mostRecentWord == (NSString *)[NSNull null]){
+            self.view.speechText.text =  @"You haven't said anything.";
+        } else {
+            self.view.speechText.text = [NSString stringWithFormat:@"You said %@!", mostRecentWord];
+        }
+    });
+}
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -44,8 +59,10 @@
     {
         [self updateClickCount:[change valueForKey:NSKeyValueChangeNewKey]];
     }
-    else
-    {
+    else if ([keyPath isEqualToString:DataSourceMostRecentWordKey]){
+        [self updateMostRecentWord:[change valueForKey:NSKeyValueChangeNewKey]];
+    }
+    else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }

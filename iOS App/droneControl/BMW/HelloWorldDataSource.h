@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const DataSourceClickCountKey;
+extern NSString *const DataSourceMostRecentWordKey;
 
 @interface HelloWorldDataSource : NSObject
 

@@ -139,6 +139,8 @@ typedef enum
     self.connectionState = ConnectionStateNotConnectedToVehicle;
     self.remoteApplicationState = RemoteApplicationStateStopped;
     [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+    //[[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+    
 }
 
 - (IBAction)handleClickCountButton
@@ -215,6 +217,7 @@ typedef enum
     });
 }
 
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -223,8 +226,7 @@ typedef enum
     {
         [self updateRemoteClickCount:[change valueForKey:NSKeyValueChangeNewKey]];
     }
-    else
-    {
+    else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
