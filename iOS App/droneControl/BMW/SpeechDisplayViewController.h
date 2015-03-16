@@ -1,3 +1,11 @@
+//
+//  SpeechDisplayViewController.h
+//  droneControl
+//
+//  Created by BDW on 2015-03-11.
+//  Copyright (c) 2015 bdw. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 #import "RemoteApplicationManager.h"
 #import "HelloWorldView.h"

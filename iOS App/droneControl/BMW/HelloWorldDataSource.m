@@ -1,5 +1,9 @@
 //
-//  Copyright (c) 2012 BMW AG. All rights reserved.
+//  HelloWorldDataSource.m
+//  droneControl
+//
+//  Created by BDW on 2015-03-11.
+//  Copyright (c) 2015 bdw. All rights reserved.
 //
 
 #import "HelloWorldDataSource.h"

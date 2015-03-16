@@ -1,3 +1,11 @@
+//
+//  HelloWorldViewController.h
+//  droneControl
+//
+//  Created by BDW on 2015-03-11.
+//  Copyright (c) 2015 bdw. All rights reserved.
+//
+
 #import "HelloWorldView.h"
 #import "LastUserModeDelegate.h"
 
