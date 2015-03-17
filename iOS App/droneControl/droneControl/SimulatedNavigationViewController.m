@@ -60,8 +60,8 @@
   fakeMapPoint.latitude = _userLocation.coordinate.latitude + 0.001;
   
   point.coordinate = fakeMapPoint;
-  point.title = @"Spot";
-  point.subtitle = @"Spot";
+  point.title = @"Parking Spot";
+  point.subtitle = @"Parking Spot";
   
   [_mapView addAnnotation:point];
 }
