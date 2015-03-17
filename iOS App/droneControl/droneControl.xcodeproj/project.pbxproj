@@ -47,6 +47,8 @@
 		46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3791AAD859900C94072 /* MobileCoreServices.framework */; };
 		A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = A600578C1AB163EB00BA64BF /* SiriMicrophone.png */; };
 		A60057901AB169B200BA64BF /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = A600578F1AB169B200BA64BF /* SpeechController.m */; };
+		A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */; };
+		A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -92,8 +94,8 @@
 		46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
 		46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldDataSource.h; sourceTree = "<group>"; };
 		46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldDataSource.m; sourceTree = "<group>"; };
-		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechDisplayViewController.h; sourceTree = "<group>"; };
-		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechDisplayViewController.m; sourceTree = "<group>"; };
+		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechDisplayViewController.h; path = ../BMW/SpeechDisplayViewController.h; sourceTree = "<group>"; };
+		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechDisplayViewController.m; path = ../BMW/SpeechDisplayViewController.m; sourceTree = "<group>"; };
 		46841DEB1AAD91C900BB0BF1 /* LoggerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerClient.h; sourceTree = "<group>"; };
 		46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggerClient.m; sourceTree = "<group>"; };
 		46841DED1AAD91C900BB0BF1 /* LoggerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerCommon.h; sourceTree = "<group>"; };
@@ -171,6 +173,10 @@
 		A600578C1AB163EB00BA64BF /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SiriMicrophone.png; sourceTree = "<group>"; };
 		A600578E1AB169B200BA64BF /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		A600578F1AB169B200BA64BF /* SpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechController.m; sourceTree = "<group>"; };
+		A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulatedNavigationViewController.h; sourceTree = "<group>"; };
+		A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulatedNavigationViewController.m; sourceTree = "<group>"; };
+		A68E00DF1AB79AF8009954B7 /* SimulatedAerialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulatedAerialViewController.h; sourceTree = "<group>"; };
+		A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulatedAerialViewController.m; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -232,8 +238,6 @@
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
 				46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
-				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
-				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
 				46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */,
 				46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */,
@@ -448,6 +452,8 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
+				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				46E4D3331AAD856E00C94072 /* Frameworks */,
 				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
 				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
@@ -461,6 +467,10 @@
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
 				46A0A8D71AB2D06C002DCDD5 /* SpeechViewController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
+				A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */,
+				A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */,
+				A68E00DF1AB79AF8009954B7 /* SimulatedAerialViewController.h */,
+				A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -608,7 +618,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */,
+				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
 				46841DD41AAD8DE500BB0BF1 /* HelloWorldView.m in Sources */,
+				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */,
 				46841DD31AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m in Sources */,

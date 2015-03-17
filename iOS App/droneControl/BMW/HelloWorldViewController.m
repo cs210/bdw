@@ -9,6 +9,9 @@
 #import "HelloWorldViewController.h"
 #import "HelloWorldDataSource.h"
 
+
+/* THIS CLASS INTERACTS WITH THE BMW UI. Even though it is a view controller class, it does not have any
+ UI as far as iOS is concerned. */
 @implementation HelloWorldViewController
 - (id)initWithView:(IDView *)view
 {
