@@ -9,6 +9,7 @@
 #import "SpeechDisplayViewController.h"
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
+#import "SimulatedNavigationViewController.h"
 
 typedef enum
 {
@@ -120,18 +121,16 @@ typedef enum
     [super didReceiveMemoryWarning];
 }
 
-
-/* speech detection stuff */
-- (IBAction)microphoneClick:(UIButton *)sender
-{
-    if (_currentState == kNotListening)
-    {
-        _statusLabel.text = @"Listening";
-        [speechController startListening];
-        _currentState = kListening;
-    }
+- (IBAction)microphoneClicked:(UIButton *)sender {
+  /*if (_currentState == kNotListening)
+   {
+   _statusLabel.text = @"Listening";
+   [speechController startListening];
+   _currentState = kListening;
+   }*/
+  //For now transition to other view controller
+  [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
 }
-
 
 -(NSArray * ) listOfWordsToDetect
 {

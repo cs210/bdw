@@ -63,6 +63,9 @@
                                 <state key="normal" image="SiriMicrophone.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="microphoneClicked:" destination="vA3-hO-dtV" eventType="touchUpInside" id="Oo1-0O-ycw"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-70-Rkq">
                                 <rect key="frame" x="259" y="105" width="83" height="21"/>
