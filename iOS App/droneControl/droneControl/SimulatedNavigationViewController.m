@@ -51,6 +51,19 @@
   MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_userLocation.coordinate, 500, 500);
   MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
   [_mapView setRegion:adjustedRegion animated:YES];
+  
+  // Add an annotation
+  MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+  
+  CLLocationCoordinate2D fakeMapPoint;
+  fakeMapPoint.longitude = _userLocation.coordinate.longitude + 0.001;
+  fakeMapPoint.latitude = _userLocation.coordinate.latitude + 0.001;
+  
+  point.coordinate = fakeMapPoint;
+  point.title = @"Spot";
+  point.subtitle = @"Spot";
+  
+  [_mapView addAnnotation:point];
 }
 
 - (void)didReceiveMemoryWarning {
