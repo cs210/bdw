@@ -1,12 +1,5 @@
-//
-//  SpeechDisplayViewController.m
-//  droneControl
-//
-//  Created by BDW on 2015-03-11.
-//  Copyright (c) 2015 bdw. All rights reserved.
-//
 
-#import "SpeechDisplayViewController.h"
+#import "SpeechDIsplayViewController.h"
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
 #import "SimulatedNavigationViewController.h"
@@ -20,21 +13,6 @@ typedef enum
 
 
 @interface SpeechDisplayViewController () <SpeechDelegate>
-{
-    SpeechController * speechController;
-    listeningStates _currentState;
-}
-
-
-typedef enum
-{
-    kListening,
-    kNotListening
-} listeningStates;
-
-
-@interface RootViewController () <SpeechDelegate>
-
 {
     SpeechController * speechController;
     listeningStates _currentState;
@@ -59,10 +37,7 @@ typedef enum
 
 
 
-- (IBAction)microphoneClick:(UIButton *)sender
-
-- (void)viewDidLoad
-
+- (IBAction)microphoneClicked:(UIButton *)sender
 {
     if (_currentState == kNotListening)
     {
@@ -70,6 +45,8 @@ typedef enum
         [speechController startListening];
         _currentState = kListening;
     }
+    [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+    
 }
 
 - (void)viewDidLoad {
@@ -83,7 +60,7 @@ typedef enum
     [self.navBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor], NSShadowAttributeName : [NSValue valueWithUIOffset:UIOffsetMake(0.0, 0.0)] }];
     [self updateConnectionState:self.connectionState];
     [self updateRemoteApplicationState:self.remoteApplicationState];
-
+    
     // Do any additional setup after loading the view, typically from a nib.
     speechController = [[SpeechController alloc] initWithDelegate:self];
     [speechController setupSpeechHandler];
@@ -101,13 +78,13 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
+    [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
+    _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
         //For now transition to other view controller
         [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
     }
     
-    [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
-    _lastHeardWord.text = word;
 }
 
 
@@ -126,37 +103,7 @@ typedef enum
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)microphoneClicked:(UIButton *)sender {
-  /*if (_currentState == kNotListening)
-   {
-   _statusLabel.text = @"Listening";
-   [speechController startListening];
-   _currentState = kListening;
-   }*/
-  //For now transition to other view controller
-  [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
-}
 
--(NSArray * ) listOfWordsToDetect
-{
-    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
-}
-
--(void) didReceiveWord: (NSString *) word
-{
-    _lastHeardWord.text = word;
-}
-
-
-/* click counting stuff */
-- (void)awakeFromNib
-{
-    self.connectionState = ConnectionStateNotConnectedToVehicle;
-    self.remoteApplicationState = RemoteApplicationStateStopped;
-    [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
-    //[[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
-    
-}
 
 - (IBAction)handleClickCountButton
 {
@@ -232,7 +179,6 @@ typedef enum
     });
 }
 
-
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -241,7 +187,8 @@ typedef enum
     {
         [self updateRemoteClickCount:[change valueForKey:NSKeyValueChangeNewKey]];
     }
-    else {
+    else
+    {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
