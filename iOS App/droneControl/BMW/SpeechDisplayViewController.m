@@ -101,6 +101,11 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
+    if ([word isEqualToString:@"FIND PARKING"]){
+        //For now transition to other view controller
+        [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+    }
+    
     [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
 }
