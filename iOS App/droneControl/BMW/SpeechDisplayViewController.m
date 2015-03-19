@@ -1,6 +1,6 @@
 
 #import "SpeechDIsplayViewController.h"
-#import "HelloWorldDataSource.h"
+#import "BMWConnectedDroneDataSource.h"
 #import "SpeechController.h"
 #import "SimulatedNavigationViewController.h"
 
@@ -79,7 +79,7 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
-    [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
+    [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
         _needConfirmation = true;
@@ -107,7 +107,7 @@ typedef enum
 {
     self.connectionState = ConnectionStateNotConnectedToVehicle;
     self.remoteApplicationState = RemoteApplicationStateStopped;
-    [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+    [[BMWConnectedDroneDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
 }
 
 
@@ -120,7 +120,7 @@ typedef enum
 
 - (IBAction)handleClickCountButton
 {
-    [[HelloWorldDataSource sharedDataSource] increaseClickCount];
+    [[BMWConnectedDroneDataSource sharedDataSource] increaseClickCount];
 }
 
 - (void)updateConnectionState:(ConnectionState)state

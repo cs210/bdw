@@ -16,7 +16,6 @@
 		46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */ = {isa = PBXBuildFile; fileRef = 46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
-		46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */; };
 		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
@@ -79,8 +78,6 @@
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
 		46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
-		46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldDataSource.h; sourceTree = "<group>"; };
-		46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldDataSource.m; sourceTree = "<group>"; };
 		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechDisplayViewController.h; path = ../BMW/SpeechDisplayViewController.h; sourceTree = "<group>"; };
 		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechDisplayViewController.m; path = ../BMW/SpeechDisplayViewController.m; sourceTree = "<group>"; };
 		46841DEB1AAD91C900BB0BF1 /* LoggerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerClient.h; sourceTree = "<group>"; };
@@ -233,10 +230,8 @@
 				46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */,
 				46841DEF1AAD91CF00BB0BF1 /* IDNSLoggerAppender */,
 				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
-				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
 				46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */,
 				46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */,
-				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
 				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
 				46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */,
 				46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */,
@@ -612,7 +607,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
-				46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */,
 				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
 				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,

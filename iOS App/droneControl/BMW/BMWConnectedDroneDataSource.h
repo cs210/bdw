@@ -1,13 +1,23 @@
 //
-//  BMWConnectedDroneDataSource.h
+//  BMWConnectedDroneDataSource.m
 //  droneControl
 //
-//  Created by Ellen Sebastian on 3/19/15.
+//  Created by BDW on 2015-03-11.
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
-#ifndef droneControl_BMWConnectedDroneDataSource_h
-#define droneControl_BMWConnectedDroneDataSource_h
+extern NSString *const DataSourceClickCountKey;
+extern NSString *const DataSourceMostRecentWordKey;
 
+@interface BMWConnectedDroneDataSource : NSObject
 
-#endif
+@property (readonly, assign) NSUInteger clickCount;
+@property (readonly, assign) NSString* mostRecentWord;
+
++ (BMWConnectedDroneDataSource *)sharedDataSource;
+
+- (void)increaseClickCount;
+- (void)set_MostRecentWord:(NSString *)mostRecentWord;
+
+@end

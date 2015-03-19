@@ -7,7 +7,7 @@
 //
 
 #import "HelloWorldViewController.h"
-#import "HelloWorldDataSource.h"
+#import "BMWConnectedDroneDataSource.h"
 
 @interface HelloWorldViewController ()
 @property bool needConfirmation; // true if the user said FIND PARKING and we want to hear YES. false otherwise
@@ -25,8 +25,8 @@
         _view = (BMWFindParkingView *)view;
         /*_view.sayHello.text = @"Click Me!";
         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];*/
-        [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
-        [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+        [[BMWConnectedDroneDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
+        [[BMWConnectedDroneDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         
     }
     return self;
@@ -34,8 +34,8 @@
 
 - (void)dealloc
 {
-    [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceClickCountKey];
-    [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceMostRecentWordKey];
+    [[BMWConnectedDroneDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceClickCountKey];
+    [[BMWConnectedDroneDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceMostRecentWordKey];
     
 }
 
@@ -43,7 +43,7 @@
 
 - (void)clickMeSelected:(IDButton *)button
 {
-    HelloWorldDataSource *dataSource = [HelloWorldDataSource sharedDataSource];
+    BMWConnectedDroneDataSource *dataSource = [BMWConnectedDroneDataSource sharedDataSource];
     [dataSource increaseClickCount];
 }
 
