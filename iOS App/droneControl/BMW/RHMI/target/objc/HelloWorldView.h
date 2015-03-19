@@ -20,6 +20,6 @@
 
 @property (strong, readonly) IDButton *sayHello;
 @property (strong, readonly) IDButton *speechText;
-@property (strong, readonly) IDImage *drone_oval_small;
+@property (strong, readonly) IDImage *navigationImage;
 
 @end

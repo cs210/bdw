@@ -29,9 +29,9 @@
     if (self = [super init])
     {
         _modelDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                     [IDModel modelWithId:10 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:10],
                      [IDModel modelWithId:2 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:2],
                      [IDModel modelWithId:6 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:6],
-                     [IDModel modelWithId:10 type:IDModelTypeImageId implicit:YES], [NSNumber numberWithInteger:10],
                      [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
                      [IDModel modelWithId:12 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:12],
                      [IDModel modelWithId:13 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:13],

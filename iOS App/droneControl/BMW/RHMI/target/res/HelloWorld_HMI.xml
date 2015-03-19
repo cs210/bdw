@@ -8,9 +8,9 @@
             <hmiAction id="26" target="18"/>
         </actions>
         <models>
+            <raImageModel id="10"/>
             <raDataModel id="2"/>
             <raDataModel id="6"/>
-            <imageIdModel id="10" imageId="22"/>
             <raDataModel id="11"/>
             <raDataModel id="12"/>
             <raDataModel id="13"/>

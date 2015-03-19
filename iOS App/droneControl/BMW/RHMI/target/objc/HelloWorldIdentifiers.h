@@ -12,6 +12,11 @@ typedef enum {
     IDHelloWorldViewId = 18,
 } IDHelloWorldViewIdentifier;
 
+// Model IDs
+typedef enum {
+    IDModelNavigationImageId = 10,
+} IDHelloWorldModelIdentifier;
+
 // Event IDs
 typedef enum {
     IDHelloWorldFocusEventId = 15,

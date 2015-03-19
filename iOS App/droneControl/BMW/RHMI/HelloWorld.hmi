@@ -2,6 +2,8 @@ app  HelloWorld;
 hmi-version 1.0.1;
 
 
+
+
 entry HelloWorldEntryButton{
 	text "ConnectedDrone";
 	image <rounded_white_drone_icon> ;
@@ -10,15 +12,16 @@ entry HelloWorldEntryButton{
 	
 }
 
+model img navigationImage ;
 
 
 state HelloWorld {
 	title "ConnectedDrone";
 	button sayHello;
 	button speechText; 
-	image <drone_oval_small>{
-		height 400;
+	image navigationImage[navigationImage ]{
+		height 400 ;
 	}
-	
+
 }
 
