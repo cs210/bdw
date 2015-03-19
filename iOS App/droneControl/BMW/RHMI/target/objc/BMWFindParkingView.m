@@ -7,10 +7,10 @@
 //
 // ************************************************
 
-#import "FindParkingView.h"
+#import "BMWFindParkingView.h"
 
 
-@interface FindParkingView()
+@interface BMWFindParkingView()
 
 @property (strong, readwrite) IDImage *navigationImage;
 @property (strong, readwrite) IDLabel *status;
@@ -19,7 +19,7 @@
 
 
 
-@implementation FindParkingView
+@implementation BMWFindParkingView
 
 - (id)initWithHmiState:(NSInteger)hmiState
             titleModel:(IDModel *)titleModel

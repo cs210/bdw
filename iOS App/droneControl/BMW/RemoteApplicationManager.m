@@ -8,8 +8,8 @@
 
 #import "RemoteApplicationManager.h"
 
-#import "HelloWorldHmiProvider.h"
-#import "HelloWorldIdentifiers.h"
+#import "ConnectedDroneHmiProvider.h"
+#import "ConnectedDroneIdentifiers.h"
 #import "HelloWorldViewController.h"
 #import "AppDelegate.h"
 
@@ -19,7 +19,7 @@
 @property (assign, readwrite) RemoteApplicationState remoteApplicationState;
 
 @property (strong) IDApplication *idApplication;
-@property (strong) HelloWorldHmiProvider *hmiProvider;
+@property (strong) ConnectedDroneHmiProvider *hmiProvider;
 @property (strong) HelloWorldViewController *helloWorldViewController;
 
 @end
@@ -35,12 +35,12 @@
     {
         _remoteApplicationState = RemoteApplicationStateStopped;
 
-        _hmiProvider = [HelloWorldHmiProvider new];
+        _hmiProvider = [ConnectedDroneHmiProvider new];
         _idApplication = [[IDApplication alloc] initWithHmiProvider:_hmiProvider];
         _idApplication.delegate = self;
         _idApplication.dataSource = self;
 
-        _helloWorldViewController = [[HelloWorldViewController alloc] initWithView:[_hmiProvider viewForId:IDHelloWorldViewId]];
+        _helloWorldViewController = [[HelloWorldViewController alloc] initWithView:[_hmiProvider viewForId:IDBMWFindParkingViewId]];
     }
     return self;
 }
@@ -62,7 +62,7 @@
         
         if ([manager.lumDelegate shouldFocusInRemoteHmi])
         {
-            [manager.idApplication performLastUserModeWithView:[manager.hmiProvider viewForId:IDHelloWorldViewId]];
+            [manager.idApplication performLastUserModeWithView:[manager.hmiProvider viewForId:IDBMWFindParkingViewId]];
         }
 
         manager.remoteApplicationState = RemoteApplicationStateStarted;
@@ -84,7 +84,7 @@
 
 - (void)applicationRestoreMainHmiState:(IDApplication *)application
 {
-    [self.idApplication performLastUserModeWithView:[self.hmiProvider viewForId:IDHelloWorldViewId]];
+    [self.idApplication performLastUserModeWithView:[self.hmiProvider viewForId:IDBMWFindParkingViewId]];
 }
 
 #pragma mark - IDApplicationDataSource protocol implementation

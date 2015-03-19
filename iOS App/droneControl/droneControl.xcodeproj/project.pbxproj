@@ -11,15 +11,8 @@
 		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
 		46841DCE1AAD8DE500BB0BF1 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB51AAD8DE500BB0BF1 /* .project */; };
 		46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB71AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs */; };
-		46841DD01AAD8DE500BB0BF1 /* HelloWorld.hmi in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB81AAD8DE500BB0BF1 /* HelloWorld.hmi */; };
-		46841DD11AAD8DE500BB0BF1 /* HelloWorld.rapp in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB91AAD8DE500BB0BF1 /* HelloWorld.rapp */; };
 		46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 46841DBC1AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png */; };
-		46841DD31AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DC01AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m */; };
-		46841DD41AAD8DE500BB0BF1 /* HelloWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DC31AAD8DE500BB0BF1 /* HelloWorldView.m */; };
 		46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */ = {isa = PBXBuildFile; fileRef = 46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */; };
-		46841DD61AAD8DE500BB0BF1 /* HelloWorld.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46841DC61AAD8DE500BB0BF1 /* HelloWorld.plist */; };
-		46841DD71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46841DC71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip */; };
-		46841DD81AAD8DE500BB0BF1 /* HelloWorld_HMI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 46841DC81AAD8DE500BB0BF1 /* HelloWorld_HMI.xml */; };
 		46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */ = {isa = PBXBuildFile; fileRef = 46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
@@ -28,6 +21,11 @@
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
 		46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */; };
+		46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */; };
+		46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89611ABB11F0009339BC /* BMWFindParkingView.m */; };
+		46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */; };
+		46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */; };
+		46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89651ABB11FB009339BC /* ConnectedDrone.plist */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -74,18 +72,8 @@
 		46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteApplicationManager.m; sourceTree = "<group>"; };
 		46841DB51AAD8DE500BB0BF1 /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
 		46841DB71AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = org.eclipse.core.resources.prefs; sourceTree = "<group>"; };
-		46841DB81AAD8DE500BB0BF1 /* HelloWorld.hmi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.hmi; sourceTree = "<group>"; };
-		46841DB91AAD8DE500BB0BF1 /* HelloWorld.rapp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.rapp; sourceTree = "<group>"; };
 		46841DBC1AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorldAppIcon_appswitcher.png; sourceTree = "<group>"; };
-		46841DBF1AAD8DE500BB0BF1 /* HelloWorldHmiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldHmiProvider.h; sourceTree = "<group>"; };
-		46841DC01AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldHmiProvider.m; sourceTree = "<group>"; };
-		46841DC11AAD8DE500BB0BF1 /* HelloWorldIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldIdentifiers.h; sourceTree = "<group>"; };
-		46841DC21AAD8DE500BB0BF1 /* HelloWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldView.h; sourceTree = "<group>"; };
-		46841DC31AAD8DE500BB0BF1 /* HelloWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldView.m; sourceTree = "<group>"; };
 		46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json"; sourceTree = "<group>"; };
-		46841DC61AAD8DE500BB0BF1 /* HelloWorld.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelloWorld.plist; sourceTree = "<group>"; };
-		46841DC71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloWorld_common_Images.zip; sourceTree = "<group>"; };
-		46841DC81AAD8DE500BB0BF1 /* HelloWorld_HMI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HelloWorld_HMI.xml; sourceTree = "<group>"; };
 		46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png"; sourceTree = "<group>"; };
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
@@ -102,6 +90,15 @@
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
 		46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldViewController.h; sourceTree = "<group>"; };
 		46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldViewController.m; sourceTree = "<group>"; };
+		46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneHmiProvider.h; sourceTree = "<group>"; };
+		46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectedDroneHmiProvider.m; sourceTree = "<group>"; };
+		46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneIdentifiers.h; sourceTree = "<group>"; };
+		46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMWConnectedDroneViewController.h; sourceTree = "<group>"; };
+		46CC89601ABB11F0009339BC /* BMWFindParkingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWFindParkingView.h; sourceTree = "<group>"; };
+		46CC89611ABB11F0009339BC /* BMWFindParkingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWFindParkingView.m; sourceTree = "<group>"; };
+		46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ConnectedDrone_common_Images.zip; sourceTree = "<group>"; };
+		46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ConnectedDrone_HMI.xml; sourceTree = "<group>"; };
+		46CC89651ABB11FB009339BC /* ConnectedDrone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConnectedDrone.plist; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -236,6 +233,7 @@
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
 				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
+				46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */,
 				46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */,
 				46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */,
 				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
@@ -250,8 +248,6 @@
 			children = (
 				46841DB51AAD8DE500BB0BF1 /* .project */,
 				46841DB61AAD8DE500BB0BF1 /* .settings */,
-				46841DB81AAD8DE500BB0BF1 /* HelloWorld.hmi */,
-				46841DB91AAD8DE500BB0BF1 /* HelloWorld.rapp */,
 				46841DBA1AAD8DE500BB0BF1 /* resources */,
 				46841DBD1AAD8DE500BB0BF1 /* target */,
 			);
@@ -294,11 +290,11 @@
 		46841DBE1AAD8DE500BB0BF1 /* objc */ = {
 			isa = PBXGroup;
 			children = (
-				46841DBF1AAD8DE500BB0BF1 /* HelloWorldHmiProvider.h */,
-				46841DC01AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m */,
-				46841DC11AAD8DE500BB0BF1 /* HelloWorldIdentifiers.h */,
-				46841DC21AAD8DE500BB0BF1 /* HelloWorldView.h */,
-				46841DC31AAD8DE500BB0BF1 /* HelloWorldView.m */,
+				46CC89601ABB11F0009339BC /* BMWFindParkingView.h */,
+				46CC89611ABB11F0009339BC /* BMWFindParkingView.m */,
+				46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */,
+				46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */,
+				46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */,
 			);
 			path = objc;
 			sourceTree = "<group>";
@@ -307,9 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */,
-				46841DC61AAD8DE500BB0BF1 /* HelloWorld.plist */,
-				46841DC71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip */,
-				46841DC81AAD8DE500BB0BF1 /* HelloWorld_HMI.xml */,
+				46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */,
+				46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */,
+				46CC89651ABB11FB009339BC /* ConnectedDrone.plist */,
 				46841DC91AAD8DE500BB0BF1 /* img */,
 			);
 			path = res;
@@ -580,21 +576,19 @@
 			files = (
 				46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */,
 				46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
+				46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */,
 				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
+				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
-				46841DD71AAD8DE500BB0BF1 /* HelloWorld_common_Images.zip in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
-				46841DD61AAD8DE500BB0BF1 /* HelloWorld.plist in Resources */,
 				A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */,
 				46841DCE1AAD8DE500BB0BF1 /* .project in Resources */,
-				46841DD11AAD8DE500BB0BF1 /* HelloWorld.rapp in Resources */,
-				46841DD81AAD8DE500BB0BF1 /* HelloWorld_HMI.xml in Resources */,
-				46841DD01AAD8DE500BB0BF1 /* HelloWorld.hmi in Resources */,
 				46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */,
+				46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,16 +608,16 @@
 			files = (
 				46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */,
 				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
-				46841DD41AAD8DE500BB0BF1 /* HelloWorldView.m in Sources */,
 				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
+				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
 				46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */,
-				46841DD31AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
+				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

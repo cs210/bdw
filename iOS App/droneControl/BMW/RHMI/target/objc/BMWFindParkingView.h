@@ -11,7 +11,7 @@
 
 #import <BMWAppKit/BMWAppKit.h>
 
-@interface FindParkingView : IDView
+@interface BMWFindParkingView : IDView
 
 - (id)initWithHmiState:(NSInteger)hmiState
             titleModel:(IDModel *)titleModel

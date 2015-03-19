@@ -7,7 +7,7 @@ hmi-version 1.0.1;
 entry ConnectedDroneEntryButton{
 	text "ConnectedDrone";
 	image <rounded_white_drone_icon> ;
-	onSelect open FindParking;
+	onSelect open BMWFindParking;
 	speakable SpeakableGlobally ;
 	
 }
@@ -26,7 +26,7 @@ action sync StartNavigation {
 }
 
 
-state FindParking {
+state BMWFindParking {
 	title "Find Parking";
 	/*button sayHello;
 	button speechText; 

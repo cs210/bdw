@@ -22,7 +22,7 @@
 {
     if (self = [super init])
     {
-        _view = (HelloWorldView *)view;
+        _view = (BMWFindParkingView *)view;
         /*_view.sayHello.text = @"Click Me!";
         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];*/
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
@@ -76,7 +76,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC),dispatch_get_main_queue(), ^{
                 self.view.status.waitingAnimation = false;
                 self.view.status.text = @"Parking spots found!";
-                UIImage *img = [UIImage imageNamed:@"parking_spots_found_ar"];
+                UIImage *img = [UIImage imageNamed:@"parking_spots_found_bigger"];
                 NSData *data = UIImagePNGRepresentation(img);
                 IDImageData *imgData = [IDImageData imageDataWithData:data];
                 self.view.navigationImage.imageData = imgData;

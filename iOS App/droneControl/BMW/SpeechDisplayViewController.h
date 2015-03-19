@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RemoteApplicationManager.h"
-#import "HelloWorldView.h"
+#import "BMWFindParkingView.h"
 
 typedef enum {
     ConnectionStateUnknown = 0,

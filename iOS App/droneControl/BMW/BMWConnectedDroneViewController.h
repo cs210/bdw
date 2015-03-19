@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 
-#import "BMWFindParkingView.h"
+#import "FindParkingView.h"
 #import "LastUserModeDelegate.h"
 
 @interface HelloWorldViewController : NSObject
 
 - (id)initWithView:(IDView *)theView;
 
-@property (strong) BMWFindParkingView *view;
+@property (strong) HelloWorldView *view;
 @property (weak, readwrite) id<LastUserModeDelegate> lumDelegate;
 
 @end

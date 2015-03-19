@@ -10,7 +10,7 @@
 #import "ConnectedDroneHmiProvider.h"
 
 #import "ConnectedDroneIdentifiers.h"
-#import "FindParkingView.h"
+#import "BMWFindParkingView.h"
 
 // private property access
 @interface ConnectedDroneHmiProvider()
@@ -40,13 +40,13 @@
                      [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
                      nil];
 
-        FindParkingView *findParkingView = [[FindParkingView alloc] initWithHmiState:IDFindParkingViewId
-                                                                          titleModel:[self modelForId:IDInvalidModelId]
-                                                                          focusEvent:12
-                                                                         hmiProvider:self];
+        BMWFindParkingView *bMWFindParkingView = [[BMWFindParkingView alloc] initWithHmiState:IDBMWFindParkingViewId
+                                                                                   titleModel:[self modelForId:IDInvalidModelId]
+                                                                                   focusEvent:12
+                                                                                  hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     findParkingView, [NSNumber numberWithInteger:IDFindParkingViewId],
+                     bMWFindParkingView, [NSNumber numberWithInteger:IDBMWFindParkingViewId],
                      nil];
 
         _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:9]
