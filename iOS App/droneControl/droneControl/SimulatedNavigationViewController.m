@@ -27,18 +27,29 @@
 
 @implementation SimulatedNavigationViewController
 
+- (void) addAnnnotationWithOffset:(bool)isParkingSpot{
+    CLLocationCoordinate2D fakeMapPoint;
+    fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
+    fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
+    _point.coordinate = fakeMapPoint;
+    [_mapView removeAnnotation:_point];
+    [_mapView addAnnotation:_point];
+    
+    if (isParkingSpot){
+        _point.title = @"Parking spot";
+        [_mapView selectAnnotation:_point animated:YES];
+    } else {
+        _point.title = @"Drone";
+        [[_mapView viewForAnnotation:_point] setTag:1];
+        UIImage *image = [UIImage imageNamed:@"drone_small.png"];
+        [[_mapView viewForAnnotation:_point] setImage:image];
+    }
+    
+}
+
 - (void) moveAnnotation{
     if (_n_times_moved > 10){
-        [_timer invalidate];
-        CLLocationCoordinate2D fakeMapPoint;
-        fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
-        fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
-        _point.coordinate = fakeMapPoint;
-        _point.title = @"Drone";
-        //_point.subtitle = @"Drone";
-        
-        [_mapView addAnnotation:_point];
-        [_mapView selectAnnotation:_point animated:YES];
+        [self addAnnnotationWithOffset:false];
         return;
     }
     [_mapView removeAnnotation:_point];
