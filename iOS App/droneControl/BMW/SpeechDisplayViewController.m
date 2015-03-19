@@ -3,6 +3,7 @@
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
 #import "SimulatedNavigationViewController.h"
+#import "WaitingViewController.h"
 
 typedef enum
 {
@@ -82,7 +83,7 @@ typedef enum
     _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
         //For now transition to other view controller
-        [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+        [self.navigationController pushViewController:[[WaitingViewController alloc] init] animated:NO];
     }
     
 }
