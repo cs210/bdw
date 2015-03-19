@@ -32,11 +32,15 @@
     fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
     fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
     _point.coordinate = fakeMapPoint;
-    [_mapView removeAnnotation:_point];
+    //[_mapView removeAnnotation:_point];
     [_mapView addAnnotation:_point];
     [_mapView selectAnnotation:_point animated:YES];
     if (isParkingSpot){
         _point.title = @"Parking spot";
+        UIImage *image = [UIImage imageNamed:@"parking_spot_icon.png"];
+        [[_mapView viewForAnnotation:_point] setImage:image];
+        [_mapView selectAnnotation:_point animated:YES];
+
     } else {
         _point.title = @"Drone";
         [[_mapView viewForAnnotation:_point] setTag:1];
@@ -50,13 +54,11 @@
 
 - (void) moveAnnotation{
     if (_n_times_moved > 10){
-        [self addAnnnotationWithOffset:false];
+        [self addAnnnotationWithOffset:true];
+
         [_timer invalidate];
         return;
     }
-    [_mapView removeAnnotation:_point];
-    
-    
     [self addAnnnotationWithOffset:false];
 
     _n_times_moved += 1;
@@ -102,15 +104,8 @@
                                                  repeats:YES];
         _point = [[MKPointAnnotation alloc] init];
         
-        CLLocationCoordinate2D fakeMapPoint;
-        fakeMapPoint.longitude = _userLocation.coordinate.longitude ;
-        fakeMapPoint.latitude = _userLocation.coordinate.latitude;
-        
-        _point.coordinate = fakeMapPoint;
-        _point.title = @"Drone";
-        //_point.subtitle = @"Drone";
-        [_mapView addAnnotation:_point];
-        [_mapView selectAnnotation:_point animated:NO];
+        [self addAnnnotationWithOffset:false];
+
         _n_times_moved = 1;
     }
 }
