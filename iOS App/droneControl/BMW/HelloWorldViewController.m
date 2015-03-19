@@ -22,7 +22,7 @@
         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
-
+        
     }
     return self;
 }
@@ -31,7 +31,7 @@
 {
     [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceClickCountKey];
     [[HelloWorldDataSource sharedDataSource] removeObserver:self forKeyPath:DataSourceMostRecentWordKey];
-
+    
 }
 
 #pragma mark - IDButton callbacks
@@ -56,7 +56,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if (mostRecentWord == (NSString *)[NSNull null]){
             self.view.speechText.text =  @"You haven't said anything.";
-        } else {
+        }
+        else if ([mostRecentWord isEqualToString:@"FIND PARKING"]){
+            UIImage *img = [UIImage imageNamed:@"parking_spots_found"];
+            NSData *data = UIImagePNGRepresentation(img);
+            IDImageData *imgData = [IDImageData imageDataWithData:data];
+            self.view.navigationImage.imageData = imgData;
+        }
+        else {
             self.view.speechText.text = [NSString stringWithFormat:@"You said %@!", mostRecentWord];
         }
     });
