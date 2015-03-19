@@ -9,6 +9,11 @@
 #import "HelloWorldViewController.h"
 #import "HelloWorldDataSource.h"
 
+@interface HelloWorldViewController ()
+@property bool needConfirmation; // true if the user said FIND PARKING and we want to hear YES. false otherwise
+
+@end
+
 
 /* THIS CLASS INTERACTS WITH THE BMW UI. Even though it is a view controller class, it does not have any
  UI as far as iOS is concerned. */
@@ -57,7 +62,15 @@
         if (mostRecentWord == (NSString *)[NSNull null]){
             self.view.status.text =  @"Say FIND PARKING to fly the drone.";
         }
-        else   if ([mostRecentWord isEqualToString:@"FIND PARKING"]){
+        else if ([mostRecentWord isEqualToString:@"FIND PARKING"]){
+            self.view.status.text =  @"Say YES to confirm and find parking.";
+            _needConfirmation = YES;
+        } else if ([mostRecentWord isEqualToString:@"NO"]){
+            self.view.status.text =  @"Say FIND PARKING to fly the drone.";
+            _needConfirmation = NO;
+        } else  if ([mostRecentWord isEqualToString:@"YES"]){
+            _needConfirmation = NO;
+            self.view.status.text =  @"Say FIND PARKING to fly the drone.";
             self.view.status.waitingAnimation = true;
             self.view.status.text = @"Drone is finding a parking spot...";
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC),dispatch_get_main_queue(), ^{
@@ -69,10 +82,6 @@
                 self.view.navigationImage.imageData = imgData;
             });
         }
-       /* }
-        else {
-            self.view.speechText.text = [NSString stringWithFormat:@"You said %@!", mostRecentWord];
-        }*/
     });
 }
 

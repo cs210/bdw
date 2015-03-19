@@ -97,7 +97,7 @@
         
         // Add an annotation
         
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.95
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.9
                                                   target:self
                                                 selector:@selector(moveAnnotation)
                                                 userInfo:nil
