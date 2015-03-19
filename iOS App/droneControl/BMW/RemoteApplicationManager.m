@@ -91,18 +91,18 @@
 
 - (NSDictionary *)manifestForApplication:(IDApplication *)application
 {
-    NSURL* url = [[NSBundle mainBundle] URLForResource:@"HelloWorld" withExtension:@"plist"];
+    NSURL* url = [[NSBundle mainBundle] URLForResource:@"ConnectedDrone" withExtension:@"plist"];
     return [NSDictionary dictionaryWithContentsOfURL:url];
 }
 
 - (NSData *)hmiDescriptionForApplication:(IDApplication *)application
 {
-    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"HelloWorld_HMI" withExtension:@"xml"]];
+    return [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"ConnectedDrone_HMI" withExtension:@"xml"]];
 }
 
 - (NSArray *)imageDatabasesForApplication:(IDApplication *)application
 {
-    return [NSArray arrayWithObject:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"HelloWorld_common_Images" withExtension:@"zip"]]];
+    return [NSArray arrayWithObject:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"ConnectedDrone_common_Images" withExtension:@"zip"]]];
 }
 
 @end

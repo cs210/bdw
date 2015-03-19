@@ -77,7 +77,7 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([[url path] rangeOfString:@"helloworld"].location == NSNotFound)
+    if ([[url path] rangeOfString:@"ConnectedDrone"].location == NSNotFound)
     {
         return NO;
     }

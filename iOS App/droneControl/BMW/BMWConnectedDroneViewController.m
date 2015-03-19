@@ -1,5 +1,5 @@
 //
-//  HelloWorldViewController.m
+//  BMWConnectedDroneViewController.h
 //  droneControl
 //
 //  Created by BDW on 2015-03-11.
