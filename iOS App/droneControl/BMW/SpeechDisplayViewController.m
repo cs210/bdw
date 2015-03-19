@@ -20,7 +20,7 @@ typedef enum
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
-
+@property (weak, nonatomic) IBOutlet UILabel *askForConfirmation;
 
 @property (assign) ConnectionState connectionState;
 @property (assign) RemoteApplicationState remoteApplicationState;
