@@ -36,7 +36,7 @@
                     <image id="1" model="2">
                         <properties>
                             <property id="20" value="0"/>
-                            <property id="21" value="0"/>
+                            <property id="21" value="35"/>
                             <property id="10" value="400"/>
                         </properties>
                     </image>

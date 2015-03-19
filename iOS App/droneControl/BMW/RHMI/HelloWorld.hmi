@@ -37,7 +37,7 @@ state HelloWorld {
 	image navigationImage[navigationImage ]{
 		height 400 ;
 		positionX 0 ;
-		positionY 0 ;	
+		positionY 35 ; // optimized for current map displayed	
 	}
 	label status{
 		waitingAnimation false;

@@ -76,7 +76,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC),dispatch_get_main_queue(), ^{
                 self.view.status.waitingAnimation = false;
                 self.view.status.text = @"Parking spots found!";
-                UIImage *img = [UIImage imageNamed:@"parking_spots_found"];
+                UIImage *img = [UIImage imageNamed:@"parking_spots_found_ar"];
                 NSData *data = UIImagePNGRepresentation(img);
                 IDImageData *imgData = [IDImageData imageDataWithData:data];
                 self.view.navigationImage.imageData = imgData;
