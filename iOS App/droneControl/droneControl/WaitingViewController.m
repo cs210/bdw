@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 
-/*This is going to be a map interface*/
+/*
+ When talking about this in demo, mention that some users want to make sure the drone isn't doing anything crazy, so track it
+ */
 #import "WaitingViewController.h"
 #import <MapKit/MapKit.h>
+#import "SimulatedNavigationViewController.h"
 
 @interface WaitingViewController () < CLLocationManagerDelegate>
 {
@@ -29,6 +32,8 @@
 - (void) moveAnnotation{
     if (_n_times_moved > 10){
         [_timer invalidate];
+        [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+
         return;
     }
     [_mapView removeAnnotation:_point];
@@ -80,7 +85,7 @@
         
         // Add an annotation
         
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.95
                                                   target:self
                                                 selector:@selector(moveAnnotation)
                                                 userInfo:nil
