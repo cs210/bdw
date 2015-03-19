@@ -19,13 +19,13 @@
 		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
-		46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */; };
 		46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */; };
 		46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89611ABB11F0009339BC /* BMWFindParkingView.m */; };
 		46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */; };
 		46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */; };
 		46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89651ABB11FB009339BC /* ConnectedDrone.plist */; };
 		46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */; };
+		46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -86,8 +86,6 @@
 		46841DF01AAD91EC00BB0BF1 /* IDNSLoggerAppender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNSLoggerAppender.h; sourceTree = "<group>"; };
 		46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNSLoggerAppender.m; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
-		46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldViewController.h; sourceTree = "<group>"; };
-		46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldViewController.m; sourceTree = "<group>"; };
 		46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneHmiProvider.h; sourceTree = "<group>"; };
 		46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectedDroneHmiProvider.m; sourceTree = "<group>"; };
 		46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneIdentifiers.h; sourceTree = "<group>"; };
@@ -99,6 +97,7 @@
 		46CC89651ABB11FB009339BC /* ConnectedDrone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConnectedDrone.plist; sourceTree = "<group>"; };
 		46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMWConnectedDroneDataSource.h; sourceTree = "<group>"; };
 		46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWConnectedDroneDataSource.m; sourceTree = "<group>"; };
+		46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWConnectedDroneViewController.m; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -232,9 +231,8 @@
 				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
 				46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */,
 				46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */,
-				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
 				46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */,
-				46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */,
+				46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */,
 				46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */,
 				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
 				46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */,
@@ -611,11 +609,11 @@
 				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
-				46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
+				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,

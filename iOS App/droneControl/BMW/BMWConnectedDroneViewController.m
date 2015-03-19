@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 
-#import "HelloWorldViewController.h"
+#import "BMWConnectedDroneViewController.h"
 #import "BMWConnectedDroneDataSource.h"
 
-@interface HelloWorldViewController ()
+@interface BMWConnectedDroneViewController ()
 @property bool needConfirmation; // true if the user said FIND PARKING and we want to hear YES. false otherwise
 
 @end
@@ -17,14 +17,14 @@
 
 /* THIS CLASS INTERACTS WITH THE BMW UI. Even though it is a view controller class, it does not have any
  UI as far as iOS is concerned. */
-@implementation HelloWorldViewController
+@implementation BMWConnectedDroneViewController
 - (id)initWithView:(IDView *)view
 {
     if (self = [super init])
     {
         _view = (BMWFindParkingView *)view;
         /*_view.sayHello.text = @"Click Me!";
-        [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];*/
+         [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];*/
         [[BMWConnectedDroneDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         [[BMWConnectedDroneDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         

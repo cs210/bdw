@@ -10,7 +10,7 @@
 
 #import "ConnectedDroneHmiProvider.h"
 #import "ConnectedDroneIdentifiers.h"
-#import "HelloWorldViewController.h"
+#import "BMWConnectedDroneViewController.h"
 #import "AppDelegate.h"
 
 
@@ -20,7 +20,7 @@
 
 @property (strong) IDApplication *idApplication;
 @property (strong) ConnectedDroneHmiProvider *hmiProvider;
-@property (strong) HelloWorldViewController *helloWorldViewController;
+@property (strong) BMWConnectedDroneViewController *bmwconnectedDroneViewController;
 
 @end
 
@@ -40,7 +40,7 @@
         _idApplication.delegate = self;
         _idApplication.dataSource = self;
 
-        _helloWorldViewController = [[HelloWorldViewController alloc] initWithView:[_hmiProvider viewForId:IDBMWFindParkingViewId]];
+        _bmwconnectedDroneViewController = [[BMWConnectedDroneViewController alloc] initWithView:[_hmiProvider viewForId:IDBMWFindParkingViewId]];
     }
     return self;
 }
