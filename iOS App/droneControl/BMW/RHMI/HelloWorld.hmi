@@ -21,6 +21,9 @@ state HelloWorld {
 	button speechText; 
 	image navigationImage[navigationImage ]{
 		height 400 ;
+		positionX 0 ;
+		positionY 35 ;
+		
 	}
 
 }

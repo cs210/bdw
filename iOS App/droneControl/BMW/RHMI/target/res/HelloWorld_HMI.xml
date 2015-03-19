@@ -34,6 +34,8 @@
                     <button id="5" action="7" selectAction="8" model="6"/>
                     <image id="9" model="10">
                         <properties>
+                            <property id="20" value="0"/>
+                            <property id="21" value="35"/>
                             <property id="10" value="400"/>
                         </properties>
                     </image>
