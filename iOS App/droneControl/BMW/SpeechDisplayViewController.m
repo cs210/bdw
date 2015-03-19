@@ -74,7 +74,7 @@ typedef enum
 
 -(NSArray * ) listOfWordsToDetect
 {
-    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
+    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"YES", @"NO", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
 }
 
 -(void) didReceiveWord: (NSString *) word
