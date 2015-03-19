@@ -11,16 +11,14 @@
 
 #import <BMWAppKit/BMWAppKit.h>
 
-@interface HelloWorldView : IDView
+@interface ImageOverviewView : IDView
 
 - (id)initWithHmiState:(NSInteger)hmiState
             titleModel:(IDModel *)titleModel
             focusEvent:(NSInteger)focusEvent
            hmiProvider:(id<IDHmiProvider>)hmiProvider;
 
-@property (strong, readonly) IDButton *sayHello;
-@property (strong, readonly) IDButton *speechText;
-@property (strong, readonly) IDImage *drone_oval_small;
-@property (strong, readonly) IDButton *allwidgets;
+@property (strong, readonly) IDImage *imageOne;
+@property (strong, readonly) IDImage *imageThree;
 
 @end

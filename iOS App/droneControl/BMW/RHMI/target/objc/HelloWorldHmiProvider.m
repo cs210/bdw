@@ -11,6 +11,8 @@
 
 #import "HelloWorldIdentifiers.h"
 #import "HelloWorldView.h"
+#import "WidgetsOverviewView.h"
+#import "ImageOverviewView.h"
 
 // private property access
 @interface HelloWorldHmiProvider()
@@ -29,30 +31,44 @@
     if (self = [super init])
     {
         _modelDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                     [IDModel modelWithId:18 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:18],
+                     [IDModel modelWithId:20 type:IDModelTypeImageId implicit:NO], [NSNumber numberWithInteger:20],
                      [IDModel modelWithId:2 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:2],
                      [IDModel modelWithId:6 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:6],
                      [IDModel modelWithId:10 type:IDModelTypeImageId implicit:YES], [NSNumber numberWithInteger:10],
-                     [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
-                     [IDModel modelWithId:12 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:12],
-                     [IDModel modelWithId:13 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:13],
-                     [IDModel modelWithId:14 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:14],
+                     [IDModel modelWithId:21 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:21],
+                     [IDModel modelWithId:22 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:22],
+                     [IDModel modelWithId:23 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:23],
+                     [IDModel modelWithId:24 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:24],
                      nil];
 
         HelloWorldView *helloWorldView = [[HelloWorldView alloc] initWithHmiState:IDHelloWorldViewId
                                                                        titleModel:[self modelForId:IDInvalidModelId]
-                                                                       focusEvent:15
+                                                                       focusEvent:25
                                                                       hmiProvider:self];
+
+        WidgetsOverviewView *widgetsOverviewView = [[WidgetsOverviewView alloc] initWithHmiState:IDWidgetsOverviewViewId
+                                                                                      titleModel:[self modelForId:IDInvalidModelId]
+                                                                                      focusEvent:25
+                                                                                     hmiProvider:self];
+
+        ImageOverviewView *imageOverviewView = [[ImageOverviewView alloc] initWithHmiState:IDImageOverviewViewId
+                                                                                titleModel:[self modelForId:IDInvalidModelId]
+                                                                                focusEvent:25
+                                                                               hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                      helloWorldView, [NSNumber numberWithInteger:IDHelloWorldViewId],
+                     widgetsOverviewView, [NSNumber numberWithInteger:IDWidgetsOverviewViewId],
+                     imageOverviewView, [NSNumber numberWithInteger:IDImageOverviewViewId],
                      nil];
 
-        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:12]
-                                                           secondLineModel:[self modelForId:13]
-                                                               updateEvent:16];
+        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:22]
+                                                           secondLineModel:[self modelForId:23]
+                                                               updateEvent:26];
 
-        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:14]
-                                                updateEvent:17];
+        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:24]
+                                                updateEvent:27];
 
     }
     return self;

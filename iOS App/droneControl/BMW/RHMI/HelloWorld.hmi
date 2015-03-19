@@ -4,15 +4,55 @@ hmi-version 1.0.1;
 
 entry HelloWorldEntryButton{
 	text "ConnectedDrone";
-	onSelect open HelloWorld;
 	image <rounded_white_drone_icon> ;
+	onSelect open HelloWorld;
+	speakable SpeakableGlobally ;
+	
 }
+
+
 
 state HelloWorld {
 	title "ConnectedDrone";
 	button sayHello;
 	button speechText; 
 	image <drone_oval_small>;
-	
+	button allwidgets{
+		text "Widgets Overview" ;
+		onSelect open WidgetsOverview ;
+	}
 }
 
+
+
+/*
+ * WidgetsOverview HMI State
+ */
+state WidgetsOverview{
+	title "Widgets" ;
+
+	button buttonImage{
+		text "Images" ;
+		onSelect open ImageOverview ;
+	}
+}
+
+
+/*
+ * ImageOverview HMI State
+ */
+model
+img imageOne ;
+model imgId imageThree ;
+state ImageOverview{
+	title "Image" ;
+	image imageOne[imageOne ]{
+		height 100 ;
+	}
+	image imageThree[imageThree ]{
+		positionX 100 ;
+		positionY 150 ;
+		height 50 ;
+		width 50 ;
+	}
+}

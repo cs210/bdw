@@ -27,9 +27,9 @@
 		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
-
 		46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */; };
-
+		46B6C57A1ABA6D5A00B84D06 /* ImageOverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B6C5771ABA6D5A00B84D06 /* ImageOverviewView.m */; };
+		46B6C57B1ABA6D5A00B84D06 /* WidgetsOverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B6C5791ABA6D5A00B84D06 /* WidgetsOverviewView.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -104,6 +104,10 @@
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
 		46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldViewController.h; sourceTree = "<group>"; };
 		46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldViewController.m; sourceTree = "<group>"; };
+		46B6C5761ABA6D5A00B84D06 /* ImageOverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageOverviewView.h; path = RHMI/target/objc/ImageOverviewView.h; sourceTree = "<group>"; };
+		46B6C5771ABA6D5A00B84D06 /* ImageOverviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageOverviewView.m; path = RHMI/target/objc/ImageOverviewView.m; sourceTree = "<group>"; };
+		46B6C5781ABA6D5A00B84D06 /* WidgetsOverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WidgetsOverviewView.h; path = RHMI/target/objc/WidgetsOverviewView.h; sourceTree = "<group>"; };
+		46B6C5791ABA6D5A00B84D06 /* WidgetsOverviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WidgetsOverviewView.m; path = RHMI/target/objc/WidgetsOverviewView.m; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -236,7 +240,10 @@
 				46841DEF1AAD91CF00BB0BF1 /* IDNSLoggerAppender */,
 				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
-				46A0A8D51AB2D036002DCDD5 /* SpeechViewController.m */,
+				46B6C5761ABA6D5A00B84D06 /* ImageOverviewView.h */,
+				46B6C5771ABA6D5A00B84D06 /* ImageOverviewView.m */,
+				46B6C5781ABA6D5A00B84D06 /* WidgetsOverviewView.h */,
+				46B6C5791ABA6D5A00B84D06 /* WidgetsOverviewView.m */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
 				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
 				46A0A8D91AB2D6F3002DCDD5 /* HelloWorldViewController.m */,
@@ -244,7 +251,6 @@
 				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
 				46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */,
 				46841DB41AAD8DE500BB0BF1 /* RHMI */,
-				46A0A8D21AB2D01B002DCDD5 /* droneControl-Bridging-Header.h */,
 			);
 			path = BMW;
 			sourceTree = "<group>";
@@ -465,7 +471,6 @@
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
-				46A0A8D71AB2D06C002DCDD5 /* SpeechViewController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
 				A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */,
 				A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */,
@@ -621,6 +626,7 @@
 				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
 				46841DD41AAD8DE500BB0BF1 /* HelloWorldView.m in Sources */,
 				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
+				46B6C57B1ABA6D5A00B84D06 /* WidgetsOverviewView.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				46A0A8DA1AB2D6F3002DCDD5 /* HelloWorldViewController.m in Sources */,
 				46841DD31AAD8DE500BB0BF1 /* HelloWorldHmiProvider.m in Sources */,
@@ -628,7 +634,7 @@
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
-				46A0A8D61AB2D036002DCDD5 /* SpeechViewController.m in Sources */,
+				46B6C57A1ABA6D5A00B84D06 /* ImageOverviewView.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 			);

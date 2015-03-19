@@ -15,6 +15,7 @@
 @property (strong, readwrite) IDButton *sayHello;
 @property (strong, readwrite) IDButton *speechText;
 @property (strong, readwrite) IDImage *drone_oval_small;
+@property (strong, readwrite) IDButton *allwidgets;
 
 @end
 
@@ -46,6 +47,13 @@
         _drone_oval_small = [[IDImage alloc] initWithWidgetId:9
                                                         model:[hmiProvider modelForId:10]];
 
+        _allwidgets = [[IDButton alloc] initWithWidgetId:11
+                                                   model:[hmiProvider modelForId:IDInvalidModelId]
+                                              imageModel:[hmiProvider modelForId:IDInvalidModelId]
+                                             targetModel:[hmiProvider modelForId:IDInvalidModelId]
+                                                actionId:12
+                                                 focusId:13];
+
 
         _sayHello.visible = YES;
         _sayHello.enabled = YES;
@@ -62,6 +70,11 @@
         _drone_oval_small.selectable = YES;
         [self addWidget:_drone_oval_small];
 
+        _allwidgets.visible = YES;
+        _allwidgets.enabled = YES;
+        _allwidgets.selectable = YES;
+        [self addWidget:_allwidgets];
+
     }
     return self;
 }
@@ -71,6 +84,7 @@
     [self removeWidget:_sayHello];
     [self removeWidget:_speechText];
     [self removeWidget:_drone_oval_small];
+    [self removeWidget:_allwidgets];
 }
 
 
