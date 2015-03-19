@@ -26,6 +26,7 @@
 		46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */; };
 		46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */; };
 		46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89651ABB11FB009339BC /* ConnectedDrone.plist */; };
+		46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -99,6 +100,8 @@
 		46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ConnectedDrone_common_Images.zip; sourceTree = "<group>"; };
 		46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ConnectedDrone_HMI.xml; sourceTree = "<group>"; };
 		46CC89651ABB11FB009339BC /* ConnectedDrone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConnectedDrone.plist; sourceTree = "<group>"; };
+		46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMWConnectedDroneDataSource.h; sourceTree = "<group>"; };
+		46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWConnectedDroneDataSource.m; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				46841DEF1AAD91CF00BB0BF1 /* IDNSLoggerAppender */,
 				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
 				46841DE41AAD8FA400BB0BF1 /* HelloWorldDataSource.h */,
+				46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */,
+				46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */,
 				46841DE51AAD8FA400BB0BF1 /* HelloWorldDataSource.m */,
 				46A0A8D81AB2D6F3002DCDD5 /* HelloWorldViewController.h */,
 				46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */,
@@ -342,6 +347,9 @@
 			isa = PBXGroup;
 			children = (
 				46E4D3341AAD859900C94072 /* libc++.dylib */,
+				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
+				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
+				A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */,
 				46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */,
 				46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */,
 				46E4D3371AAD859900C94072 /* Headers */,
@@ -447,9 +455,6 @@
 				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
 				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				46E4D3331AAD856E00C94072 /* Frameworks */,
-				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
-				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
-				A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */,
 				A6F4EF2B1AAD17D500C81065 /* AppDelegate.h */,
 				A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */,
 				A6F4EF311AAD17D500C81065 /* Main.storyboard */,
@@ -606,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
 				46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */,
 				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
 				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
