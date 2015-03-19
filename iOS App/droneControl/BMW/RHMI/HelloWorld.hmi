@@ -25,26 +25,21 @@ action sync StartNavigation {
 	navigate [myaddress];
 }
 
-// Link Action to start call via hands free
-action sync StartCall {
-	action UpdateCallDataModel;
-	call [phoneModel];
-}
 
 state HelloWorld {
 	title "ConnectedDrone";
-	button sayHello;
+	/*button sayHello;
 	button speechText; 
 	button navigateButton {
 		text "Start Navigation";
 		onSelect trigger StartNavigation;
-	}
+	}*/
 	image navigationImage[navigationImage ]{
 		height 400 ;
 		positionX 0 ;
-		positionY 35 ;	
+		positionY 0 ;	
 	}
-	label waiting{
+	label status{
 		waitingAnimation false;
 	}
 	

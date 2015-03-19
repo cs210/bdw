@@ -12,11 +12,8 @@
 
 @interface HelloWorldView()
 
-@property (strong, readwrite) IDButton *sayHello;
-@property (strong, readwrite) IDButton *speechText;
-@property (strong, readwrite) IDButton *navigateButton;
 @property (strong, readwrite) IDImage *navigationImage;
-@property (strong, readwrite) IDLabel *waiting;
+@property (strong, readwrite) IDLabel *status;
 
 @end
 
@@ -31,58 +28,22 @@
 {
     if (self = [super initWithHmiState:hmiState titleModel:titleModel focusEvent:focusEvent])
     {
-        _sayHello = [[IDButton alloc] initWithWidgetId:1
-                                                 model:[hmiProvider modelForId:2]
-                                            imageModel:[hmiProvider modelForId:IDInvalidModelId]
-                                           targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                              actionId:3
-                                               focusId:4];
+        _navigationImage = [[IDImage alloc] initWithWidgetId:1
+                                                       model:[hmiProvider modelForId:2]];
 
-        _speechText = [[IDButton alloc] initWithWidgetId:5
-                                                   model:[hmiProvider modelForId:6]
-                                              imageModel:[hmiProvider modelForId:IDInvalidModelId]
-                                             targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                                actionId:7
-                                                 focusId:8];
+        _status = [[IDLabel alloc] initWithWidgetId:3
+                                              model:[hmiProvider modelForId:4]];
 
-        _navigateButton = [[IDButton alloc] initWithWidgetId:9
-                                                       model:[hmiProvider modelForId:IDInvalidModelId]
-                                                  imageModel:[hmiProvider modelForId:IDInvalidModelId]
-                                                 targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                                    actionId:IDInvalidActionId
-                                                     focusId:10];
-
-        _navigationImage = [[IDImage alloc] initWithWidgetId:11
-                                                       model:[hmiProvider modelForId:12]];
-
-        _waiting = [[IDLabel alloc] initWithWidgetId:13
-                                               model:[hmiProvider modelForId:14]];
-
-
-        _sayHello.visible = YES;
-        _sayHello.enabled = YES;
-        _sayHello.selectable = YES;
-        [self addWidget:_sayHello];
-
-        _speechText.visible = YES;
-        _speechText.enabled = YES;
-        _speechText.selectable = YES;
-        [self addWidget:_speechText];
-
-        _navigateButton.visible = YES;
-        _navigateButton.enabled = YES;
-        _navigateButton.selectable = YES;
-        [self addWidget:_navigateButton];
 
         _navigationImage.visible = YES;
         _navigationImage.enabled = YES;
         _navigationImage.selectable = YES;
         [self addWidget:_navigationImage];
 
-        _waiting.visible = YES;
-        _waiting.enabled = YES;
-        _waiting.selectable = YES;
-        [self addWidget:_waiting];
+        _status.visible = YES;
+        _status.enabled = YES;
+        _status.selectable = YES;
+        [self addWidget:_status];
 
     }
     return self;
@@ -90,11 +51,8 @@
 
 - (void)dealloc
 {
-    [self removeWidget:_sayHello];
-    [self removeWidget:_speechText];
-    [self removeWidget:_navigateButton];
     [self removeWidget:_navigationImage];
-    [self removeWidget:_waiting];
+    [self removeWidget:_status];
 }
 
 

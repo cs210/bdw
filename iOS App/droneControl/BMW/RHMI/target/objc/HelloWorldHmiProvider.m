@@ -29,34 +29,32 @@
     if (self = [super init])
     {
         _modelDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     [IDModel modelWithId:12 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:12],
-                     [IDModel modelWithId:15 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:15],
-                     [IDModel modelWithId:16 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:16],
-                     [IDModel modelWithId:17 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:17],
-                     [IDModel modelWithId:2 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:2],
-                     [IDModel modelWithId:6 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:6],
-                     [IDModel modelWithId:14 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:14],
-                     [IDModel modelWithId:18 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:18],
-                     [IDModel modelWithId:19 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:19],
-                     [IDModel modelWithId:20 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:20],
-                     [IDModel modelWithId:21 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:21],
+                     [IDModel modelWithId:2 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:2],
+                     [IDModel modelWithId:5 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:5],
+                     [IDModel modelWithId:6 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:6],
+                     [IDModel modelWithId:7 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:7],
+                     [IDModel modelWithId:4 type:IDModelTypeData implicit:YES], [NSNumber numberWithInteger:4],
+                     [IDModel modelWithId:8 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:8],
+                     [IDModel modelWithId:9 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:9],
+                     [IDModel modelWithId:10 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:10],
+                     [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
                      nil];
 
         HelloWorldView *helloWorldView = [[HelloWorldView alloc] initWithHmiState:IDHelloWorldViewId
                                                                        titleModel:[self modelForId:IDInvalidModelId]
-                                                                       focusEvent:22
+                                                                       focusEvent:12
                                                                       hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                      helloWorldView, [NSNumber numberWithInteger:IDHelloWorldViewId],
                      nil];
 
-        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:19]
-                                                           secondLineModel:[self modelForId:20]
-                                                               updateEvent:23];
+        _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:9]
+                                                           secondLineModel:[self modelForId:10]
+                                                               updateEvent:13];
 
-        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:21]
-                                                updateEvent:24];
+        _hmiStatusBar = [[IDStatusBar alloc] initWithTextModel:[self modelForId:11]
+                                                updateEvent:14];
 
     }
     return self;

@@ -18,8 +18,8 @@
     if (self = [super init])
     {
         _view = (HelloWorldView *)view;
-        _view.sayHello.text = @"Click Me!";
-        [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];
+        /*_view.sayHello.text = @"Click Me!";
+        [_view.sayHello setTarget:self selector:@selector(clickMeSelected:) forActionEvent:IDActionEventSelect];*/
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceClickCountKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         [[HelloWorldDataSource sharedDataSource] addObserver:self forKeyPath:DataSourceMostRecentWordKey options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew) context:nil];
         
@@ -46,7 +46,7 @@
 {
     if ([clickCount compare:@0] == NSOrderedDescending) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.view.sayHello.text = [NSString stringWithFormat:@"Clicked %@ %@!", clickCount, [clickCount compare:@1] == NSOrderedSame ? @"time" : @"times"];
+            //self.view.sayHello.text = [NSString stringWithFormat:@"Clicked %@ %@!", clickCount, [clickCount compare:@1] == NSOrderedSame ? @"time" : @"times"];
         });
     }
 }
@@ -55,21 +55,24 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (mostRecentWord == (NSString *)[NSNull null]){
-            self.view.speechText.text =  @"You haven't said anything.";
+            self.view.status.text =  @"Say FIND PARKING to fly the drone.";
         }
-        else if ([mostRecentWord isEqualToString:@"FIND PARKING"]){
-            UIImage *img = [UIImage imageNamed:@"parking_spots_found"];
-            NSData *data = UIImagePNGRepresentation(img);
-            IDImageData *imgData = [IDImageData imageDataWithData:data];
-            self.view.navigationImage.imageData = imgData;
-            self.view.waiting.text = @"Drone is finding a parking spot...";
+        else   if ([mostRecentWord isEqualToString:@"FIND PARKING"]){
+            self.view.status.waitingAnimation = true;
+            self.view.status.text = @"Drone is finding a parking spot...";
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC),dispatch_get_main_queue(), ^{
+                self.view.status.waitingAnimation = false;
+                self.view.status.text = @"Parking spots found!";
+                UIImage *img = [UIImage imageNamed:@"parking_spots_found"];
+                NSData *data = UIImagePNGRepresentation(img);
+                IDImageData *imgData = [IDImageData imageDataWithData:data];
+                self.view.navigationImage.imageData = imgData;
+            });
         }
+       /* }
         else {
             self.view.speechText.text = [NSString stringWithFormat:@"You said %@!", mostRecentWord];
-            self.view.waiting.waitingAnimation = true;
-
-
-        }
+        }*/
     });
 }
 
