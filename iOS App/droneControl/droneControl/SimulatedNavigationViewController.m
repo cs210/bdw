@@ -18,9 +18,48 @@
   CLLocation * _userLocation;
 }
 
+@property (nonatomic, strong) MKPointAnnotation *point;
+@property (nonatomic) int n_times_moved;
+@property (nonatomic, strong) NSTimer *timer;
+
+
 @end
 
 @implementation SimulatedNavigationViewController
+
+- (void) moveAnnotation{
+    if (_n_times_moved > 10){
+        [_timer invalidate];
+        CLLocationCoordinate2D fakeMapPoint;
+        fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
+        fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
+        _point.coordinate = fakeMapPoint;
+        _point.title = @"Drone";
+        //_point.subtitle = @"Drone";
+        
+        [_mapView addAnnotation:_point];
+        [_mapView selectAnnotation:_point animated:YES];
+        return;
+    }
+    [_mapView removeAnnotation:_point];
+    
+    CLLocationCoordinate2D fakeMapPoint;
+    fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
+    fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
+    _point.coordinate = fakeMapPoint;
+    _point.title = @"Drone";
+    //_point.subtitle = @"Drone";
+    
+    [_mapView addAnnotation:_point];
+    [_mapView selectAnnotation:_point animated:YES];
+    
+    [[_mapView viewForAnnotation:_point] setTag:1];
+    UIImage *image = [UIImage imageNamed:@"drone_small.png"];
+    [[_mapView viewForAnnotation:_point] setImage:image];
+    
+    
+    _n_times_moved += 1;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,25 +84,34 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-  CLLocation *crnLoc = [locations lastObject];
-  _userLocation = crnLoc;
-
-  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_userLocation.coordinate, 500, 500);
-  MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-  [_mapView setRegion:adjustedRegion animated:YES];
-  
-  // Add an annotation
-  MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-  
-  CLLocationCoordinate2D fakeMapPoint;
-  fakeMapPoint.longitude = _userLocation.coordinate.longitude + 0.001;
-  fakeMapPoint.latitude = _userLocation.coordinate.latitude + 0.001;
-  
-  point.coordinate = fakeMapPoint;
-  point.title = @"Parking Spot";
-  point.subtitle = @"Parking Spot";
-  
-  [_mapView addAnnotation:point];
+    if (_n_times_moved == 0){
+        CLLocation *crnLoc = [locations lastObject];
+        _userLocation = crnLoc;
+        
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_userLocation.coordinate, 500, 500);
+        MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+        [_mapView setRegion:adjustedRegion animated:YES];
+        
+        // Add an annotation
+        
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.95
+                                                  target:self
+                                                selector:@selector(moveAnnotation)
+                                                userInfo:nil
+                                                 repeats:YES];
+        _point = [[MKPointAnnotation alloc] init];
+        
+        CLLocationCoordinate2D fakeMapPoint;
+        fakeMapPoint.longitude = _userLocation.coordinate.longitude ;
+        fakeMapPoint.latitude = _userLocation.coordinate.latitude;
+        
+        _point.coordinate = fakeMapPoint;
+        _point.title = @"Drone";
+        //_point.subtitle = @"Drone";
+        [_mapView addAnnotation:_point];
+        [_mapView selectAnnotation:_point animated:NO];
+        _n_times_moved = 1;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
