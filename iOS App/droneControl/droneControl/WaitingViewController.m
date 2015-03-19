@@ -41,14 +41,19 @@
     CLLocationCoordinate2D fakeMapPoint;
     fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
     fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
-    
     _point.coordinate = fakeMapPoint;
     _point.title = @"Drone";
     //_point.subtitle = @"Drone";
+
     [_mapView addAnnotation:_point];
     [_mapView selectAnnotation:_point animated:YES];
+    
+    [[_mapView viewForAnnotation:_point] setTag:1];
+    UIImage *image = [UIImage imageNamed:@"drone_small.png"];
+    [[_mapView viewForAnnotation:_point] setImage:image];
+    
+    
     _n_times_moved += 1;
-    NSLog(@"n_times_moved: %d",_n_times_moved);
 }
 
 - (void)viewDidLoad {
