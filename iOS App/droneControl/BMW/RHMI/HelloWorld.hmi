@@ -14,11 +14,32 @@ entry HelloWorldEntryButton{
 
 model img navigationImage ;
 
+model address NavigationAddress;
+model phonenumber phoneModel;
+
+model address myaddress = format(";;;;;;;572662306;131235111;DestinationName");
+
+// Link Action to start navigation
+action sync StartNavigation {
+	action UpdateNavigationDataModel;
+	//call [phoneModel];
+	navigate [myaddress];
+}
+
+// Link Action to start call via hands free
+action sync StartCall {
+	action UpdateCallDataModel;
+	call [phoneModel];
+}
 
 state HelloWorld {
 	title "ConnectedDrone";
 	button sayHello;
 	button speechText; 
+	button navigateButton {
+		text "Start Navigation";
+		onSelect trigger StartNavigation;
+	}
 	image navigationImage[navigationImage ]{
 		height 400 ;
 		positionX 0 ;

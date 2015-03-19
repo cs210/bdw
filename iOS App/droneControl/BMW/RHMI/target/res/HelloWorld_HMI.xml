@@ -1,38 +1,55 @@
 <pluginApps>
     <pluginApp applicationType="OnlineServices" text="HelloWorld" applicationWeight="700">
         <actions>
+            <combinedAction id="25" sync="true">
+                <actions>
+                    <raAction id="10"/>
+                    <linkAction id="34" actionType="navigate" linkModel="16"/>
+                </actions>
+            </combinedAction>
+            <combinedAction id="27" sync="true">
+                <actions>
+                    <raAction id="26"/>
+                    <linkAction id="35" actionType="call" linkModel="15"/>
+                </actions>
+            </combinedAction>
             <raAction id="3"/>
             <raAction id="4"/>
             <raAction id="7"/>
             <raAction id="8"/>
-            <hmiAction id="26" target="18"/>
+            <raAction id="11"/>
+            <hmiAction id="37" target="24"/>
         </actions>
         <models>
-            <raImageModel id="10"/>
+            <raImageModel id="13"/>
+            <raDataModel id="14" modelType="Address"/>
+            <raDataModel id="15" modelType="Phonenumber"/>
+            <raDataModel id="16" modelType="Address"/>
             <raDataModel id="2"/>
             <raDataModel id="6"/>
-            <raDataModel id="11"/>
-            <raDataModel id="12"/>
-            <raDataModel id="13"/>
-            <raDataModel id="14"/>
-            <imageIdModel id="27" imageId="23"/>
+            <raDataModel id="17"/>
+            <raDataModel id="18"/>
+            <raDataModel id="19"/>
+            <raDataModel id="20"/>
+            <imageIdModel id="38" imageId="32"/>
         </models>
-        <entryButton id="25" action="26" text="ConnectedDrone" imageModel="27">
+        <entryButton id="36" action="37" text="ConnectedDrone" imageModel="38">
             <properties>
                 <property id="23" value="2"/>
             </properties>
         </entryButton>
         <events>
-            <focusEvent id="15" targetModel="11"/>
-            <multimediaInfoEvent id="16" textModel1="12" textModel2="13"/>
-            <statusbarEvent id="17" textModel="14"/>
+            <focusEvent id="21" targetModel="17"/>
+            <multimediaInfoEvent id="22" textModel1="18" textModel2="19"/>
+            <statusbarEvent id="23" textModel="20"/>
         </events>
         <hmiStates>
-            <hmiState id="18" text="ConnectedDrone">
+            <hmiState id="24" text="ConnectedDrone">
                 <components>
                     <button id="1" action="3" selectAction="4" model="2"/>
                     <button id="5" action="7" selectAction="8" model="6"/>
-                    <image id="9" model="10">
+                    <button id="9" action="25" selectAction="11" text="Start Navigation"/>
+                    <image id="12" model="13">
                         <properties>
                             <property id="20" value="0"/>
                             <property id="21" value="35"/>

@@ -14,6 +14,7 @@
 
 @property (strong, readwrite) IDButton *sayHello;
 @property (strong, readwrite) IDButton *speechText;
+@property (strong, readwrite) IDButton *navigateButton;
 @property (strong, readwrite) IDImage *navigationImage;
 
 @end
@@ -43,8 +44,15 @@
                                                 actionId:7
                                                  focusId:8];
 
-        _navigationImage = [[IDImage alloc] initWithWidgetId:9
-                                                       model:[hmiProvider modelForId:10]];
+        _navigateButton = [[IDButton alloc] initWithWidgetId:9
+                                                       model:[hmiProvider modelForId:IDInvalidModelId]
+                                                  imageModel:[hmiProvider modelForId:IDInvalidModelId]
+                                                 targetModel:[hmiProvider modelForId:IDInvalidModelId]
+                                                    actionId:10
+                                                     focusId:11];
+
+        _navigationImage = [[IDImage alloc] initWithWidgetId:12
+                                                       model:[hmiProvider modelForId:13]];
 
 
         _sayHello.visible = YES;
@@ -56,6 +64,11 @@
         _speechText.enabled = YES;
         _speechText.selectable = YES;
         [self addWidget:_speechText];
+
+        _navigateButton.visible = YES;
+        _navigateButton.enabled = YES;
+        _navigateButton.selectable = YES;
+        [self addWidget:_navigateButton];
 
         _navigationImage.visible = YES;
         _navigationImage.enabled = YES;
@@ -70,6 +83,7 @@
 {
     [self removeWidget:_sayHello];
     [self removeWidget:_speechText];
+    [self removeWidget:_navigateButton];
     [self removeWidget:_navigationImage];
 }
 
