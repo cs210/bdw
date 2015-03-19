@@ -9,39 +9,38 @@
 
 // View IDs
 typedef enum {
-    IDHelloWorldViewId = 24,
+    IDHelloWorldViewId = 25,
 } IDHelloWorldViewIdentifier;
 
 // Action IDs
 typedef enum {
-    IDActionUpdateNavigationDataModel = 10,
-    IDActionStartNavigation = 25,
-    IDActionUpdateCallDataModel = 26,
-    IDActionStartCall = 27,
+    IDActionStartNavigation = 26,
+    IDActionUpdateCallDataModel = 27,
+    IDActionStartCall = 28,
 } IDHelloWorldActionIdentifier;
 
 // Model IDs
 typedef enum {
-    IDModelNavigationImageId = 13,
-    IDModelNavigationAddressId = 14,
-    IDModelPhoneModelId = 15,
-    IDModelMyaddressId = 16,
+    IDModelNavigationImageId = 12,
+    IDModelNavigationAddressId = 15,
+    IDModelPhoneModelId = 16,
+    IDModelMyaddressId = 17,
 } IDHelloWorldModelIdentifier;
 
 // Event IDs
 typedef enum {
-    IDHelloWorldFocusEventId = 21,
-    IDHelloWorldMultimediaInfoEventId = 22,
-    IDHelloWorldStatusbarEventId = 23,
+    IDHelloWorldFocusEventId = 22,
+    IDHelloWorldMultimediaInfoEventId = 23,
+    IDHelloWorldStatusbarEventId = 24,
 } IDHelloWorldEventIdentifier;
 
 
 // Image IDs
 typedef enum {
-    IDHelloWorldAppIcon_appswitcherImageId = 28,
-    IDDrone_launchImageId = 29,
-    IDDrone_launch_32ImageId = 30,
-    IDDrone_oval_smallImageId = 31,
-    IDRounded_white_drone_iconImageId = 32,
-    IDWhite_drone_iconImageId = 33,
+    IDHelloWorldAppIcon_appswitcherImageId = 29,
+    IDDrone_launchImageId = 30,
+    IDDrone_launch_32ImageId = 31,
+    IDDrone_oval_smallImageId = 32,
+    IDRounded_white_drone_iconImageId = 33,
+    IDWhite_drone_iconImageId = 34,
 } IDHelloWorldImageIdentifier;

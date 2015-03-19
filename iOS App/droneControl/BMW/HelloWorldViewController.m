@@ -62,9 +62,13 @@
             NSData *data = UIImagePNGRepresentation(img);
             IDImageData *imgData = [IDImageData imageDataWithData:data];
             self.view.navigationImage.imageData = imgData;
+            self.view.waiting.text = @"Drone is finding a parking spot...";
         }
         else {
             self.view.speechText.text = [NSString stringWithFormat:@"You said %@!", mostRecentWord];
+            self.view.waiting.waitingAnimation = true;
+
+
         }
     });
 }

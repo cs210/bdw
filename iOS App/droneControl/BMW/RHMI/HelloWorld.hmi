@@ -21,8 +21,7 @@ model address myaddress = format(";;;;;;;572662306;131235111;DestinationName");
 
 // Link Action to start navigation
 action sync StartNavigation {
-	action UpdateNavigationDataModel;
-	//call [phoneModel];
+	//action UpdateNavigationDataModel;
 	navigate [myaddress];
 }
 
@@ -43,9 +42,12 @@ state HelloWorld {
 	image navigationImage[navigationImage ]{
 		height 400 ;
 		positionX 0 ;
-		positionY 35 ;
-		
+		positionY 35 ;	
 	}
+	label waiting{
+		waitingAnimation false;
+	}
+	
 
 }
 

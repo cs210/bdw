@@ -22,5 +22,6 @@
 @property (strong, readonly) IDButton *speechText;
 @property (strong, readonly) IDButton *navigateButton;
 @property (strong, readonly) IDImage *navigationImage;
+@property (strong, readonly) IDLabel *waiting;
 
 @end

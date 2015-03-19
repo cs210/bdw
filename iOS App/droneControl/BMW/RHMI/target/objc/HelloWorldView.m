@@ -16,6 +16,7 @@
 @property (strong, readwrite) IDButton *speechText;
 @property (strong, readwrite) IDButton *navigateButton;
 @property (strong, readwrite) IDImage *navigationImage;
+@property (strong, readwrite) IDLabel *waiting;
 
 @end
 
@@ -48,11 +49,14 @@
                                                        model:[hmiProvider modelForId:IDInvalidModelId]
                                                   imageModel:[hmiProvider modelForId:IDInvalidModelId]
                                                  targetModel:[hmiProvider modelForId:IDInvalidModelId]
-                                                    actionId:10
-                                                     focusId:11];
+                                                    actionId:IDInvalidActionId
+                                                     focusId:10];
 
-        _navigationImage = [[IDImage alloc] initWithWidgetId:12
-                                                       model:[hmiProvider modelForId:13]];
+        _navigationImage = [[IDImage alloc] initWithWidgetId:11
+                                                       model:[hmiProvider modelForId:12]];
+
+        _waiting = [[IDLabel alloc] initWithWidgetId:13
+                                               model:[hmiProvider modelForId:14]];
 
 
         _sayHello.visible = YES;
@@ -75,6 +79,11 @@
         _navigationImage.selectable = YES;
         [self addWidget:_navigationImage];
 
+        _waiting.visible = YES;
+        _waiting.enabled = YES;
+        _waiting.selectable = YES;
+        [self addWidget:_waiting];
+
     }
     return self;
 }
@@ -85,6 +94,7 @@
     [self removeWidget:_speechText];
     [self removeWidget:_navigateButton];
     [self removeWidget:_navigationImage];
+    [self removeWidget:_waiting];
 }
 
 
