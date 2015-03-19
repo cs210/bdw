@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464CB08C1ABAE4FA00E05A69 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 464CB08B1ABAE4FA00E05A69 /* WaitingViewController.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
 		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
 		46841DCE1AAD8DE500BB0BF1 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB51AAD8DE500BB0BF1 /* .project */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464CB08A1ABAE4DD00E05A69 /* WaitingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
+		464CB08B1ABAE4FA00E05A69 /* WaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingViewController.m; sourceTree = "<group>"; };
 		46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld_SAS.txt; sourceTree = "<group>"; };
 		46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteApplicationManager.h; sourceTree = "<group>"; };
 		46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteApplicationManager.m; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
+				464CB08A1ABAE4DD00E05A69 /* WaitingViewController.h */,
+				464CB08B1ABAE4FA00E05A69 /* WaitingViewController.m */,
 				A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */,
 				A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */,
 				A68E00DF1AB79AF8009954B7 /* SimulatedAerialViewController.h */,
@@ -612,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464CB08C1ABAE4FA00E05A69 /* WaitingViewController.m in Sources */,
 				46841DE81AAD8FA400BB0BF1 /* HelloWorldDataSource.m in Sources */,
 				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
 				46841DD41AAD8DE500BB0BF1 /* HelloWorldView.m in Sources */,

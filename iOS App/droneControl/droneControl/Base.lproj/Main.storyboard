@@ -198,9 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-gt-OPU" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="404" y="809"/>
-
         </scene>
     </scenes>
     <resources>
