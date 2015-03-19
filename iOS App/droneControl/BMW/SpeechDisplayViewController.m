@@ -83,14 +83,17 @@ typedef enum
     _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
         _needConfirmation = true;
+        _askForConfirmation.hidden = NO;
         NSLog(@"Needs confirmation");
     }
     if ([word isEqualToString:@"NO"]){
+        _askForConfirmation.hidden = YES;
         _needConfirmation = false;
         NSLog(@"No needs confirmation");
 
     }
     if ([word isEqualToString:@"YES"] && _needConfirmation){
+        _askForConfirmation.hidden = YES;
         //For now transition to other view controller
         [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
     }
