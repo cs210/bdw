@@ -4,10 +4,10 @@ hmi-version 1.0.1;
 
 
 
-entry HelloWorldEntryButton{
+entry ConnectedDroneEntryButton{
 	text "ConnectedDrone";
 	image <rounded_white_drone_icon> ;
-	onSelect open HelloWorld;
+	onSelect open FindParking;
 	speakable SpeakableGlobally ;
 	
 }
@@ -26,8 +26,8 @@ action sync StartNavigation {
 }
 
 
-state HelloWorld {
-	title "ConnectedDrone";
+state FindParking {
+	title "Find Parking";
 	/*button sayHello;
 	button speechText; 
 	button navigateButton {

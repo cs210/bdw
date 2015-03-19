@@ -7,10 +7,10 @@
 //
 // ************************************************
 
-#import "HelloWorldView.h"
+#import "FindParkingView.h"
 
 
-@interface HelloWorldView()
+@interface FindParkingView()
 
 @property (strong, readwrite) IDImage *navigationImage;
 @property (strong, readwrite) IDLabel *status;
@@ -19,7 +19,7 @@
 
 
 
-@implementation HelloWorldView
+@implementation FindParkingView
 
 - (id)initWithHmiState:(NSInteger)hmiState
             titleModel:(IDModel *)titleModel

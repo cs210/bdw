@@ -9,7 +9,7 @@
 
 // View IDs
 typedef enum {
-    IDHelloWorldViewId = 15,
+    IDFindParkingViewId = 15,
 } IDConnectedDroneViewIdentifier;
 
 // Action IDs

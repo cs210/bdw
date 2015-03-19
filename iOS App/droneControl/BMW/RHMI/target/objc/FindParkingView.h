@@ -11,7 +11,7 @@
 
 #import <BMWAppKit/BMWAppKit.h>
 
-@interface HelloWorldView : IDView
+@interface FindParkingView : IDView
 
 - (id)initWithHmiState:(NSInteger)hmiState
             titleModel:(IDModel *)titleModel

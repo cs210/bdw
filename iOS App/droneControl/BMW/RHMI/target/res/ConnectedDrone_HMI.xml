@@ -31,7 +31,7 @@
             <statusbarEvent id="14" textModel="11"/>
         </events>
         <hmiStates>
-            <hmiState id="15" text="ConnectedDrone">
+            <hmiState id="15" text="Find Parking">
                 <components>
                     <image id="1" model="2">
                         <properties>

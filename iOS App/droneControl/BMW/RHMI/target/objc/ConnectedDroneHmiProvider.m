@@ -10,7 +10,7 @@
 #import "ConnectedDroneHmiProvider.h"
 
 #import "ConnectedDroneIdentifiers.h"
-#import "HelloWorldView.h"
+#import "FindParkingView.h"
 
 // private property access
 @interface ConnectedDroneHmiProvider()
@@ -40,13 +40,13 @@
                      [IDModel modelWithId:11 type:IDModelTypeData implicit:NO], [NSNumber numberWithInteger:11],
                      nil];
 
-        HelloWorldView *helloWorldView = [[HelloWorldView alloc] initWithHmiState:IDHelloWorldViewId
-                                                                       titleModel:[self modelForId:IDInvalidModelId]
-                                                                       focusEvent:12
-                                                                      hmiProvider:self];
+        FindParkingView *findParkingView = [[FindParkingView alloc] initWithHmiState:IDFindParkingViewId
+                                                                          titleModel:[self modelForId:IDInvalidModelId]
+                                                                          focusEvent:12
+                                                                         hmiProvider:self];
 
         _viewDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     helloWorldView, [NSNumber numberWithInteger:IDHelloWorldViewId],
+                     findParkingView, [NSNumber numberWithInteger:IDFindParkingViewId],
                      nil];
 
         _multimediaInfo = [[IDMultimediaInfo alloc] initWithFirstLineModel:[self modelForId:9]
