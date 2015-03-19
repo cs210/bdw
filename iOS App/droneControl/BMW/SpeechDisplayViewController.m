@@ -3,7 +3,6 @@
 #import "HelloWorldDataSource.h"
 #import "SpeechController.h"
 #import "SimulatedNavigationViewController.h"
-#import "WaitingViewController.h"
 
 typedef enum
 {
@@ -26,6 +25,7 @@ typedef enum
 @property (assign) ConnectionState connectionState;
 @property (assign) RemoteApplicationState remoteApplicationState;
 @property (strong) id clickCountObserver;
+@property bool needConfirmation; // true if the user said FIND PARKING and we want to hear YES. false otherwise
 
 @end
 
@@ -82,6 +82,15 @@ typedef enum
     [[HelloWorldDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
+        _needConfirmation = true;
+        NSLog(@"Needs confirmation");
+    }
+    if ([word isEqualToString:@"NO"]){
+        _needConfirmation = false;
+        NSLog(@"No needs confirmation");
+
+    }
+    if ([word isEqualToString:@"YES"] && _needConfirmation){
         //For now transition to other view controller
         [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
     }
