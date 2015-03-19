@@ -1,5 +1,5 @@
 <pluginApps>
-    <pluginApp applicationType="OnlineServices" text="HelloWorld" applicationWeight="700">
+    <pluginApp applicationType="OnlineServices" text="ConnectedDrone" applicationWeight="700">
         <actions>
             <combinedAction id="16" sync="true">
                 <actions>

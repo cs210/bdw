@@ -1,4 +1,4 @@
-app  HelloWorld;
+app  ConnectedDrone; // cannot change this sorry
 hmi-version 1.0.1;
 
 
