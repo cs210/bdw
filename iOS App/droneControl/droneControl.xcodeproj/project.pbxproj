@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
 		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
 		46841DCE1AAD8DE500BB0BF1 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB51AAD8DE500BB0BF1 /* .project */; };
@@ -43,8 +44,6 @@
 		46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3791AAD859900C94072 /* MobileCoreServices.framework */; };
 		A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = A600578C1AB163EB00BA64BF /* SiriMicrophone.png */; };
 		A60057901AB169B200BA64BF /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = A600578F1AB169B200BA64BF /* SpeechController.m */; };
-		A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */; };
-		A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -67,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4641635B1ADB3179004B75D0 /* AerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AerialViewController.m; sourceTree = "<group>"; };
+		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld_SAS.txt; sourceTree = "<group>"; };
 		46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteApplicationManager.h; sourceTree = "<group>"; };
 		46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteApplicationManager.m; sourceTree = "<group>"; };
@@ -167,10 +168,6 @@
 		A600578C1AB163EB00BA64BF /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SiriMicrophone.png; sourceTree = "<group>"; };
 		A600578E1AB169B200BA64BF /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		A600578F1AB169B200BA64BF /* SpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechController.m; sourceTree = "<group>"; };
-		A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulatedNavigationViewController.h; sourceTree = "<group>"; };
-		A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulatedNavigationViewController.m; sourceTree = "<group>"; };
-		A68E00DF1AB79AF8009954B7 /* SimulatedAerialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulatedAerialViewController.h; sourceTree = "<group>"; };
-		A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulatedAerialViewController.m; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -456,10 +453,8 @@
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
-				A68E00DC1AB79AE3009954B7 /* SimulatedNavigationViewController.h */,
-				A68E00DD1AB79AE3009954B7 /* SimulatedNavigationViewController.m */,
-				A68E00DF1AB79AF8009954B7 /* SimulatedAerialViewController.h */,
-				A68E00E01AB79AF8009954B7 /* SimulatedAerialViewController.m */,
+				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
+				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -605,8 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
-				A68E00DE1AB79AE3009954B7 /* SimulatedNavigationViewController.m in Sources */,
-				A68E00E11AB79AF8009954B7 /* SimulatedAerialViewController.m in Sources */,
+				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,

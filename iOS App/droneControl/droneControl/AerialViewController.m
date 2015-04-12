@@ -1,5 +1,6 @@
+
 //
-//  SimulatedNavigationViewController.m
+//  AerialViewController
 //  droneControl
 //
 //  Created by Michael Weingert on 2015-03-16.
@@ -7,15 +8,15 @@
 //
 
 /*This is going to be a map interface*/
-#import "SimulatedNavigationViewController.h"
+#import "AerialViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface SimulatedNavigationViewController () < CLLocationManagerDelegate>
+@interface AerialViewController () < CLLocationManagerDelegate>
 {
-  MKMapView * _mapView;
-  CLLocationManager *_locationManager;
-  
-  CLLocation * _userLocation;
+    MKMapView * _mapView;
+    CLLocationManager *_locationManager;
+    
+    CLLocation * _userLocation;
 }
 
 @property (nonatomic, strong) MKPointAnnotation *point;
@@ -25,7 +26,7 @@
 
 @end
 
-@implementation SimulatedNavigationViewController
+@implementation AerialViewController
 
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot{
     CLLocationCoordinate2D fakeMapPoint;
@@ -40,14 +41,14 @@
         UIImage *image = [UIImage imageNamed:@"parking_spot_icon.png"];
         [[_mapView viewForAnnotation:_point] setImage:image];
         [_mapView selectAnnotation:_point animated:YES];
-
+        
     } else {
         _point.title = @"Drone";
         [[_mapView viewForAnnotation:_point] setTag:1];
         UIImage *image = [UIImage imageNamed:@"drone_small.png"];
         [[_mapView viewForAnnotation:_point] setImage:image];
         [_mapView deselectAnnotation:_point animated:YES];
-
+        
     }
     
 }
@@ -55,35 +56,36 @@
 - (void) moveAnnotation{
     if (_n_times_moved > 10){
         [self addAnnnotationWithOffset:true];
-
+        
         [_timer invalidate];
         return;
     }
     [self addAnnnotationWithOffset:false];
-
+    
     _n_times_moved += 1;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-  
-  _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
-  [self.view addSubview:_mapView];
-  _mapView.showsUserLocation = YES;
-  
-  //Get the users current location
-  _locationManager = [[CLLocationManager alloc] init];
-  _locationManager.delegate = self;
-  _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-  [_locationManager requestAlwaysAuthorization];
-  [_locationManager startUpdatingLocation];
-  
-  CLLocationCoordinate2D noLocation;
-  MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
-  MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-  [_mapView setRegion:adjustedRegion animated:YES];
+    
+    _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:_mapView];
+    _mapView.showsUserLocation = YES;
+    
+    //Get the users current location
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager requestAlwaysAuthorization];
+    [_locationManager startUpdatingLocation];
+    
+    CLLocationCoordinate2D noLocation;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
 }
+
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -105,7 +107,7 @@
         _point = [[MKPointAnnotation alloc] init];
         
         [self addAnnnotationWithOffset:false];
-
+        
         _n_times_moved = 1;
     }
 }
@@ -116,13 +118,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-319" y="804"/>
         </scene>
-        <!--Talk to the Drone-->
+        <!--ConnectedDrone-->
         <scene sceneID="ENV-ky-VLe">
             <objects>
                 <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="vA3-hO-dtV" customClass="SpeechDisplayViewController" sceneMemberID="viewController">
@@ -38,23 +38,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-ds-MHw">
-                                <rect key="frame" x="20" y="336" width="560" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="W38-jR-Yov"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Click Me!">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleClickCountButton" destination="vA3-hO-dtV" eventType="touchUpInside" id="pSQ-4e-ZFh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Dq-DU5">
                                 <rect key="frame" x="143" y="146" width="314" height="182"/>
                                 <constraints>
@@ -101,6 +84,23 @@
                                 <color key="textColor" red="0.60945391414141414" green="0.047239757305523412" blue="0.066819106780510201" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-ds-MHw">
+                                <rect key="frame" x="20" y="336" width="560" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="W38-jR-Yov"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleClickCountButton" destination="vA3-hO-dtV" eventType="touchUpInside" id="pSQ-4e-ZFh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0033163399473194648" green="0.5968857504021009" blue="0.90437578914141414" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -196,7 +196,7 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="69T-Bc-DU6"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Talk to the Drone" id="g0P-XX-cqA"/>
+                    <navigationItem key="navigationItem" title="ConnectedDrone" id="g0P-XX-cqA"/>
                     <connections>
                         <outlet property="askForConfirmation" destination="rms-rM-OWo" id="wXm-dM-OOC"/>
                         <outlet property="clickCountButton" destination="MeG-ds-MHw" id="PLD-tK-jfg"/>

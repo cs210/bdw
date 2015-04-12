@@ -2,7 +2,7 @@
 #import "SpeechDIsplayViewController.h"
 #import "BMWConnectedDroneDataSource.h"
 #import "SpeechController.h"
-#import "SimulatedNavigationViewController.h"
+#import "AerialViewController.h"
 
 typedef enum
 {
@@ -46,7 +46,7 @@ typedef enum
         [speechController startListening];
         _currentState = kListening;
     }
-    [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
 
@@ -74,11 +74,13 @@ typedef enum
 
 -(NSArray * ) listOfWordsToDetect
 {
-    return @[@"ACTIVATE DRONE", @" FIND PARKING", @"YES", @"NO", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
+    return @[@"ACTIVATE DRONE", @"FIND PARKING", @"YES", @"NO", @"TEST", @"MIKE", @"OK BMW", @"GO", @"RIGHT", @"LEFT", @"SHAURYA"];
 }
 
 -(void) didReceiveWord: (NSString *) word
 {
+    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
     if ([word isEqualToString:@"FIND PARKING"]){
@@ -95,7 +97,7 @@ typedef enum
     if ([word isEqualToString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
         //For now transition to other view controller
-        [self.navigationController pushViewController:[[SimulatedNavigationViewController alloc] init] animated:NO];
+        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     }
     
 }
