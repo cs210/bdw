@@ -1,0 +1,17 @@
+name  ConnectedDrone;
+rapp-version 1.0.1;
+
+
+type OnlineServices;
+weight 700;
+
+supported-vehicle-types bmw, mini;
+default-localization de;
+
+vendor "BMW Group";
+version "1.3";
+
+uuid "FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A";
+appswitcher-url "helloworldsample://com.bmw.a4a/helloworld";
+ios-target "target/objc";
+ios-res-target "target/res";

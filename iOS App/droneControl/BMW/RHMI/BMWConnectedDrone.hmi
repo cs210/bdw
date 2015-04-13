@@ -1,0 +1,48 @@
+app  ConnectedDrone; // cannot change this sorry
+hmi-version 1.0.1;
+
+
+
+
+entry ConnectedDroneEntryButton{
+	text "ConnectedDrone";
+	image <rounded_white_drone_icon> ;
+	onSelect open BMWFindParking;
+	speakable SpeakableGlobally ;
+	
+}
+
+model img navigationImage ;
+
+model address NavigationAddress;
+model phonenumber phoneModel;
+
+model address myaddress = format(";;;;;;;572662306;131235111;DestinationName");
+
+// Link Action to start navigation
+action sync StartNavigation {
+	//action UpdateNavigationDataModel;
+	navigate [myaddress];
+}
+
+
+state BMWFindParking {
+	title "Find Parking";
+	/*button sayHello;
+	button speechText; 
+	button navigateButton {
+		text "Start Navigation";
+		onSelect trigger StartNavigation;
+	}*/
+	image navigationImage[navigationImage ]{
+		height 400 ;
+		positionX 0 ;
+		positionY 35 ; // optimized for current map displayed	
+	}
+	label status{
+		waitingAnimation false;
+	}
+	
+
+}
+

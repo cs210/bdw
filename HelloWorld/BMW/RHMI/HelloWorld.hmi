@@ -1,0 +1,15 @@
+app  HelloWorld;
+hmi-version 1.0.1;
+
+
+entry HelloWorldEntryButton{
+	text "Hello World";
+	onSelect open HelloWorld;
+	image <HelloWorldAppIcon_appswitcher> ;
+}
+
+state HelloWorld {
+	title "Hello World";
+	button sayHello;
+}
+
