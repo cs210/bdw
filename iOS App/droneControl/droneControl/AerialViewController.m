@@ -53,21 +53,11 @@
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
+        _parkingSpace = destination;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Parking spot found!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
+        [alert show];
+
         // Create an MKMapItem to pass to the Maps app
-        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:destination
-                                                       addressDictionary:nil];
-        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-        [mapItem setName:@"Stanford"];
-        
-        // Set the directions mode to "Walking"
-        // Can use MKLaunchOptionsDirectionsModeDriving instead
-        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-        // Get the "Current User Location" MKMapItem
-        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-        // Pass the current location and destination map items to the Maps app
-        // Set the direction mode in the launchOptions dictionary
-        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
-                       launchOptions:launchOptions];
     }
 }
 
@@ -114,5 +104,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex){
+        case 1:{ // braces needed because objc is stupid
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
+                                                           addressDictionary:nil];
+            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+            [mapItem setName:@"Stanford"];
+            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                           launchOptions:launchOptions];
+        }
+        case 2:
+            NSLog(@"View spot not implemented yet");
+            // view spot: not implemented yet
+        default: ;
+            // "cancel" or other: do nothing / go back to homepage?
+    }
+}
+
 @end
 

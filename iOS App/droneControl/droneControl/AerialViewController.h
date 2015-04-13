@@ -16,7 +16,7 @@
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
 @property (nonatomic, strong) DroneController* drone;
 @property (nonatomic) bool didStartLooking; // true if the drone started looking for parking
-
+@property (nonatomic) CLLocationCoordinate2D parkingSpace; // only defined if a parking space has been found.
 // update the location of the drone icon on the map
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location;
 
