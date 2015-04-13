@@ -1,4 +1,3 @@
-
 //
 //  AerialViewController
 //  droneControl
@@ -28,11 +27,15 @@
 
 @implementation AerialViewController
 
-- (void) addAnnnotationWithOffset:(bool)isParkingSpot{
-    CLLocationCoordinate2D fakeMapPoint;
-    fakeMapPoint.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
-    fakeMapPoint.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
-    _point.coordinate = fakeMapPoint;
+
+
+- (void) updateDroneLocation: (CLLocationCoordinate2D *)location{
+    [self addAnnnotationWithOffset:false location:*location];
+}
+
+
+- (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
+    _point.coordinate = location;
     //[_mapView removeAnnotation:_point];
     [_mapView addAnnotation:_point];
     [_mapView selectAnnotation:_point animated:YES];
@@ -53,15 +56,13 @@
     
 }
 
-- (void) goToNavigation{
+- (void) goToNavigation: (CLLocationCoordinate2D)destination {
     // Check for iOS 6
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         // Create an MKMapItem to pass to the Maps app
-        CLLocationCoordinate2D coordinate =
-        CLLocationCoordinate2DMake(37.430085, -122.180129);
-        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:destination
                                                        addressDictionary:nil];
         MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
         [mapItem setName:@"Stanford"];
@@ -78,19 +79,22 @@
     }
 }
 
-
+/* for testing */
 - (void) moveAnnotation{
+    CLLocationCoordinate2D location;
+    location.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
+    location.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
+
     if (_n_times_moved > 10){
-        [self addAnnnotationWithOffset:true];
+        [self addAnnnotationWithOffset:true location:location];
         [_timer invalidate];
         
         // transition to the NavigationViewController (however we will navigate to the space)
-        [self goToNavigation];
+        [self goToNavigation:location];
         return;
         
     }
-    [self addAnnnotationWithOffset:false];
-    
+    [self updateDroneLocation:&((location))];
     _n_times_moved += 1;
 }
 
@@ -135,8 +139,6 @@
                                                  repeats:YES];
         _point = [[MKPointAnnotation alloc] init];
         
-        [self addAnnnotationWithOffset:false];
-        
         _n_times_moved = 1;
     }
 }
@@ -145,15 +147,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end
+
