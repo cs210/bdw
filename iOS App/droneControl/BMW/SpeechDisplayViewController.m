@@ -46,6 +46,7 @@ typedef enum
         [speechController startListening];
         _currentState = kListening;
     }
+    [speechController stopListening];
     [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
@@ -97,6 +98,7 @@ typedef enum
     if ([word isEqualToString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
         //For now transition to other view controller
+        [speechController stopListening];
         [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     }
     
