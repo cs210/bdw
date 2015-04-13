@@ -31,6 +31,9 @@
     
 }
 @property (nonatomic,strong) id delegate;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CLLocation *userLocation;
+@property (nonatomic) int n_times_moved;
 
 -(void)lookForParking;
 

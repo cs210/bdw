@@ -13,11 +13,9 @@
 @interface AerialViewController : UIViewController <DroneDelegate>
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) CLLocation *userLocation;
-
-@property (nonatomic, strong) MKPointAnnotation *point;
-@property (nonatomic) int n_times_moved;
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
+@property (nonatomic, strong) DroneController* drone;
+@property (nonatomic) bool didStartLooking; // true if the drone started looking for parking
 
 // update the location of the drone icon on the map
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location;

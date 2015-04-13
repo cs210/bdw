@@ -27,22 +27,22 @@
 
 
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
-    _point.coordinate = location;
+    _droneAnnotation.coordinate = location;
     //[_mapView removeAnnotation:_point];
-    [_mapView addAnnotation:_point];
-    [_mapView selectAnnotation:_point animated:YES];
+    [_mapView addAnnotation:_droneAnnotation];
+    [_mapView selectAnnotation:_droneAnnotation animated:YES];
     if (isParkingSpot){
-        _point.title = @"Parking spot";
+        _droneAnnotation.title = @"Parking spot";
         UIImage *image = [UIImage imageNamed:@"parking_spot_icon.png"];
-        [[_mapView viewForAnnotation:_point] setImage:image];
-        [_mapView selectAnnotation:_point animated:YES];
+        [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
+        [_mapView selectAnnotation:_droneAnnotation animated:YES];
         
     } else {
-        _point.title = @"Drone";
-        [[_mapView viewForAnnotation:_point] setTag:1];
+        _droneAnnotation.title = @"Drone";
+        [[_mapView viewForAnnotation:_droneAnnotation] setTag:1];
         UIImage *image = [UIImage imageNamed:@"drone_small.png"];
-        [[_mapView viewForAnnotation:_point] setImage:image];
-        [_mapView deselectAnnotation:_point animated:YES];
+        [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
+        [_mapView deselectAnnotation:_droneAnnotation animated:YES];
         
     }
     
@@ -71,24 +71,6 @@
     }
 }
 
-/* for testing */
-- (void) moveAnnotation{
-    CLLocationCoordinate2D location;
-    location.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
-    location.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
-
-    if (_n_times_moved > 10){
-        [self addAnnnotationWithOffset:true location:location];
-        [_timer invalidate];
-        
-        // transition to the NavigationViewController (however we will navigate to the space)
-        [self goToNavigation:location];
-        return;
-        
-    }
-    [self updateDroneLocation:&((location))];
-    _n_times_moved += 1;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -114,24 +96,17 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    if (_n_times_moved == 0){
+    if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
-        _userLocation = crnLoc;
-        
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_userLocation.coordinate, 500, 500);
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 500, 500);
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
         [_mapView setRegion:adjustedRegion animated:YES];
-        
-        // Add an annotation
-        
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.9
-                                                  target:self
-                                                selector:@selector(moveAnnotation)
-                                                userInfo:nil
-                                                 repeats:YES];
-        _point = [[MKPointAnnotation alloc] init];
-        
-        _n_times_moved = 1;
+        _droneAnnotation = [[MKPointAnnotation alloc] init];
+        _drone = [[DroneController alloc]init];
+        _drone.delegate = self;
+        _drone.userLocation = crnLoc;
+        [_drone lookForParking];
+        _didStartLooking = true;
     }
 }
 
