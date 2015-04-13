@@ -11,23 +11,15 @@
 #import <MapKit/MapKit.h>
 
 @interface AerialViewController () < CLLocationManagerDelegate>
-{
-    MKMapView * _mapView;
-    CLLocationManager *_locationManager;
-    
-    CLLocation * _userLocation;
-}
-
-@property (nonatomic, strong) MKPointAnnotation *point;
-@property (nonatomic) int n_times_moved;
-@property (nonatomic, strong) NSTimer *timer;
 
 
 @end
 
 @implementation AerialViewController
-
-
+- (void) receiveImage:(UIImage *)image
+{
+    
+}
 
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location{
     [self addAnnnotationWithOffset:false location:*location];

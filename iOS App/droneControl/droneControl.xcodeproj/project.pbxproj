@@ -20,6 +20,7 @@
 		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
 		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
+		46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AA69F01ADBB9E9009E0583 /* DroneController.m */; };
 		46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */; };
 		46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89611ABB11F0009339BC /* BMWFindParkingView.m */; };
 		46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */; };
@@ -87,6 +88,8 @@
 		46841DF01AAD91EC00BB0BF1 /* IDNSLoggerAppender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNSLoggerAppender.h; sourceTree = "<group>"; };
 		46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNSLoggerAppender.m; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
+		46AA69EF1ADBB9D4009E0583 /* DroneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneController.h; sourceTree = "<group>"; };
+		46AA69F01ADBB9E9009E0583 /* DroneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneController.m; sourceTree = "<group>"; };
 		46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneHmiProvider.h; sourceTree = "<group>"; };
 		46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectedDroneHmiProvider.m; sourceTree = "<group>"; };
 		46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneIdentifiers.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
+				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
+				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -603,6 +608,7 @@
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
+				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
