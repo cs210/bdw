@@ -53,12 +53,41 @@
     
 }
 
+- (void) goToNavigation{
+    // Check for iOS 6
+    Class mapItemClass = [MKMapItem class];
+    if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
+    {
+        // Create an MKMapItem to pass to the Maps app
+        CLLocationCoordinate2D coordinate =
+        CLLocationCoordinate2DMake(37.430085, -122.180129);
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
+                                                       addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem setName:@"Stanford"];
+        
+        // Set the directions mode to "Walking"
+        // Can use MKLaunchOptionsDirectionsModeDriving instead
+        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+        // Get the "Current User Location" MKMapItem
+        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+        // Pass the current location and destination map items to the Maps app
+        // Set the direction mode in the launchOptions dictionary
+        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                       launchOptions:launchOptions];
+    }
+}
+
+
 - (void) moveAnnotation{
     if (_n_times_moved > 10){
         [self addAnnnotationWithOffset:true];
-        
         [_timer invalidate];
+        
+        // transition to the NavigationViewController (however we will navigate to the space)
+        [self goToNavigation];
         return;
+        
     }
     [self addAnnnotationWithOffset:false];
     
