@@ -53,6 +53,11 @@
 		A6F4EF4E1AAD3EA300C81065 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */; };
 		A6F4EF501AAD416900C81065 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4F1AAD416900C81065 /* Slt.framework */; };
 		A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */; };
+		D9FCDA511ADD8B4E00D91DB7 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FCDA501ADD8B4D00D91DB7 /* DJISDK.framework */; };
+		D9FCDA551ADD8F6500D91DB7 /* DJICameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.m */; };
+		D9FCDA561ADD8F6500D91DB7 /* DJICameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */; };
+		D9FCDA581ADD903100D91DB7 /* VideoPreviewer in Resources */ = {isa = PBXBuildFile; fileRef = D9FCDA571ADD903100D91DB7 /* VideoPreviewer */; };
+		D9FCDA5A1ADD906400D91DB7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FCDA591ADD906400D91DB7 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +187,12 @@
 		A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
 		A6F4EF4F1AAD416900C81065 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		D9FCDA501ADD8B4D00D91DB7 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DJISDK.framework; sourceTree = "<group>"; };
+		D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJICameraViewController.m; sourceTree = "<group>"; };
+		D9FCDA531ADD8F6500D91DB7 /* DJICameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJICameraViewController.h; sourceTree = "<group>"; };
+		D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DJICameraViewController.xib; sourceTree = "<group>"; };
+		D9FCDA571ADD903100D91DB7 /* VideoPreviewer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VideoPreviewer; sourceTree = "<group>"; };
+		D9FCDA591ADD906400D91DB7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FCDA5A1ADD906400D91DB7 /* libiconv.dylib in Frameworks */,
 				46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */,
 				A6F4EF501AAD416900C81065 /* Slt.framework in Frameworks */,
 				46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */,
@@ -197,6 +209,7 @@
 				46E4D37F1AAD859900C94072 /* CFNetwork.framework in Frameworks */,
 				46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */,
 				46E4D3861AAD859900C94072 /* UIKit.framework in Frameworks */,
+				D9FCDA511ADD8B4E00D91DB7 /* DJISDK.framework in Frameworks */,
 				46E4D3841AAD859900C94072 /* ExternalAccessory.framework in Frameworks */,
 				46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */,
 				46E4D3851AAD859900C94072 /* CoreTelephony.framework in Frameworks */,
@@ -336,6 +349,7 @@
 		46E4D3331AAD856E00C94072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9FCDA501ADD8B4D00D91DB7 /* DJISDK.framework */,
 				46E4D3341AAD859900C94072 /* libc++.dylib */,
 				A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */,
 				A6F4EF4F1AAD416900C81065 /* Slt.framework */,
@@ -423,6 +437,7 @@
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
+				D9FCDA591ADD906400D91DB7 /* libiconv.dylib */,
 				46841DAE1AAD8DE500BB0BF1 /* BMW */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
 				A6F4EF401AAD17D500C81065 /* droneControlTests */,
@@ -442,6 +457,10 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				D9FCDA571ADD903100D91DB7 /* VideoPreviewer */,
+				D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.m */,
+				D9FCDA531ADD8F6500D91DB7 /* DJICameraViewController.h */,
+				D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */,
 				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
 				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				46E4D3331AAD856E00C94072 /* Frameworks */,
@@ -575,9 +594,11 @@
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
 				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
+				D9FCDA581ADD903100D91DB7 /* VideoPreviewer in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
+				D9FCDA561ADD8F6500D91DB7 /* DJICameraViewController.xib in Resources */,
 				A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */,
 				46841DCE1AAD8DE500BB0BF1 /* .project in Resources */,
 				46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */,
@@ -599,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FCDA551ADD8F6500D91DB7 /* DJICameraViewController.m in Sources */,
 				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
@@ -737,8 +759,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/droneControl/VideoPreviewer/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/droneControl/VideoPreviewer/ffmpeg/lib\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BMW/droneControl-Bridging-Header.h";
@@ -755,8 +783,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/droneControl/VideoPreviewer/ffmpeg/include\"",
+				);
 				INFOPLIST_FILE = droneControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/droneControl/VideoPreviewer/ffmpeg/lib\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BMW/droneControl-Bridging-Header.h";

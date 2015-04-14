@@ -4,6 +4,7 @@
 #import "RemoteApplicationManager.h"
 #import "IDNSLoggerAppender.h"
 #import "LastUserModeDelegate.h"
+#import <DJISDK/DJISDK.h>
 
 
 @interface AppDelegate () <LastUserModeDelegate>
@@ -25,6 +26,11 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
 {
     [application setIdleTimerDisabled:YES];
     self.focusAfterStartingInRemoteHmi = NO;
+    
+    //setup drone integration
+    NSString* appKey = @"15e1f97fcf7b133c7a1b1ab7";
+    [DJIAppManager registerApp:appKey withDelegate:self];
+    
     
     // enable BMWAppKit log output
     IDLogger *logger = [IDLogger defaultLogger];
@@ -55,6 +61,17 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
+}
+
+-(void) appManagerDidRegisterWithError:(int)error
+{
+    NSString* message = @"Register App Failed!";
+    if (error == RegisterSuccess) {
+        message = @"Register App Successed!";
+    }
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Register App" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

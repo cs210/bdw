@@ -3,6 +3,7 @@
 #import "BMWConnectedDroneDataSource.h"
 #import "SpeechController.h"
 #import "AerialViewController.h"
+#import "DJICameraViewController.h"
 
 typedef enum
 {
@@ -35,9 +36,6 @@ typedef enum
 
 /* speech stuff */
 
-
-
-
 - (IBAction)microphoneClicked:(UIButton *)sender
 {
     if (_currentState == kNotListening)
@@ -46,7 +44,9 @@ typedef enum
         [speechController startListening];
         _currentState = kListening;
     }
-    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+//    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:cameraFeed animated:NO];
     
 }
 
@@ -79,7 +79,9 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
-    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+//    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:cameraFeed animated:NO];
 
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
@@ -97,7 +99,9 @@ typedef enum
     if ([word isEqualToString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
         //For now transition to other view controller
-        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+//        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+        DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+        [self.navigationController pushViewController:cameraFeed animated:NO];
     }
     
 }
