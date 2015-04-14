@@ -80,7 +80,6 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
-    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
