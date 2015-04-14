@@ -28,7 +28,8 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     self.focusAfterStartingInRemoteHmi = NO;
     
     //setup drone integration
-    NSString* appKey = @"15e1f97fcf7b133c7a1b1ab7";
+//    NSString* appKey = @"15e1f97fcf7b133c7a1b1ab7";
+    NSString* appKey = @"b8988f3f6132c9e8ed31341c";
     [DJIAppManager registerApp:appKey withDelegate:self];
     
     
@@ -69,9 +70,9 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     if (error == RegisterSuccess) {
         message = @"Register App Successed!";
     }
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Register App" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
+    NSLog(message);
+//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Register App" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alertView show];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SpeechDisplayViewController.h"
-
+#import <DJISDK/DJISDK.h>
 
 @class RemoteApplicationManager;
 @class IDAccessoryMonitor;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, DJIAppManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

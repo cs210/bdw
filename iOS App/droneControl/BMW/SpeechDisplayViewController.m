@@ -22,6 +22,7 @@ typedef enum
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastHeardWord;
 @property (weak, nonatomic) IBOutlet UILabel *askForConfirmation;
+@property (weak, nonatomic) IBOutlet UIButton *mic_button;
 
 @property (assign) ConnectionState connectionState;
 @property (assign) RemoteApplicationState remoteApplicationState;
@@ -43,11 +44,35 @@ typedef enum
         _statusLabel.text = @"Listening";
         [speechController startListening];
         _currentState = kListening;
+        NSLog(@"Status: listening");
     }
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     [self.navigationController pushViewController:cameraFeed animated:NO];
     
+}
+- (IBAction)parking_button:(id)sender
+{
+    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:cameraFeed animated:NO];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    NSLog(@"APPEAR");
+    self.mic_button.alpha = 1.0f;
+    [UIView animateWithDuration:1.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut |
+     UIViewAnimationOptionRepeat |
+     UIViewAnimationOptionAutoreverse |
+     UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.mic_button.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         // Do nothing
+                     }];
 }
 
 - (void)viewDidLoad {
@@ -68,6 +93,28 @@ typedef enum
     
     _currentState = kNotListening;
     
+//    self.mic_button.transform = CGAffineTransformMakeScale(1.5,1.5);
+//    self.mic_button.alpha = 0.0f;
+//
+//    [UIView beginAnimations:@"button" context:nil];
+//    [UIView setAnimationDuration:1];
+//    self.mic_button.transform = CGAffineTransformMakeScale(1,1);
+//    self.mic_button.alpha = 1.0f;
+//    [UIView commitAnimations];
+    self.mic_button.alpha = 1.0f;
+    [UIView animateWithDuration:1.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut |
+     UIViewAnimationOptionRepeat |
+     UIViewAnimationOptionAutoreverse |
+     UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.mic_button.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         // Do nothing
+                     }];
+    
     //Set up the UI
     //Get the location of the microphone and add a
 }
@@ -79,9 +126,10 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
+    NSLog(@"Word heard:%s", word);
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
-    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO];
+//    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+//    [self.navigationController pushViewController:cameraFeed animated:NO];
 
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
@@ -105,7 +153,6 @@ typedef enum
     }
     
 }
-
 
 
 

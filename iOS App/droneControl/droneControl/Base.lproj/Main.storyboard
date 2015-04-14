@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-319" y="804"/>
         </scene>
-        <!--ConnectedDrone-->
+        <!--Connected Drone-->
         <scene sceneID="ENV-ky-VLe">
             <objects>
                 <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="vA3-hO-dtV" customClass="SpeechDisplayViewController" sceneMemberID="viewController">
@@ -39,11 +39,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Dq-DU5">
-                                <rect key="frame" x="143" y="146" width="314" height="182"/>
+                                <rect key="frame" x="200" y="146" width="200" height="135"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="314" id="w99-O6-vTc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="qvG-UR-fYB"/>
+                                    <constraint firstAttribute="height" constant="135" id="u3c-lR-Olp"/>
+                                    <constraint firstAttribute="width" constant="200" id="w99-O6-vTc"/>
                                 </constraints>
-                                <state key="normal" image="SiriMicrophone.png">
+                                <state key="normal" image="microphone_100">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -51,41 +53,41 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-70-Rkq">
-                                <rect key="frame" x="259" y="105" width="83" height="21"/>
+                                <rect key="frame" x="223" y="103" width="155" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3fj-jO-oJs"/>
-                                    <constraint firstAttribute="width" constant="83" id="G9O-pv-276"/>
+                                    <constraint firstAttribute="width" constant="155" id="G9O-pv-276"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Heard Word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKV-pa-S6B">
-                                <rect key="frame" x="43" y="461" width="129" height="21"/>
+                                <rect key="frame" x="43" y="414" width="129" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="lfN-zF-hpK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV6-FY-pFp">
-                                <rect key="frame" x="455" y="462" width="129" height="21"/>
+                                <rect key="frame" x="455" y="415" width="129" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="BdX-kq-9c4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;yes&quot; to look for parking!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-rM-OWo">
-                                <rect key="frame" x="16" y="416" width="568" height="27"/>
+                                <rect key="frame" x="16" y="369" width="568" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" red="0.60945391414141414" green="0.047239757305523412" blue="0.066819106780510201" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-ds-MHw">
-                                <rect key="frame" x="20" y="336" width="560" height="49"/>
+                                <rect key="frame" x="20" y="289" width="560" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="W38-jR-Yov"/>
                                 </constraints>
@@ -101,25 +103,46 @@
                                     <action selector="handleClickCountButton" destination="vA3-hO-dtV" eventType="touchUpInside" id="pSQ-4e-ZFh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Gv-WkW">
+                                <rect key="frame" x="0.0" y="476" width="600" height="80"/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="oz8-yS-Z95"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Find Parking">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="parking_button:" destination="vA3-hO-dtV" eventType="touchUpInside" id="eff-mt-lby"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0033163399473194648" green="0.5968857504021009" blue="0.90437578914141414" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aOy-Dq-DU5" firstAttribute="top" secondItem="Ipt-70-Rkq" secondAttribute="bottom" constant="20" id="7OT-3x-yfl"/>
+                            <constraint firstItem="aOy-Dq-DU5" firstAttribute="top" secondItem="Ipt-70-Rkq" secondAttribute="bottom" constant="22" id="7OT-3x-yfl"/>
+                            <constraint firstItem="mLW-Gv-WkW" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" constant="-16" id="Aw7-tu-8or"/>
                             <constraint firstItem="yKV-pa-S6B" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" constant="27" id="DFt-xi-tGa"/>
                             <constraint firstItem="Ipt-70-Rkq" firstAttribute="centerX" secondItem="aOy-Dq-DU5" secondAttribute="centerX" id="DTU-Fy-5B4"/>
-                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="yKV-pa-S6B" secondAttribute="bottom" constant="74" id="FAh-cK-4aR"/>
+                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="yKV-pa-S6B" secondAttribute="bottom" constant="121" id="FAh-cK-4aR"/>
                             <constraint firstItem="rms-rM-OWo" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" id="IKh-a5-Nk7"/>
                             <constraint firstItem="MeG-ds-MHw" firstAttribute="centerX" secondItem="aOy-Dq-DU5" secondAttribute="centerX" id="JF1-u6-K3d"/>
                             <constraint firstItem="cV6-FY-pFp" firstAttribute="top" secondItem="MeG-ds-MHw" secondAttribute="bottom" constant="77" id="NPE-ag-1qB"/>
-                            <constraint firstItem="Ipt-70-Rkq" firstAttribute="top" secondItem="bXl-LO-Kou" secondAttribute="bottom" constant="41" id="OGa-FJ-Tmr"/>
+                            <constraint firstItem="Ipt-70-Rkq" firstAttribute="top" secondItem="bXl-LO-Kou" secondAttribute="bottom" constant="39" id="OGa-FJ-Tmr"/>
                             <constraint firstItem="aOy-Dq-DU5" firstAttribute="centerX" secondItem="J4r-30-2hu" secondAttribute="centerX" id="Ukt-oC-aFQ"/>
+                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="mLW-Gv-WkW" secondAttribute="bottom" id="V1C-Gi-a6j"/>
                             <constraint firstItem="rms-rM-OWo" firstAttribute="trailing" secondItem="J4r-30-2hu" secondAttribute="trailingMargin" id="ZBj-aL-BSr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mLW-Gv-WkW" secondAttribute="trailing" id="hgS-a5-VSb"/>
                             <constraint firstItem="MeG-ds-MHw" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" constant="4" id="kww-fh-4Xi"/>
                             <constraint firstItem="cV6-FY-pFp" firstAttribute="trailing" secondItem="J4r-30-2hu" secondAttribute="trailingMargin" id="o6f-pZ-Vga"/>
-                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="rms-rM-OWo" secondAttribute="bottom" constant="113" id="oRu-mq-EN4"/>
-                            <constraint firstItem="cV6-FY-pFp" firstAttribute="baseline" secondItem="yKV-pa-S6B" secondAttribute="firstBaseline" id="qLD-9p-xYz"/>
+                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="rms-rM-OWo" secondAttribute="bottom" constant="160" id="oRu-mq-EN4"/>
+                            <constraint firstItem="mLW-Gv-WkW" firstAttribute="centerX" secondItem="rms-rM-OWo" secondAttribute="centerX" id="px0-Yc-39W"/>
+                            <constraint firstItem="cV6-FY-pFp" firstAttribute="baseline" secondItem="yKV-pa-S6B" secondAttribute="firstBaseline" constant="3" id="qLD-9p-xYz"/>
+                            <constraint firstItem="mLW-Gv-WkW" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" id="sak-OF-B4T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mLW-Gv-WkW" secondAttribute="trailing" constant="-16" id="w4K-OQ-Jba"/>
                             <constraint firstItem="yKV-pa-S6B" firstAttribute="top" secondItem="MeG-ds-MHw" secondAttribute="bottom" constant="76" id="wkT-Xc-C6R"/>
-                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="cV6-FY-pFp" secondAttribute="bottom" constant="73" id="xuV-6S-hCi"/>
+                            <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="cV6-FY-pFp" secondAttribute="bottom" constant="120" id="xuV-6S-hCi"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -135,7 +158,7 @@
                                             <constraint firstAttribute="height" constant="15" id="0L7-Ag-fIm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="remote application:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtE-Nx-vA2">
@@ -144,7 +167,7 @@
                                             <constraint firstAttribute="height" constant="15" id="jgK-fj-GJq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -170,7 +193,7 @@
                                             <constraint firstAttribute="height" constant="15" id="aRm-QZ-y83"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="stopped" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFw-so-fBE">
@@ -179,7 +202,7 @@
                                             <constraint firstAttribute="height" constant="15" id="xgO-Af-hDe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -196,12 +219,13 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="69T-Bc-DU6"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="ConnectedDrone" id="g0P-XX-cqA"/>
+                    <navigationItem key="navigationItem" title="Connected Drone" id="g0P-XX-cqA"/>
                     <connections>
                         <outlet property="askForConfirmation" destination="rms-rM-OWo" id="wXm-dM-OOC"/>
                         <outlet property="clickCountButton" destination="MeG-ds-MHw" id="PLD-tK-jfg"/>
                         <outlet property="connectionStateLabel" destination="8Ff-WE-Yjq" id="b2b-LY-teR"/>
                         <outlet property="lastHeardWord" destination="cV6-FY-pFp" id="lYH-Ho-F0A"/>
+                        <outlet property="mic_button" destination="aOy-Dq-DU5" id="8Ue-tb-q1D"/>
                         <outlet property="remoteApplicationStateLabel" destination="CFw-so-fBE" id="6VV-yD-SSp"/>
                         <outlet property="statusLabel" destination="Ipt-70-Rkq" id="oor-0o-24z"/>
                     </connections>
@@ -225,7 +249,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The drone is flying and finding a parking spot..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdP-w9-Qui">
                                 <rect key="frame" x="120" y="179" width="360" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -238,6 +262,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SiriMicrophone.png" width="259" height="182"/>
+        <image name="microphone_100" width="100" height="100"/>
     </resources>
 </document>
