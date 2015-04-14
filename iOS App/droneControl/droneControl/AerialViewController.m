@@ -8,6 +8,8 @@
 
 /*This is going to be a map interface*/
 #import "AerialViewController.h"
+#import "SpotConfirmViewController.h"
+
 #import <MapKit/MapKit.h>
 
 @interface AerialViewController () < CLLocationManagerDelegate>
@@ -54,7 +56,7 @@
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         _parkingSpace = destination;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Parking spot found!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
         [alert show];
 
         // Create an MKMapItem to pass to the Maps app
@@ -118,7 +120,7 @@
                            launchOptions:launchOptions];
         }
         case 2:
-            NSLog(@"View spot not implemented yet");
+            [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
             // view spot: not implemented yet
         default: ;
             // "cancel" or other: do nothing / go back to homepage?

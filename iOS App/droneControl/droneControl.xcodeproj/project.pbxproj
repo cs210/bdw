@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
 		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
@@ -67,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotConfirmViewController.m; sourceTree = "<group>"; };
+		463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotConfirmViewController.h; sourceTree = "<group>"; };
 		4641635B1ADB3179004B75D0 /* AerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AerialViewController.m; sourceTree = "<group>"; };
 		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld_SAS.txt; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
 				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
 				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
+				463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */,
+				463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
+				463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
