@@ -1,0 +1,74 @@
+\hypertarget{protocol_d_j_i_camera_delegate-p}{\section{$<$D\+J\+I\+Camera\+Delegate$>$ Protocol Reference}
+\label{protocol_d_j_i_camera_delegate-p}\index{$<$\+D\+J\+I\+Camera\+Delegate$>$@{$<$\+D\+J\+I\+Camera\+Delegate$>$}}
+}
+Inheritance diagram for $<$D\+J\+I\+Camera\+Delegate$>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{protocol_d_j_i_camera_delegate-p}
+\end{center}
+\end{figure}
+\subsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{protocol_d_j_i_camera_delegate-p_a82dc726780bf9334cf2a0e5c33a45ce2}{camera\+:did\+Received\+Video\+Data\+:length\+:}
+\item 
+(void) -\/ \hyperlink{protocol_d_j_i_camera_delegate-p_a24b371f3bff14e1eaa922f3ac4a821a9}{camera\+:did\+Update\+System\+State\+:}
+\item 
+(void) -\/ \hyperlink{protocol_d_j_i_camera_delegate-p_acc6d42ada266a43eb8dbe97198b51694}{camera\+:did\+Generated\+New\+Media\+:}
+\end{DoxyCompactItemize}
+
+
+\subsection{Method Documentation}
+\hypertarget{protocol_d_j_i_camera_delegate-p_acc6d42ada266a43eb8dbe97198b51694}{\index{D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}!camera\+:did\+Generated\+New\+Media\+:@{camera\+:did\+Generated\+New\+Media\+:}}
+\index{camera\+:did\+Generated\+New\+Media\+:@{camera\+:did\+Generated\+New\+Media\+:}!D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}}
+\subsubsection[{camera\+:did\+Generated\+New\+Media\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) camera\+: 
+\begin{DoxyParamCaption}
+\item[{({\bf D\+J\+I\+Camera} $\ast$)}]{camera}
+\item[{didGeneratedNewMedia:({\bf D\+J\+I\+Media} $\ast$)}]{new\+Media}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily [optional]}}}\label{protocol_d_j_i_camera_delegate-p_acc6d42ada266a43eb8dbe97198b51694}
+Push media info while completed take photo or recording.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Media} & The new media object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{protocol_d_j_i_camera_delegate-p_a82dc726780bf9334cf2a0e5c33a45ce2}{\index{D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}!camera\+:did\+Received\+Video\+Data\+:length\+:@{camera\+:did\+Received\+Video\+Data\+:length\+:}}
+\index{camera\+:did\+Received\+Video\+Data\+:length\+:@{camera\+:did\+Received\+Video\+Data\+:length\+:}!D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}}
+\subsubsection[{camera\+:did\+Received\+Video\+Data\+:length\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) camera\+: 
+\begin{DoxyParamCaption}
+\item[{({\bf D\+J\+I\+Camera} $\ast$)}]{camera}
+\item[{didReceivedVideoData:(uint8\+\_\+t $\ast$)}]{video\+Buffer}
+\item[{length:(int)}]{length}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily [required]}}}\label{protocol_d_j_i_camera_delegate-p_a82dc726780bf9334cf2a0e5c33a45ce2}
+Video data interface
+
+
+\begin{DoxyParams}{Parameters}
+{\em video\+Buffer} & H.\+264 video data buffer \\
+\hline
+{\em length} & H.\+264 video data length \\
+\hline
+\end{DoxyParams}
+\hypertarget{protocol_d_j_i_camera_delegate-p_a24b371f3bff14e1eaa922f3ac4a821a9}{\index{D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}!camera\+:did\+Update\+System\+State\+:@{camera\+:did\+Update\+System\+State\+:}}
+\index{camera\+:did\+Update\+System\+State\+:@{camera\+:did\+Update\+System\+State\+:}!D\+J\+I\+Camera\+Delegate-\/p@{D\+J\+I\+Camera\+Delegate-\/p}}
+\subsubsection[{camera\+:did\+Update\+System\+State\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) camera\+: 
+\begin{DoxyParamCaption}
+\item[{({\bf D\+J\+I\+Camera} $\ast$)}]{camera}
+\item[{didUpdateSystemState:(D\+J\+I\+Camera\+System\+State $\ast$)}]{system\+State}
+\end{DoxyParamCaption}
+\hspace{0.3cm}{\ttfamily [required]}}}\label{protocol_d_j_i_camera_delegate-p_a24b371f3bff14e1eaa922f3ac4a821a9}
+Update the camera's system state. User should call the start\+Camera\+System\+State\+Updates interface to begin updating.
+
+
+\begin{DoxyParams}{Parameters}
+{\em system\+State} & The camera's system state. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this protocol was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+J\+I\+Camera.\+h\end{DoxyCompactItemize}
