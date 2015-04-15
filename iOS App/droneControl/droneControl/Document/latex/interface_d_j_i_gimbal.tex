@@ -1,0 +1,93 @@
+\hypertarget{interface_d_j_i_gimbal}{\section{D\+J\+I\+Gimbal Class Reference}
+\label{interface_d_j_i_gimbal}\index{D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}}
+}
+Inheritance diagram for D\+J\+I\+Gimbal\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_d_j_i_gimbal}
+\end{center}
+\end{figure}
+\subsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+(\hyperlink{interface_d_j_i_gimbal_capacity}{D\+J\+I\+Gimbal\+Capacity} $\ast$) -\/ \hyperlink{interface_d_j_i_gimbal_a38243bb650051f5529d0593a4a2fd6eb}{get\+Gimbal\+Capacity}
+\item 
+\hypertarget{interface_d_j_i_gimbal_addb61e4458e9f7532c1d7632e3256de8}{(void) -\/ {\bfseries start\+Gimbal\+Attitude\+Updates}}\label{interface_d_j_i_gimbal_addb61e4458e9f7532c1d7632e3256de8}
+
+\item 
+\hypertarget{interface_d_j_i_gimbal_ac787980c21cad6ef13094da82d08bcb3}{(void) -\/ {\bfseries stop\+Gimbal\+Attitude\+Updates}}\label{interface_d_j_i_gimbal_ac787980c21cad6ef13094da82d08bcb3}
+
+\item 
+\hypertarget{interface_d_j_i_gimbal_abd6ec35ba4e94a188d47bd6f40213837}{(void) -\/ {\bfseries start\+Gimbal\+Attitude\+Update\+To\+Queue\+:with\+Result\+Block\+:}}\label{interface_d_j_i_gimbal_abd6ec35ba4e94a188d47bd6f40213837}
+
+\item 
+(void) -\/ \hyperlink{interface_d_j_i_gimbal_a634e261178cf26f486ca4bb9e3fcc5b9}{set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:}
+\item 
+(void) -\/ \hyperlink{interface_d_j_i_gimbal_ad420acf7e90595bce5504cc02dedeb01}{set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_d_j_i_gimbal_a3c2df069500e129bb6a9349649d7aa63}{id$<$ \hyperlink{protocol_d_j_i_gimbal_delegate-p}{D\+J\+I\+Gimbal\+Delegate} $>$ {\bfseries delegate}}\label{interface_d_j_i_gimbal_a3c2df069500e129bb6a9349649d7aa63}
+
+\item 
+int \hyperlink{interface_d_j_i_gimbal_a3211c1147e24fbb20d09938b2a19dabb}{attitude\+Update\+Interval}
+\item 
+\hypertarget{interface_d_j_i_gimbal_ad3b500240c4b2a4db0e33fa50040a85c}{\hyperlink{struct_d_j_i_gimbal_attitude}{D\+J\+I\+Gimbal\+Attitude} {\bfseries gimbal\+Attitude}}\label{interface_d_j_i_gimbal_ad3b500240c4b2a4db0e33fa50040a85c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Method Documentation}
+\hypertarget{interface_d_j_i_gimbal_a38243bb650051f5529d0593a4a2fd6eb}{\index{D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}!get\+Gimbal\+Capacity@{get\+Gimbal\+Capacity}}
+\index{get\+Gimbal\+Capacity@{get\+Gimbal\+Capacity}!D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}}
+\subsubsection[{get\+Gimbal\+Capacity}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf D\+J\+I\+Gimbal\+Capacity}$\ast$) get\+Gimbal\+Capacity 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_gimbal_a38243bb650051f5529d0593a4a2fd6eb}
+Get the gimbal's capacity.
+
+\begin{DoxyReturn}{Returns}
+gimbal capacity, return nil if connection failured. 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_gimbal_a634e261178cf26f486ca4bb9e3fcc5b9}{\index{D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}!set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:@{set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:}}
+\index{set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:@{set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:}!D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}}
+\subsubsection[{set\+Gimbal\+Fpv\+Mode\+:with\+Result\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) set\+Gimbal\+Fpv\+Mode\+: 
+\begin{DoxyParamCaption}
+\item[{(B\+O\+O\+L)}]{is\+Fpv}
+\item[{withResult:(D\+J\+I\+Execute\+Result\+Block)}]{block}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_gimbal_a634e261178cf26f486ca4bb9e3fcc5b9}
+Set F\+P\+V mode. Typedef of block to be invoked when fpv mode is set success. \hypertarget{interface_d_j_i_gimbal_ad420acf7e90595bce5504cc02dedeb01}{\index{D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}!set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:@{set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:}}
+\index{set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:@{set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:}!D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}}
+\subsubsection[{set\+Gimbal\+Pitch\+:\+Roll\+:\+Yaw\+:with\+Result\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) set\+Gimbal\+Pitch\+: 
+\begin{DoxyParamCaption}
+\item[{({\bf D\+J\+I\+Gimbal\+Rotation})}]{pitch}
+\item[{Roll:({\bf D\+J\+I\+Gimbal\+Rotation})}]{roll}
+\item[{Yaw:({\bf D\+J\+I\+Gimbal\+Rotation})}]{yaw}
+\item[{withResult:(D\+J\+I\+Execute\+Result\+Block)}]{block}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_gimbal_ad420acf7e90595bce5504cc02dedeb01}
+Set gimbal's pitch roll yaw rotation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pitch} & Gimbal's pitch rotation parameter \\
+\hline
+{\em roll} & Gimbal's roll rotation parameter \\
+\hline
+{\em yaw} & Gimbal's yaw rotation parameter \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{interface_d_j_i_gimbal_a3211c1147e24fbb20d09938b2a19dabb}{\index{D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}!attitude\+Update\+Interval@{attitude\+Update\+Interval}}
+\index{attitude\+Update\+Interval@{attitude\+Update\+Interval}!D\+J\+I\+Gimbal@{D\+J\+I\+Gimbal}}
+\subsubsection[{attitude\+Update\+Interval}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) attitude\+Update\+Interval\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [write]}, {\ttfamily [nonatomic]}, {\ttfamily [assign]}}}\label{interface_d_j_i_gimbal_a3211c1147e24fbb20d09938b2a19dabb}
+the attitude update time interval, the value should not smaller then 25ms. default is 50ms 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+J\+I\+Gimbal.\+h\end{DoxyCompactItemize}

@@ -71,6 +71,30 @@
 		D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D648D41ADDAB0400459A16 /* VideoPreviewer.m */; };
 		D9FB7C741ADDF15100138BF0 /* DJIRootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7C721ADDF15100138BF0 /* DJIRootViewController.mm */; };
 		D9FB7C751ADDF15100138BF0 /* DJIRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7C731ADDF15100138BF0 /* DJIRootViewController.xib */; };
+		D9FB7CED1ADDF52600138BF0 /* BatteryTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CC21ADDF52600138BF0 /* BatteryTestViewController.m */; };
+		D9FB7CEE1ADDF52600138BF0 /* BatteryTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CC31ADDF52600138BF0 /* BatteryTestViewController.xib */; };
+		D9FB7CEF1ADDF52600138BF0 /* CameraSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CC61ADDF52600138BF0 /* CameraSettingsView.m */; };
+		D9FB7CF01ADDF52600138BF0 /* CameraSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CC71ADDF52600138BF0 /* CameraSettingsView.xib */; };
+		D9FB7CF11ADDF52600138BF0 /* CameraTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CC91ADDF52600138BF0 /* CameraTestViewController.mm */; };
+		D9FB7CF21ADDF52600138BF0 /* CameraTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CCA1ADDF52600138BF0 /* CameraTestViewController.xib */; };
+		D9FB7CF31ADDF52600138BF0 /* GimbalTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CCD1ADDF52600138BF0 /* GimbalTestViewController.m */; };
+		D9FB7CF41ADDF52600138BF0 /* GimbalTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CCE1ADDF52600138BF0 /* GimbalTestViewController.xib */; };
+		D9FB7CF51ADDF52600138BF0 /* GroundStationStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CD11ADDF52600138BF0 /* GroundStationStatusView.m */; };
+		D9FB7CF61ADDF52600138BF0 /* GroundStationStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CD21ADDF52600138BF0 /* GroundStationStatusView.xib */; };
+		D9FB7CF71ADDF52600138BF0 /* GroundStationTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CD41ADDF52600138BF0 /* GroundStationTestViewController.m */; };
+		D9FB7CF81ADDF52600138BF0 /* GroundStationTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CD51ADDF52600138BF0 /* GroundStationTestViewController.xib */; };
+		D9FB7CF91ADDF52600138BF0 /* JoystickTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CD81ADDF52600138BF0 /* JoystickTestViewController.m */; };
+		D9FB7CFA1ADDF52600138BF0 /* JoystickTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CD91ADDF52600138BF0 /* JoystickTestViewController.xib */; };
+		D9FB7CFB1ADDF52600138BF0 /* JoyStickView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CDB1ADDF52600138BF0 /* JoyStickView.m */; };
+		D9FB7CFC1ADDF52600138BF0 /* MainControllerTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CDE1ADDF52600138BF0 /* MainControllerTestViewController.mm */; };
+		D9FB7CFD1ADDF52600138BF0 /* MainControllerTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CDF1ADDF52600138BF0 /* MainControllerTestViewController.xib */; };
+		D9FB7CFE1ADDF52600138BF0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CE11ADDF52600138BF0 /* MBProgressHUD.m */; };
+		D9FB7CFF1ADDF52600138BF0 /* MediaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CE41ADDF52600138BF0 /* MediaPreviewViewController.m */; };
+		D9FB7D001ADDF52600138BF0 /* MediaPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CE51ADDF52600138BF0 /* MediaPreviewViewController.xib */; };
+		D9FB7D011ADDF52600138BF0 /* MediaTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CE71ADDF52600138BF0 /* MediaTestViewController.m */; };
+		D9FB7D021ADDF52600138BF0 /* MediaTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CE81ADDF52600138BF0 /* MediaTestViewController.xib */; };
+		D9FB7D031ADDF52600138BF0 /* RangeExtenderTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7CEB1ADDF52600138BF0 /* RangeExtenderTestViewController.mm */; };
+		D9FB7D041ADDF52600138BF0 /* RangeExtenderTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7CEC1ADDF52600138BF0 /* RangeExtenderTestViewController.xib */; };
 		D9FCDA511ADD8B4E00D91DB7 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FCDA501ADD8B4D00D91DB7 /* DJISDK.framework */; };
 		D9FCDA551ADD8F6500D91DB7 /* DJICameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.mm */; };
 		D9FCDA561ADD8F6500D91DB7 /* DJICameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */; };
@@ -305,6 +329,45 @@
 		D9FB7C711ADDF15100138BF0 /* DJIRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJIRootViewController.h; sourceTree = "<group>"; };
 		D9FB7C721ADDF15100138BF0 /* DJIRootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DJIRootViewController.mm; sourceTree = "<group>"; };
 		D9FB7C731ADDF15100138BF0 /* DJIRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DJIRootViewController.xib; sourceTree = "<group>"; };
+		D9FB7CBD1ADDF4E700138BF0 /* Document */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Document; sourceTree = "<group>"; };
+		D9FB7CBF1ADDF52600138BF0 /* AppScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppScreen.h; sourceTree = "<group>"; };
+		D9FB7CC11ADDF52600138BF0 /* BatteryTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CC21ADDF52600138BF0 /* BatteryTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatteryTestViewController.m; sourceTree = "<group>"; };
+		D9FB7CC31ADDF52600138BF0 /* BatteryTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BatteryTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CC51ADDF52600138BF0 /* CameraSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSettingsView.h; sourceTree = "<group>"; };
+		D9FB7CC61ADDF52600138BF0 /* CameraSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSettingsView.m; sourceTree = "<group>"; };
+		D9FB7CC71ADDF52600138BF0 /* CameraSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraSettingsView.xib; sourceTree = "<group>"; };
+		D9FB7CC81ADDF52600138BF0 /* CameraTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CC91ADDF52600138BF0 /* CameraTestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraTestViewController.mm; sourceTree = "<group>"; };
+		D9FB7CCA1ADDF52600138BF0 /* CameraTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CCC1ADDF52600138BF0 /* GimbalTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GimbalTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CCD1ADDF52600138BF0 /* GimbalTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GimbalTestViewController.m; sourceTree = "<group>"; };
+		D9FB7CCE1ADDF52600138BF0 /* GimbalTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GimbalTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CD01ADDF52600138BF0 /* GroundStationStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundStationStatusView.h; sourceTree = "<group>"; };
+		D9FB7CD11ADDF52600138BF0 /* GroundStationStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundStationStatusView.m; sourceTree = "<group>"; };
+		D9FB7CD21ADDF52600138BF0 /* GroundStationStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroundStationStatusView.xib; sourceTree = "<group>"; };
+		D9FB7CD31ADDF52600138BF0 /* GroundStationTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundStationTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CD41ADDF52600138BF0 /* GroundStationTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundStationTestViewController.m; sourceTree = "<group>"; };
+		D9FB7CD51ADDF52600138BF0 /* GroundStationTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroundStationTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CD71ADDF52600138BF0 /* JoystickTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CD81ADDF52600138BF0 /* JoystickTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoystickTestViewController.m; sourceTree = "<group>"; };
+		D9FB7CD91ADDF52600138BF0 /* JoystickTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoystickTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CDA1ADDF52600138BF0 /* JoyStickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoyStickView.h; sourceTree = "<group>"; };
+		D9FB7CDB1ADDF52600138BF0 /* JoyStickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoyStickView.m; sourceTree = "<group>"; };
+		D9FB7CDD1ADDF52600138BF0 /* MainControllerTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainControllerTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CDE1ADDF52600138BF0 /* MainControllerTestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainControllerTestViewController.mm; sourceTree = "<group>"; };
+		D9FB7CDF1ADDF52600138BF0 /* MainControllerTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainControllerTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CE01ADDF52600138BF0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D9FB7CE11ADDF52600138BF0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D9FB7CE31ADDF52600138BF0 /* MediaPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPreviewViewController.h; sourceTree = "<group>"; };
+		D9FB7CE41ADDF52600138BF0 /* MediaPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPreviewViewController.m; sourceTree = "<group>"; };
+		D9FB7CE51ADDF52600138BF0 /* MediaPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPreviewViewController.xib; sourceTree = "<group>"; };
+		D9FB7CE61ADDF52600138BF0 /* MediaTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CE71ADDF52600138BF0 /* MediaTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTestViewController.m; sourceTree = "<group>"; };
+		D9FB7CE81ADDF52600138BF0 /* MediaTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTestViewController.xib; sourceTree = "<group>"; };
+		D9FB7CEA1ADDF52600138BF0 /* RangeExtenderTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeExtenderTestViewController.h; sourceTree = "<group>"; };
+		D9FB7CEB1ADDF52600138BF0 /* RangeExtenderTestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RangeExtenderTestViewController.mm; sourceTree = "<group>"; };
+		D9FB7CEC1ADDF52600138BF0 /* RangeExtenderTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RangeExtenderTestViewController.xib; sourceTree = "<group>"; };
 		D9FCDA501ADD8B4D00D91DB7 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DJISDK.framework; sourceTree = "<group>"; };
 		D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DJICameraViewController.mm; sourceTree = "<group>"; };
 		D9FCDA531ADD8F6500D91DB7 /* DJICameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJICameraViewController.h; sourceTree = "<group>"; };
@@ -583,6 +646,8 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				D9FB7CBE1ADDF52600138BF0 /* Demo */,
+				D9FB7CBD1ADDF4E700138BF0 /* Document */,
 				D9FB7C711ADDF15100138BF0 /* DJIRootViewController.h */,
 				D9FB7C721ADDF15100138BF0 /* DJIRootViewController.mm */,
 				D9FB7C731ADDF15100138BF0 /* DJIRootViewController.xib */,
@@ -836,6 +901,115 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		D9FB7CBE1ADDF52600138BF0 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CBF1ADDF52600138BF0 /* AppScreen.h */,
+				D9FB7CC01ADDF52600138BF0 /* Battery */,
+				D9FB7CC41ADDF52600138BF0 /* Camera */,
+				D9FB7CCB1ADDF52600138BF0 /* Gimbal */,
+				D9FB7CCF1ADDF52600138BF0 /* GroundStation */,
+				D9FB7CDC1ADDF52600138BF0 /* MainController */,
+				D9FB7CE01ADDF52600138BF0 /* MBProgressHUD.h */,
+				D9FB7CE11ADDF52600138BF0 /* MBProgressHUD.m */,
+				D9FB7CE21ADDF52600138BF0 /* MediaManager */,
+				D9FB7CE91ADDF52600138BF0 /* RangeExtender */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		D9FB7CC01ADDF52600138BF0 /* Battery */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CC11ADDF52600138BF0 /* BatteryTestViewController.h */,
+				D9FB7CC21ADDF52600138BF0 /* BatteryTestViewController.m */,
+				D9FB7CC31ADDF52600138BF0 /* BatteryTestViewController.xib */,
+			);
+			path = Battery;
+			sourceTree = "<group>";
+		};
+		D9FB7CC41ADDF52600138BF0 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CC51ADDF52600138BF0 /* CameraSettingsView.h */,
+				D9FB7CC61ADDF52600138BF0 /* CameraSettingsView.m */,
+				D9FB7CC71ADDF52600138BF0 /* CameraSettingsView.xib */,
+				D9FB7CC81ADDF52600138BF0 /* CameraTestViewController.h */,
+				D9FB7CC91ADDF52600138BF0 /* CameraTestViewController.mm */,
+				D9FB7CCA1ADDF52600138BF0 /* CameraTestViewController.xib */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		D9FB7CCB1ADDF52600138BF0 /* Gimbal */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CCC1ADDF52600138BF0 /* GimbalTestViewController.h */,
+				D9FB7CCD1ADDF52600138BF0 /* GimbalTestViewController.m */,
+				D9FB7CCE1ADDF52600138BF0 /* GimbalTestViewController.xib */,
+			);
+			path = Gimbal;
+			sourceTree = "<group>";
+		};
+		D9FB7CCF1ADDF52600138BF0 /* GroundStation */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CD01ADDF52600138BF0 /* GroundStationStatusView.h */,
+				D9FB7CD11ADDF52600138BF0 /* GroundStationStatusView.m */,
+				D9FB7CD21ADDF52600138BF0 /* GroundStationStatusView.xib */,
+				D9FB7CD31ADDF52600138BF0 /* GroundStationTestViewController.h */,
+				D9FB7CD41ADDF52600138BF0 /* GroundStationTestViewController.m */,
+				D9FB7CD51ADDF52600138BF0 /* GroundStationTestViewController.xib */,
+				D9FB7CD61ADDF52600138BF0 /* Joystick */,
+			);
+			path = GroundStation;
+			sourceTree = "<group>";
+		};
+		D9FB7CD61ADDF52600138BF0 /* Joystick */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CD71ADDF52600138BF0 /* JoystickTestViewController.h */,
+				D9FB7CD81ADDF52600138BF0 /* JoystickTestViewController.m */,
+				D9FB7CD91ADDF52600138BF0 /* JoystickTestViewController.xib */,
+				D9FB7CDA1ADDF52600138BF0 /* JoyStickView.h */,
+				D9FB7CDB1ADDF52600138BF0 /* JoyStickView.m */,
+			);
+			path = Joystick;
+			sourceTree = "<group>";
+		};
+		D9FB7CDC1ADDF52600138BF0 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CDD1ADDF52600138BF0 /* MainControllerTestViewController.h */,
+				D9FB7CDE1ADDF52600138BF0 /* MainControllerTestViewController.mm */,
+				D9FB7CDF1ADDF52600138BF0 /* MainControllerTestViewController.xib */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
+		D9FB7CE21ADDF52600138BF0 /* MediaManager */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CE31ADDF52600138BF0 /* MediaPreviewViewController.h */,
+				D9FB7CE41ADDF52600138BF0 /* MediaPreviewViewController.m */,
+				D9FB7CE51ADDF52600138BF0 /* MediaPreviewViewController.xib */,
+				D9FB7CE61ADDF52600138BF0 /* MediaTestViewController.h */,
+				D9FB7CE71ADDF52600138BF0 /* MediaTestViewController.m */,
+				D9FB7CE81ADDF52600138BF0 /* MediaTestViewController.xib */,
+			);
+			path = MediaManager;
+			sourceTree = "<group>";
+		};
+		D9FB7CE91ADDF52600138BF0 /* RangeExtender */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CEA1ADDF52600138BF0 /* RangeExtenderTestViewController.h */,
+				D9FB7CEB1ADDF52600138BF0 /* RangeExtenderTestViewController.mm */,
+				D9FB7CEC1ADDF52600138BF0 /* RangeExtenderTestViewController.xib */,
+			);
+			path = RangeExtender;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -917,21 +1091,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */,
+				D9FB7CF21ADDF52600138BF0 /* CameraTestViewController.xib in Resources */,
 				46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
+				D9FB7CF41ADDF52600138BF0 /* GimbalTestViewController.xib in Resources */,
 				46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */,
 				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
 				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
+				D9FB7D021ADDF52600138BF0 /* MediaTestViewController.xib in Resources */,
+				D9FB7CF01ADDF52600138BF0 /* CameraSettingsView.xib in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
+				D9FB7CFD1ADDF52600138BF0 /* MainControllerTestViewController.xib in Resources */,
+				D9FB7CF81ADDF52600138BF0 /* GroundStationTestViewController.xib in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
+				D9FB7D001ADDF52600138BF0 /* MediaPreviewViewController.xib in Resources */,
 				D9FCDA561ADD8F6500D91DB7 /* DJICameraViewController.xib in Resources */,
+				D9FB7D041ADDF52600138BF0 /* RangeExtenderTestViewController.xib in Resources */,
 				A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */,
 				46841DCE1AAD8DE500BB0BF1 /* .project in Resources */,
+				D9FB7CEE1ADDF52600138BF0 /* BatteryTestViewController.xib in Resources */,
 				D9FB7C751ADDF15100138BF0 /* DJIRootViewController.xib in Resources */,
 				46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */,
+				D9FB7CF61ADDF52600138BF0 /* GroundStationStatusView.xib in Resources */,
+				D9FB7CFA1ADDF52600138BF0 /* JoystickTestViewController.xib in Resources */,
 				46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,23 +1138,36 @@
 				D9FCDA551ADD8F6500D91DB7 /* DJICameraViewController.mm in Sources */,
 				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
 				D9D648E11ADDAB0400459A16 /* VideoFrameExtractor.m in Sources */,
+				D9FB7CF11ADDF52600138BF0 /* CameraTestViewController.mm in Sources */,
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
+				D9FB7CFC1ADDF52600138BF0 /* MainControllerTestViewController.mm in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				D9FB7C741ADDF15100138BF0 /* DJIRootViewController.mm in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
+				D9FB7CF51ADDF52600138BF0 /* GroundStationStatusView.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
+				D9FB7D011ADDF52600138BF0 /* MediaTestViewController.m in Sources */,
 				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
+				D9FB7CED1ADDF52600138BF0 /* BatteryTestViewController.m in Sources */,
+				D9FB7CFB1ADDF52600138BF0 /* JoyStickView.m in Sources */,
+				D9FB7CF71ADDF52600138BF0 /* GroundStationTestViewController.m in Sources */,
+				D9FB7CFE1ADDF52600138BF0 /* MBProgressHUD.m in Sources */,
 				D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */,
+				D9FB7CFF1ADDF52600138BF0 /* MediaPreviewViewController.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 				D9D648D51ADDAB0400459A16 /* DJIDispatch.m in Sources */,
+				D9FB7CEF1ADDF52600138BF0 /* CameraSettingsView.m in Sources */,
+				D9FB7CF31ADDF52600138BF0 /* GimbalTestViewController.m in Sources */,
+				D9FB7D031ADDF52600138BF0 /* RangeExtenderTestViewController.mm in Sources */,
+				D9FB7CF91ADDF52600138BF0 /* JoystickTestViewController.m in Sources */,
 				463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

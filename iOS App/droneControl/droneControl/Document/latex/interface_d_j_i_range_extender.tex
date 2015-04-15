@@ -1,0 +1,165 @@
+\hypertarget{interface_d_j_i_range_extender}{\section{D\+J\+I\+Range\+Extender Class Reference}
+\label{interface_d_j_i_range_extender}\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+}
+Inheritance diagram for D\+J\+I\+Range\+Extender\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_d_j_i_range_extender}
+\end{center}
+\end{figure}
+\subsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+(int) -\/ \hyperlink{interface_d_j_i_range_extender_a7f37090359acfe02e298062499fc7546}{get\+Range\+Extender\+Power\+Level}
+\item 
+(B\+O\+O\+L) -\/ \hyperlink{interface_d_j_i_range_extender_aa41f3aaa0e748133963e6d2218442d12}{bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:}
+\item 
+(N\+S\+String $\ast$) -\/ \hyperlink{interface_d_j_i_range_extender_a0635cd78ebfa3c1c37a1c76f4e909c42}{get\+Current\+Binding\+M\+A\+C}
+\item 
+(N\+S\+String $\ast$) -\/ \hyperlink{interface_d_j_i_range_extender_afbc8f1859cd7b83bb38270315e9c6fab}{get\+Current\+Binding\+S\+S\+I\+D}
+\item 
+(N\+S\+String $\ast$) -\/ \hyperlink{interface_d_j_i_range_extender_a8e2824ec831b529771fccedc6a50df4c}{get\+Mac\+Address\+Of\+Range\+Extender}
+\item 
+(N\+S\+String $\ast$) -\/ \hyperlink{interface_d_j_i_range_extender_a816a8dcd993c99f4fd54b5e59b893c83}{get\+Ssid\+Of\+Range\+Extender}
+\item 
+(B\+O\+O\+L) -\/ \hyperlink{interface_d_j_i_range_extender_afab6f3806396e27c74a3375b49c5fdf5}{rename\+Ssid\+Of\+Range\+Extender\+:}
+\item 
+(N\+S\+String $\ast$) -\/ \hyperlink{interface_d_j_i_range_extender_ad34805f00181d4a3e3dba96214f62fd8}{get\+Range\+Extender\+Wi\+Fi\+Password}
+\item 
+(B\+O\+O\+L) -\/ \hyperlink{interface_d_j_i_range_extender_aab8f7692b11f4e279542aa0890003131}{set\+Range\+Extender\+Wi\+Fi\+Password\+:}
+\end{DoxyCompactItemize}
+
+
+\subsection{Method Documentation}
+\hypertarget{interface_d_j_i_range_extender_aa41f3aaa0e748133963e6d2218442d12}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:@{bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:}}
+\index{bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:@{bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+:camera\+S\+S\+I\+D\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (B\+O\+O\+L) bind\+Range\+Extender\+With\+Camera\+M\+A\+C\+: 
+\begin{DoxyParamCaption}
+\item[{(N\+S\+String $\ast$)}]{mac\+Addr}
+\item[{cameraSSID:(N\+S\+String $\ast$)}]{ssid}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_aa41f3aaa0e748133963e6d2218442d12}
+Bind mac address to the range extender current connected
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera's} & mac addrese and camera's ssid\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retrun Y\+E\+S if bind success. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+If bind success, the range extender will reboot 
+\end{DoxyAttention}
+\hypertarget{interface_d_j_i_range_extender_a0635cd78ebfa3c1c37a1c76f4e909c42}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Current\+Binding\+M\+A\+C@{get\+Current\+Binding\+M\+A\+C}}
+\index{get\+Current\+Binding\+M\+A\+C@{get\+Current\+Binding\+M\+A\+C}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Current\+Binding\+M\+A\+C}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (N\+S\+String$\ast$) get\+Current\+Binding\+M\+A\+C 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_a0635cd78ebfa3c1c37a1c76f4e909c42}
+Get the binding mac address of the range extender current connected
+
+\begin{DoxyReturn}{Returns}
+camera's mac addreess if get success. 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_afbc8f1859cd7b83bb38270315e9c6fab}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Current\+Binding\+S\+S\+I\+D@{get\+Current\+Binding\+S\+S\+I\+D}}
+\index{get\+Current\+Binding\+S\+S\+I\+D@{get\+Current\+Binding\+S\+S\+I\+D}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Current\+Binding\+S\+S\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (N\+S\+String$\ast$) get\+Current\+Binding\+S\+S\+I\+D 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_afbc8f1859cd7b83bb38270315e9c6fab}
+Get the binding ssid
+
+\begin{DoxyReturn}{Returns}
+bingding camera's ssid 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_a8e2824ec831b529771fccedc6a50df4c}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Mac\+Address\+Of\+Range\+Extender@{get\+Mac\+Address\+Of\+Range\+Extender}}
+\index{get\+Mac\+Address\+Of\+Range\+Extender@{get\+Mac\+Address\+Of\+Range\+Extender}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Mac\+Address\+Of\+Range\+Extender}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (N\+S\+String$\ast$) get\+Mac\+Address\+Of\+Range\+Extender 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_a8e2824ec831b529771fccedc6a50df4c}
+get M\+A\+C Address of range extender current connected
+
+\begin{DoxyReturn}{Returns}
+M\+A\+C address or nil if failed. 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_a7f37090359acfe02e298062499fc7546}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Range\+Extender\+Power\+Level@{get\+Range\+Extender\+Power\+Level}}
+\index{get\+Range\+Extender\+Power\+Level@{get\+Range\+Extender\+Power\+Level}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Range\+Extender\+Power\+Level}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) get\+Range\+Extender\+Power\+Level 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_a7f37090359acfe02e298062499fc7546}
+Get the power level of the range extender.
+
+\begin{DoxyReturn}{Returns}
+Power level between 0 -\/ 10 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_ad34805f00181d4a3e3dba96214f62fd8}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Range\+Extender\+Wi\+Fi\+Password@{get\+Range\+Extender\+Wi\+Fi\+Password}}
+\index{get\+Range\+Extender\+Wi\+Fi\+Password@{get\+Range\+Extender\+Wi\+Fi\+Password}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Range\+Extender\+Wi\+Fi\+Password}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (N\+S\+String$\ast$) get\+Range\+Extender\+Wi\+Fi\+Password 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_ad34805f00181d4a3e3dba96214f62fd8}
+Get wifi password
+
+\begin{DoxyReturn}{Returns}
+wifi password or nil 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_a816a8dcd993c99f4fd54b5e59b893c83}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!get\+Ssid\+Of\+Range\+Extender@{get\+Ssid\+Of\+Range\+Extender}}
+\index{get\+Ssid\+Of\+Range\+Extender@{get\+Ssid\+Of\+Range\+Extender}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{get\+Ssid\+Of\+Range\+Extender}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (N\+S\+String$\ast$) get\+Ssid\+Of\+Range\+Extender 
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_a816a8dcd993c99f4fd54b5e59b893c83}
+Get S\+S\+I\+D of range extender current connected
+
+\begin{DoxyReturn}{Returns}
+ssid 
+\end{DoxyReturn}
+\hypertarget{interface_d_j_i_range_extender_afab6f3806396e27c74a3375b49c5fdf5}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!rename\+Ssid\+Of\+Range\+Extender\+:@{rename\+Ssid\+Of\+Range\+Extender\+:}}
+\index{rename\+Ssid\+Of\+Range\+Extender\+:@{rename\+Ssid\+Of\+Range\+Extender\+:}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{rename\+Ssid\+Of\+Range\+Extender\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (B\+O\+O\+L) rename\+Ssid\+Of\+Range\+Extender\+: 
+\begin{DoxyParamCaption}
+\item[{(N\+S\+String $\ast$)}]{new\+Ssid}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_afab6f3806396e27c74a3375b49c5fdf5}
+Rename the extender's ssid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & new ssid name of range extender, must has prefix \char`\"{}\+Phantom\+\_\+\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+if rename success, the range extender will reboot 
+\end{DoxyAttention}
+\hypertarget{interface_d_j_i_range_extender_aab8f7692b11f4e279542aa0890003131}{\index{D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}!set\+Range\+Extender\+Wi\+Fi\+Password\+:@{set\+Range\+Extender\+Wi\+Fi\+Password\+:}}
+\index{set\+Range\+Extender\+Wi\+Fi\+Password\+:@{set\+Range\+Extender\+Wi\+Fi\+Password\+:}!D\+J\+I\+Range\+Extender@{D\+J\+I\+Range\+Extender}}
+\subsubsection[{set\+Range\+Extender\+Wi\+Fi\+Password\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (B\+O\+O\+L) set\+Range\+Extender\+Wi\+Fi\+Password\+: 
+\begin{DoxyParamCaption}
+\item[{(N\+S\+String $\ast$)}]{password}
+\end{DoxyParamCaption}
+}}\label{interface_d_j_i_range_extender_aab8f7692b11f4e279542aa0890003131}
+set wifi password
+
+
+\begin{DoxyParams}{Parameters}
+{\em password} & New wifi passwords that is made up of letters and numbers and should be 8 -\/ 16 characters。 set nil to cancel setup password \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+Hard reset range extender will clean password 
+\end{DoxyAttention}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+J\+I\+Range\+Extender.\+h\end{DoxyCompactItemize}
