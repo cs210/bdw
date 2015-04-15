@@ -46,9 +46,12 @@ typedef enum
         _currentState = kListening;
         NSLog(@"Status: listening");
     }
+
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     [self.navigationController pushViewController:cameraFeed animated:NO];
+    [speechController stopListening];
+//    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
 - (IBAction)parking_button:(id)sender
@@ -126,10 +129,12 @@ typedef enum
 
 -(void) didReceiveWord: (NSString *) word
 {
+
     NSLog(@"Word heard:%s", word);
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 //    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    [self.navigationController pushViewController:cameraFeed animated:NO];
+
 
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
@@ -147,9 +152,14 @@ typedef enum
     if ([word isEqualToString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
         //For now transition to other view controller
+
 //        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+        [speechController stopListening];
         DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
         [self.navigationController pushViewController:cameraFeed animated:NO];
+
+//        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+
     }
     
 }
