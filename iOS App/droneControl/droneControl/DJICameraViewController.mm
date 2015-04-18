@@ -243,6 +243,40 @@
     }
 }
 
+#pragma mark - DJIDroneDelegate
+
+-(void) droneOnConnectionStatusChanged:(DJIConnectionStatus)status
+{
+    switch (status) {
+        case ConnectionStartConnect:
+        {
+            NSLog(@"Start Reconnect...");
+            break;
+        }
+        case ConnectionSuccessed:
+        {
+            NSLog(@"Connect Successed...");
+            _connectionStatusLabel.text = @"Connected";
+            break;
+        }
+        case ConnectionFailed:
+        {
+            NSLog(@"Connect Failed...");
+            _connectionStatusLabel.text = @"Connect Failed";
+            break;
+        }
+        case ConnectionBroken:
+        {
+            NSLog(@"Connect Broken...");
+            _connectionStatusLabel.text = @"Disconnected";
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
 
 //Camera Button
 
