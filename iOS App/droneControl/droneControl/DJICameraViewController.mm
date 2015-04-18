@@ -91,17 +91,6 @@
     DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
     DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
     DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
-
-//    while (TRUE) {
-//        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-//            if (error.errorCode == ERR_Successed) {
-//                
-//            }
-//        }];
-//        usleep(40000);
-//    }
-    
-    // stop rotation.
     
     pitch.angle = 300;
     roll.angle = 0;
