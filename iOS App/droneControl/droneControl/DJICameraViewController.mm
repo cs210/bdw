@@ -148,7 +148,7 @@
         }
         else
         {
-            NSLog(@"Set GimbalAttitude Failed");
+            NSLog(@"Setting GimbalAttitude Failed");
         }
     }];
 }
