@@ -223,6 +223,26 @@
     }];
 }
 
+#pragma mark - DJIGimbalDelegate
+
+-(void) gimbalController:(DJIGimbal*)controller didGimbalError:(DJIGimbalError)error
+{
+    if (error == GimbalClamped) {
+        NSLog(@"Gimbal Clamped");
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Gimbal Clamped" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+    if (error == GimbalErrorNone) {
+        NSLog(@"Gimbal Error None");
+        
+    }
+    if (error == GimbalMotorAbnormal) {
+        NSLog(@"Gimbal Motor Abnormal");
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Gimbal Motor Abnormal" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
 
 //Camera Button
 
