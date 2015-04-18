@@ -119,6 +119,16 @@
 //    [self readGimbalAttitude];
 }
 
+-(void) readGimbalAttitude
+{
+    DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
+    NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
+    
+    //    while (true) {
+    //    
+    //        [NSThread sleepForTimeInterval:0.2];
+    //    }
+}
 
 
 -(void) gimball_reset
