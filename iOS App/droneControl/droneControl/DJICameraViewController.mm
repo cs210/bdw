@@ -181,6 +181,27 @@
     }];
 }
 
+-(void) onGimbalAttitudeYawRotationBackward
+{
+    DJIGimbalRotation pitch = {YES, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation yaw = {YES, 16, RelativeAngle, RotationBackward};
+    while (_gimbalAttitudeUpdateFlag) {
+        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+            if (error.errorCode == ERR_Successed) {
+                
+            }
+        }];
+        usleep(40000);
+    }
+    // stop rotation.
+    pitch.angle = 0;
+    roll.angle = 0;
+    yaw.angle = 0;
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    }];
+}
+
 
 //Camera Button
 
