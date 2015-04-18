@@ -116,7 +116,7 @@
             NSLog(@"Set GimbalAttitude Failed");
         }
     }];
-//    [self readGimbalAttitude];
+    [self readGimbalAttitude];
 }
 
 -(void) readGimbalAttitude
@@ -125,7 +125,7 @@
     NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
     
     //    while (true) {
-    //    
+    //
     //        [NSThread sleepForTimeInterval:0.2];
     //    }
 }
