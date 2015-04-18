@@ -32,22 +32,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-OO-AUe">
-                    <rect key="frame" x="114" y="378" width="93" height="30"/>
-                    <state key="normal" title="Reset Gimbal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="reset_gimbal_button:" destination="-1" eventType="touchUpInside" id="sxL-qq-PNA"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGS-hS-ReT">
-                    <rect key="frame" x="113" y="416" width="94" height="30"/>
+                    <rect key="frame" x="113" y="471" width="94" height="30"/>
                     <state key="normal" title="Setup Gimbal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="prepare_gimbal_button:" destination="-1" eventType="touchUpInside" id="VT7-eW-SqE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-OO-AUe">
+                    <rect key="frame" x="114" y="398" width="93" height="30"/>
+                    <state key="normal" title="Reset Gimbal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="reset_gimbal_button:" destination="-1" eventType="touchUpInside" id="sxL-qq-PNA"/>
                     </connections>
                 </button>
             </subviews>
@@ -57,11 +57,11 @@
                 <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="84g-UC-E93"/>
                 <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" id="D2R-IH-pPj"/>
                 <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="N2X-tM-VxA"/>
-                <constraint firstItem="sBb-OO-AUe" firstAttribute="bottom" secondItem="1" secondAttribute="bottomMargin" constant="-152" id="YGP-Wm-od9"/>
+                <constraint firstItem="sBb-OO-AUe" firstAttribute="bottom" secondItem="1" secondAttribute="bottomMargin" constant="-132" id="YGP-Wm-od9"/>
                 <constraint firstItem="NhP-lM-yQX" firstAttribute="top" secondItem="l0L-Wp-V55" secondAttribute="bottom" constant="42" id="aAA-Bv-Bwo"/>
                 <constraint firstItem="NhP-lM-yQX" firstAttribute="centerX" secondItem="l0L-Wp-V55" secondAttribute="centerX" id="azo-hp-Hye"/>
                 <constraint firstItem="sBb-OO-AUe" firstAttribute="centerX" secondItem="NhP-lM-yQX" secondAttribute="centerX" id="kTM-Ds-b4K"/>
-                <constraint firstItem="eGS-hS-ReT" firstAttribute="top" secondItem="sBb-OO-AUe" secondAttribute="bottom" constant="8" symbolic="YES" id="vQH-o4-cZs"/>
+                <constraint firstItem="eGS-hS-ReT" firstAttribute="top" secondItem="sBb-OO-AUe" secondAttribute="bottom" constant="43" id="vQH-o4-cZs"/>
                 <constraint firstItem="eGS-hS-ReT" firstAttribute="trailing" secondItem="sBb-OO-AUe" secondAttribute="trailing" id="vjG-NF-6BN"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
