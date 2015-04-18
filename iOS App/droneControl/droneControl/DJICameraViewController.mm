@@ -119,26 +119,26 @@
 }
 
 
-//
-//-(void) gimball_reset
-//{
-//    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
-//    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
-//    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
-//    
-//    pitch.angle = 0;
-//    roll.angle = 0;
-//    yaw.angle = 0;
-//    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-//        if (error.errorCode == ERR_Successed) {
-//            
-//        }
-//        else
-//        {
-//            NSLog(@"Set GimbalAttitude Failed");
-//        }
-//    }];
-//}
+
+-(void) gimball_reset
+{
+    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
+    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
+    
+    pitch.angle = 0;
+    roll.angle = 0;
+    yaw.angle = 0;
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        if (error.errorCode == ERR_Successed) {
+            
+        }
+        else
+        {
+            NSLog(@"Set GimbalAttitude Failed");
+        }
+    }];
+}
 
 //-(IBAction) onGimbalScroollDownTouchDown:(id)sender
 //{
