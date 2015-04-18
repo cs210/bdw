@@ -46,16 +46,17 @@ typedef enum
         _currentState = kListening;
         NSLog(@"Status: listening");
     }
-
+    [speechController stopListening];
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     [self.navigationController pushViewController:cameraFeed animated:NO];
-    [speechController stopListening];
+
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
 - (IBAction)parking_button:(id)sender
 {
+    [speechController stopListening];
     DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     [self.navigationController pushViewController:cameraFeed animated:NO];
 }

@@ -12,6 +12,8 @@
 
 @implementation DJICamerViewController
 
+    BOOL _gimbalAttitudeUpdateFlag;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,7 +25,12 @@
     
     //Start video data decode thread
     [[VideoPreviewer instance] start];
-    
+
+    //gimbal
+//    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
+//    _drone.delegate = self;
+    _drone.gimbal.delegate = self;
+    [self onGimbalAttitudeScrollDown];
 }
 
 -(void) dealloc
@@ -38,6 +45,8 @@
     [_drone connectToDrone];
     [_camera startCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:self.videoPreviewView];
+    //gimbal
+//    [_drone connectToDrone];
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -45,9 +54,41 @@
     [super viewWillDisappear:animated];
     
     [_camera stopCameraSystemStateUpdates];
-    [_drone disconnectToDrone];
     [[VideoPreviewer instance] setView:nil];
+    
+    //gimabl
+    [_drone disconnectToDrone];
+    [_drone destroy];
 }
+- (IBAction)prepare_gimbal_button:(id)sender
+{
+    NSLog(@":::::::::: Gimbal prep");
+    [self onGimbalAttitudeScrollDown];
+}
+- (IBAction)reset_gimbal_button:(id)sender
+{
+    NSLog(@":::::::::: Gimbal reset");
+    [self gimball_reset];
+}
+
+//-(IBAction) onGimbalScroollDownTouchDown:(id)sender
+//{
+//    _gimbalAttitudeUpdateFlag = YES;
+//    [NSThread detachNewThreadSelector:@selector(onGimbalAttitudeScrollDown) toTarget:self withObject:nil];
+//    NSOperationQueue* asyncQueue = [NSOperationQueue mainQueue];
+//    asyncQueue.maxConcurrentOperationCount = 1;
+//    [_drone.gimbal startGimbalAttitudeUpdateToQueue:asyncQueue withResultBlock:^(DJIGimbalAttitude attitude) {
+////        NSString* attiString = [NSString stringWithFormat:@"Pitch = %d\nRoll = %d\nYaw = %d\n", attitude.pitch, attitude.roll, attitude.yaw];
+////        self.attitudeLabel.text = attiString;
+//    }];
+//}
+//
+//-(IBAction) onGimbalScroollDownTouchUp:(id)sender
+//{
+//    _gimbalAttitudeUpdateFlag = NO;
+//    [_drone.gimbal stopGimbalAttitudeUpdates];
+//}
+
 
 -(BOOL) shouldAutorotate
 {
@@ -57,6 +98,66 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationPortrait;
+}
+
+-(void) onGimbalAttitudeScrollDown
+{
+    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
+    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
+//    while (TRUE) {
+//        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+//            if (error.errorCode == ERR_Successed) {
+//                
+//            }
+//        }];
+//        usleep(40000);
+//    }
+    
+    // stop rotation.
+    pitch.angle = 300;
+    roll.angle = 0;
+    yaw.angle = 0;
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        if (error.errorCode == ERR_Successed) {
+            
+        }
+        else
+        {
+            NSLog(@"Set GimbalAttitude Failed");
+        }
+    }];
+    [self readGimbalAttitude];
+}
+
+-(void) readGimbalAttitude
+{
+//    while (true) {
+        DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
+        NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
+        
+//        [NSThread sleepForTimeInterval:0.2];
+//    }
+}
+
+-(void) gimball_reset
+{
+    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
+    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
+    
+    pitch.angle = 0;
+    roll.angle = 0;
+    yaw.angle = 0;
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        if (error.errorCode == ERR_Successed) {
+            
+        }
+        else
+        {
+            NSLog(@"Set GimbalAttitude Failed");
+        }
+    }];
 }
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender
