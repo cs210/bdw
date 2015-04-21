@@ -10,7 +10,7 @@
 #import "VideoPreviewer.h"
 #import <DJISDK/DJISDK.h>
 
-@implementation DJICamerViewController
+@implementation DJICameraViewController
 
     BOOL _gimbalAttitudeUpdateFlag;
 
