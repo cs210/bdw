@@ -28,7 +28,7 @@ title('Sobel')
 thresholdedImage = im1;
 for row = 1 : rows / 2
     for column = 1 : columns / 2
-        if (im1(row,column) > 150)
+        if (im1(row,column) > 160)
             thresholdedImage(row, column) = 255;
         else
             thresholdedImage(row, column) = 0;
@@ -37,5 +37,13 @@ for row = 1 : rows / 2
 end
 subplot(1,3,3)
 imshow(thresholdedImage)
+title('Thresholded Image')
 figure;
 imshow(thresholdedImage)
+
+%%% MIKE EDGE DETECTOR %%%
+%The general idea here is when we detect a 'white' line, look for
+%neighboring pixels, and start "exploring" in that detection. With the
+%thresholding, speckels will disapear as the number of neighboring pixels
+%is small
+mikeSpeckleFilter(thresholdedImage, 3)
