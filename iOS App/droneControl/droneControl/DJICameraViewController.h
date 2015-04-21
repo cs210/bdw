@@ -14,12 +14,12 @@
 
 @interface DJICamerViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
 {
-//    DJIDrone* _drone;
+    DJIDrone* _drone;
     DJICamera* _camera;
 }
 
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
-@property(nonatomic, strong) DJIDrone* _drone;
+//@property(nonatomic, strong) DJIDrone* _drone;
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender;
 

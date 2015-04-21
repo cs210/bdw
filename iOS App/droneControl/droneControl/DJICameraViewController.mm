@@ -13,14 +13,16 @@
 @implementation DJICamerViewController
 
     BOOL _gimbalAttitudeUpdateFlag;
+    BOOL doneLoading;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    doneLoading = false;
     // Do any additional setup after loading the view from its nib.
     
-//    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
-    _camera = self._drone.camera;
+    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
+    _camera = _drone.camera;
     _camera.delegate = self;
     
     //Start video data decode thread
@@ -30,26 +32,32 @@
 //    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
 //    _drone.delegate = self;
     
-    self._drone.gimbal.delegate = self;
+    _drone.gimbal.delegate = self;
 //    [self onGimbalAttitudeScrollDown];
-    [self gimball_reset];
+    doneLoading = true;
+    [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
+    [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
 }
 
 -(void) dealloc
 {
-    [self._drone destroy];
+    [_drone destroy];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self._drone connectToDrone];
+    [_drone connectToDrone];
     [_camera startCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:self.videoPreviewView];
 //    [self onGimbalAttitudeScrollDown];
     //gimbal
 //    [_drone connectToDrone];
+    if (doneLoading) {
+        NSLog(@"::::::::::::: DONE view did load");
+        [self onGimbalAttitudeScrollDown];
+    }
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -60,8 +68,8 @@
     [[VideoPreviewer instance] setView:nil];
     
     //gimabl
-    [self._drone disconnectToDrone];
-    [self._drone destroy];
+    [_drone disconnectToDrone];
+    [_drone destroy];
 }
 
 - (IBAction)prepare_gimbal_button:(id)sender
@@ -97,7 +105,7 @@
     roll.angle = 0;
     yaw.angle = 0;
     
-    [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
         if (error.errorCode == ERR_Successed) {
             
         }
@@ -111,7 +119,7 @@
 
 -(void) readGimbalAttitude
 {
-    DJIGimbalAttitude attitude = self._drone.gimbal.gimbalAttitude;
+    DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
     NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
     
     //    while (true) {
@@ -131,7 +139,7 @@
     roll.angle = 0;
     yaw.angle = 0;
 
-    [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
         if (error.errorCode == ERR_Successed)
         {
             
@@ -167,7 +175,7 @@
     DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationForward};
     DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationForward};
     while (_gimbalAttitudeUpdateFlag) {
-        [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
             if (error.errorCode == ERR_Successed) {
                 
             }
@@ -178,7 +186,7 @@
     pitch.angle = 0;
     roll.angle = 0;
     yaw.angle = 0;
-    [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
     }];
 }
 
@@ -188,7 +196,7 @@
     DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
     DJIGimbalRotation yaw = {YES, 16, RelativeAngle, RotationBackward};
     while (_gimbalAttitudeUpdateFlag) {
-        [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
             if (error.errorCode == ERR_Successed) {
                 
             }
@@ -199,7 +207,7 @@
     pitch.angle = 0;
     roll.angle = 0;
     yaw.angle = 0;
-    [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
     }];
 }
 
@@ -209,7 +217,7 @@
     DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationForward};
     DJIGimbalRotation yaw = {YES, 16, RelativeAngle, RotationForward};
     while (_gimbalAttitudeUpdateFlag) {
-        [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
             if (error.errorCode == ERR_Successed) {
                 
             }
@@ -220,7 +228,7 @@
     pitch.angle = 0;
     roll.angle = 0;
     yaw.angle = 0;
-    [self._drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
     }];
 }
 

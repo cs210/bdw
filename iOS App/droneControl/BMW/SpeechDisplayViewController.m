@@ -18,7 +18,7 @@ typedef enum
 {
     SpeechController * speechController;
     listeningStates _currentState;
-    DJIDrone* _drone;
+//    DJIDrone* _drone;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -35,7 +35,7 @@ typedef enum
 
 @implementation SpeechDisplayViewController
 
-    BOOL _gimbalAttitudeUpdateFlag;
+//    BOOL _gimbalAttitudeUpdateFlag;
 
 
 /* speech stuff */
@@ -49,15 +49,12 @@ typedef enum
         _currentState = kListening;
         NSLog(@"Status: listening");
     }
-    [self moveToNext];
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
 - (IBAction)parking_button:(id)sender
 {
-    [speechController stopListening];
-    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO];
+    [self moveToNext];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -76,7 +73,7 @@ typedef enum
                      completion:^(BOOL finished){
                          // Do nothing
                      }];
-    [_drone connectToDrone];
+//    [_drone connectToDrone];
 }
 
 - (void)viewDidLoad {
@@ -115,8 +112,8 @@ typedef enum
     //Get the location of the microphone and add a
     
     //setup drone
-    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
-    _drone.gimbal.delegate = self;
+//    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
+//    _drone.gimbal.delegate = self;
 }
 
 -(NSArray * ) listOfWordsToDetect
@@ -163,55 +160,55 @@ typedef enum
 -(void) moveToNext
 {
     [speechController stopListening];
-    [self onGimbalAttitudeScrollDown];
+//    [self onGimbalAttitudeScrollDown];
     NSLog(@"Moving gimbal and then to next view controller");
     DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    cameraFeed._drone = _drone;
+//    cameraFeed._drone = _drone;
     [self.navigationController pushViewController:cameraFeed animated:NO];
 }
 
--(void) dealloc
-{
-    [_drone destroy];
-}
+//-(void) dealloc
+//{
+//    [_drone destroy];
+//}
 
--(void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    //gimabl
-    [_drone disconnectToDrone];
-    [_drone destroy];
-}
+//-(void) viewWillDisappear:(BOOL)animated
+//{
+//    [super viewWillDisappear:animated];
+//    
+//    //gimabl
+//    [_drone disconnectToDrone];
+//    [_drone destroy];
+//}
 
 
--(void) onGimbalAttitudeScrollDown
-{
-    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
-    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
-    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
-    
-    pitch.angle = 300;
-    roll.angle = 0;
-    yaw.angle = 0;
-    
-    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-        if (error.errorCode == ERR_Successed) {
-            
-        }
-        else
-        {
-            NSLog(@"Set GimbalAttitude Failed");
-        }
-    }];
-    [self readGimbalAttitude];
-}
-
--(void) readGimbalAttitude
-{
-    DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
-    NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
-}
+//-(void) onGimbalAttitudeScrollDown
+//{
+//    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
+//    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+//    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
+//    
+//    pitch.angle = 300;
+//    roll.angle = 0;
+//    yaw.angle = 0;
+//    
+//    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+//        if (error.errorCode == ERR_Successed) {
+//            
+//        }
+//        else
+//        {
+//            NSLog(@"Set GimbalAttitude Failed");
+//        }
+//    }];
+//    [self readGimbalAttitude];
+//}
+//
+//-(void) readGimbalAttitude
+//{
+//    DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
+//    NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
+//}
 
 
 - (void)awakeFromNib
