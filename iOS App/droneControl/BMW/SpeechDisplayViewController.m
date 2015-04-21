@@ -80,6 +80,7 @@ typedef enum
                      completion:^(BOOL finished){
                          // Do nothing
                      }];
+    [_drone connectToDrone];
 }
 
 - (void)viewDidLoad {
@@ -100,14 +101,6 @@ typedef enum
     
     _currentState = kNotListening;
     
-//    self.mic_button.transform = CGAffineTransformMakeScale(1.5,1.5);
-//    self.mic_button.alpha = 0.0f;
-//
-//    [UIView beginAnimations:@"button" context:nil];
-//    [UIView setAnimationDuration:1];
-//    self.mic_button.transform = CGAffineTransformMakeScale(1,1);
-//    self.mic_button.alpha = 1.0f;
-//    [UIView commitAnimations];
     self.mic_button.alpha = 1.0f;
     [UIView animateWithDuration:1.2
                           delay:0.0
@@ -138,7 +131,7 @@ typedef enum
 -(void) didReceiveWord: (NSString *) word
 {
 
-    NSLog(@"Word heard:%s", word);
+    NSLog(@"Word heard:%@", word);
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 //    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    [self.navigationController pushViewController:cameraFeed animated:NO];
@@ -163,8 +156,10 @@ typedef enum
 
 //        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
         [speechController stopListening];
+        [self onGimbalAttitudeScrollDown];
         DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
         [self.navigationController pushViewController:cameraFeed animated:NO];
+        
 
 //        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 
@@ -172,6 +167,28 @@ typedef enum
     
 }
 
+
+-(void) onGimbalAttitudeScrollDown
+{
+    DJIGimbalRotation pitch = {YES, 150, RelativeAngle, RotationBackward};
+    DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
+    DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationBackward};
+    
+    pitch.angle = 300;
+    roll.angle = 0;
+    yaw.angle = 0;
+    
+    [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
+        if (error.errorCode == ERR_Successed) {
+            
+        }
+        else
+        {
+            NSLog(@"Set GimbalAttitude Failed");
+        }
+    }];
+    [self readGimbalAttitude];
+}
 
 
 - (void)awakeFromNib
