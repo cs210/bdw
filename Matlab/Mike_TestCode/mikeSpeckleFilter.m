@@ -1,8 +1,19 @@
 %% MIKE'S SPECKLE REMOVAL FILTER %%
 
 function [newImage] = mikeSpeckleFilter(image, depth)
-    [rows, columns, numberOfChannels] = size(image);
+    [rows, columns, ~] = size(image);
     newImage = image;
+    
+    
+    row = 280;
+    column = 280;
+ 
+    nextDirection = PixelDirections.findNeighbourPixelDirection(image, row, column);
+    nextDirection = PixelDirections.TopLeft;
+    PixelDirections.PixelChecker(image, row, column, nextDirection, 225);
+    
+    return;
+    
     for row = 1 : rows
         for column = 1 : columns
             if (newImage(row, column) > 200) %White pixel

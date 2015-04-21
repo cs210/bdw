@@ -49,5 +49,5 @@ imshow(thresholdedImage)
 %thresholding, speckels will disapear as the number of neighboring pixels
 %is small
 newImage = mikeSpeckleFilter(thresholdedImage, 3);
-figure
-imshow(newImage);
+%figure
+%imshow(newImage);
