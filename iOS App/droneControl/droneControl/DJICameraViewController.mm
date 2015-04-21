@@ -14,13 +14,14 @@
 
     BOOL _gimbalAttitudeUpdateFlag;
     BOOL doneLoading;
-    BOOL takephoto;
+    BOOL switch_to_usb;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     doneLoading = false;
-    takephoto = false;
+//    takephoto = true;
+    switch_to_usb = false;
     
     _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
     _camera = _drone.camera;
@@ -77,8 +78,9 @@
 -(void) displayImage
 {
     DJIMedia* media = [_mediasList lastObject];
-    
+    NSLog(@"%lu", (unsigned long)[_mediasList count]);
     if (media) {
+        NSLog(@"GOT MEDIA :::::: ");
         //        self.progressIndicator.center = self.view.center;
         //        [self.view addSubview:self.progressIndicator];
         //        [self.progressIndicator startAnimating];
@@ -128,23 +130,29 @@
 
 -(void) updateMedias
 {
-    if (_mediasList) {
-        return;
-    }
+    switch_to_usb = true;
+//    if (_mediasList) {
+//        return;
+//    }
     
-    if (_fetchingMedias) {
-        return;
-    }
+//    if (_fetchingMedias) {
+//        return;
+//    }
     
     NSLog(@"Start Fetch Medias");
-    _fetchingMedias = YES;
+//    _fetchingMedias = YES;
     
-//    [self showLoadingIndicator];
+
+}
+
+-(void) pull_image
+{
+    //    [self showLoadingIndicator];
     [_drone.camera fetchMediaListWithResultBlock:^(NSArray *mediaList, NSError *error) {
-//        [self hideLoadingIndicator];
+        //        [self hideLoadingIndicator];
         if (mediaList) {
             _mediasList = mediaList;
-//            [self.tableView reloadData];
+            //            [self.tableView reloadData];
             NSLog(@"MediaDirs: %@", _mediasList);
         } else {
             NSLog(@"NO MEDIALIST");
@@ -152,10 +160,16 @@
         
         _fetchingMedias = NO;
     }];
-    [self displayImage];
-    takephoto = false;
+
+    [self performSelector:@selector(displayImage) withObject:nil afterDelay:3];
+    [self performSelector:@selector(switch_back_to_camera) withObject:nil afterDelay:5];
+    //    takephoto = false;
 }
 
+-(void) switch_back_to_camera
+{
+    switch_to_usb = false;
+}
 
 
 - (IBAction)prepare_gimbal_button:(id)sender
@@ -380,10 +394,16 @@
     [_camera startTakePhoto:CameraSingleCapture withResult:^(DJIError *error) {
         if (error.errorCode != ERR_Successed) {
             NSLog(@"Take Photo Error : %@", error.errorDescription);
+        } else {
+            NSLog(@"TOOK PHOTO SUCCCEEEESSSSSFULLYYYYYYYYYYYY");
         }
     }];
-    takephoto = true;
+//    takephoto = true;
     NSLog(@"Photo button clicked");
+    
+    [self performSelector:@selector(updateMedias) withObject:nil afterDelay:2];
+//    [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
+    
 }
 
 #pragma mark - DJICameraDelegate
@@ -397,17 +417,14 @@
 
 -(void) camera:(DJICamera*)camera didUpdateSystemState:(DJICameraSystemState*)systemState
 {
-    if (!systemState.isTimeSynced) {
-        [_camera syncTime:nil];
-    }
-    
-    if (takephoto) {
-        NSLog(@":::::::: ENTERING USB MODE");
+    if (switch_to_usb) {
+        NSLog(@":::::::: USB MODE ::::::::");
         if (!systemState.isUSBMode) {
             NSLog(@"Set USB Mode");
             [_drone.camera setCamerMode:CameraUSBMode withResultBlock:^(DJIError *error) {
                 if (error.errorCode == ERR_Successed) {
                     NSLog(@"Set USB Mode Successed");
+                    [self performSelector:@selector(pull_image) withObject:nil afterDelay:3];
                 }
             }];
         }
@@ -419,13 +436,18 @@
             NSLog(@"USB Connected To PC");
             return;
         }
-        [self updateMedias];
+//        [self updateMedias];
     
-        } else {
-            if (systemState.isUSBMode) {
-                [_camera setCamerMode:CameraCameraMode withResultBlock:Nil];
-            }
+    } else {
+        NSLog(@":::::::: CAMERA MODE ::::::::::");
+        if (!systemState.isTimeSynced) {
+            [_camera syncTime:nil];
         }
+        
+        if (systemState.isUSBMode) {
+            [_camera setCamerMode:CameraCameraMode withResultBlock:Nil];
+        }
+    }
 }
 
 @end

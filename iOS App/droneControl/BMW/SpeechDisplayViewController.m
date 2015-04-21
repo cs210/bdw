@@ -132,7 +132,7 @@ typedef enum
 
     [[BMWConnectedDroneDataSource sharedDataSource] set_MostRecentWord:word];
     _lastHeardWord.text = word;
-    if ([word isEqualToString:@"FIND PARKING"]){
+    if ([word containsString:@"FIND PARKING"]){
         _needConfirmation = true;
         _askForConfirmation.hidden = NO;
         NSLog(@"Needs confirmation");
@@ -143,7 +143,7 @@ typedef enum
         NSLog(@"No needs confirmation");
 
     }
-    if ([word isEqualToString:@"YES"] && _needConfirmation){
+    if ([word containsString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
         
 //For now transition to other view controller
