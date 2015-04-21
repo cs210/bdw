@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RemoteApplicationManager.h"
 #import "BMWFindParkingView.h"
+#import <DJISDK/DJISDK.h>
 
 typedef enum {
     ConnectionStateUnknown = 0,
@@ -16,7 +17,7 @@ typedef enum {
     ConnectionStateConnectedToVehicle = 2,
 } ConnectionState;
 
-@interface SpeechDisplayViewController : UIViewController
+@interface SpeechDisplayViewController : UIViewController <DJIGimbalDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UILabel *connectionStateLabel;

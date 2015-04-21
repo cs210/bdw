@@ -4,6 +4,7 @@
 #import "SpeechController.h"
 #import "AerialViewController.h"
 #import "DJICameraViewController.h"
+#import <DJISDK/DJISDK.h>
 
 typedef enum
 {
@@ -17,6 +18,7 @@ typedef enum
 {
     SpeechController * speechController;
     listeningStates _currentState;
+    DJIDrone* _drone;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -33,6 +35,7 @@ typedef enum
 
 @implementation SpeechDisplayViewController
 
+    BOOL _gimbalAttitudeUpdateFlag;
 
 
 /* speech stuff */
@@ -121,6 +124,10 @@ typedef enum
     
     //Set up the UI
     //Get the location of the microphone and add a
+    
+    //setup drone
+    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
+    _drone.gimbal.delegate = self;
 }
 
 -(NSArray * ) listOfWordsToDetect

@@ -46,7 +46,7 @@
     [_drone connectToDrone];
     [_camera startCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:self.videoPreviewView];
-
+    [self onGimbalAttitudeScrollDown];
     //gimbal
 //    [_drone connectToDrone];
 }
