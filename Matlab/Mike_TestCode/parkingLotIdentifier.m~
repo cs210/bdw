@@ -1,0 +1,3 @@
+im = imread('../TestingImages/IMG_3110.JPG');
+gra
+imshow(im)
