@@ -10,7 +10,7 @@
 #import "VideoPreviewer.h"
 #import <DJISDK/DJISDK.h>
 
-@implementation DJICamerViewController
+@implementation DJICameraViewController
 
     BOOL _gimbalAttitudeUpdateFlag;
 
@@ -142,8 +142,8 @@
     }];
 }
 
-//-(IBAction) onGimbalScroollDownTouchDown:(id)sender
-//{
+-(IBAction) onGimbalScrollDownTouchDown:(id)sender
+{
 //    _gimbalAttitudeUpdateFlag = YES;
 //    [NSThread detachNewThreadSelector:@selector(onGimbalAttitudeScrollDown) toTarget:self withObject:nil];
 //    NSOperationQueue* asyncQueue = [NSOperationQueue mainQueue];
@@ -152,13 +152,13 @@
 ////        NSString* attiString = [NSString stringWithFormat:@"Pitch = %d\nRoll = %d\nYaw = %d\n", attitude.pitch, attitude.roll, attitude.yaw];
 ////        self.attitudeLabel.text = attiString;
 //    }];
-//}
+}
 //
-//-(IBAction) onGimbalScroollDownTouchUp:(id)sender
-//{
+-(IBAction) onGimbalScrollDownTouchUp:(id)sender
+{
 //    _gimbalAttitudeUpdateFlag = NO;
 //    [_drone.gimbal stopGimbalAttitudeUpdates];
-//}
+}
 
 -(void) onGimbalAttitudeScrollUp
 {

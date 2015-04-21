@@ -12,7 +12,7 @@
 #import <DJISDK/DJIGimbal.h>
 #import <DJISDK/DJISDK.h> //DJIDroneDelegate,
 
-@interface DJICamerViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
+@interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
 {
     DJIDrone* _drone;
     DJICamera* _camera;
@@ -22,8 +22,8 @@
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender;
 
--(IBAction) onGimbalScroollDownTouchDown:(id)sender;
+-(IBAction) onGimbalScrollDownTouchDown:(id)sender;
 
--(IBAction) onGimbalScroollDownTouchUp:(id)sender;
+-(IBAction) onGimbalScrollDownTouchUp:(id)sender;
 
 @end
