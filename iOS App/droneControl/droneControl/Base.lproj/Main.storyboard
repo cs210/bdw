@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kw1-F7-9Lg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kw1-F7-9Lg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -104,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Gv-WkW">
-                                <rect key="frame" x="16" y="476" width="568" height="80"/>
+                                <rect key="frame" x="0.0" y="476" width="600" height="80"/>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="oz8-yS-Z95"/>
@@ -133,13 +133,13 @@
                             <constraint firstItem="aOy-Dq-DU5" firstAttribute="centerX" secondItem="J4r-30-2hu" secondAttribute="centerX" id="Ukt-oC-aFQ"/>
                             <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="mLW-Gv-WkW" secondAttribute="bottom" id="V1C-Gi-a6j"/>
                             <constraint firstItem="rms-rM-OWo" firstAttribute="trailing" secondItem="J4r-30-2hu" secondAttribute="trailingMargin" id="ZBj-aL-BSr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mLW-Gv-WkW" secondAttribute="trailing" id="hgS-a5-VSb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mLW-Gv-WkW" secondAttribute="trailing" constant="-16" id="hgS-a5-VSb"/>
                             <constraint firstItem="MeG-ds-MHw" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" constant="4" id="kww-fh-4Xi"/>
                             <constraint firstItem="cV6-FY-pFp" firstAttribute="trailing" secondItem="J4r-30-2hu" secondAttribute="trailingMargin" id="o6f-pZ-Vga"/>
                             <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="rms-rM-OWo" secondAttribute="bottom" constant="160" id="oRu-mq-EN4"/>
                             <constraint firstItem="mLW-Gv-WkW" firstAttribute="centerX" secondItem="rms-rM-OWo" secondAttribute="centerX" id="px0-Yc-39W"/>
                             <constraint firstItem="cV6-FY-pFp" firstAttribute="baseline" secondItem="yKV-pa-S6B" secondAttribute="firstBaseline" constant="3" id="qLD-9p-xYz"/>
-                            <constraint firstItem="mLW-Gv-WkW" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" id="sak-OF-B4T"/>
+                            <constraint firstItem="mLW-Gv-WkW" firstAttribute="leading" secondItem="J4r-30-2hu" secondAttribute="leadingMargin" constant="-16" id="sak-OF-B4T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mLW-Gv-WkW" secondAttribute="trailing" constant="-16" id="w4K-OQ-Jba"/>
                             <constraint firstItem="yKV-pa-S6B" firstAttribute="top" secondItem="MeG-ds-MHw" secondAttribute="bottom" constant="76" id="wkT-Xc-C6R"/>
                             <constraint firstItem="J5b-yQ-j3C" firstAttribute="top" secondItem="cV6-FY-pFp" secondAttribute="bottom" constant="120" id="xuV-6S-hCi"/>
