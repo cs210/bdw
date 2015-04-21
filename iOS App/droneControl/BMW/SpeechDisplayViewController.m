@@ -162,7 +162,7 @@ typedef enum
     [speechController stopListening];
 //    [self onGimbalAttitudeScrollDown];
     NSLog(@"Moving gimbal and then to next view controller");
-    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    cameraFeed._drone = _drone;
     [self.navigationController pushViewController:cameraFeed animated:NO];
 }

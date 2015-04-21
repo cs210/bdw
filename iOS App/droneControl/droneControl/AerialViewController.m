@@ -18,9 +18,12 @@
 @end
 
 @implementation AerialViewController
-- (void) receiveImage:(UIImage *)image
+- (void) receiveImage:(UIImage *)image 
 {
-    
+    // check for a parking space using computer vision
+    // if there is a parking space:
+    // tell the drone to go to the parking space
+    // trigger navigation (SpotConfirmViewController)
 }
 
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location{

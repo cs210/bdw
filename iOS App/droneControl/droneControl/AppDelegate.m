@@ -70,7 +70,7 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     if (error == RegisterSuccess) {
         message = @"Register App Successed!";
     }
-    NSLog(message);
+    NSLog(@"@%@",message);
 //    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Register App" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [alertView show];
 }
