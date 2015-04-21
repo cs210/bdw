@@ -49,11 +49,7 @@ typedef enum
         _currentState = kListening;
         NSLog(@"Status: listening");
     }
-    [speechController stopListening];
-//    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
-    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO];
-
+    [self moveToNext];
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
     
 }
@@ -152,19 +148,40 @@ typedef enum
     }
     if ([word isEqualToString:@"YES"] && _needConfirmation){
         _askForConfirmation.hidden = YES;
-        //For now transition to other view controller
-
+        
+//For now transition to other view controller
 //        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
-        [speechController stopListening];
-        [self onGimbalAttitudeScrollDown];
-        DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-        [self.navigationController pushViewController:cameraFeed animated:NO];
+        [self moveToNext];
         
 
 //        [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 
     }
     
+}
+
+-(void) moveToNext
+{
+    [speechController stopListening];
+    [self onGimbalAttitudeScrollDown];
+    NSLog(@"Moving gimbal and then to next view controller");
+    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    cameraFeed._drone = _drone;
+    [self.navigationController pushViewController:cameraFeed animated:NO];
+}
+
+-(void) dealloc
+{
+    [_drone destroy];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //gimabl
+    [_drone disconnectToDrone];
+    [_drone destroy];
 }
 
 

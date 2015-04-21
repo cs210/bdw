@@ -31,7 +31,8 @@
 //    _drone.delegate = self;
     
     _drone.gimbal.delegate = self;
-    [self onGimbalAttitudeScrollDown];
+//    [self onGimbalAttitudeScrollDown];
+    [self gimball_reset];
 }
 
 -(void) dealloc
@@ -46,7 +47,7 @@
     [_drone connectToDrone];
     [_camera startCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:self.videoPreviewView];
-    [self onGimbalAttitudeScrollDown];
+//    [self onGimbalAttitudeScrollDown];
     //gimbal
 //    [_drone connectToDrone];
 }
