@@ -17,23 +17,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+                    <rect key="frame" x="0.0" y="35" width="320" height="12"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EOa-7F-SLM">
-                    <rect key="frame" x="0.0" y="344" width="320" height="224"/>
-                    <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="309" width="320" height="224"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="224" id="rba-Ja-mHJ"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhP-lM-yQX">
-                    <rect key="frame" x="95" y="290" width="130" height="46"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhP-lM-yQX">
+                    <rect key="frame" x="0.0" y="236" width="320" height="73"/>
+                    <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="46" id="7uW-eo-rls"/>
+                        <constraint firstAttribute="height" constant="73" id="7uW-eo-rls"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Take Photo">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onTakePhotoButtonClicked:" destination="-1" eventType="touchUpInside" id="Rrx-0O-5Xr"/>
@@ -43,12 +45,15 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EOa-7F-SLM" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2gB-zn-PbT"/>
-                <constraint firstItem="EOa-7F-SLM" firstAttribute="top" secondItem="NhP-lM-yQX" secondAttribute="bottom" constant="8" symbolic="YES" id="7kK-BJ-XTe"/>
+                <constraint firstItem="NhP-lM-yQX" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2re-IL-EId"/>
+                <constraint firstAttribute="bottom" secondItem="EOa-7F-SLM" secondAttribute="bottom" constant="35" id="4gB-bv-L0r"/>
                 <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="8ky-XM-SU7"/>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" constant="30" id="Ffp-RQ-FcO"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" constant="35" id="Ffp-RQ-FcO"/>
                 <constraint firstAttribute="trailing" secondItem="EOa-7F-SLM" secondAttribute="trailing" id="Gbi-bd-ekC"/>
-                <constraint firstAttribute="bottom" secondItem="EOa-7F-SLM" secondAttribute="bottom" id="dAq-Sf-5eL"/>
-                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="ovg-MW-X0O"/>
+                <constraint firstItem="EOa-7F-SLM" firstAttribute="top" secondItem="NhP-lM-yQX" secondAttribute="bottom" id="StS-O3-sv5"/>
+                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="TOd-G9-n06"/>
+                <constraint firstAttribute="trailing" secondItem="NhP-lM-yQX" secondAttribute="trailing" id="Wds-nq-oJY"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="fpp-AO-F0r"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
         </view>
