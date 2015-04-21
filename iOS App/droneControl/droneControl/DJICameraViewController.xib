@@ -2,11 +2,11 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DJICamerViewController">
             <connections>
+                <outlet property="lastImage" destination="EOa-7F-SLM" id="glw-fl-bs8"/>
                 <outlet property="videoPreviewView" destination="l0L-Wp-V55" id="tR1-Hy-E7D"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -16,8 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhP-lM-yQX">
-                    <rect key="frame" x="95" y="324" width="130" height="46"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EOa-7F-SLM">
+                    <rect key="frame" x="0.0" y="344" width="320" height="224"/>
+                    <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="224" id="rba-Ja-mHJ"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhP-lM-yQX">
+                    <rect key="frame" x="95" y="290" width="130" height="46"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="7uW-eo-rls"/>
                     </constraints>
@@ -28,41 +39,20 @@
                         <action selector="onTakePhotoButtonClicked:" destination="-1" eventType="touchUpInside" id="Rrx-0O-5Xr"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGS-hS-ReT">
-                    <rect key="frame" x="113" y="471" width="94" height="30"/>
-                    <state key="normal" title="Setup Gimbal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="prepare_gimbal_button:" destination="-1" eventType="touchUpInside" id="VT7-eW-SqE"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-OO-AUe">
-                    <rect key="frame" x="114" y="398" width="93" height="30"/>
-                    <state key="normal" title="Reset Gimbal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="reset_gimbal_button:" destination="-1" eventType="touchUpInside" id="sxL-qq-PNA"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="6wv-F3-R3e"/>
-                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="84g-UC-E93"/>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" id="D2R-IH-pPj"/>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="N2X-tM-VxA"/>
-                <constraint firstItem="sBb-OO-AUe" firstAttribute="bottom" secondItem="1" secondAttribute="bottomMargin" constant="-132" id="YGP-Wm-od9"/>
-                <constraint firstItem="NhP-lM-yQX" firstAttribute="top" secondItem="l0L-Wp-V55" secondAttribute="bottom" constant="42" id="aAA-Bv-Bwo"/>
+                <constraint firstItem="EOa-7F-SLM" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2gB-zn-PbT"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="5sz-DD-oKW"/>
+                <constraint firstItem="EOa-7F-SLM" firstAttribute="top" secondItem="NhP-lM-yQX" secondAttribute="bottom" constant="8" symbolic="YES" id="7kK-BJ-XTe"/>
+                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="G8g-Z9-5KB"/>
+                <constraint firstAttribute="trailing" secondItem="EOa-7F-SLM" secondAttribute="trailing" id="Gbi-bd-ekC"/>
+                <constraint firstItem="NhP-lM-yQX" firstAttribute="top" secondItem="l0L-Wp-V55" secondAttribute="bottom" constant="8" id="aAA-Bv-Bwo"/>
                 <constraint firstItem="NhP-lM-yQX" firstAttribute="centerX" secondItem="l0L-Wp-V55" secondAttribute="centerX" id="azo-hp-Hye"/>
-                <constraint firstItem="sBb-OO-AUe" firstAttribute="centerX" secondItem="NhP-lM-yQX" secondAttribute="centerX" id="kTM-Ds-b4K"/>
-                <constraint firstItem="eGS-hS-ReT" firstAttribute="top" secondItem="sBb-OO-AUe" secondAttribute="bottom" constant="43" id="vQH-o4-cZs"/>
-                <constraint firstItem="eGS-hS-ReT" firstAttribute="trailing" secondItem="sBb-OO-AUe" secondAttribute="trailing" id="vjG-NF-6BN"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" id="bUn-Wf-MLI"/>
+                <constraint firstAttribute="bottom" secondItem="EOa-7F-SLM" secondAttribute="bottom" id="dAq-Sf-5eL"/>
+                <constraint firstItem="EOa-7F-SLM" firstAttribute="leading" secondItem="l0L-Wp-V55" secondAttribute="leading" id="tuM-cO-86Q"/>
+                <constraint firstItem="EOa-7F-SLM" firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="xss-WP-qId"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
         </view>

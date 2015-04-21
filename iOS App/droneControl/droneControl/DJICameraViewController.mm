@@ -14,12 +14,13 @@
 
     BOOL _gimbalAttitudeUpdateFlag;
     BOOL doneLoading;
+    BOOL takephoto;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     doneLoading = false;
-    // Do any additional setup after loading the view from its nib.
+    takephoto = false;
     
     _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
     _camera = _drone.camera;
@@ -32,9 +33,15 @@
 //    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
 //    _drone.delegate = self;
     
+    //media
+//    _loadingManager = [[MediaLoadingManager alloc] initWithThreadsForImage:4 threadsForVideo:4];
+    _fetchingMedias = NO;
+    
+    
     _drone.gimbal.delegate = self;
 //    [self onGimbalAttitudeScrollDown];
     doneLoading = true;
+    
     [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
 }
@@ -51,12 +58,57 @@
     [_drone connectToDrone];
     [_camera startCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:self.videoPreviewView];
-//    [self onGimbalAttitudeScrollDown];
+    
     //gimbal
-//    [_drone connectToDrone];
     if (doneLoading) {
         NSLog(@"::::::::::::: DONE view did load");
         [self onGimbalAttitudeScrollDown];
+    }
+}
+
+
+//-(void) viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//}
+
+
+-(void) displayImage
+{
+    DJIMedia* media = [_mediasList lastObject];
+    
+    if (media) {
+        //        self.progressIndicator.center = self.view.center;
+        //        [self.view addSubview:self.progressIndicator];
+        //        [self.progressIndicator startAnimating];
+        __block long long totalDownload = 0;
+        long long fileSize = _media.fileSize;
+        NSMutableData* mediaData = [[NSMutableData alloc] init];
+        [media fetchMediaData:^(NSData *data, BOOL *stop, NSError *error) {
+            if (*stop) {
+                if (error) {
+                    NSLog(@"MEDIA ERROR ::::::: fetchMediaDataError:%@", error);
+                }
+                else
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.lastImage.image = [UIImage imageWithData:mediaData];
+                        //                        [self.progressIndicator stopAnimating];
+                        //                        [self.progressIndicator removeFromSuperview];
+                    });
+                }
+            }
+            else
+            {
+                if (data && data.length > 0) {
+                    [mediaData appendData:data];
+                    totalDownload += data.length;
+                    int progress = (int)(totalDownload*100 / fileSize);
+                    NSLog(@"MEDIA ::::::: Progress : %d", progress);
+                }
+            }
+        }];
     }
 }
 
@@ -68,9 +120,43 @@
     [[VideoPreviewer instance] setView:nil];
     
     //gimabl
+    [_drone.camera stopCameraSystemStateUpdates];
     [_drone disconnectToDrone];
     [_drone destroy];
 }
+
+
+-(void) updateMedias
+{
+    if (_mediasList) {
+        return;
+    }
+    
+    if (_fetchingMedias) {
+        return;
+    }
+    
+    NSLog(@"Start Fetch Medias");
+    _fetchingMedias = YES;
+    
+//    [self showLoadingIndicator];
+    [_drone.camera fetchMediaListWithResultBlock:^(NSArray *mediaList, NSError *error) {
+//        [self hideLoadingIndicator];
+        if (mediaList) {
+            _mediasList = mediaList;
+//            [self.tableView reloadData];
+            NSLog(@"MediaDirs: %@", _mediasList);
+        } else {
+            NSLog(@"NO MEDIALIST");
+        }
+        
+        _fetchingMedias = NO;
+    }];
+    [self displayImage];
+    takephoto = false;
+}
+
+
 
 - (IBAction)prepare_gimbal_button:(id)sender
 {
@@ -296,6 +382,7 @@
             NSLog(@"Take Photo Error : %@", error.errorDescription);
         }
     }];
+    takephoto = true;
     NSLog(@"Photo button clicked");
 }
 
@@ -313,9 +400,32 @@
     if (!systemState.isTimeSynced) {
         [_camera syncTime:nil];
     }
-    if (systemState.isUSBMode) {
-        [_camera setCamerMode:CameraCameraMode withResultBlock:Nil];
-    }
+    
+    if (takephoto) {
+        NSLog(@":::::::: ENTERING USB MODE");
+        if (!systemState.isUSBMode) {
+            NSLog(@"Set USB Mode");
+            [_drone.camera setCamerMode:CameraUSBMode withResultBlock:^(DJIError *error) {
+                if (error.errorCode == ERR_Successed) {
+                    NSLog(@"Set USB Mode Successed");
+                }
+            }];
+        }
+        if (!systemState.isSDCardExist) {
+            NSLog(@"SD Card Not Insert");
+            return;
+        }
+        if (systemState.isConnectedToPC) {
+            NSLog(@"USB Connected To PC");
+            return;
+        }
+        [self updateMedias];
+    
+        } else {
+            if (systemState.isUSBMode) {
+                [_camera setCamerMode:CameraCameraMode withResultBlock:Nil];
+            }
+        }
 }
 
 @end
