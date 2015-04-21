@@ -22,8 +22,8 @@
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender;
 
--(IBAction) onGimbalScroollDownTouchDown:(id)sender;
+-(IBAction) onGimbalScrollDownTouchDown:(id)sender;
 
--(IBAction) onGimbalScroollDownTouchUp:(id)sender;
+-(IBAction) onGimbalScrollDownTouchUp:(id)sender;
 
 @end

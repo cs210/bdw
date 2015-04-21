@@ -131,7 +131,7 @@ typedef enum
 -(void) didReceiveWord: (NSString *) word
 {
 
-    NSLog(@"Word heard:%s", word);
+    NSLog(@"Word heard:%@", word);
 //    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 //    DJICamerViewController* cameraFeed = [[DJICamerViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    [self.navigationController pushViewController:cameraFeed animated:NO];
