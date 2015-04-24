@@ -5,11 +5,10 @@
 //  Created by Michael Weingert on 2015-03-16.
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
-
+// parkwhiz key: 62d882d8cfe5680004fa849286b6ce20
 /*This is going to be a map interface*/
 #import "AerialViewController.h"
 #import "SpotConfirmViewController.h"
-
 #import <MapKit/MapKit.h>
 
 @interface AerialViewController () < CLLocationManagerDelegate>
@@ -87,6 +86,7 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
+    
 }
 
 

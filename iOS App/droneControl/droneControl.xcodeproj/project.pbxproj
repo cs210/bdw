@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */; };
 		463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
@@ -86,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotFinder.h; sourceTree = "<group>"; };
+		462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotFinder.m; sourceTree = "<group>"; };
 		463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotConfirmViewController.m; sourceTree = "<group>"; };
 		463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotConfirmViewController.h; sourceTree = "<group>"; };
 		4641635B1ADB3179004B75D0 /* AerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AerialViewController.m; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
+				462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */,
+				462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */,
 				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
 				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 				463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */,
@@ -961,6 +966,7 @@
 				D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
+				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,
 				D9D648D51ADDAB0400459A16 /* DJIDispatch.m in Sources */,
 				463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */,
 			);
