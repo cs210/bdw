@@ -8,6 +8,7 @@
 // parkwhiz key: 62d882d8cfe5680004fa849286b6ce20
 /*This is going to be a map interface*/
 #import "AerialViewController.h"
+#import "ParkingLotFinder.h"
 #import "SpotConfirmViewController.h"
 #import <MapKit/MapKit.h>
 
@@ -69,6 +70,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
@@ -94,6 +96,10 @@
 {
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
+
+        NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
+
+        
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 500, 500);
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
         [_mapView setRegion:adjustedRegion animated:YES];

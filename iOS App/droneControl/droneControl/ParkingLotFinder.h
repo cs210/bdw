@@ -7,17 +7,11 @@
 //
 // this file finds parking lots around a certain location.
 
-
-struct ParkingLot{
-    CLLocationCoordinate2D coordinate;
-    CLLocationCoordinate2D upperLeft; // upperLeft and lowerRight represent the area occupied by the parking lot.
-    CLLocationCoordinate2D lowerRight;
-    NSString* name;
-};
-
+#import <MapKit/MapKit.h>
+#import "ParkingLot.h"
 @interface ParkingLotFinder : NSObject
 
-// should be called off the main thread as it needs to wait for http results. 
--(NSArray) parkingLotsNearby: (CLLocationCoordinate2D) userLocation (Integer) radius;
+// should be called off the main thread as it needs to wait for http results.
++(NSMutableArray*) parkingLotsNearby: (CLLocationCoordinate2D)userLocation radius:(int)radius;
 
 @end
