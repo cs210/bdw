@@ -165,9 +165,9 @@ typedef enum
     DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    cameraFeed._drone = _drone;
     // THIS LINE FOR TESTING AERIALVIEWCONTROLLER STUFF
-    //[self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
+    [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];
 
-    [self.navigationController pushViewController:cameraFeed animated:NO];
+    //[self.navigationController pushViewController:cameraFeed animated:NO];
 }
 
 //-(void) dealloc

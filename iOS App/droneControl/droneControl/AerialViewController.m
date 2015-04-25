@@ -6,7 +6,20 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 // parkwhiz key: 62d882d8cfe5680004fa849286b6ce20
-/*This is going to be a map interface*/
+/*This is going to be a map interface
+ NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
+ for (ParkingLot *parkingLot in lots){
+ MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
+ lotAnnotation.coordinate = parkingLot->coordinate;
+ [_mapView addAnnotation:lotAnnotation];
+ [_mapView selectAnnotation:lotAnnotation animated:YES];
+ lotAnnotation.title = @"Parking spot";
+ UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
+ [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
+ }
+
+ */
+
 #import "AerialViewController.h"
 #import "ParkingLotFinder.h"
 #import "SpotConfirmViewController.h"
@@ -18,7 +31,7 @@
 @end
 
 @implementation AerialViewController
-- (void) receiveImage:(UIImage *)image 
+- (void) receiveImage:(UIImage *)image
 {
     // check for a parking space using computer vision
     // if there is a parking space:
@@ -61,7 +74,7 @@
         _parkingSpace = destination;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
         [alert show];
-
+        
         // Create an MKMapItem to pass to the Maps app
     }
 }
@@ -96,9 +109,7 @@
 {
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
-
-        NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
-
+        
         
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 500, 500);
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
@@ -109,6 +120,19 @@
         _drone.userLocation = crnLoc;
         [_drone lookForParking];
         _didStartLooking = true;
+        
+        NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
+        for (ParkingLot *parkingLot in lots){
+            MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
+            lotAnnotation.coordinate = parkingLot->coordinate;
+            [_mapView addAnnotation:lotAnnotation];
+            [_mapView selectAnnotation:lotAnnotation animated:YES];
+            lotAnnotation.title = @"Parking spot";
+            UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
+            // using parking_log.png causes an error: "Could not determine current country code: Error Domain=NSURLErrorDomain Code=-1005 "The network connection was lost."
+            [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
+        }
+
     }
 }
 
@@ -138,4 +162,3 @@
 }
 
 @end
-

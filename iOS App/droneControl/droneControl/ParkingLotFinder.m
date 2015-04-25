@@ -19,15 +19,15 @@
         double bearing = (int) arc4random() % 360; // degrees
         CLLocationCoordinate2D loc = [self coordinateFromCoord:userLocation atDistanceKm:dist / 1000.0 atBearingDegrees:bearing ];
         ParkingLot *pl = [[ParkingLot alloc] init];
-        pl->lowerRight = loc;
+        pl->coordinate = loc;
         CLLocationCoordinate2D lowerRight;
         lowerRight.latitude = loc.latitude - 0.001;
         lowerRight.longitude = loc.longitude + 0.001;
         pl->lowerRight = lowerRight;
         CLLocationCoordinate2D upperLeft;
-        lowerRight.latitude = loc.latitude + 0.001;
-        lowerRight.longitude = loc.longitude - 0.001;
-        pl->lowerRight = upperLeft;
+        upperLeft.latitude = loc.latitude + 0.001;
+        upperLeft.longitude = loc.longitude - 0.001;
+        pl->upperLeft = upperLeft;
         pl->name = [NSString stringWithFormat:@"%@ %@", @"parking lot" ,[NSString stringWithFormat:@"%d", i]];
         [lots addObject:pl];
     }
