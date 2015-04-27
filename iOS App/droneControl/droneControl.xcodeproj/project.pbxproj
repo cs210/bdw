@@ -562,6 +562,29 @@
 			path = ../../../../../BMW_SDK/Examples/HelloWorld/BMWAppKit.framework/Headers;
 			sourceTree = "<group>";
 		};
+		A65391421AEDDECA00EA296A /* DJI */ = {
+			isa = PBXGroup;
+			children = (
+				D9FB7CBD1ADDF4E700138BF0 /* Document */,
+				D9D6486A1ADDAB0300459A16 /* VideoPreviewer */,
+				D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.mm */,
+				D9FCDA531ADD8F6500D91DB7 /* DJICameraViewController.h */,
+				D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */,
+			);
+			name = DJI;
+			sourceTree = "<group>";
+		};
+		A65391431AEDDF6100EA296A /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
+				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
+				A600578E1AB169B200BA64BF /* SpeechController.h */,
+				A600578F1AB169B200BA64BF /* SpeechController.m */,
+			);
+			name = Speech;
+			sourceTree = "<group>";
+		};
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
@@ -585,13 +608,8 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
-				D9FB7CBD1ADDF4E700138BF0 /* Document */,
-				D9D6486A1ADDAB0300459A16 /* VideoPreviewer */,
-				D9FCDA521ADD8F6500D91DB7 /* DJICameraViewController.mm */,
-				D9FCDA531ADD8F6500D91DB7 /* DJICameraViewController.h */,
-				D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */,
-				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
-				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
+				A65391431AEDDF6100EA296A /* Speech */,
+				A65391421AEDDECA00EA296A /* DJI */,
 				46E4D3331AAD856E00C94072 /* Frameworks */,
 				A6F4EF2B1AAD17D500C81065 /* AppDelegate.h */,
 				A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */,
@@ -599,8 +617,6 @@
 				A6F4EF341AAD17D500C81065 /* Images.xcassets */,
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
-				A600578E1AB169B200BA64BF /* SpeechController.h */,
-				A600578F1AB169B200BA64BF /* SpeechController.m */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
 				462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */,
