@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="vA3-hO-dtV" kind="relationship" relationship="rootViewController" id="0FQ-LR-CUB"/>
+                        <segue destination="JDA-4A-Ako" kind="relationship" relationship="rootViewController" id="Sfc-ae-0QX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkk-VB-5Rt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,6 +239,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bf-gt-OPU" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="540" y="804"/>
+        </scene>
+        <!--Aerial View Controller-->
+        <scene sceneID="d2l-wD-U4A">
+            <objects>
+                <viewController id="JDA-4A-Ako" customClass="AerialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gE8-Xe-V9P"/>
+                        <viewControllerLayoutGuide type="bottom" id="lWc-a0-A0U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TeX-c0-5pK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ywX-Qr-iHF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mm1-ha-ly8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="563" y="1504"/>
         </scene>
     </scenes>
     <resources>
