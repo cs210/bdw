@@ -135,7 +135,8 @@
             [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
             [_mapView viewForAnnotation:lotAnnotation].canShowCallout = YES;
             UIButton * button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [button addTarget:self action:@selector(lotButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+            [button setTitle:parkingLot->name forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(lotButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = button;
 
         }
@@ -143,9 +144,17 @@
     }
 }
 
-- (void) lotButtonPressed{
-    
+- (void) lotButtonPressed:(id) sender{ // how to get the name of the parking lot here?
+    if ([sender isKindOfClass:[UIButton self]]) {
+        // it's a button
+        UIButton *button = (UIButton *)sender;
+        NSString *title = [NSString stringWithFormat:@"look for parking in %@?", button.currentTitle];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
+        [alert show];
+    }
+
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
