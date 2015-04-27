@@ -25,11 +25,6 @@
 #import "SpotConfirmViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface AerialViewController () < CLLocationManagerDelegate>
-
-
-@end
-
 @implementation AerialViewController
 - (void) receiveImage:(UIImage *)image
 {
@@ -43,6 +38,14 @@
     [self addAnnnotationWithOffset:false location:*location];
 }
 
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
+    annotationView.canShowCallout = YES;
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    return annotationView;
+}
 
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
     _droneAnnotation.coordinate = location;
@@ -84,13 +87,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
-    
+    _mapView.delegate = self;
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:_mapView];
     _mapView.showsUserLocation = YES;
-    
-    //Get the users current location
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;

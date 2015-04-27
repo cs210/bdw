@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 
-@interface AerialViewController : UIViewController <DroneDelegate>
+@interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
