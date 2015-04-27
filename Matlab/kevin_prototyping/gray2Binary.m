@@ -1,6 +1,6 @@
 function [ B ] = gray2Binary( I, threshold )
 
-B = single(255 * (I > threshold));
+B = single(I > threshold);
 
 end
 
