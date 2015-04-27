@@ -117,7 +117,7 @@
         _drone = [[DroneController alloc]init];
         _drone.delegate = self;
         _drone.userLocation = crnLoc;
-        //[_drone lookForParking];
+        [_drone lookForParking];
         _didStartLooking = true;
         
         NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
@@ -125,12 +125,14 @@
             MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
             lotAnnotation.coordinate = parkingLot->coordinate;
             [_mapView addAnnotation:lotAnnotation];
-            [_mapView selectAnnotation:lotAnnotation animated:YES];
-            lotAnnotation.title = @"Parking spot";
+            [_mapView selectAnnotation:lotAnnotation animated:YES]; // this is needed for the image to be set correctly.
+            [_mapView deselectAnnotation:lotAnnotation animated:YES]; // this is needed for the image to be set correctly.
+
+            lotAnnotation.title = parkingLot->name;
             UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
             
             // using parking_log.png causes an error: "Could not determine current country code: Error Domain=NSURLErrorDomain Code=-1005 "The network connection was lost."
-            //[[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
+            [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
             [_mapView viewForAnnotation:lotAnnotation].canShowCallout = YES;
             [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
