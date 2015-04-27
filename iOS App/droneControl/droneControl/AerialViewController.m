@@ -17,7 +17,7 @@
  UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
  [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
  }
-
+ 
  */
 
 #import "AerialViewController.h"
@@ -76,7 +76,6 @@
         _parkingSpace = destination;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
         [alert show];
-        
         // Create an MKMapItem to pass to the Maps app
     }
 }
@@ -127,7 +126,7 @@
             [_mapView addAnnotation:lotAnnotation];
             [_mapView selectAnnotation:lotAnnotation animated:YES]; // this is needed for the image to be set correctly.
             [_mapView deselectAnnotation:lotAnnotation animated:YES]; // this is needed for the image to be set correctly.
-
+            
             lotAnnotation.title = parkingLot->name;
             UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
             
@@ -138,9 +137,9 @@
             [button setTitle:parkingLot->name forState:UIControlStateNormal];
             [button addTarget:self action:@selector(lotButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = button;
-
+            
         }
-
+        
     }
 }
 
@@ -152,7 +151,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
         [alert show];
     }
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -161,22 +160,33 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    switch (buttonIndex){
-        case 1:{ // braces needed because objc is stupid
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
-                                                           addressDictionary:nil];
-            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-            [mapItem setName:@"Stanford"];
-            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
-                           launchOptions:launchOptions];
+    if ([alertView.title isEqualToString:@"Parking spot found!"]){
+        switch (buttonIndex){
+            case 1:{ // braces needed because objc is stupid
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
+                                                               addressDictionary:nil];
+                MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+                [mapItem setName:@"Stanford"];
+                NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+                MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+                [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                               launchOptions:launchOptions];
+            }
+            case 2:
+                [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
+                // view spot: not implemented yet
+            default: ;
+                // "cancel" or other: do nothing / go back to homepage?
         }
-        case 2:
-            [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
-            // view spot: not implemented yet
-        default: ;
-            // "cancel" or other: do nothing / go back to homepage?
+    } else {
+        switch (buttonIndex){
+            case 1:{
+                [_drone lookForParking];
+            }
+            default: ; // they pressed cancel : do nothing
+                
+        }
+        
     }
 }
 
