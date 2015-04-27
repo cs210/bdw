@@ -99,7 +99,22 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
-    
+  
+  
+    // Add the button in here that will segue to the parking view controller if clicked
+  UIButton * parkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  CGSize screenSize = [UIScreen mainScreen].bounds.size;
+  parkingButton.frame = CGRectMake(screenSize.width - 100, screenSize.height - 100, 50, 50);
+  [parkingButton setBackgroundImage:[UIImage imageNamed:@"parking-icon.png"] forState:UIControlStateNormal];
+  [parkingButton addTarget:self action:@selector(findParkingClicked:) forControlEvents:UIControlEventTouchUpInside];
+  
+  [self.view addSubview:parkingButton];
+}
+
+-(void) findParkingClicked:(UIButton *) sender
+{
+  //Perform segue here manually to table view controller
+  [self performSegueWithIdentifier:@"NearbyParkingSegue" sender:self];
 }
 
 

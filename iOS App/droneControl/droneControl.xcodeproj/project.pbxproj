@@ -48,6 +48,8 @@
 		46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3791AAD859900C94072 /* MobileCoreServices.framework */; };
 		A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = A600578C1AB163EB00BA64BF /* SiriMicrophone.png */; };
 		A60057901AB169B200BA64BF /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = A600578F1AB169B200BA64BF /* SpeechController.m */; };
+		A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */; };
+		A653914D1AEE00C800EA296A /* parking-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A653914C1AEE00C800EA296A /* parking-icon.png */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -198,6 +200,9 @@
 		A600578C1AB163EB00BA64BF /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SiriMicrophone.png; sourceTree = "<group>"; };
 		A600578E1AB169B200BA64BF /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		A600578F1AB169B200BA64BF /* SpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechController.m; sourceTree = "<group>"; };
+		A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkingTableViewController.h; sourceTree = "<group>"; };
+		A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkingTableViewController.m; sourceTree = "<group>"; };
+		A653914C1AEE00C800EA296A /* parking-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parking-icon.png"; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -626,7 +631,10 @@
 				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
 				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 				463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */,
+				A653914C1AEE00C800EA296A /* parking-icon.png */,
 				463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */,
+				A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */,
+				A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -942,6 +950,7 @@
 				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
+				A653914D1AEE00C800EA296A /* parking-icon.png in Resources */,
 				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
@@ -985,6 +994,7 @@
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
+				A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */,
 				D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
