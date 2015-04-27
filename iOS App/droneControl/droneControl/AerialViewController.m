@@ -117,7 +117,7 @@
         _drone = [[DroneController alloc]init];
         _drone.delegate = self;
         _drone.userLocation = crnLoc;
-        [_drone lookForParking];
+        //[_drone lookForParking];
         _didStartLooking = true;
         
         NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
@@ -134,13 +134,18 @@
             // using parking_log.png causes an error: "Could not determine current country code: Error Domain=NSURLErrorDomain Code=-1005 "The network connection was lost."
             [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
             [_mapView viewForAnnotation:lotAnnotation].canShowCallout = YES;
-            [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            UIButton * button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [button addTarget:self action:@selector(lotButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+            [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = button;
 
         }
 
     }
 }
 
+- (void) lotButtonPressed{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
