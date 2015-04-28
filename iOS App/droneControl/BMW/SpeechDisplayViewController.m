@@ -162,7 +162,7 @@ typedef enum
     [speechController stopListening];
 //    [self onGimbalAttitudeScrollDown];
     NSLog(@"Moving gimbal and then to next view controller");
-    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    //DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
 //    cameraFeed._drone = _drone;
     // THIS LINE FOR TESTING AERIALVIEWCONTROLLER STUFF
     [self.navigationController pushViewController:[[AerialViewController alloc] init] animated:NO];

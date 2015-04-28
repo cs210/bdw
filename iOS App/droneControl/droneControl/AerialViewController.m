@@ -38,6 +38,16 @@
     [self addAnnnotationWithOffset:false location:*location];
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+  NSLog(@"callout accessory control tapped");
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+  //NSLog(@"Here");
+}
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
@@ -84,9 +94,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _mapView.delegate = self;
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+      _mapView.delegate = self;
     [self.view addSubview:_mapView];
     _mapView.showsUserLocation = YES;
     _locationManager = [[CLLocationManager alloc] init];
