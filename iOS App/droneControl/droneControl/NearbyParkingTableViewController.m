@@ -9,7 +9,7 @@
 #import "NearbyParkingTableViewController.h"
 #import "ParkingLotFinder.h"
 
-@interface NearbyParkingTableViewController ()
+@interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
   NSMutableArray * _parkingLotsNearby;
 }
@@ -31,7 +31,9 @@
   self.tableView.delegate = self;
   
   //Get the number of parking lots from the parking lot finder
-  _parkingLotsNearby = [[ParkingLotFinder sharedManager] getLots];
+  [[ParkingLotFinder sharedManager] registerForLotUpdates:self];
+  
+  _parkingLotsNearby = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,16 +41,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) didUpdateLots
+{
+  _parkingLotsNearby = [[ParkingLotFinder sharedManager] getLots];
+  [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [_parkingLotsNearby count];
 }
@@ -60,9 +66,10 @@
     // Configure the cell...
   
   //cell.text = @"LOL";
-  cell.textLabel.text = @"LOL";
+  ParkingLot *currentObject = [_parkingLotsNearby objectAtIndex:[indexPath row]];
+  cell.textLabel.text = currentObject->name;
     
-    return cell;
+  return cell;
 }
 
 

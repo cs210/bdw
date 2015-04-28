@@ -13,6 +13,7 @@
 @implementation ParkingLotFinder
 {
   NSMutableArray *_lots;
+  NSMutableArray *_lotListeners;
   CLLocationCoordinate2D _lastKnownLocation;
   int _radius;
 }
@@ -30,10 +31,14 @@
 - (id)init {
   if (self = [super init]) {
     _lots = [[NSMutableArray alloc] initWithCapacity:5]; // in real implementation, will get number of lots from google
-
-    [self findNearbyLots];
+    _lotListeners = [NSMutableArray array];
   }
   return self;
+}
+
+-(void) registerForLotUpdates: (id<ParkingLotFinderDelegate>) newListener
+{
+  [_lotListeners addObject:newListener];
 }
 
 -(void) findNearbyLots
@@ -57,11 +62,20 @@
   }
 }
 
+-(void) alertAllListeners
+{
+  for ( id<ParkingLotFinderDelegate> listener in _lotListeners)
+  {
+    [listener didUpdateLots];
+  }
+}
+
 -(void) setLocation: (CLLocationCoordinate2D)userLocation radius:(int)radius{
   [_lots removeAllObjects];
   _lastKnownLocation = userLocation;
   _radius = radius;
   [self findNearbyLots];
+  [self alertAllListeners];
 }
 
 -(NSMutableArray *) getLots

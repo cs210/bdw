@@ -10,6 +10,10 @@
 #import <MapKit/MapKit.h>
 #import "ParkingLot.h"
 
+@protocol ParkingLotFinderDelegate
+-(void) didUpdateLots;
+@end
+
 @interface ParkingLotFinder : NSObject
 
 + (id)sharedManager;
@@ -19,5 +23,6 @@
 
 -(NSMutableArray *) getLots;
 
+-(void) registerForLotUpdates: (id<ParkingLotFinderDelegate>) newListener;
 
 @end
