@@ -134,7 +134,9 @@
         //[_drone lookForParking];
         _didStartLooking = true;
         
-        NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
+      [[ParkingLotFinder sharedManager ] setLocation:crnLoc.coordinate radius:500];
+      
+      NSMutableArray* lots =  [[ParkingLotFinder sharedManager] getLots];
         for (ParkingLot *parkingLot in lots){
             MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
             lotAnnotation.coordinate = parkingLot->coordinate;

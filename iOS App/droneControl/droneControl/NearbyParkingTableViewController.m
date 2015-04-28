@@ -7,8 +7,12 @@
 //
 
 #import "NearbyParkingTableViewController.h"
+#import "ParkingLotFinder.h"
 
 @interface NearbyParkingTableViewController ()
+{
+  NSMutableArray * _parkingLotsNearby;
+}
 
 @end
 
@@ -25,6 +29,9 @@
   
   self.tableView.dataSource = self;
   self.tableView.delegate = self;
+  
+  //Get the number of parking lots from the parking lot finder
+  _parkingLotsNearby = [[ParkingLotFinder sharedManager] getLots];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +50,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return [_parkingLotsNearby count];
 }
 
 

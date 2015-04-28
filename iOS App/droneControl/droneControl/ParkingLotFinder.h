@@ -9,9 +9,15 @@
 
 #import <MapKit/MapKit.h>
 #import "ParkingLot.h"
+
 @interface ParkingLotFinder : NSObject
 
++ (id)sharedManager;
+
 // should be called off the main thread as it needs to wait for http results.
-+(NSMutableArray*) parkingLotsNearby: (CLLocationCoordinate2D)userLocation radius:(int)radius;
+-(void) setLocation: (CLLocationCoordinate2D)userLocation radius:(int)radius;
+
+-(NSMutableArray *) getLots;
+
 
 @end

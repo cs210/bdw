@@ -11,43 +11,77 @@
 #import "ParkingLot.h"
 
 @implementation ParkingLotFinder
+{
+  NSMutableArray *_lots;
+  CLLocationCoordinate2D _lastKnownLocation;
+  int _radius;
+}
     // dummy implememtation that returns 5 rando locations within the radius.
-+(NSMutableArray*) parkingLotsNearby: (CLLocationCoordinate2D)userLocation radius:(int)radius{
-    NSMutableArray* lots = [[NSMutableArray alloc] initWithCapacity:5]; // in real implementation, will get number of lots from google
-    for (int i = 0; i < 5; i++){
-        double dist = (int) abs( (int) arc4random()) % radius;
-        double bearing = (int) arc4random() % 360; // degrees
-        CLLocationCoordinate2D loc = [self coordinateFromCoord:userLocation atDistanceKm:dist / 1000.0 atBearingDegrees:bearing ];
-        ParkingLot *pl = [[ParkingLot alloc] init];
-        pl->coordinate = loc;
-        CLLocationCoordinate2D lowerRight;
-        lowerRight.latitude = loc.latitude - 0.001;
-        lowerRight.longitude = loc.longitude + 0.001;
-        pl->lowerRight = lowerRight;
-        CLLocationCoordinate2D upperLeft;
-        upperLeft.latitude = loc.latitude + 0.001;
-        upperLeft.longitude = loc.longitude - 0.001;
-        pl->upperLeft = upperLeft;
-        pl->name = [NSString stringWithFormat:@"%@ %@", @"parking lot" ,[NSString stringWithFormat:@"%d", i]];
-        [lots addObject:pl];
-    }
-    return lots;
+
++ (id)sharedManager {
+  static ParkingLotFinder *sharedMyManager = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    sharedMyManager = [[self alloc] init];
+  });
+  return sharedMyManager;
 }
 
+- (id)init {
+  if (self = [super init]) {
+    _lots = [[NSMutableArray alloc] initWithCapacity:5]; // in real implementation, will get number of lots from google
+
+    [self findNearbyLots];
+  }
+  return self;
+}
+
+-(void) findNearbyLots
+{
+  for (int i = 0; i < 5; i++){
+    double dist = (int) abs( (int) arc4random()) % _radius;
+    double bearing = (int) arc4random() % 360; // degrees
+    CLLocationCoordinate2D loc = [self coordinateFromCoord:_lastKnownLocation atDistanceKm:dist / 1000.0 atBearingDegrees:bearing ];
+    ParkingLot *pl = [[ParkingLot alloc] init];
+    pl->coordinate = loc;
+    CLLocationCoordinate2D lowerRight;
+    lowerRight.latitude = loc.latitude - 0.001;
+    lowerRight.longitude = loc.longitude + 0.001;
+    pl->lowerRight = lowerRight;
+    CLLocationCoordinate2D upperLeft;
+    upperLeft.latitude = loc.latitude + 0.001;
+    upperLeft.longitude = loc.longitude - 0.001;
+    pl->upperLeft = upperLeft;
+    pl->name = [NSString stringWithFormat:@"%@ %@", @"parking lot" ,[NSString stringWithFormat:@"%d", i]];
+    [_lots addObject:pl];
+  }
+}
+
+-(void) setLocation: (CLLocationCoordinate2D)userLocation radius:(int)radius{
+  [_lots removeAllObjects];
+  _lastKnownLocation = userLocation;
+  _radius = radius;
+  [self findNearbyLots];
+}
+
+-(NSMutableArray *) getLots
+{
+  return _lots;
+}
 
 // lol code from stackoverflow for generating random coordinates x / y meters away
 // http://stackoverflow.com/questions/6633850/calculate-new-coordinate-x-meters-and-y-degree-away-from-one-coordinate
-+ (double)radiansFromDegrees:(double)degrees
+- (double)radiansFromDegrees:(double)degrees
 {
     return degrees * (M_PI/180.0);
 }
 
-+ (double)degreesFromRadians:(double)radians
+- (double)degreesFromRadians:(double)radians
 {
     return radians * (180.0/M_PI);
 }
 
-+ (CLLocationCoordinate2D)coordinateFromCoord:(CLLocationCoordinate2D)fromCoord
+- (CLLocationCoordinate2D)coordinateFromCoord:(CLLocationCoordinate2D)fromCoord
                                  atDistanceKm:(double)distanceKm
                              atBearingDegrees:(double)bearingDegrees
 {
