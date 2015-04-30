@@ -41,6 +41,13 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
   NSLog(@"callout accessory control tapped");
+  //Grab information from the accessory
+  UIButton * controlButtonClicked = (UIButton *)control;
+  NSLog(@"Button? %@", controlButtonClicked.currentTitle);
+  
+  NSString * title = view.annotation.title;
+  //NSLog(@"%@",view.annotation.subtitle);
+  [self showParkingLotConfirmationWithTitle:title];
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
@@ -132,7 +139,6 @@
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
         
-        
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 500, 500);
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
         [_mapView setRegion:adjustedRegion animated:YES];
@@ -174,10 +180,15 @@
         // it's a button
         UIButton *button = (UIButton *)sender;
         NSString *title = [NSString stringWithFormat:@"look for parking in %@?", button.currentTitle];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
-        [alert show];
+      [self showParkingLotConfirmationWithTitle:title];
     }
     
+}
+
+-(void) showParkingLotConfirmationWithTitle:(NSString *)title
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
+  [alert show];
 }
 
 - (void)didReceiveMemoryWarning {
