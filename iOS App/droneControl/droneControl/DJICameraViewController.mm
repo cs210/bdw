@@ -20,7 +20,6 @@
 {
     [super viewDidLoad];
     doneLoading = false;
-//    takephoto = true;
     switch_to_usb = false;
     
     _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
@@ -30,17 +29,9 @@
     //Start video data decode thread
     [[VideoPreviewer instance] start];
 
-    //gimbal
-//    _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
-//    _drone.delegate = self;
-    
-    //media
-//    _loadingManager = [[MediaLoadingManager alloc] initWithThreadsForImage:4 threadsForVideo:4];
     _fetchingMedias = NO;
-    
-    
+  
     _drone.gimbal.delegate = self;
-//    [self onGimbalAttitudeScrollDown];
     doneLoading = true;
     
     [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
@@ -67,23 +58,12 @@
     }
 }
 
-
-//-(void) viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//}
-
-
 -(void) displayImage
 {
     DJIMedia* media = [_mediasList lastObject];
     NSLog(@"%lu", (unsigned long)[_mediasList count]);
     if (media) {
         NSLog(@"GOT MEDIA :::::: ");
-        //        self.progressIndicator.center = self.view.center;
-        //        [self.view addSubview:self.progressIndicator];
-        //        [self.progressIndicator startAnimating];
         __block long long totalDownload = 0;
         long long fileSize = _media.fileSize;
         NSMutableData* mediaData = [[NSMutableData alloc] init];
@@ -131,28 +111,14 @@
 -(void) updateMedias
 {
     switch_to_usb = true;
-//    if (_mediasList) {
-//        return;
-//    }
-    
-//    if (_fetchingMedias) {
-//        return;
-//    }
-    
     NSLog(@"Start Fetch Medias");
-//    _fetchingMedias = YES;
-    
-
 }
 
 -(void) pull_image
 {
-    //    [self showLoadingIndicator];
     [_drone.camera fetchMediaListWithResultBlock:^(NSArray *mediaList, NSError *error) {
-        //        [self hideLoadingIndicator];
         if (mediaList) {
             _mediasList = mediaList;
-            //            [self.tableView reloadData];
             NSLog(@"MediaDirs: %@", _mediasList);
         } else {
             NSLog(@"NO MEDIALIST");
@@ -163,7 +129,6 @@
 
     [self performSelector:@selector(displayImage) withObject:nil afterDelay:3];
     [self performSelector:@selector(switch_back_to_camera) withObject:nil afterDelay:5];
-    //    takephoto = false;
 }
 
 -(void) switch_back_to_camera
@@ -221,13 +186,7 @@
 {
     DJIGimbalAttitude attitude = _drone.gimbal.gimbalAttitude;
     NSLog(@"Gimbal Atti Pitch:%d, Roll:%d, Yaw:%d", attitude.pitch, attitude.roll, attitude.yaw);
-    
-    //    while (true) {
-    //
-    //        [NSThread sleepForTimeInterval:0.2];
-    //    }
 }
-
 
 -(void) gimball_reset
 {
@@ -240,9 +199,7 @@
     yaw.angle = 0;
 
     [_drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-        if (error.errorCode == ERR_Successed)
-        {
-            
+      if (error.errorCode == ERR_Successed) {
         }
         else
         {
@@ -253,20 +210,12 @@
 
 -(IBAction) onGimbalScrollDownTouchDown:(id)sender
 {
-//    _gimbalAttitudeUpdateFlag = YES;
-//    [NSThread detachNewThreadSelector:@selector(onGimbalAttitudeScrollDown) toTarget:self withObject:nil];
-//    NSOperationQueue* asyncQueue = [NSOperationQueue mainQueue];
-//    asyncQueue.maxConcurrentOperationCount = 1;
-//    [_drone.gimbal startGimbalAttitudeUpdateToQueue:asyncQueue withResultBlock:^(DJIGimbalAttitude attitude) {
-////        NSString* attiString = [NSString stringWithFormat:@"Pitch = %d\nRoll = %d\nYaw = %d\n", attitude.pitch, attitude.roll, attitude.yaw];
-////        self.attitudeLabel.text = attiString;
-//    }];
+
 }
-//
+
 -(IBAction) onGimbalScrollDownTouchUp:(id)sender
 {
-//    _gimbalAttitudeUpdateFlag = NO;
-//    [_drone.gimbal stopGimbalAttitudeUpdates];
+  [_drone.gimbal stopGimbalAttitudeUpdates];
 }
 
 -(void) onGimbalAttitudeScrollUp
@@ -352,41 +301,6 @@
     }
 }
 
-//#pragma mark - DJIDroneDelegate
-//
-//-(void) droneOnConnectionStatusChanged:(DJIConnectionStatus)status
-//{
-//    switch (status) {
-//        case ConnectionStartConnect:
-//        {
-//            NSLog(@"Start Reconnect...");
-//            break;
-//        }
-//        case ConnectionSuccessed:
-//        {
-//            NSLog(@"Connect Successed...");
-//            _connectionStatusLabel.text = @"Connected";
-//            break;
-//        }
-//        case ConnectionFailed:
-//        {
-//            NSLog(@"Connect Failed...");
-//            _connectionStatusLabel.text = @"Connect Failed";
-//            break;
-//        }
-//        case ConnectionBroken:
-//        {
-//            NSLog(@"Connect Broken...");
-//            _connectionStatusLabel.text = @"Disconnected";
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
-
-
-
 //Camera Button
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender
@@ -398,12 +312,9 @@
             NSLog(@"TOOK PHOTO SUCCCEEEESSSSSFULLYYYYYYYYYYYY");
         }
     }];
-//    takephoto = true;
     NSLog(@"Photo button clicked");
     
     [self performSelector:@selector(updateMedias) withObject:nil afterDelay:2];
-//    [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
-    
 }
 
 #pragma mark - DJICameraDelegate
@@ -436,8 +347,6 @@
             NSLog(@"USB Connected To PC");
             return;
         }
-//        [self updateMedias];
-    
     } else {
         NSLog(@":::::::: CAMERA MODE ::::::::::");
         if (!systemState.isTimeSynced) {
