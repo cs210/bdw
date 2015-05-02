@@ -15,7 +15,7 @@
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
 
 {
-    DJIDrone* _drone;
+    @public DJIDrone* _drone;
     DJICamera* _camera;
     
     //media

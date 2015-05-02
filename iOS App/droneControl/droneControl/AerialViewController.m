@@ -23,6 +23,7 @@
 #import "AerialViewController.h"
 #import "ParkingLotFinder.h"
 #import "SpotConfirmViewController.h"
+#import "DJICameraViewController.h"
 #import <MapKit/MapKit.h>
 
 @implementation AerialViewController
@@ -108,7 +109,8 @@
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager requestAlwaysAuthorization];
+    // BELOW LINE DOES NOT WORK ON IOS7
+    //[_locationManager requestAlwaysAuthorization];
     [_locationManager startUpdatingLocation];
     
     CLLocationCoordinate2D noLocation;
@@ -218,7 +220,13 @@
     } else {
         switch (buttonIndex){
             case 1:{
-                [_drone lookForParking];
+                //    [self onGimbalAttitudeScrollDown];
+                NSLog(@"Moving gimbal and then to next view controller");
+                DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+                DJIDrone* _djidrone;
+                cameraFeed->_drone = _djidrone;
+                [self.navigationController pushViewController:cameraFeed animated:NO];
+
             }
             default: ; // they pressed cancel : do nothing
                 

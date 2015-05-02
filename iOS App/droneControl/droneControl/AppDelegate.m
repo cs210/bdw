@@ -4,6 +4,8 @@
 #import "RemoteApplicationManager.h"
 #import "IDNSLoggerAppender.h"
 #import "LastUserModeDelegate.h"
+#import "AerialViewController.h"
+
 #import <DJISDK/DJISDK.h>
 
 
