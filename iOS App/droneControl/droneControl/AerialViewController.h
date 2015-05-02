@@ -25,5 +25,7 @@
 
 // open up Apple Maps navigation to destination. 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination;
+
+-(void) showParkingLotConfirmationWithTitle:(NSString *)title;
 @end
 

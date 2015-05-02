@@ -9,6 +9,8 @@
 #import "NearbyParkingTableViewController.h"
 #import "ParkingLotFinder.h"
 #import "DJICameraViewController.h"
+#import "AerialViewController.h"
+
 @interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
   NSMutableArray * _parkingLotsNearby;
@@ -47,7 +49,20 @@
   [self.tableView reloadData];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UINavigationController *navVC = self.navigationController;
+    UISplitViewController *splitVC = navVC.splitViewController;
+    NSArray *viewControllers = splitVC.viewControllers;
+    AerialViewController *aerialVC = [viewControllers objectAtIndex:1];
+    ParkingLot *pl = [_parkingLotsNearby objectAtIndex:indexPath.row];
+    NSString * title = [NSString stringWithFormat:@"look for parking in %@?", pl->name];
+    [aerialVC showParkingLotConfirmationWithTitle:title];
+}
 
+
+// segue to a DJICameraViewController
 - (void) showDroneVideo{
     NSLog(@"Showing drone video");
     NSLog(@"Moving gimbal and then to next view controller");
@@ -55,8 +70,6 @@
     DJIDrone* _djidrone;
     cameraFeed->_drone = _djidrone;
     [self.navigationController pushViewController:cameraFeed animated:NO];
-
-    // segue to a DJICameraViewController
 }
 #pragma mark - Table view data source
 
