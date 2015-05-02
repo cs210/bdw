@@ -62,6 +62,8 @@
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
     }
+    //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
+
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -71,15 +73,16 @@
 }
 
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
-    _droneAnnotation.coordinate = location;
-    //[_mapView removeAnnotation:_point];
-    [_mapView addAnnotation:_droneAnnotation];
-    [_mapView selectAnnotation:_droneAnnotation animated:YES];
     if (isParkingSpot){
-        _droneAnnotation.title = @"Parking spot";
-        [_mapView selectAnnotation:_droneAnnotation animated:YES];
+        MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
+        annot.title = @"Parking Lot";
+        [_mapView selectAnnotation:annot animated:YES];
         
     } else {
+        _droneAnnotation.coordinate = location;
+        //[_mapView removeAnnotation:_point];
+        [_mapView addAnnotation:_droneAnnotation];
+        [_mapView selectAnnotation:_droneAnnotation animated:YES];
         _droneAnnotation.title = @"Drone";
         [[_mapView viewForAnnotation:_droneAnnotation] setTag:1];
         UIImage *image = [UIImage imageNamed:@"drone_small.png"];
@@ -197,6 +200,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// BUG: alerts keep showing up many times
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         switch (buttonIndex){
@@ -220,6 +224,7 @@
         switch (buttonIndex){
             case 1:{
                 //    [self onGimbalAttitudeScrollDown];
+                [_drone lookForParking];
                 UINavigationController *masterVC = [self.splitViewController.viewControllers firstObject];
                 NSArray *viewControllers = masterVC.viewControllers;
                 NearbyParkingTableViewController *tableVC = [viewControllers objectAtIndex:0];
