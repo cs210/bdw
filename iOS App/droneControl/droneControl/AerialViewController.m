@@ -42,11 +42,6 @@
 
 
 
--(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-{
-  NSLog(@"didSelectAnnotationView");
-}
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
     NSLog(@"ViewForAnnotation Called");
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -78,7 +73,6 @@
         UIImage *image = [UIImage imageNamed:@"drone_small.png"];
         [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
         [_mapView deselectAnnotation:_droneAnnotation animated:YES];
-        
     }
     
 }

@@ -241,7 +241,7 @@
             </objects>
             <point key="canvasLocation" x="1766.5" y="2268"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Nearby Parking lots-->
         <scene sceneID="qqW-3T-Rkh">
             <objects>
                 <tableViewController id="NJM-tr-yvI" customClass="NearbyParkingTableViewController" sceneMemberID="viewController">
@@ -250,11 +250,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TEST" id="ahh-BQ-tcX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Parking lot" id="ahh-BQ-tcX" customClass="ParkingLotTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahh-BQ-tcX" id="Kf3-Hj-01y">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am3-vS-Ln2">
+                                            <rect key="frame" x="8" y="14" width="304" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-E3-RVk">
+                                            <rect key="frame" x="8" y="13" width="298" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="distanceLabel" destination="4Ng-E3-RVk" id="xdp-vJ-bwk"/>
+                                    <outlet property="lotNameLabel" destination="Am3-vS-Ln2" id="WF2-kC-JIv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -262,11 +280,11 @@
                             <outlet property="delegate" destination="NJM-tr-yvI" id="nOC-HS-aIT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="SeG-oG-cqy"/>
+                    <navigationItem key="navigationItem" title="Nearby Parking lots" id="SeG-oG-cqy"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMM-0i-kxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="1310"/>
+            <point key="canvasLocation" x="1881" y="1305"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="mtF-X3-4QF">

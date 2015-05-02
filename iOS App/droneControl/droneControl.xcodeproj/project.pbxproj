@@ -11,6 +11,7 @@
 		463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4648C3E31AEA4834005811B7 /* ParkingLot.m */; };
+		466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
 		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
 		46841DCE1AAD8DE500BB0BF1 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB51AAD8DE500BB0BF1 /* .project */; };
@@ -98,6 +99,8 @@
 		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		4648C3E21AEA47DD005811B7 /* ParkingLot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLot.h; sourceTree = "<group>"; };
 		4648C3E31AEA4834005811B7 /* ParkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLot.m; sourceTree = "<group>"; };
+		466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotTableViewCell.m; sourceTree = "<group>"; };
+		466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotTableViewCell.h; sourceTree = "<group>"; };
 		46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld_SAS.txt; sourceTree = "<group>"; };
 		46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteApplicationManager.h; sourceTree = "<group>"; };
 		46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteApplicationManager.m; sourceTree = "<group>"; };
@@ -619,6 +622,8 @@
 				A6F4EF2B1AAD17D500C81065 /* AppDelegate.h */,
 				A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */,
 				A6F4EF311AAD17D500C81065 /* Main.storyboard */,
+				466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */,
+				466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */,
 				A6F4EF341AAD17D500C81065 /* Images.xcassets */,
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
@@ -989,6 +994,7 @@
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
 				4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
+				466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */,
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,

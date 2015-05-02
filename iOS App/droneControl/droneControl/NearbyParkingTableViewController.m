@@ -10,7 +10,7 @@
 #import "ParkingLotFinder.h"
 #import "DJICameraViewController.h"
 #import "AerialViewController.h"
-
+#import "ParkingLotTableViewCell.h"
 @interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
   NSMutableArray * _parkingLotsNearby;
@@ -85,15 +85,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TEST" forIndexPath:indexPath];
-    
-    // Configure the cell...
-  
-  //cell.text = @"LOL";
-  ParkingLot *currentObject = [_parkingLotsNearby objectAtIndex:[indexPath row]];
-  cell.textLabel.text = currentObject->name;
-    
-  return cell;
+    ParkingLotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Parking lot" forIndexPath:indexPath];
+    ParkingLot *currentObject = [_parkingLotsNearby objectAtIndex:[indexPath row]];
+    cell.lotNameLabel.text = currentObject->name;
+    cell.distanceLabel.text = @"0.1 mi";
+    return cell;
 }
 
 
