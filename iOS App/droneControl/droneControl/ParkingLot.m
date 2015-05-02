@@ -15,4 +15,14 @@
     CLLocationCoordinate2D upperLeft; // upperLeft and lowerRight represent the area occupied by the parking lot.
     CLLocationCoordinate2D lowerRight;
     NSString *name;
+
+- (id)initWithCoord:(float)latitude longitude:(float)longitude lotName:(NSString *)lotName {
+    self = [super init];
+    if (self) {
+        self->name = lotName;
+        self->coordinate =  CLLocationCoordinate2DMake(latitude, longitude);
+    }
+    return self;
+}
+
 @end

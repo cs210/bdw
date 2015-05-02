@@ -12,90 +12,93 @@
 
 @implementation ParkingLotFinder
 {
-  NSMutableArray *_lots;
-  NSMutableArray *_lotListeners;
-  CLLocationCoordinate2D _lastKnownLocation;
-  int _radius;
+    NSMutableArray *_lots;
+    NSMutableArray *_lotListeners;
+    CLLocationCoordinate2D _lastKnownLocation;
+    int _radius;
 }
-    // dummy implememtation that returns 5 rando locations within the radius.
+// dummy implememtation that returns 5 rando locations within the radius.
 
 + (id)sharedManager {
-  static ParkingLotFinder *sharedMyManager = nil;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedMyManager = [[self alloc] init];
-  });
-  return sharedMyManager;
+    static ParkingLotFinder *sharedMyManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyManager = [[self alloc] init];
+    });
+    return sharedMyManager;
 }
 
 - (id)init {
-  if (self = [super init]) {
-    _lots = [[NSMutableArray alloc] initWithCapacity:5]; // in real implementation, will get number of lots from google
-    _lotListeners = [NSMutableArray array];
-  }
-  return self;
+    if (self = [super init]) {
+        _lots = [[NSMutableArray alloc] initWithCapacity:5]; // in real implementation, will get number of lots from google
+        _lotListeners = [NSMutableArray array];
+    }
+    return self;
 }
 
 -(void) registerForLotUpdates: (id<ParkingLotFinderDelegate>) newListener
 {
-  [_lotListeners addObject:newListener];
+    [_lotListeners addObject:newListener];
 }
 
--(void) stanfordLots{
-   // Gates lot:  37.430632, -122.173277
-    // oval: 37.429110, -122.169705
-    // cantor museum lot: 37.432808, -122.169469
-    // memaud 37.429460, -122.166358
-    // wilbur 37.423683, -122.161594
-    // encina 37.427756, -122.164695
-    // vaden 37.421731, -122.163678
-    // mirrielees 37.423316, -122.160363
-    // blackwelder 37.424236, -122.158571
-    // li ka shing 37.431373, -122.176705
-    // med school 37.433000, -122.173786
-    // jordan quad 37.429993, -122.177521
+
+// sorry for this ugly code :( it's temporary and not worth it to use a db
+-(void) findStanfordLots{
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.430632) longitude:(-122.173277) lotName:@"Gates lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.429110) longitude:(-122.169705) lotName:@"Stanford Oval"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.432808) longitude:(-122.169469) lotName:@"Cantor Museum Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.429460) longitude:(-122.166358) lotName:@"Memorial Auditorium Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.423683) longitude:(-122.161594) lotName:@"Wilbur Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.427756) longitude:(-122.164695) lotName:@"Encina Hall Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.421731) longitude:(-122.163678) lotName:@"Vaden Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.423316) longitude:(-122.160363) lotName:@"Mirrielees Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.424236) longitude:(-122.158571) lotName:@"Blackwelder Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.431373) longitude:(-122.176705) lotName:@"LKSC Loading Dock"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.433000) longitude:(-122.173786) lotName:@"Medical School Lot"]];
+    [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.429993) longitude:(-122.177521) lotName:@"Jordan Quad Lot"]];
+    
 }
 
 -(void) findNearbyLots
 {
-  for (int i = 0; i < 5; i++){
-    double dist = (int) abs( (int) arc4random()) % _radius;
-    double bearing = (int) arc4random() % 360; // degrees
-    CLLocationCoordinate2D loc = [self coordinateFromCoord:_lastKnownLocation atDistanceKm:dist / 1000.0 atBearingDegrees:bearing ];
-    ParkingLot *pl = [[ParkingLot alloc] init];
-    pl->coordinate = loc;
-    CLLocationCoordinate2D lowerRight;
-    lowerRight.latitude = loc.latitude - 0.001;
-    lowerRight.longitude = loc.longitude + 0.001;
-    pl->lowerRight = lowerRight;
-    CLLocationCoordinate2D upperLeft;
-    upperLeft.latitude = loc.latitude + 0.001;
-    upperLeft.longitude = loc.longitude - 0.001;
-    pl->upperLeft = upperLeft;
-    pl->name = [NSString stringWithFormat:@"%@ %@", @"parking lot" ,[NSString stringWithFormat:@"%d", i]];
-    [_lots addObject:pl];
-  }
+    for (int i = 0; i < 5; i++){
+        double dist = (int) abs( (int) arc4random()) % _radius;
+        double bearing = (int) arc4random() % 360; // degrees
+        CLLocationCoordinate2D loc = [self coordinateFromCoord:_lastKnownLocation atDistanceKm:dist / 1000.0 atBearingDegrees:bearing ];
+        ParkingLot *pl = [[ParkingLot alloc] init];
+        pl->coordinate = loc;
+        CLLocationCoordinate2D lowerRight;
+        lowerRight.latitude = loc.latitude - 0.001;
+        lowerRight.longitude = loc.longitude + 0.001;
+        pl->lowerRight = lowerRight;
+        CLLocationCoordinate2D upperLeft;
+        upperLeft.latitude = loc.latitude + 0.001;
+        upperLeft.longitude = loc.longitude - 0.001;
+        pl->upperLeft = upperLeft;
+        pl->name = [NSString stringWithFormat:@"%@ %@", @"parking lot" ,[NSString stringWithFormat:@"%d", i]];
+        [_lots addObject:pl];
+    }
 }
 
 -(void) alertAllListeners
 {
-  for ( id<ParkingLotFinderDelegate> listener in _lotListeners)
-  {
-    [listener didUpdateLots];
-  }
+    for ( id<ParkingLotFinderDelegate> listener in _lotListeners)
+    {
+        [listener didUpdateLots];
+    }
 }
 
 -(void) setLocation: (CLLocationCoordinate2D)userLocation radius:(int)radius{
-  [_lots removeAllObjects];
-  _lastKnownLocation = userLocation;
-  _radius = radius;
-  [self findNearbyLots];
-  [self alertAllListeners];
+    [_lots removeAllObjects];
+    _lastKnownLocation = userLocation;
+    _radius = radius;
+    [self findStanfordLots];
+    [self alertAllListeners];
 }
 
 -(NSMutableArray *) getLots
 {
-  return _lots;
+    return _lots;
 }
 
 // lol code from stackoverflow for generating random coordinates x / y meters away

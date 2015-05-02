@@ -13,4 +13,7 @@
     CLLocationCoordinate2D lowerRight;
     NSString *name;
 };
+
+- (id)initWithCoord:(float)latitude longitude:(float)longitude lotName:(NSString *)lotName;
+
 @end
