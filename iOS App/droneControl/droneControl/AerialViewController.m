@@ -54,14 +54,16 @@
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-  //NSLog(@"Here");
+  NSLog(@"didSelectAnnotationView");
 }
 
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
+    NSLog(@"ViewForAnnotation Called");
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
+    [annotationView setImage:image];
     return annotationView;
 }
 
@@ -72,8 +74,6 @@
     [_mapView selectAnnotation:_droneAnnotation animated:YES];
     if (isParkingSpot){
         _droneAnnotation.title = @"Parking spot";
-        UIImage *image = [UIImage imageNamed:@"parking_spot_icon.png"];
-        [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
         [_mapView selectAnnotation:_droneAnnotation animated:YES];
         
     } else {
@@ -110,8 +110,8 @@
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    // BELOW LINE DOES NOT WORK ON IOS7
-    //[_locationManager requestAlwaysAuthorization];
+    // BELOW LINE DOES NOT WORK ON IOS7 - must comment out to run on Jay's ipad
+    //[_locationManager requestWhenInUseAuthorization];
     [_locationManager startUpdatingLocation];
     
     CLLocationCoordinate2D noLocation;
