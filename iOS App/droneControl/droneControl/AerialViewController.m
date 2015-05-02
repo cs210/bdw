@@ -222,11 +222,6 @@
         switch (buttonIndex){
             case 1:{
                 //    [self onGimbalAttitudeScrollDown];
-                NSLog(@"Moving gimbal and then to next view controller");
-                DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                DJIDrone* _djidrone;
-                cameraFeed->_drone = _djidrone;
-                [self.navigationController pushViewController:cameraFeed animated:NO];
                 UINavigationController *masterVC = [self.splitViewController.viewControllers firstObject];
                 NSArray *viewControllers = masterVC.viewControllers;
                 NearbyParkingTableViewController *tableVC = [viewControllers objectAtIndex:0];

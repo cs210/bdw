@@ -8,7 +8,7 @@
 
 #import "NearbyParkingTableViewController.h"
 #import "ParkingLotFinder.h"
-
+#import "DJICameraViewController.h"
 @interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
   NSMutableArray * _parkingLotsNearby;
@@ -50,6 +50,12 @@
 
 - (void) showDroneVideo{
     NSLog(@"Showing drone video");
+    NSLog(@"Moving gimbal and then to next view controller");
+    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    DJIDrone* _djidrone;
+    cameraFeed->_drone = _djidrone;
+    [self.navigationController pushViewController:cameraFeed animated:NO];
+
     // segue to a DJICameraViewController
 }
 #pragma mark - Table view data source
