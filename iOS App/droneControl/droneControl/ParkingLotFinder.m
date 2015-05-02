@@ -41,6 +41,21 @@
   [_lotListeners addObject:newListener];
 }
 
+-(void) stanfordLots{
+   // Gates lot:  37.430632, -122.173277
+    // oval: 37.429110, -122.169705
+    // cantor museum lot: 37.432808, -122.169469
+    // memaud 37.429460, -122.166358
+    // wilbur 37.423683, -122.161594
+    // encina 37.427756, -122.164695
+    // vaden 37.421731, -122.163678
+    // mirrielees 37.423316, -122.160363
+    // blackwelder 37.424236, -122.158571
+    // li ka shing 37.431373, -122.176705
+    // med school 37.433000, -122.173786
+    // jordan quad 37.429993, -122.177521
+}
+
 -(void) findNearbyLots
 {
   for (int i = 0; i < 5; i++){
