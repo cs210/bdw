@@ -59,6 +59,9 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
     NSLog(@"ViewForAnnotation Called");
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -115,7 +118,7 @@
     [_locationManager startUpdatingLocation];
     
     CLLocationCoordinate2D noLocation;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
   
@@ -141,7 +144,7 @@
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
         
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 500, 500);
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(crnLoc.coordinate, 2000, 2000);
         MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
         [_mapView setRegion:adjustedRegion animated:YES];
         _droneAnnotation = [[MKPointAnnotation alloc] init];
@@ -162,10 +165,6 @@
             [_mapView deselectAnnotation:lotAnnotation animated:YES]; // this is needed for the image to be set correctly.
             
             lotAnnotation.title = parkingLot->name;
-            UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
-            
-            // using parking_log.png causes an error: "Could not determine current country code: Error Domain=NSURLErrorDomain Code=-1005 "The network connection was lost."
-            [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
             [_mapView viewForAnnotation:lotAnnotation].canShowCallout = YES;
             UIButton * button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [button setTitle:parkingLot->name forState:UIControlStateNormal];
