@@ -40,17 +40,7 @@
     [self addAnnnotationWithOffset:false location:*location];
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-  NSLog(@"callout accessory control tapped");
-  //Grab information from the accessory
-  UIButton * controlButtonClicked = (UIButton *)control;
-  NSLog(@"Button? %@", controlButtonClicked.currentTitle);
-  
-  NSString * title = view.annotation.title;
-  //NSLog(@"%@",view.annotation.subtitle);
-  [self showParkingLotConfirmationWithTitle:title];
-}
+
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
