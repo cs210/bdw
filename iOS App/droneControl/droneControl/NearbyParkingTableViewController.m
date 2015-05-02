@@ -47,6 +47,11 @@
   [self.tableView reloadData];
 }
 
+
+- (void) showDroneVideo{
+    NSLog(@"Showing drone video");
+    // segue to a DJICameraViewController
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

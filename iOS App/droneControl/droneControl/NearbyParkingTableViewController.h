@@ -10,4 +10,5 @@
 
 @interface NearbyParkingTableViewController : UITableViewController
 
+- (void) showDroneVideo;
 @end

@@ -24,6 +24,7 @@
 #import "ParkingLotFinder.h"
 #import "SpotConfirmViewController.h"
 #import "DJICameraViewController.h"
+#import "NearbyParkingTableViewController.h"
 #import <MapKit/MapKit.h>
 
 @implementation AerialViewController
@@ -226,7 +227,10 @@
                 DJIDrone* _djidrone;
                 cameraFeed->_drone = _djidrone;
                 [self.navigationController pushViewController:cameraFeed animated:NO];
-
+                UINavigationController *masterVC = [self.splitViewController.viewControllers firstObject];
+                NSArray *viewControllers = masterVC.viewControllers;
+                NearbyParkingTableViewController *tableVC = [viewControllers objectAtIndex:0];
+                [tableVC showDroneVideo];
             }
             default: ; // they pressed cancel : do nothing
                 
