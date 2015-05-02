@@ -20,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Dq-DU5">
-                                <rect key="frame" x="200" y="146" width="200" height="135"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-Dq-DU5">
+                                <rect key="frame" x="200" y="102" width="200" height="135"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="qvG-UR-fYB"/>
                                     <constraint firstAttribute="height" constant="135" id="u3c-lR-Olp"/>
@@ -34,8 +34,8 @@
                                     <action selector="microphoneClicked:" destination="vA3-hO-dtV" eventType="touchUpInside" id="Oo1-0O-ycw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Listening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-70-Rkq">
-                                <rect key="frame" x="223" y="103" width="155" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-70-Rkq">
+                                <rect key="frame" x="223" y="59" width="155" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3fj-jO-oJs"/>
                                     <constraint firstAttribute="width" constant="155" id="G9O-pv-276"/>
@@ -44,8 +44,8 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Last Heard Word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKV-pa-S6B">
-                                <rect key="frame" x="43" y="414" width="129" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Heard Word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKV-pa-S6B">
+                                <rect key="frame" x="43" y="458" width="129" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="lfN-zF-hpK"/>
                                 </constraints>
@@ -53,8 +53,8 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nothing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV6-FY-pFp">
-                                <rect key="frame" x="455" y="415" width="129" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV6-FY-pFp">
+                                <rect key="frame" x="455" y="459" width="129" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="BdX-kq-9c4"/>
                                 </constraints>
@@ -62,14 +62,14 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="say YES to confirm" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-rM-OWo">
-                                <rect key="frame" x="16" y="369" width="568" height="27"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="say YES to confirm" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-rM-OWo">
+                                <rect key="frame" x="16" y="413" width="568" height="27"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-ds-MHw">
-                                <rect key="frame" x="20" y="289" width="560" height="49"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-ds-MHw">
+                                <rect key="frame" x="20" y="333" width="560" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="W38-jR-Yov"/>
                                 </constraints>
@@ -85,8 +85,8 @@
                                     <action selector="handleClickCountButton" destination="vA3-hO-dtV" eventType="touchUpInside" id="pSQ-4e-ZFh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Gv-WkW">
-                                <rect key="frame" x="0.0" y="476" width="600" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Gv-WkW">
+                                <rect key="frame" x="0.0" y="520" width="600" height="80"/>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="oz8-yS-Z95"/>
@@ -261,13 +261,19 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-E3-RVk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-E3-RVk">
                                             <rect key="frame" x="8" y="13" width="298" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="top" secondItem="Kf3-Hj-01y" secondAttribute="topMargin" constant="5" id="6Fa-Tx-0jb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4Ng-E3-RVk" secondAttribute="trailing" constant="6" id="L4G-Mu-4ZT"/>
+                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="top" secondItem="Kf3-Hj-01y" secondAttribute="topMargin" constant="5" id="NWb-V0-eWX"/>
+                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="leading" secondItem="Kf3-Hj-01y" secondAttribute="leadingMargin" id="nce-5Y-lEp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="distanceLabel" destination="4Ng-E3-RVk" id="xdp-vJ-bwk"/>
