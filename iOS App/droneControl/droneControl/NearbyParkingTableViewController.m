@@ -51,6 +51,12 @@
   [self.tableView reloadData];
 }
 
+-(void) lotOrderChanged
+{
+  _parkingLotsNearby = [[ParkingLotFinder sharedManager] getLots];
+  [self.tableView reloadData];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UINavigationController *navVC = self.navigationController;

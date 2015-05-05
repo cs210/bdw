@@ -12,6 +12,7 @@
 
 @protocol ParkingLotFinderDelegate
 -(void) didUpdateLots;
+-(void) lotOrderChanged;
 @end
 
 @interface ParkingLotFinder : NSObject
@@ -24,5 +25,7 @@
 -(NSMutableArray *) getLots;
 
 -(void) registerForLotUpdates: (id<ParkingLotFinderDelegate>) newListener;
+
+-(void) updateLotsWithLocation: (CLLocation *) userLocation;
 
 @end

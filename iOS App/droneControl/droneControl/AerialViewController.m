@@ -158,8 +158,9 @@
             [_mapView viewForAnnotation:lotAnnotation].rightCalloutAccessoryView = button;
             
         }
-        
     }
+  // Update the spots to sort around location
+  [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
 }
 
 - (void) lotButtonPressed:(id) sender{ // how to get the name of the parking lot here?

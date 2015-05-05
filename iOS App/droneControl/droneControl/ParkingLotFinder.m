@@ -41,6 +41,38 @@
     [_lotListeners addObject:newListener];
 }
 
+-(void) updateLotsWithLocation: (CLLocation *) userLocation
+{
+  NSArray *orderedLots = [_lots sortedArrayUsingComparator:^(id a, id b) {
+    ParkingLot * lotA = (ParkingLot *)a;
+    ParkingLot * lotB = (ParkingLot *)b;
+    
+    CLLocation * lotALocation = [[CLLocation alloc] initWithLatitude:lotA->coordinate.latitude longitude:lotA->coordinate.longitude];
+    
+    CLLocation * lotBLocation = [[CLLocation alloc] initWithLatitude:lotB->coordinate.latitude longitude:lotB->coordinate.longitude];
+    
+    CLLocationDistance distanceA = [lotALocation distanceFromLocation:userLocation];
+    CLLocationDistance distanceB = [lotBLocation distanceFromLocation:userLocation];
+    if (distanceA < distanceB) {
+      return NSOrderedAscending;
+    } else if (distanceA > distanceB) {
+      return NSOrderedDescending;
+    } else {
+      return NSOrderedSame;
+    }
+  }];
+  
+  if ([_lots isEqualToArray:orderedLots]) {
+    // Lot order hasn't changed, don't do anything
+  } else {
+    _lots = [NSMutableArray arrayWithArray:orderedLots];
+    for ( id<ParkingLotFinderDelegate> listener in _lotListeners)
+    {
+      [listener lotOrderChanged];
+    }
+  }
+}
+
 
 // sorry for this ugly code :( it's temporary and not worth it to use a db
 -(void) findStanfordLots{
