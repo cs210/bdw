@@ -211,18 +211,7 @@
                 UINavigationController *masterVC = [self.splitViewController.viewControllers firstObject];
                 NSArray *viewControllers = masterVC.viewControllers;
                 NearbyParkingTableViewController *tableVC = [viewControllers objectAtIndex:0];
-                DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                DJIDrone* _djidrone;
-                cameraFeed->_drone = _djidrone;
-                [self.navigationController pushViewController:cameraFeed animated:NO];
-
-                CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
-                MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
-                MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-                [_mapView setRegion:adjustedRegion animated:YES];
-                
-                [tableVC.navigationController pushViewController:self animated:NO];
-                //[tableVC showDroneVideo];
+                [tableVC showDroneVideo];
             }
             default: ; // they pressed cancel : do nothing
                 
