@@ -255,4 +255,9 @@
     }
 }
 
+-(CLLocation *) getUserLocation
+{
+  return _locationManager.location;
+}
+
 @end

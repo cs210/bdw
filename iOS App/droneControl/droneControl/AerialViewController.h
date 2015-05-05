@@ -27,5 +27,8 @@
 - (void) goToNavigation: (CLLocationCoordinate2D)destination;
 
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title;
+
+-(CLLocation *) getUserLocation;
+
 @end
 

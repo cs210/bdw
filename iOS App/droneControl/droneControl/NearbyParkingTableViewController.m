@@ -11,6 +11,8 @@
 #import "DJICameraViewController.h"
 #import "AerialViewController.h"
 #import "ParkingLotTableViewCell.h"
+#import "ParkingLot.h"
+
 @interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
   NSMutableArray * _parkingLotsNearby;
@@ -51,7 +53,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     UINavigationController *navVC = self.navigationController;
     UISplitViewController *splitVC = navVC.splitViewController;
     NSArray *viewControllers = splitVC.viewControllers;
@@ -95,7 +96,19 @@
     ParkingLotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Parking lot" forIndexPath:indexPath];
     ParkingLot *currentObject = [_parkingLotsNearby objectAtIndex:[indexPath row]];
     cell.lotNameLabel.text = currentObject->name;
-    cell.distanceLabel.text = @"0.1 mi";
+  
+  UINavigationController *navVC = self.navigationController;
+  UISplitViewController *splitVC = navVC.splitViewController;
+  NSArray *viewControllers = splitVC.viewControllers;
+  
+  AerialViewController *aerialVC = [viewControllers objectAtIndex:1];
+  
+    //Calculate the distance from current location to parking lot
+  CLLocation * parkingLocation = [[CLLocation alloc] initWithLatitude:currentObject->coordinate.latitude longitude:currentObject->coordinate.longitude];
+  CLLocation * myLocation = [aerialVC getUserLocation];
+  CLLocationDistance parkingDistance = [parkingLocation distanceFromLocation:myLocation];
+  
+  cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f mi", parkingDistance / 1609.34];
     return cell;
 }
 
