@@ -13,9 +13,8 @@
 #import <DJISDK/DJISDK.h> //DJIDroneDelegate,
 
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
-
 {
-    @public DJIDrone* _drone;
+    //@public DJIDrone* _drone;
     DJICamera* _camera;
     
     //media

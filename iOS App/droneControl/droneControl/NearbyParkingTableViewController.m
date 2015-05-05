@@ -76,8 +76,6 @@
     NSLog(@"Showing drone video");
     NSLog(@"Moving gimbal and then to next view controller");
     DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    DJIDrone* _djidrone;
-    cameraFeed->_drone = _djidrone;
     [self.navigationController pushViewController:cameraFeed animated:NO];
 }
 #pragma mark - Table view data source

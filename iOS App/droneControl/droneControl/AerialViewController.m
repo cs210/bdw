@@ -183,6 +183,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+  if ([overlay isKindOfClass:[MKPolyline class]]) {
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    [renderer setStrokeColor:[UIColor blueColor]];
+    [renderer setLineWidth:5.0];
+    return renderer;
+  }
+  return nil;
+}
+
 // BUG: alerts keep showing up many times
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
@@ -194,8 +205,23 @@
                 [mapItem setName:@"Stanford"];
                 NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
                 MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-                [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
-                               launchOptions:launchOptions];
+               // [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                //               launchOptions:launchOptions];
+              
+              MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+              [request setSource:[MKMapItem mapItemForCurrentLocation]];
+              [request setDestination:mapItem];
+              [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
+              [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
+              MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+              [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+                if (!error) {
+                  for (MKRoute *route in [response routes]) {
+                    [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
+                    // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
+                  }
+                }
+              }];
             }
             case 2:
                 [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
@@ -212,8 +238,6 @@
                 NSArray *viewControllers = masterVC.viewControllers;
                 NearbyParkingTableViewController *tableVC = [viewControllers objectAtIndex:0];
                 DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                DJIDrone* _djidrone;
-                cameraFeed->_drone = _djidrone;
                 [self.navigationController pushViewController:cameraFeed animated:NO];
               
                 CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
