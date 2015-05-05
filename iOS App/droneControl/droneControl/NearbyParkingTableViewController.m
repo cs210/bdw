@@ -55,6 +55,10 @@
     UINavigationController *navVC = self.navigationController;
     UISplitViewController *splitVC = navVC.splitViewController;
     NSArray *viewControllers = splitVC.viewControllers;
+  
+    if ([viewControllers count] < 1)
+      return;
+  
     AerialViewController *aerialVC = [viewControllers objectAtIndex:1];
   
     //This is a temp fix for now when the drone video is on the main screen
