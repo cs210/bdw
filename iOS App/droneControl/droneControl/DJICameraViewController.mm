@@ -78,6 +78,8 @@
                         self.lastImage.image = [UIImage imageWithData:mediaData];
                         //                        [self.progressIndicator stopAnimating];
                         //                        [self.progressIndicator removeFromSuperview];
+                        //UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:mediaData]);
+
                     });
                 }
             }

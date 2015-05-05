@@ -20,10 +20,10 @@
 
 -(void) moveDrone{
     CLLocationCoordinate2D location;
-    location.longitude = _userLocation.coordinate.longitude + (0.0001 * (float) _n_times_moved);
-    location.latitude = _userLocation.coordinate.latitude + (0.0001 * (float) _n_times_moved);
+    location.longitude = _userLocation.coordinate.longitude + (0.00004 * (float) _n_times_moved);
+    location.latitude = _userLocation.coordinate.latitude + (0.00004 * (float) _n_times_moved);
     
-    if (_n_times_moved == 10){
+    if (_n_times_moved == 30){
         [self.delegate updateDroneLocation:&location];
         [_timer invalidate];
         
@@ -31,7 +31,7 @@
         [self.delegate goToNavigation:location];
         return;
         
-    } else if (_n_times_moved < 10){
+    } else if (_n_times_moved < 30){
         _n_times_moved += 1;
         [self.delegate updateDroneLocation:&location];
     }
