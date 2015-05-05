@@ -215,7 +215,7 @@
                 DJIDrone* _djidrone;
                 cameraFeed->_drone = _djidrone;
                 [self.navigationController pushViewController:cameraFeed animated:NO];
-
+              
                 CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
                 MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
                 MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];

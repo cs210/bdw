@@ -56,9 +56,14 @@
     UISplitViewController *splitVC = navVC.splitViewController;
     NSArray *viewControllers = splitVC.viewControllers;
     AerialViewController *aerialVC = [viewControllers objectAtIndex:1];
-    ParkingLot *pl = [_parkingLotsNearby objectAtIndex:indexPath.row];
-    NSString * title = [NSString stringWithFormat:@"look for parking in %@?", pl->name];
-    [aerialVC showParkingLotConfirmationWithTitle:title];
+  
+    //This is a temp fix for now when the drone video is on the main screen
+    if (aerialVC)
+    {
+      ParkingLot *pl = [_parkingLotsNearby objectAtIndex:indexPath.row];
+      NSString * title = [NSString stringWithFormat:@"look for parking in %@?", pl->name];
+      [aerialVC showParkingLotConfirmationWithTitle:title];
+    }
 }
 
 
