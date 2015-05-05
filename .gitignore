@@ -47,3 +47,7 @@ iOS App/droneControl/droneControl.xcodeproj/xcuserdata/Mikey.xcuserdatad/xcschem
 iOS App/droneControl/droneControl.xcodeproj/xcuserdata/Mikey.xcuserdatad/xcschemes/xcschememanagement.plist
 
 *.m~
+
+*.storyboard~
+
+iOS App/droneControl/droneControl/Base.lproj/Main.storyboard~
