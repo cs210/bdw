@@ -99,7 +99,7 @@
 - (UIButton*) findClosestParkingButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
-               action:@selector(aMethod:)
+               action:@selector(launchDrone)
      forControlEvents:UIControlEventTouchUpInside];
     
     [button setTitle:@" Find closest parking " forState:UIControlStateNormal];
@@ -163,7 +163,6 @@
         _drone = [[DroneController alloc]init];
         _drone.delegate = self;
         _drone.userLocation = crnLoc;
-        //[_drone lookForParking];
         _didStartLooking = true;
         
         [[ParkingLotFinder sharedManager ] setLocation:crnLoc.coordinate radius:500];
@@ -277,12 +276,27 @@
               _mapView.frame = mapFrame;
               
               [self.view addSubview:cameraFeed.view];
+	      //                [self launchDrone];
             }
             default: ; // they pressed cancel : do nothing
                 
         }
         
     }
+}
+
+-(void)launchDrone{
+    _shouldShowMaster = NO;
+    [self hideMaster];
+    [_drone lookForParking];
+    CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
+    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:cameraFeed animated:NO];
+    [self.view addSubview:cameraFeed.view];
+
 }
 
 - (void)hideMaster  {
