@@ -75,13 +75,16 @@
                 }
                 else
                 {
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                  NSLog(@"Removed this code because it wasn't being used");
+                  assert(0);
+                  
+                    /*dispatch_async(dispatch_get_main_queue(), ^{
                         self.lastImage.image = [UIImage imageWithData:mediaData];
                         //                        [self.progressIndicator stopAnimating];
                         //                        [self.progressIndicator removeFromSuperview];
                         //UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:mediaData]);
 
-                    });
+                    });*/
                 }
             }
             else
