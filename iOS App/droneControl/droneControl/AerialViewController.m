@@ -96,12 +96,25 @@
     return !_shouldShowMaster;
 }
 
+- (UIButton*) findClosestParkingButton{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(aMethod:)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [button setTitle:@"Show View" forState:UIControlStateNormal];
+    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    return button;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shouldShowMaster = YES;
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
+    [_mapView addSubview:[self findClosestParkingButton]];
+
     [self.view addSubview:_mapView];
     self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
