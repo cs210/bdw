@@ -32,8 +32,8 @@
 - (void)setDetailItem:(id)newDetailItem
 {
     if (detailItem != newDetailItem) {
-        [detailItem release];
-        detailItem = [newDetailItem retain];
+        //[detailItem release];
+        detailItem = newDetailItem;//[newDetailItem retain];
         
         // Update the view.
         [self configureView];
@@ -72,7 +72,7 @@
 		NSMutableArray *items = [[toolbar items] mutableCopy];
 		[items insertObject:barButtonItem atIndex:0];
 		[toolbar setItems:items animated:YES];
-		[items release];
+		//[items release];
 	}
     self.popoverController = pc;
 }
@@ -89,7 +89,7 @@
 		NSMutableArray *items = [[toolbar items] mutableCopy];
 		[items removeObject:barButtonItem];
 		[toolbar setItems:items animated:YES];
-		[items release];
+		//[items release];
 	}
     self.popoverController = nil;
 }
@@ -174,12 +174,12 @@
 
 - (void)dealloc
 {
-    [popoverController release];
+    /*[popoverController release];
     [toolbar release];
     
     [detailItem release];
     [detailDescriptionLabel release];
-    [super dealloc];
+    [super dealloc];*/
 }
 
 

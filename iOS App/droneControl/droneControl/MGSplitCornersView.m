@@ -35,7 +35,7 @@
 {
 	self.cornerBackgroundColor = nil;
 	
-	[super dealloc];
+	//[super dealloc];
 }
 
 
@@ -225,8 +225,8 @@ double rad2Deg(double radians)
 - (void)setCornerBackgroundColor:(UIColor *)color
 {
 	if (color != cornerBackgroundColor) {
-		[cornerBackgroundColor release];
-		cornerBackgroundColor = [color retain];
+		//[cornerBackgroundColor release];
+		//cornerBackgroundColor = [color retain];
 		[self setNeedsDisplay];
 	}
 }

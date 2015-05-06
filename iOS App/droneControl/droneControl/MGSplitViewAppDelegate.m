@@ -37,10 +37,10 @@
 
 - (void)dealloc
 {
-    [splitViewController release];
+    /*[splitViewController release];
     [window release];
 	
-    [super dealloc];
+    [super dealloc];*/
 }
 
 

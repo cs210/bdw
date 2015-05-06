@@ -149,13 +149,13 @@
 {
 	_delegate = nil;
 	[self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-	[_viewControllers release];
+	/*[_viewControllers release];
 	[_barButtonItem release];
 	[_hiddenPopoverController release];
 	[_dividerView release];
 	[_cornerViews release];
 	
-	[super dealloc];
+	[super dealloc];*/
 }
 
 
@@ -437,8 +437,8 @@
 		trailingCorners.cornerBackgroundColor = MG_DEFAULT_CORNER_COLOR;
 		trailingCorners.cornerRadius = MG_DEFAULT_CORNER_RADIUS;
 		_cornerViews = [[NSArray alloc] initWithObjects:leadingCorners, trailingCorners, nil];
-		[leadingCorners release];
-		[trailingCorners release];
+		/*[leadingCorners release];
+		[trailingCorners release];*/
 		
 	} else if ([_cornerViews count] == 2) {
 		leadingCorners = [_cornerViews objectAtIndex:0];
@@ -559,7 +559,7 @@
 	
 	if (inPopover && !_hiddenPopoverController && !_barButtonItem) {
 		// Create and configure popover for our masterViewController.
-		[_hiddenPopoverController release];
+		//[_hiddenPopoverController release];
 		_hiddenPopoverController = nil;
 		[self.masterViewController viewWillDisappear:NO];
 		_hiddenPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.masterViewController];
@@ -585,7 +585,7 @@
 		
 		// Remove master from popover and destroy popover, if it exists.
 		[_hiddenPopoverController dismissPopoverAnimated:NO];
-		[_hiddenPopoverController release];
+		//[_hiddenPopoverController release];
 		_hiddenPopoverController = nil;
 		
 		// Inform delegate that the _barButtonItem will become invalid.
@@ -596,7 +596,7 @@
 		}
 		
 		// Destroy _barButtonItem.
-		[_barButtonItem release];
+		//[_barButtonItem release];
 		_barButtonItem = nil;
 		
 		// Move master view.
@@ -911,7 +911,7 @@
 
 - (NSArray *)viewControllers
 {
-	return [[_viewControllers copy] autorelease];
+    return [_viewControllers copy];//[[_viewControllers copy] autorelease];
 }
 
 
@@ -923,7 +923,7 @@
 				[controller.view removeFromSuperview];
 			}
 		}
-		[_viewControllers release];
+		//[_viewControllers release];
 		_viewControllers = [[NSMutableArray alloc] initWithCapacity:2];
 		if (controllers && [controllers count] >= 2) {
 			self.masterViewController = [controllers objectAtIndex:0];
@@ -942,7 +942,7 @@
 	if (_viewControllers && [_viewControllers count] > 0) {
 		NSObject *controller = [_viewControllers objectAtIndex:0];
 		if ([controller isKindOfClass:[UIViewController class]]) {
-			return [[controller retain] autorelease];
+            return controller;//[[controller retain] autorelease];
 		}
 	}
 	
@@ -984,7 +984,7 @@
 	if (_viewControllers && [_viewControllers count] > 1) {
 		NSObject *controller = [_viewControllers objectAtIndex:1];
 		if ([controller isKindOfClass:[UIViewController class]]) {
-			return [[controller retain] autorelease];
+            return controller;// [[controller retain] autorelease];
 		}
 	}
 	
@@ -1019,7 +1019,7 @@
 
 - (MGSplitDividerView *)dividerView
 {
-	return [[_dividerView retain] autorelease];
+    return _dividerView;//[[_dividerView retain] autorelease];
 }
 
 
@@ -1027,8 +1027,8 @@
 {
 	if (divider != _dividerView) {
 		[_dividerView removeFromSuperview];
-		[_dividerView release];
-		_dividerView = [divider retain];
+		//[_dividerView release];
+		//_dividerView = [divider retain];
 		_dividerView.splitViewController = self;
 		_dividerView.backgroundColor = MG_DEFAULT_CORNER_COLOR;
 		if ([self isShowingMaster]) {
@@ -1114,7 +1114,7 @@
 - (NSArray *)cornerViews
 {
 	if (_cornerViews) {
-		return [[_cornerViews retain] autorelease];
+        return _cornerViews;//[[_cornerViews retain] autorelease];
 	}
 	
 	return nil;
