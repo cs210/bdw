@@ -244,8 +244,15 @@
                 MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
                 [_mapView setRegion:adjustedRegion animated:YES];
                 DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                [self.navigationController pushViewController:cameraFeed animated:NO];
-                [self.view addSubview:cameraFeed.view];
+               // [self.navigationController pushViewController:cameraFeed animated:NO];
+              
+                // Resize the camera frame
+              CGRect currFrame = cameraFeed.view.frame;
+              currFrame.size.width = [[UIScreen mainScreen] bounds].size.width;
+              currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2;
+              cameraFeed.view.frame = currFrame;
+              
+              [self.view addSubview:cameraFeed.view];
             }
             default: ; // they pressed cancel : do nothing
                 
