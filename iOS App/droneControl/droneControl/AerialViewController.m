@@ -252,6 +252,12 @@
               currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2;
               cameraFeed.view.frame = currFrame;
               
+              //Resize the map view
+              CGRect mapFrame = _mapView.frame;
+              mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2;
+              mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2;
+              _mapView.frame = mapFrame;
+              
               [self.view addSubview:cameraFeed.view];
             }
             default: ; // they pressed cancel : do nothing
