@@ -15,7 +15,7 @@
   DJIDrone *_drone;
 }
 
-+ (id)sharedManager {
++ (id)sharedHelper {
   static DJIDroneHelper *sharedDroneHelper = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
