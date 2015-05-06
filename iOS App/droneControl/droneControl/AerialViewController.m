@@ -26,7 +26,7 @@
 #import "DJICameraViewController.h"
 #import "NearbyParkingTableViewController.h"
 #import <MapKit/MapKit.h>
-
+#import <UIKit/UIKit.h>
 @implementation AerialViewController
 - (void) receiveImage:(UIImage *)image
 {
@@ -102,41 +102,46 @@
                action:@selector(aMethod:)
      forControlEvents:UIControlEventTouchUpInside];
     
-    [button setTitle:@"Show View" forState:UIControlStateNormal];
-    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    [button setTitle:@" Find closest parking " forState:UIControlStateNormal];
+    double x = _mapView.frame.origin.x + 20.0;
+    double y = _mapView.frame.origin.y + 20.0;
+    double height = 150.0;
+    double width = 600.0;
+    button.titleLabel.font = [UIFont systemFontOfSize:30];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
+    button.frame = CGRectMake(x,y,width,height);
+    button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //[button setBackgroundImage:[UIImage imageNamed:@"drone_white"] forState:UIControlStateNormal];
+    [button sizeToFit];
+
     return button;
 }
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shouldShowMaster = YES;
+    
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
     [_mapView addSubview:[self findClosestParkingButton]];
-
     [self.view addSubview:_mapView];
     self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager requestWhenInUseAuthorization];
-    [_locationManager startUpdatingLocation];
-    
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     
-    
-    // Add the button in here that will segue to the parking view controller if clicked
-    /*UIButton * parkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-     parkingButton.frame = CGRectMake(screenSize.width - 100, screenSize.height - 100, 50, 50);
-     [parkingButton setBackgroundImage:[UIImage imageNamed:@"parking-icon.png"] forState:UIControlStateNormal];
-     [parkingButton addTarget:self action:@selector(findParkingClicked:) forControlEvents:UIControlEventTouchUpInside];
-     [self.view addSubview:parkingButton];*/
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
+
 }
 
 -(void) findParkingClicked:(UIButton *) sender
