@@ -259,7 +259,8 @@
     UISplitViewController* spv = self.splitViewController;
     spv.delegate=self;
     _shouldShowMaster = NO;
-    [spv willRotateToInterfaceOrientation:self.interfaceOrientation duration:0];
+    // yes this stuff is deprecated but I cannot acheive my goal (to call shouldHideViewController) otherwise
+    [spv willRotateToInterfaceOrientation: (UIInterfaceOrientation)[UIDevice currentDevice].orientation duration:0];
     [spv.view setNeedsLayout];
 }
 
