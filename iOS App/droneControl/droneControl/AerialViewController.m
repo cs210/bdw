@@ -47,7 +47,7 @@
         return nil;
     }
     //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
-
+    
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -89,12 +89,21 @@
 }
 
 
+- (BOOL)splitViewController:(UISplitViewController*)svc
+   shouldHideViewController:(UIViewController *)vc
+              inOrientation:(UIInterfaceOrientation)orientation
+{
+    return !_shouldShowMaster;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _shouldShowMaster = YES;
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
-      _mapView.delegate = self;
+    _mapView.delegate = self;
     [self.view addSubview:_mapView];
+    self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
@@ -106,21 +115,21 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
-  
-  
+    
+    
     // Add the button in here that will segue to the parking view controller if clicked
-  /*UIButton * parkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  CGSize screenSize = [UIScreen mainScreen].bounds.size;
-  parkingButton.frame = CGRectMake(screenSize.width - 100, screenSize.height - 100, 50, 50);
-  [parkingButton setBackgroundImage:[UIImage imageNamed:@"parking-icon.png"] forState:UIControlStateNormal];
-  [parkingButton addTarget:self action:@selector(findParkingClicked:) forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:parkingButton];*/
+    /*UIButton * parkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+     CGSize screenSize = [UIScreen mainScreen].bounds.size;
+     parkingButton.frame = CGRectMake(screenSize.width - 100, screenSize.height - 100, 50, 50);
+     [parkingButton setBackgroundImage:[UIImage imageNamed:@"parking-icon.png"] forState:UIControlStateNormal];
+     [parkingButton addTarget:self action:@selector(findParkingClicked:) forControlEvents:UIControlEventTouchUpInside];
+     [self.view addSubview:parkingButton];*/
 }
 
 -(void) findParkingClicked:(UIButton *) sender
 {
-  //Perform segue here manually to table view controller
-  [self performSegueWithIdentifier:@"NearbyParkingSegue" sender:self];
+    //Perform segue here manually to table view controller
+    [self performSegueWithIdentifier:@"NearbyParkingSegue" sender:self];
 }
 
 
@@ -139,9 +148,9 @@
         //[_drone lookForParking];
         _didStartLooking = true;
         
-      [[ParkingLotFinder sharedManager ] setLocation:crnLoc.coordinate radius:500];
-      
-      NSMutableArray* lots =  [[ParkingLotFinder sharedManager] getLots];
+        [[ParkingLotFinder sharedManager ] setLocation:crnLoc.coordinate radius:500];
+        
+        NSMutableArray* lots =  [[ParkingLotFinder sharedManager] getLots];
         for (ParkingLot *parkingLot in lots){
             MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
             lotAnnotation.coordinate = parkingLot->coordinate;
@@ -158,8 +167,8 @@
             
         }
     }
-  // Update the spots to sort around location
-  [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
+    // Update the spots to sort around location
+    [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
 }
 
 - (void) lotButtonPressed:(id) sender{ // how to get the name of the parking lot here?
@@ -167,15 +176,15 @@
         // it's a button
         UIButton *button = (UIButton *)sender;
         NSString *title = [NSString stringWithFormat:@"look for parking in %@?", button.currentTitle];
-      [self showParkingLotConfirmationWithTitle:title];
+        [self showParkingLotConfirmationWithTitle:title];
     }
     
 }
 
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title
 {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
-  [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -185,13 +194,13 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-  if ([overlay isKindOfClass:[MKPolyline class]]) {
-    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-    [renderer setStrokeColor:[UIColor blueColor]];
-    [renderer setLineWidth:5.0];
-    return renderer;
-  }
-  return nil;
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        [renderer setStrokeColor:[UIColor blueColor]];
+        [renderer setLineWidth:5.0];
+        return renderer;
+    }
+    return nil;
 }
 
 // BUG: alerts keep showing up many times
@@ -203,25 +212,20 @@
                                                                addressDictionary:nil];
                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
                 [mapItem setName:@"Stanford"];
-                NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-                MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-               // [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
-                //               launchOptions:launchOptions];
-              
-              MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-              [request setSource:[MKMapItem mapItemForCurrentLocation]];
-              [request setDestination:mapItem];
-              [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
-              [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
-              MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-              [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-                if (!error) {
-                  for (MKRoute *route in [response routes]) {
-                    [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
-                    // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
-                  }
-                }
-              }];
+                MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+                [request setSource:[MKMapItem mapItemForCurrentLocation]];
+                [request setDestination:mapItem];
+                [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
+                [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
+                MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+                [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+                    if (!error) {
+                        for (MKRoute *route in [response routes]) {
+                            [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
+                            // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
+                        }
+                    }
+                }];
             }
             case 2:
                 [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
@@ -232,6 +236,8 @@
     } else {
         switch (buttonIndex){
             case 1:{
+                _shouldShowMaster = NO;
+                [self hideMaster];
                 [_drone lookForParking];
                 CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
                 MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
@@ -248,9 +254,18 @@
     }
 }
 
+- (void)hideMaster  {
+    NSLog(@"hide-unhide master");
+    UISplitViewController* spv = self.splitViewController;
+    spv.delegate=self;
+    _shouldShowMaster = NO;
+    [spv willRotateToInterfaceOrientation:self.interfaceOrientation duration:0];
+    [spv.view setNeedsLayout];
+}
+
 -(CLLocation *) getUserLocation
 {
-  return _locationManager.location;
+    return _locationManager.location;
 }
 
 @end
