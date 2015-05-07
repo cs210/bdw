@@ -49,6 +49,7 @@
 		46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3791AAD859900C94072 /* MobileCoreServices.framework */; };
 		A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */ = {isa = PBXBuildFile; fileRef = A600578C1AB163EB00BA64BF /* SiriMicrophone.png */; };
 		A60057901AB169B200BA64BF /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = A600578F1AB169B200BA64BF /* SpeechController.m */; };
+		A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */; };
 		A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */; };
 		A653914D1AEE00C800EA296A /* parking-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A653914C1AEE00C800EA296A /* parking-icon.png */; };
 		A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66415601AF9448000135A7D /* DJIDroneHelper.m */; };
@@ -204,6 +205,8 @@
 		A600578C1AB163EB00BA64BF /* SiriMicrophone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SiriMicrophone.png; sourceTree = "<group>"; };
 		A600578E1AB169B200BA64BF /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		A600578F1AB169B200BA64BF /* SpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechController.m; sourceTree = "<group>"; };
+		A61493F61AFB246E0020F616 /* CoordinatePointTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatePointTuple.h; sourceTree = "<group>"; };
+		A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinatePointTuple.m; sourceTree = "<group>"; };
 		A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkingTableViewController.h; sourceTree = "<group>"; };
 		A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkingTableViewController.m; sourceTree = "<group>"; };
 		A653914C1AEE00C800EA296A /* parking-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parking-icon.png"; sourceTree = "<group>"; };
@@ -583,6 +586,8 @@
 				D9FCDA541ADD8F6500D91DB7 /* DJICameraViewController.xib */,
 				A664155F1AF9448000135A7D /* DJIDroneHelper.h */,
 				A66415601AF9448000135A7D /* DJIDroneHelper.m */,
+				A61493F61AFB246E0020F616 /* CoordinatePointTuple.h */,
+				A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */,
 			);
 			name = DJI;
 			sourceTree = "<group>";
@@ -1010,6 +1015,7 @@
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
+				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */,
 				D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */,

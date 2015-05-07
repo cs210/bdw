@@ -10,25 +10,7 @@
 #import "VideoPreviewer.h"
 #import "DJIDroneHelper.h"
 #import <DJISDK/DJISDK.h>
-
-@interface CoordinatePointTuple : NSObject
-
-@property (nonatomic, readwrite) float x;
-@property (nonatomic, readwrite) float y;
-@property (nonatomic, readwrite) float xzRatio;
-@property (nonatomic, readwrite) float yzRatio;
-
-@end
-
-CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
-{
-  CoordinatePointTuple * dummy = [[CoordinatePointTuple alloc] init];
-  dummy.x = x;
-  dummy.y = y;
-  dummy.xzRatio = xzRatio;
-  dummy.yzRatio = yzRatio;
-  return dummy;
-}
+#import "CoordinatePointTuple.h"
 
 @implementation DJICameraViewController
 {
@@ -37,7 +19,25 @@ CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRati
     DJIDroneHelper *_droneHelper;
 
   
-  NSArray * coordinatePointTuples;
+  NSArray * _coordinatePointTuples;
+}
+
+CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
+{
+  CoordinatePointTuple * dummy = [[CoordinatePointTuple alloc] init];
+  dummy.xPixelRatio = x / (2192 * 2.0);
+  dummy.yPixelRatio = y / (1233 * 2.0);
+  dummy.xzRatio = xzRatio;
+  dummy.yzRatio = yzRatio;
+  return dummy;
+}
+
+float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRatio)
+{
+  float xDist = currTuple.xPixelRatio - xRatio;
+  float yDist = currTuple.yPixelRatio - yRatio;
+  
+  return sqrt(powf(xDist, 2) + powf(yDist, 2));
 }
 
 - (void)viewDidLoad
@@ -67,9 +67,8 @@ CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRati
   tapGestureRec.numberOfTouchesRequired = 1;
   [self.view addGestureRecognizer:tapGestureRec];
   
-  coordinatePointTuples = [NSArray arrayWithObjects:
-                           
-                           //First row
+  _coordinatePointTuples = [NSArray arrayWithObjects:
+    //First row
     createTuple(478.2323,	300.7952,	-0.55, -1),
     createTuple(478.2323,	300.7952,	-0.55, -1),
     createTuple(573.6903,	268.9758,	-0.55, -0.916666667),
@@ -498,6 +497,23 @@ CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRati
     nil];
 }
 
+-(int) findIndexOfNearestTuple: (float)xRatio withYRatio:(float) yRatio
+{
+  float nearestDistance = 1000000;
+  int nearestIndex = 0;
+  for (int i = 0; i < _coordinatePointTuples.count; i++)
+  {
+    float currDistance = distanceToTuple(_coordinatePointTuples[i], xRatio, yRatio);
+    if (currDistance < nearestDistance)
+    {
+      nearestIndex = i;
+      nearestDistance = currDistance;
+    }
+  }
+  
+  return nearestIndex;
+}
+
 -(void) imageClicked:(UITapGestureRecognizer *) tapRecognizer
 {
   CGPoint tapLocation = [tapRecognizer locationInView:self.view];
@@ -505,6 +521,15 @@ CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRati
   CGRect frameRect = self.view.frame;
   float xRatio = tapLocation.x / frameRect.size.width;
   float yRatio = tapLocation.y / frameRect.size.height;
+  
+  int pointIndex = [self findIndexOfNearestTuple:xRatio withYRatio:yRatio];
+  CoordinatePointTuple * nearestIndex = _coordinatePointTuples[pointIndex];
+  
+  // Get GPS of the drone
+  
+  // Get height of the drone
+  
+  // Multiply the height of the drone by the xRatio and yRatio of the point 
 }
 
 /*-(void) dealloc
