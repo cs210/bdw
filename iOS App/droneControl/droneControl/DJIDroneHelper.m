@@ -8,7 +8,7 @@
 
 #import "DJIDroneHelper.h"
 #import <DJISDK/DJISDK.h>
-#import <DJISDK/DJIGroundStation.h>
+//#import <DJISDK/DJIGroundStation.h>
 
 @implementation DJIDroneHelper
 {

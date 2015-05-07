@@ -51,6 +51,7 @@
 		A60057901AB169B200BA64BF /* SpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = A600578F1AB169B200BA64BF /* SpeechController.m */; };
 		A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */; };
 		A61493FB1AFC1CEC0020F616 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61493F91AFC1C9A0020F616 /* DJISDK.framework */; };
+		A62B4B551AFC1EF30016ED09 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */; };
 		A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */; };
 		A653914D1AEE00C800EA296A /* parking-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A653914C1AEE00C800EA296A /* parking-icon.png */; };
 		A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66415601AF9448000135A7D /* DJIDroneHelper.m */; };
@@ -63,8 +64,6 @@
 		A6F4EF4E1AAD3EA300C81065 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4D1AAD3EA300C81065 /* OpenEars.framework */; };
 		A6F4EF501AAD416900C81065 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F4EF4F1AAD416900C81065 /* Slt.framework */; };
 		A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF511AAD417200C81065 /* AcousticModelEnglish.bundle */; };
-		D9D648D51ADDAB0400459A16 /* DJIDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D6486C1ADDAB0300459A16 /* DJIDispatch.m */; };
-		D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D6486E1ADDAB0300459A16 /* DJILinkQueue.m */; };
 		D9D648D71ADDAB0400459A16 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D648C61ADDAB0400459A16 /* libavcodec.a */; };
 		D9D648D81ADDAB0400459A16 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D648C71ADDAB0400459A16 /* libavdevice.a */; };
 		D9D648D91ADDAB0400459A16 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D648C81ADDAB0400459A16 /* libavfilter.a */; };
@@ -208,6 +207,7 @@
 		A61493F61AFB246E0020F616 /* CoordinatePointTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatePointTuple.h; sourceTree = "<group>"; };
 		A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinatePointTuple.m; sourceTree = "<group>"; };
 		A61493F91AFC1C9A0020F616 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DJISDK.framework; sourceTree = "<group>"; };
+		A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkingTableViewController.h; sourceTree = "<group>"; };
 		A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkingTableViewController.m; sourceTree = "<group>"; };
 		A653914C1AEE00C800EA296A /* parking-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parking-icon.png"; sourceTree = "<group>"; };
@@ -333,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62B4B551AFC1EF30016ED09 /* libstdc++.6.0.9.dylib in Frameworks */,
 				D9FCDA5A1ADD906400D91DB7 /* libiconv.dylib in Frameworks */,
 				46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */,
 				D9D648DF1ADDAB0400459A16 /* libswscale.a in Frameworks */,
@@ -341,12 +342,10 @@
 				46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */,
 				46E4D3831AAD859900C94072 /* AVFoundation.framework in Frameworks */,
 				D9D648D71ADDAB0400459A16 /* libavcodec.a in Frameworks */,
-				A61493FB1AFC1CEC0020F616 /* DJISDK.framework in Frameworks */,
 				46E4D3891AAD859900C94072 /* ImageIO.framework in Frameworks */,
 				46E4D37F1AAD859900C94072 /* CFNetwork.framework in Frameworks */,
 				D9D648D81ADDAB0400459A16 /* libavdevice.a in Frameworks */,
 				D9D648DC1ADDAB0400459A16 /* libavutil.a in Frameworks */,
-				46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */,
 				D9D648DE1ADDAB0400459A16 /* libswresample.a in Frameworks */,
 				46E4D3861AAD859900C94072 /* UIKit.framework in Frameworks */,
 				46E4D3841AAD859900C94072 /* ExternalAccessory.framework in Frameworks */,
@@ -362,6 +361,8 @@
 				46E4D38A1AAD859900C94072 /* MobileCoreServices.framework in Frameworks */,
 				46E4D3811AAD859900C94072 /* Security.framework in Frameworks */,
 				A6F4EF4E1AAD3EA300C81065 /* OpenEars.framework in Frameworks */,
+				A61493FB1AFC1CEC0020F616 /* DJISDK.framework in Frameworks */,
+				46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +607,7 @@
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
+				A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */,
 				D9FCDA591ADD906400D91DB7 /* libiconv.dylib */,
 				46841DAE1AAD8DE500BB0BF1 /* BMW */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
@@ -1018,11 +1020,9 @@
 				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */,
-				D9D648D61ADDAB0400459A16 /* DJILinkQueue.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,
-				D9D648D51ADDAB0400459A16 /* DJIDispatch.m in Sources */,
 				463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
