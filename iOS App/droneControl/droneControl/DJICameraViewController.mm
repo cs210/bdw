@@ -11,6 +11,7 @@
 #import "DJIDroneHelper.h"
 #import <DJISDK/DJISDK.h>
 #import "CoordinatePointTuple.h"
+#import "AerialViewController.h"
 
 @implementation DJICameraViewController
 {
@@ -526,10 +527,27 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   CoordinatePointTuple * nearestIndex = _coordinatePointTuples[pointIndex];
   
   // Get GPS of the drone
+  CLLocationCoordinate2D droneGPS = _droneHelper.getDroneGPS;
   
   // Get height of the drone
+  float droneAltitude = _droneHelper.getDroneHeight;
   
-  // Multiply the height of the drone by the xRatio and yRatio of the point 
+  // Multiply the height of the drone by the xRatio and yRatio of the point
+  float xOffset = droneAltitude * nearestIndex.xzRatio;
+  float yOffset = droneAltitude * nearestIndex.yzRatio;
+  
+  CLLocationCoordinate2D clickLocation = droneGPS;
+  
+  clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
+  clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
+  
+  // Add marker on map where user clicked.
+  // Ugh stupid controller shit.
+  
+  AerialViewController * aerialController = [self.view.superview nextResponder];
+  [aerialController userDidClickOnSpot:clickLocation];
+  NSLog(@"Did click");
+  
 }
 
 /*-(void) dealloc

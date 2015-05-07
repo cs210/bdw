@@ -31,5 +31,7 @@
 
 -(CLLocation *) getUserLocation;
 
+-(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
+
 @end
 

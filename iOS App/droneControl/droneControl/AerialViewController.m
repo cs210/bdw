@@ -298,7 +298,6 @@
     // TODO make sure this scales the video correctly
     cameraFeed.view.frame = CGRectMake(0,0,cameraFeed.videoPreviewView.frame.size.width / 4, cameraFeed.videoPreviewView.frame.size.height / 4);
     [self.view addSubview:cameraFeed.view];
-
 }
 
 - (void)hideMaster  {
@@ -314,6 +313,15 @@
 -(CLLocation *) getUserLocation
 {
     return _locationManager.location;
+}
+
+-(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
+{
+  MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
+  newAnnotation.coordinate = spot;
+  [_mapView addAnnotation:newAnnotation];
+  [_mapView selectAnnotation:newAnnotation animated:YES];
+  newAnnotation.title = @"Selected spot";
 }
 
 @end
