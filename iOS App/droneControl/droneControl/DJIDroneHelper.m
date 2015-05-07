@@ -17,6 +17,8 @@
   DJIDrone *_drone;
   
   NSObject<DJIGroundStation>* _groundStation;
+  
+  DJIGroundStationFlyingInfo * _lastFlyingInfo;
 }
 
 + (id)sharedHelper {
@@ -60,17 +62,28 @@
 
 -(CLLocationCoordinate2D) getDroneGPS
 {
-  [_drone.camera getCameraGps:^(CLLocationCoordinate2D coordinate, DJIError* error)
+  /*[_drone.camera getCameraGps:^(CLLocationCoordinate2D coordinate, DJIError* error)
    {
      NSLog(@"Drone get Camera GPS");
      NSLog(@"Coordinate received: Lat %f Long %f", coordinate.latitude, coordinate.longitude);
-   }];
-  return _lastKnownState.droneLocation;
+   }];*/
+  return _lastFlyingInfo.droneLocation;
+//  return _lastKnownState.droneLocation;
 }
 
 -(float) getDroneHeight
 {
-  return _lastKnownState.altitude;
+  return _lastFlyingInfo.altitude;
+  //return _lastKnownState.altitude;
+}
+
+/**
+ *  Ground station flying status.
+ */
+-(void) groundStation:(id<DJIGroundStation>)gs didUpdateFlyingInformation:(DJIGroundStationFlyingInfo*)flyingInfo
+{
+  //Store the shit here
+  _lastFlyingInfo = flyingInfo;
 }
 
 @end
