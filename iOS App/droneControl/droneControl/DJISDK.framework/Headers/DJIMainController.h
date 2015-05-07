@@ -2,56 +2,17 @@
 //  DJIMainController.h
 //  DJISDK
 //
-//  Copyright (c) 2014年 DJI. All rights reserved.
+//  Copyright (c) 2015 DJI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import <DJISDK/DJIObject.h>
+#import <DJISDK/DJIGroundStation.h>
+#import <DJISDK/DJIMainControllerDef.h>
+#import <DJISDK/DJIFoundation.h>
 
 @class DJIMCSystemState;
-
-typedef NS_ENUM(NSInteger, MCError)
-{
-    MC_NO_ERROR,
-    MC_CONFIG_ERROR,
-    MC_SERIALNUM_ERROR,
-    MC_IMU_ERROR,
-    MC_X1_ERROR,
-    MC_X2_ERROR,
-    MC_PMU_ERROR,
-    MC_TRANSMITTER_ERROR,
-    MC_SENSOR_ERROR,
-    MC_COMPASS_ERROR,
-    MC_IMU_CALIBRATION_ERROR,
-    MC_COMPASS_CALIBRATION_ERROR,
-    MC_TRANSMITTER_CALIBRATION_ERROR,
-    MC_INVALID_BATTERY_ERROR,
-    MC_INVALID_BATTERY_COMMUNICATION_ERROR
-};
-
-typedef struct
-{
-    int pitch;
-    int roll;
-    int yaw;
-} DJIAttitude;
-
-
-typedef struct
-{
-    float zoneRadius;
-    CLLocationCoordinate2D zoneCenterCoordinate;
-} DJINoFlyZone;
-
-typedef struct
-{
-    BOOL isReachMaxHeight;
-    BOOL isReachMaxDistance;
-    Float32 maxLimitHeight;
-    Float32 maxLimitDistance;
-} DJILimitFlyStatus;
-
+@class DJIMCTripodState;
 @class DJIMainController;
 
 @protocol DJIMainControllerDelegate <NSObject>
@@ -69,6 +30,12 @@ typedef struct
  *
  */
 -(void) mainController:(DJIMainController*)mc didUpdateSystemState:(DJIMCSystemState*)state;
+
+/**
+ *  Update tripod state
+ *
+ */
+-(void) mainController:(DJIMainController*)mc didUpdateTripodState:(DJIMCTripodState*)state;
 
 @end
 
@@ -97,6 +64,76 @@ typedef struct
 -(void) stopUpdateMCSystemState;
 
 /**
+ *  Start Takeoff
+ *
+ *  @param block Remote execute result.
+ */
+-(void) startTakeoffWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Stop takeoff
+ *
+ *  @param block Remote execute result.
+ */
+-(void) stopTakeoffWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Start auto landing
+ *
+ *  @param block Remote execute result.
+ */
+-(void) startLandingWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Stop auto landing
+ *
+ *  @param block Remote execute result.
+ */
+-(void) stopLandingWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Turn on the motor
+ *
+ *  @param block Remote execute result.
+ */
+-(void) turnOnMotorWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Turn off the motor
+ *
+ *  @param block Remote execute result.
+ */
+-(void) turnOffMotorWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Start go home
+ *
+ *  @param block Remote execute result
+ */
+-(void) startGoHomeWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Stop go home mode
+ *
+ *  @param block Remote execute result.
+ */
+-(void) stopGoHomeWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Start compass calibration
+ *
+ *  @param block Remote execute result.
+ */
+-(void) startCompassCalibrationWithResult:(DJIExecuteResultBlock)block;
+
+/**
+ *  Stop compass calibration
+ *
+ *  @param block Remote execute result.
+ */
+-(void) stopCompassCalibrationWithResult:(DJIExecuteResultBlock)block;
+
+/**
  *  Set the fly limitation parameter.
  *
  *  @param limitParam The max height and distance parameters
@@ -117,7 +154,7 @@ typedef struct
  *  @param noFlyZone No fly zone parameter
  *  @param block     Remote execute result
  */
--(void) setNoFly:(DJINoFlyZone)noFlyZone withResult:(DJIExecuteResultBlock)block;
+-(void) setNoFly:(DJINoFlyZone)noFlyZone withResult:(DJIExecuteResultBlock)block DJI_API_DEPRECATED;
 
 /**
  *  Set home point to drone. Home point is use for back home when the drone lost signal or other case.
@@ -139,7 +176,7 @@ typedef struct
 /**
  *  Set go home default altitude. The default altitude is used by the drone every time while going home.
  *
- *  @param altitude  Drone altitude in meter for going home. [20m - 500m] and could not over the limited height.
+ *  @param altitude  Drone altitude in meter for going home.
  *  @param block     Remote execute result
  */
 -(void) setGoHomeDefaultAltitude:(float)altitude withResult:(DJIExecuteResultBlock)block;
@@ -154,7 +191,6 @@ typedef struct
 /**
  *  Set go home temporary altitude. The temporary altitude is used by the drone this time while going home.
  *
- *  @param tmpAltitude  Drone temporary altitude in meter for going home. [20m - 500m] and could not over the limited height.
  *  @param block     Remote execute result
  */
 -(void) setGoHomeTemporaryAltitude:(float)tmpAltitude withResult:(DJIExecuteResultBlock)block;
@@ -165,6 +201,5 @@ typedef struct
  *  @param block  Remote execute result
  */
 -(void) getGoHomeTemporaryAltitude:(void(^)(float altitude, DJIError* error))block;
-
 
 @end

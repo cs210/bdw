@@ -7,12 +7,16 @@
 //
 
 #import "DJIDroneHelper.h"
+#import <DJISDK/DJISDK.h>
+#import <DJISDK/DJIGroundStation.h>
 
 @implementation DJIDroneHelper
 {
   DJIMCSystemState *_lastKnownState;
   
   DJIDrone *_drone;
+  
+  NSObject<DJIGroundStation>* _groundStation;
 }
 
 + (id)sharedHelper {
@@ -29,6 +33,9 @@
       _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
       [_drone connectToDrone];
       _drone.mainController.mcDelegate = self;
+    
+    _groundStation = (id<DJIGroundStation>)_drone.mainController;
+    _groundStation.groundStationDelegate = self;
     
     [_drone.camera getCameraGps:^(CLLocationCoordinate2D coordinate, DJIError* error)
     {

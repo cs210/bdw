@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="383"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

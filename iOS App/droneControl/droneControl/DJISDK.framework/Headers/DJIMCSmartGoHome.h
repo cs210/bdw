@@ -1,8 +1,7 @@
 //
 //  DJIMCSmartGoHome.h
 //
-//  Created by Ares on 15/1/21.
-//  Copyright (c) 2015年 DJI. All rights reserved.
+//  Copyright (c) 2015 DJI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -28,10 +27,10 @@
 @property(nonatomic, readonly) NSUInteger timeForGoHome;
 
 /*
- *  timeForLand
+ *  timeForLanding
  *
  *  Discussion:
- *    The time in second that need for landing from current height.
+ *    The time in seconds that need for landing from current height.
  *
  */
 @property(nonatomic, readonly) NSUInteger timeForLanding;
@@ -46,7 +45,7 @@
 @property(nonatomic, readonly) NSUInteger powerPercentForGoHome;
 
 /*
- *  powerPercentForLand
+ *  powerPercentForLanding
  *
  *  Discussion:
  *    The power percent that need for landing from current height.

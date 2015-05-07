@@ -2,10 +2,11 @@
 //  DJIAppManager.h
 //  DJISDK
 //
-//  Copyright (c) 2014年 DJI. All rights reserved.
+//  Copyright (c) 2015 DJI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <DJISDK/DJIFoundation.h>
 
 ///Register App Error Code
 #define RegisterSuccess                   0
@@ -38,7 +39,7 @@
 @interface DJIAppManager : NSObject
 
 /**
- *  Register app from server. User should call once while app started and should connect to the internet at the first time register.
+ *  Register app from server. User should call once while app started and should connect to the internet at the first time registration.
  *
  *  @param appKey   App key
  *  @param delegate Register result callback
@@ -46,9 +47,11 @@
 +(void) registerApp:(NSString*)appKey withDelegate:(id<DJIAppManagerDelegate>)delegate;
 
 /**
- *  Get error descryption for the regist error code.
+ *  Get register error descryption
  *
- *  @return error descryption
+ *  @param errorCode Error code from regist app
+ *
+ *  @return Error descryption
  */
 +(NSString*) getErrorDescryption:(int)errorCode;
 

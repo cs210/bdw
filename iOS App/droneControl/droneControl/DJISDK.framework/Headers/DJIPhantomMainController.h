@@ -2,20 +2,32 @@
 //  DJISDKMainController.h
 //  DJISDK
 //
-//  Copyright (c) 2014年 DJI. All rights reserved.
+//  Copyright (c) 2015 DJI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <DJISDK/DJIMainController.h>
+#import <DJISDK/DJIGroundStation.h>
 
-typedef NS_ENUM(NSInteger, DJIMCSystemMode)
-{
+/**
+ *  Phantom main controller's system mode
+ */
+typedef NS_ENUM(NSInteger, DJIMCSystemMode){
+    /**
+     *  Phantom mode
+     */
     MCSystemMode_Phantom,
+    /**
+     *  NAZA mode
+     */
     MCSystemMode_Naza,
+    /**
+     *  Unknown
+     */
     MCSystemMode_Unknown
 };
 
-@interface DJIPhantomMainController : DJIMainController
+@interface DJIPhantomMainController : DJIMainController <DJIGroundStation>
 
 /**
  *  Get main controller's system mode.
