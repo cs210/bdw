@@ -141,6 +141,8 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [_locationManager requestWhenInUseAuthorization];
     [_locationManager startUpdatingLocation];
+  
+  self.view.backgroundColor = [UIColor blackColor];
 
 }
 
@@ -265,14 +267,18 @@
               
                 // Resize the camera frame
               CGRect currFrame = cameraFeed.view.frame;
-              currFrame.size.width = [[UIScreen mainScreen] bounds].size.width;
-              currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2;
+              currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
+              currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
               cameraFeed.view.frame = currFrame;
+              
+              cameraFeed.view.frame = CGRectMake(200,0,cameraFeed.videoPreviewView.frame.size.width * 0.9, [[UIScreen mainScreen] bounds].size.height / 2.0 - 100);
               
               //Resize the map view
               CGRect mapFrame = _mapView.frame;
-              mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2;
-              mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2;
+              mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
+              mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
+              
+              
               _mapView.frame = mapFrame;
               
               [self.view addSubview:cameraFeed.view];

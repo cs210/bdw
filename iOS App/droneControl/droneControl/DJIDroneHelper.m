@@ -29,6 +29,12 @@
       _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
       [_drone connectToDrone];
       _drone.mainController.mcDelegate = self;
+    
+    [_drone.camera getCameraGps:^(CLLocationCoordinate2D coordinate, DJIError* error)
+    {
+      NSLog(@"Drone get Camera GPS");
+      NSLog(@"Coordinate received: Lat %f Long %f", coordinate.latitude, coordinate.longitude);
+    }];
   }
   return self;
 }
@@ -47,6 +53,11 @@
 
 -(CLLocationCoordinate2D) getDroneGPS
 {
+  [_drone.camera getCameraGps:^(CLLocationCoordinate2D coordinate, DJIError* error)
+   {
+     NSLog(@"Drone get Camera GPS");
+     NSLog(@"Coordinate received: Lat %f Long %f", coordinate.latitude, coordinate.longitude);
+   }];
   return _lastKnownState.droneLocation;
 }
 
