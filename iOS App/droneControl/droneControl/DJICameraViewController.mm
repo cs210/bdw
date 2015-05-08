@@ -69,13 +69,55 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
-  self.view.userInteractionEnabled = NO;
+    self.view.userInteractionEnabled = NO;
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(goToMap)
+     forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@" Map View p" forState:UIControlStateNormal];
+    double height = 150.0;
+    double width = 600.0;
+    double x = self.view.frame.origin.x + 20.0;
+    double y = self.view.frame.origin.y + 60.0;
+
+    button.titleLabel.font = [UIFont systemFontOfSize:30];
+    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
+    button.frame = CGRectMake(x,y,width,height);
+    button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button sizeToFit];
+    [self.view addSubview:button];
+
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"Tap an open parking space!";
+    label.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont systemFontOfSize:30]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    label.layer.cornerRadius = 10;
+    label.frame = CGRectMake(self.view.frame.size.width * 1.7, 50.0, 400.0, 60.0);
+    [self.view addSubview:label];
 }
 
-/*-(void) dealloc
-{
-    [_drone destroy];
-}*/
+-(void) goToMap{// todo
+    AerialViewController * aerialController;
+    for (UIView* next = [self.view superview]; next; next = next.superview)
+    {
+        UIResponder* nextResponder = [next nextResponder];
+        
+        if ([nextResponder isKindOfClass:[AerialViewController class]])
+        {
+            aerialController = nextResponder;
+        }
+        [aerialController showMap];
+    }
+}
 
 -(void) viewWillAppear:(BOOL)animated
 {

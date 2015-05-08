@@ -111,13 +111,13 @@
     
     [button setTitle:@" Find closest parking " forState:UIControlStateNormal];
     double x = _mapView.frame.origin.x + 20.0;
-    double y = _mapView.frame.origin.y + 20.0;
+    double y = _mapView.frame.origin.y + 60.0;
     double height = 150.0;
-    double width = 600.0;
+    double width = 400.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
   
-  button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-  
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
     button.layer.cornerRadius = 10;
     button.clipsToBounds = YES;
     button.frame = CGRectMake(x,y,width,height);
@@ -353,6 +353,16 @@
   
     _findClosestParkingButton.titleLabel.text = @"Drone View";
     _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+}
+
+-(void) showMap{
+    [self.view addSubview:_mapView];
+    [_dummyTouchView removeFromSuperview];
+    [_cameraFeed.view removeFromSuperview];
+    
+    _findClosestParkingButton.titleLabel.text = @"Drone View";
+    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+
 }
 
 @end

@@ -33,5 +33,6 @@
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
 
+-(void) showMap;
 @end
 
