@@ -153,7 +153,7 @@
     [_locationManager startUpdatingLocation];
     
     self.view.backgroundColor = [UIColor blackColor];
-    //[self launchClickableDrone];
+    [self launchClickableDrone];
     
 }
 
