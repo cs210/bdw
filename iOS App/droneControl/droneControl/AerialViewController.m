@@ -31,7 +31,8 @@
 @implementation AerialViewController
 {
     UIView * _dummyTouchView;
-  DJICameraViewController* _cameraFeed;
+    DJICameraViewController* _cameraFeed;
+  UIButton * _findClosestParkingButton;
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -114,6 +115,9 @@
     double height = 150.0;
     double width = 600.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
+  
+  button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+  
     button.layer.cornerRadius = 10;
     button.clipsToBounds = YES;
     button.frame = CGRectMake(x,y,width,height);
@@ -132,7 +136,8 @@
     
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
-    [_mapView addSubview:[self findClosestParkingButton]];
+    _findClosestParkingButton = [self findClosestParkingButton];
+    [_mapView addSubview:_findClosestParkingButton];
     [self.view addSubview:_mapView];
     self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
@@ -308,6 +313,15 @@
 }
 
 -(void)launchDrone{
+  
+  // Now we go back here when we turn that button into a "Drone view" button.
+  if ([_findClosestParkingButton.titleLabel.text isEqualToString:@"Drone View"])
+  {
+      [_mapView removeFromSuperview];
+      [self.view addSubview:_dummyTouchView];
+      [self.view addSubview:_cameraFeed.view];
+  }
+  
     _shouldShowMaster = NO;
     [self hideMaster];
     //[_drone lookForParking];
@@ -350,6 +364,8 @@
   [_dummyTouchView removeFromSuperview];
   [_cameraFeed.view removeFromSuperview];
   
+  _findClosestParkingButton.titleLabel.text = @"Drone View";
+  _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 }
 
 @end
