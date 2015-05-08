@@ -231,7 +231,6 @@
     return nil;
 }
 
-// BUG: alerts keep showing up many times
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         switch (buttonIndex){
