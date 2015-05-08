@@ -52,6 +52,7 @@
 		A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */; };
 		A61493FB1AFC1CEC0020F616 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61493F91AFC1C9A0020F616 /* DJISDK.framework */; };
 		A62B4B551AFC1EF30016ED09 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */; };
+		A62B4B5B1AFC71280016ED09 /* TransparentTouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A62B4B5A1AFC71280016ED09 /* TransparentTouchView.mm */; };
 		A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */; };
 		A653914D1AEE00C800EA296A /* parking-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A653914C1AEE00C800EA296A /* parking-icon.png */; };
 		A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66415601AF9448000135A7D /* DJIDroneHelper.m */; };
@@ -208,6 +209,8 @@
 		A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinatePointTuple.m; sourceTree = "<group>"; };
 		A61493F91AFC1C9A0020F616 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DJISDK.framework; sourceTree = "<group>"; };
 		A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		A62B4B591AFC71280016ED09 /* TransparentTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentTouchView.h; sourceTree = "<group>"; };
+		A62B4B5A1AFC71280016ED09 /* TransparentTouchView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransparentTouchView.mm; sourceTree = "<group>"; };
 		A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkingTableViewController.h; sourceTree = "<group>"; };
 		A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkingTableViewController.m; sourceTree = "<group>"; };
 		A653914C1AEE00C800EA296A /* parking-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parking-icon.png"; sourceTree = "<group>"; };
@@ -589,6 +592,8 @@
 				A66415601AF9448000135A7D /* DJIDroneHelper.m */,
 				A61493F61AFB246E0020F616 /* CoordinatePointTuple.h */,
 				A61493F71AFB246E0020F616 /* CoordinatePointTuple.m */,
+				A62B4B591AFC71280016ED09 /* TransparentTouchView.h */,
+				A62B4B5A1AFC71280016ED09 /* TransparentTouchView.mm */,
 			);
 			name = DJI;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 				A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */,
 				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
 				D9D648E11ADDAB0400459A16 /* VideoFrameExtractor.m in Sources */,
+				A62B4B5B1AFC71280016ED09 /* TransparentTouchView.mm in Sources */,
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */,

@@ -25,9 +25,13 @@
 #import "SpotConfirmViewController.h"
 #import "DJICameraViewController.h"
 #import "NearbyParkingTableViewController.h"
+#import "TransparentTouchView.h"
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 @implementation AerialViewController
+{
+    UIView * _dummyTouchView;
+}
 - (void) receiveImage:(UIImage *)image
 {
     // check for a parking space using computer vision
@@ -143,7 +147,6 @@
     [_locationManager startUpdatingLocation];
   
   self.view.backgroundColor = [UIColor blackColor];
-
 }
 
 -(void) findParkingClicked:(UIButton *) sender
@@ -263,7 +266,7 @@
                 MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
                 [_mapView setRegion:adjustedRegion animated:YES];
                 DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-               // [self.navigationController pushViewController:cameraFeed animated:NO];
+                [self.navigationController pushViewController:cameraFeed animated:NO];
               
                 // Resize the camera frame
               CGRect currFrame = cameraFeed.view.frame;
@@ -271,17 +274,20 @@
               currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
               cameraFeed.view.frame = currFrame;
               
-              cameraFeed.view.frame = CGRectMake(200,0,cameraFeed.videoPreviewView.frame.size.width * 0.9, [[UIScreen mainScreen] bounds].size.height / 2.0 - 100);
+              cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
               
               //Resize the map view
               CGRect mapFrame = _mapView.frame;
               mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
               mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
               
-              
               _mapView.frame = mapFrame;
               
               [self.view addSubview:cameraFeed.view];
+              
+              _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
+              _dummyTouchView.backgroundColor = [UIColor redColor];
+              [self.view addSubview:_dummyTouchView];
 	      //                [self launchDrone];
             }
             default: ; // they pressed cancel : do nothing

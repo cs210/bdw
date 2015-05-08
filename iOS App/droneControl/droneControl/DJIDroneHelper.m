@@ -142,7 +142,7 @@
 
 
 
--(IBAction) onOpenButtonClicked:(id)sender
+-(void) onOpenButtonClicked
 {
     [_groundStation openGroundStation];
 }

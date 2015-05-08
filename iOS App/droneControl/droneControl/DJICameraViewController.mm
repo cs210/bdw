@@ -12,18 +12,20 @@
 #import <DJISDK/DJISDK.h>
 #import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
+#import "TransparentTouchView.h"
 
 @implementation DJICameraViewController
 {
     BOOL _gimbalAttitudeUpdateFlag;
     BOOL switch_to_usb;
     DJIDroneHelper *_droneHelper;
-
   
   NSArray * _coordinatePointTuples;
+  
+  UIView * _dummyTouchView;
 }
 
-CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
+/*CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
 {
   CoordinatePointTuple * dummy = [[CoordinatePointTuple alloc] init];
   dummy.xPixelRatio = x / (2192 * 2.0);
@@ -39,7 +41,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   float yDist = currTuple.yPixelRatio - yRatio;
   
   return sqrt(powf(xDist, 2) + powf(yDist, 2));
-}
+}*/
 
 - (void)viewDidLoad
 {
@@ -64,14 +66,21 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [_droneHelper onOpenButtonClicked];
     
     
-    [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
-    [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
+    //[self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
+    //[self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
-  UITapGestureRecognizer * tapGestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClicked:)];
+  /*_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2)];
+  _dummyTouchView.backgroundColor = [UIColor redColor];
+  [self.view addSubview:_dummyTouchView];*/
+  
+  /*UITapGestureRecognizer * tapGestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClicked:)];
   tapGestureRec.numberOfTouchesRequired = 1;
-  [self.view addGestureRecognizer:tapGestureRec];
+  [_dummyTouchView addGestureRecognizer:tapGestureRec];
+  _dummyTouchView.userInteractionEnabled = YES;*/
   
-  _coordinatePointTuples = [NSArray arrayWithObjects:
+  self.view.userInteractionEnabled = NO;
+  
+  /*_coordinatePointTuples = [NSArray arrayWithObjects:
     //First row
     createTuple(478.2323,	300.7952,	-0.55, -1),
     createTuple(478.2323,	300.7952,	-0.55, -1),
@@ -498,10 +507,10 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
      createTuple(4181.2097,	2094.6113,	0.533333333,	1.25),
      createTuple(4260.7581,	2062.7919,	0.533333333,	1.333333333),
      createTuple(4336.329,	2038.9274,	0.533333333,	1.416666667),
-    nil];
+    nil];*/
 }
 
--(int) findIndexOfNearestTuple: (float)xRatio withYRatio:(float) yRatio
+/*-(int) findIndexOfNearestTuple: (float)xRatio withYRatio:(float) yRatio
 {
   float nearestDistance = 1000000;
   int nearestIndex = 0;
@@ -520,6 +529,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
 
 -(void) imageClicked:(UITapGestureRecognizer *) tapRecognizer
 {
+  NSLog(@"Click handler");
   CGPoint tapLocation = [tapRecognizer locationInView:self.view];
   //Time to transfer that point into a ratio of height / width
   CGRect frameRect = self.view.frame;
@@ -529,8 +539,45 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   int pointIndex = [self findIndexOfNearestTuple:xRatio withYRatio:yRatio];
   CoordinatePointTuple * nearestIndex = _coordinatePointTuples[pointIndex];
   
+  // ASSUME THAT THE DRONE IS FLYING DIRECTLY ABOVE YOU
+  AerialViewController * aerialController;
+  for (UIView* next = [self.view superview]; next; next = next.superview)
+  {
+    UIResponder* nextResponder = [next nextResponder];
+    
+    if ([nextResponder isKindOfClass:[AerialViewController class]])
+    {
+      aerialController = nextResponder;
+    }
+  }
+  
+  if (aerialController)
+  {
+    NSLog(@" IN HERE ");
+    CLLocationCoordinate2D droneGPS = [aerialController getUserLocation].coordinate;
+      NSLog(@" IN HERE 2");
+     // Get height of the drone
+     float droneAltitude = _droneHelper.getDroneHeight;
+     NSLog(@" IN HERE 3");
+    //Hard code the altitude here
+    droneAltitude = 10.0;
+     
+     // Multiply the height of the drone by the xRatio and yRatio of the point
+     float xOffset = droneAltitude * nearestIndex.xzRatio;
+     float yOffset = droneAltitude * nearestIndex.yzRatio;
+     
+     CLLocationCoordinate2D clickLocation = droneGPS;
+     
+     clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
+     clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
+     NSLog(@" IN HERE 4");
+      [aerialController userDidClickOnSpot:clickLocation];
+    
+     NSLog(@" IN HERE 5 ");
+  }
+  
   // Get GPS of the drone
-  CLLocationCoordinate2D droneGPS = _droneHelper.getDroneGPS;
+  /*CLLocationCoordinate2D droneGPS = _droneHelper.getDroneGPS;
   
   // Get height of the drone
   float droneAltitude = _droneHelper.getDroneHeight;
@@ -547,11 +594,22 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   // Add marker on map where user clicked.
   // Ugh stupid controller shit.
   
-  AerialViewController * aerialController = [self.view.superview nextResponder];
-  [aerialController userDidClickOnSpot:clickLocation];
-  NSLog(@"Did click");
+  //AerialViewController * aerialController = [self.view.superview nextResponder];
+  //[aerialController userDidClickOnSpot:clickLocation];
   
-}
+  
+  
+  UINavigationController * navCont = self.navigationController;
+  for (UIViewController * controller in [navCont viewControllers])
+  {
+    AerialViewController * aerialVC = (AerialViewController *) controller;
+    if (aerialVC)
+    {
+      [aerialVC userDidClickOnSpot:clickLocation];
+    }
+  }
+  NSLog(@"Did click");
+}*/
 
 /*-(void) dealloc
 {
