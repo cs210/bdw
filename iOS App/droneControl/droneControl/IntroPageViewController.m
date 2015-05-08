@@ -81,8 +81,6 @@ typedef enum
     [speechController setupSpeechHandler];
     [speechController startListening];
     _currentState = kListening;
-    
-    
 }
 
 -(void) findParkingClicked{

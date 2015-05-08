@@ -32,7 +32,7 @@
 {
     UIView * _dummyTouchView;
     DJICameraViewController* _cameraFeed;
-  UIButton * _findClosestParkingButton;
+    UIButton * _findClosestParkingButton;
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -124,7 +124,7 @@
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button sizeToFit];
-
+    
     return button;
 }
 
@@ -151,8 +151,8 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [_locationManager requestWhenInUseAuthorization];
     [_locationManager startUpdatingLocation];
-  
-  self.view.backgroundColor = [UIColor blackColor];
+    
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 -(void) findParkingClicked:(UIButton *) sender
@@ -273,37 +273,37 @@
                 [_mapView setRegion:adjustedRegion animated:YES];
                 _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
                 [self.navigationController pushViewController:_cameraFeed animated:NO];
-              
+                
                 // Resize the camera frame
-              CGRect currFrame = _cameraFeed.view.frame;
-              currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
-              currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
-              _cameraFeed.view.frame = currFrame;
-              
-              //cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
-              
-              _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
-              
-              //Resize the map view
-              /*CGRect mapFrame = _mapView.frame;
-              mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
-              mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
-              
-              _mapView.frame = mapFrame;*/
-              
-              //Remove the map view
-              [_mapView removeFromSuperview];
-              
-              [self.view addSubview:_cameraFeed.view];
-              
-              //_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
-              
-              _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-              
-              _dummyTouchView.backgroundColor = [UIColor clearColor];
-              
-              [self.view addSubview:_dummyTouchView];
-	      //                [self launchDrone];
+                CGRect currFrame = _cameraFeed.view.frame;
+                currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
+                currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
+                _cameraFeed.view.frame = currFrame;
+                
+                //cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
+                
+                _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
+                
+                //Resize the map view
+                /*CGRect mapFrame = _mapView.frame;
+                 mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
+                 mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
+                 
+                 _mapView.frame = mapFrame;*/
+                
+                //Remove the map view
+                [_mapView removeFromSuperview];
+                
+                [self.view addSubview:_cameraFeed.view];
+                
+                //_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
+                
+                _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+                
+                _dummyTouchView.backgroundColor = [UIColor clearColor];
+                
+                [self.view addSubview:_dummyTouchView];
+                //                [self launchDrone];
             }
             default: ; // they pressed cancel : do nothing
                 
@@ -353,19 +353,20 @@
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
-  MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
-  newAnnotation.coordinate = spot;
-  [_mapView addAnnotation:newAnnotation];
-  [_mapView selectAnnotation:newAnnotation animated:YES];
-  newAnnotation.title = @"Selected spot";
+
+    MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
+    newAnnotation.coordinate = spot;
+    [_mapView addAnnotation:newAnnotation];
+    [_mapView selectAnnotation:newAnnotation animated:YES];
+    newAnnotation.title = @"Selected spot";
   
-  //Time to remove the touch view and the camera view and add the new view
-  [self.view addSubview:_mapView];
-  [_dummyTouchView removeFromSuperview];
-  [_cameraFeed.view removeFromSuperview];
+    //Time to remove the touch view and the camera view and add the new view
+    [self.view addSubview:_mapView];
+    [_dummyTouchView removeFromSuperview];
+    [_cameraFeed.view removeFromSuperview];
   
-  _findClosestParkingButton.titleLabel.text = @"Drone View";
-  _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    _findClosestParkingButton.titleLabel.text = @"Drone View";
+    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 }
 
 @end
