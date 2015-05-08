@@ -153,7 +153,7 @@
     [_locationManager startUpdatingLocation];
     
     self.view.backgroundColor = [UIColor blackColor];
-    [self launchClickableDrone];
+    //[self launchClickableDrone];
     
 }
 
@@ -176,7 +176,7 @@
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO] ;
+    //[self.navigationController pushViewController:cameraFeed animated:NO] ;
     // TODO make sure this scales the video correctly
     cameraFeed.view.frame = CGRectMake(0,0,cameraFeed.videoPreviewView.frame.size.width / 4, cameraFeed.videoPreviewView.frame.size.height / 4);
     [self.view addSubview:cameraFeed.view];
@@ -309,7 +309,7 @@
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:_cameraFeed animated:NO];
+    //[self.navigationController pushViewController:_cameraFeed animated:NO];
     CGRect currFrame = _cameraFeed.view.frame;
     currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
     currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;

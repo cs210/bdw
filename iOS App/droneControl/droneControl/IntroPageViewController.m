@@ -89,7 +89,7 @@ typedef enum
     // transition to djicameraviewcontroller
     /*AerialViewController * avc = [[AerialViewController alloc]init];
     [self.navigationController pushViewController:avc animated:NO];*/
-    [self performSegueWithIdentifier:@"mapDroneView" sender:self];
+    [self performSegueWithIdentifier:@"droneMapView" sender:self];
 
 }
 
