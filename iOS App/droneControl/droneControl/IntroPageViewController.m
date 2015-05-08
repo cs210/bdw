@@ -12,7 +12,7 @@
 #import "SpeechController.h"
 #import "DJICameraViewController.h"
 #import "TransparentTouchView.h"
-
+#import "AerialViewController.h"
 typedef enum
 {
     kListening,
@@ -87,19 +87,8 @@ typedef enum
 
 -(void) findParkingClicked{
     // transition to djicameraviewcontroller
-    DJICameraViewController * cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    TransparentTouchView * dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-    
-    dummyTouchView.backgroundColor = [UIColor clearColor];
-    
-    [cameraFeed.view addSubview:dummyTouchView];
-    
-    CGRect currFrame = cameraFeed.view.frame;
-    currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
-    currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
-    cameraFeed.view.frame = currFrame;
-    
-    cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
+    AerialViewController * avc = [[AerialViewController alloc]init];
+    [self.navigationController pushViewController:avc animated:NO];
 }
 
 

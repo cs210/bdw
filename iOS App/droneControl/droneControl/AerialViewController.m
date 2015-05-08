@@ -153,7 +153,35 @@
     [_locationManager startUpdatingLocation];
     
     self.view.backgroundColor = [UIColor blackColor];
+    [self launchClickableDrone];
+    
 }
+
+
+-(void)launchDrone{
+    
+    // Now we go back here when we turn that button into a "Drone view" button.
+    if ([_findClosestParkingButton.titleLabel.text isEqualToString:@"Drone View"])
+    {
+        [_mapView removeFromSuperview];
+        [self.view addSubview:_dummyTouchView];
+        [self.view addSubview:_cameraFeed.view];
+    }
+    
+    _shouldShowMaster = NO;
+    [self hideMaster];
+    //[_drone lookForParking];
+    CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
+    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:cameraFeed animated:NO] ;
+    // TODO make sure this scales the video correctly
+    cameraFeed.view.frame = CGRectMake(0,0,cameraFeed.videoPreviewView.frame.size.width / 4, cameraFeed.videoPreviewView.frame.size.height / 4);
+    [self.view addSubview:cameraFeed.view];
+}
+
 
 -(void) findParkingClicked:(UIButton *) sender
 {
@@ -263,46 +291,7 @@
     } else {
         switch (buttonIndex){
             case 1:{
-                _shouldShowMaster = NO;
-                [self hideMaster];
-                //[_drone lookForParking];
-                CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
-                MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
-                MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-                [_mapView setRegion:adjustedRegion animated:YES];
-                _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                [self.navigationController pushViewController:_cameraFeed animated:NO];
-                
-                // Resize the camera frame
-                CGRect currFrame = _cameraFeed.view.frame;
-                currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
-                currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
-                _cameraFeed.view.frame = currFrame;
-                
-                //cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
-                
-                _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
-                
-                //Resize the map view
-                /*CGRect mapFrame = _mapView.frame;
-                 mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
-                 mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
-                 
-                 _mapView.frame = mapFrame;*/
-                
-                //Remove the map view
-                [_mapView removeFromSuperview];
-                
-                [self.view addSubview:_cameraFeed.view];
-                
-                //_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
-                
-                _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-                
-                _dummyTouchView.backgroundColor = [UIColor clearColor];
-                
-                [self.view addSubview:_dummyTouchView];
-                //                [self launchDrone];
+                [self launchClickableDrone];
             }
             default: ; // they pressed cancel : do nothing
                 
@@ -311,16 +300,7 @@
     }
 }
 
--(void)launchDrone{
-  
-  // Now we go back here when we turn that button into a "Drone view" button.
-  if ([_findClosestParkingButton.titleLabel.text isEqualToString:@"Drone View"])
-  {
-      [_mapView removeFromSuperview];
-      [self.view addSubview:_dummyTouchView];
-      [self.view addSubview:_cameraFeed.view];
-  }
-  
+-(void)launchClickableDrone{
     _shouldShowMaster = NO;
     [self hideMaster];
     //[_drone lookForParking];
@@ -328,11 +308,19 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
-    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO] ;
-    // TODO make sure this scales the video correctly
-    cameraFeed.view.frame = CGRectMake(0,0,cameraFeed.videoPreviewView.frame.size.width / 4, cameraFeed.videoPreviewView.frame.size.height / 4);
-    [self.view addSubview:cameraFeed.view];
+    _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    [self.navigationController pushViewController:_cameraFeed animated:NO];
+    CGRect currFrame = _cameraFeed.view.frame;
+    currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
+    currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
+    _cameraFeed.view.frame = currFrame;
+    _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
+    [_mapView removeFromSuperview];
+    [self.view addSubview:_cameraFeed.view];
+    _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    _dummyTouchView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_dummyTouchView];
+
 }
 
 - (void)hideMaster  {
