@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7702"/>
     </dependencies>
@@ -15,20 +15,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view autoresizesSubviews="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
-                    <rect key="frame" x="73" y="0.0" width="320" height="383"/>
+<<<<<<< HEAD
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
+                    <rect key="frame" x="50" y="0.0" width="600" height="668"/>
+=======
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0L-Wp-V55" userLabel="Video Preview View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+>>>>>>> slightly better DJICameraView frame size (needs testing with drone)
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                    </accessibility>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="l0L-Wp-V55" secondAttribute="bottom" id="Ox5-sa-IZC"/>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="XUU-tZ-Zw7"/>
-                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="alq-6L-jPQ"/>
-                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" id="gha-QJ-U7y"/>
+<<<<<<< HEAD
+                <constraint firstAttribute="bottom" secondItem="l0L-Wp-V55" secondAttribute="bottom" id="Apo-ln-ygC"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" id="Ffp-RQ-FcO"/>
+=======
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="8ky-XM-SU7"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="top" secondItem="1" secondAttribute="top" constant="35" id="Ffp-RQ-FcO"/>
+>>>>>>> slightly better DJICameraView frame size (needs testing with drone)
+                <constraint firstAttribute="trailing" secondItem="l0L-Wp-V55" secondAttribute="trailing" id="TOd-G9-n06"/>
+                <constraint firstItem="l0L-Wp-V55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="fpp-AO-F0r"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <point key="canvasLocation" x="471" y="415"/>

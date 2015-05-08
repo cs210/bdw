@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p5u-vl-xho">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B1a-KD-CEz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -74,6 +74,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMM-0i-kxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1881" y="1305"/>
+        </scene>
+        <!--Intro Page View Controller-->
+        <scene sceneID="hzw-NY-8du">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-a8-oZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="B1a-KD-CEz" customClass="IntroPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F7g-Mw-oNB"/>
+                        <viewControllerLayoutGuide type="bottom" id="P2T-yJ-Wag"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5fV-bM-hOo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0033163399469999999" green="0.59688575040000003" blue="0.90437578910000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="291" y="607"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="mtF-X3-4QF">

@@ -21,6 +21,8 @@
 
 -(float) getDroneHeight;
 
--(IBAction) onOpenButtonClicked;
+-(void) onOpenButtonClicked;
+
+-(float) getDroneYaw;
 
 @end
