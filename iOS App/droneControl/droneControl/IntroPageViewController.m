@@ -87,8 +87,10 @@ typedef enum
 
 -(void) findParkingClicked{
     // transition to djicameraviewcontroller
-    AerialViewController * avc = [[AerialViewController alloc]init];
-    [self.navigationController pushViewController:avc animated:NO];
+    /*AerialViewController * avc = [[AerialViewController alloc]init];
+    [self.navigationController pushViewController:avc animated:NO];*/
+    [self performSegueWithIdentifier:@"mapDroneView" sender:self];
+
 }
 
 

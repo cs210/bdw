@@ -300,10 +300,10 @@
     }
 }
 
+// TODO add map view button
 -(void)launchClickableDrone{
     _shouldShowMaster = NO;
     [self hideMaster];
-    //[_drone lookForParking];
     CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
@@ -320,7 +320,6 @@
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_dummyTouchView];
-
 }
 
 - (void)hideMaster  {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p5u-vl-xho">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JK6-Ch-jKf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -89,10 +89,29 @@
                         <color key="backgroundColor" red="0.0033163399469999999" green="0.59688575040000003" blue="0.90437578910000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xpc-jr-nrq"/>
+                    <connections>
+                        <segue destination="FXw-UW-yuD" kind="show" identifier="droneMapView" id="CPo-8m-JqU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-a8-oZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="158"/>
+            <point key="canvasLocation" x="-155" y="1216"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mbi-8e-Ml4">
+            <objects>
+                <navigationController id="FXw-UW-yuD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d8R-xR-UMh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="p5u-vl-xho" kind="relationship" relationship="rootViewController" id="nv9-XQ-v1C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZM-Fg-G4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-61" y="2220"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zsw-K3-bZ0">
@@ -114,6 +133,7 @@
         <scene sceneID="mtF-X3-4QF">
             <objects>
                 <splitViewController id="p5u-vl-xho" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hlH-g0-wzZ"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -123,7 +143,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFM-Wr-lli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="1642"/>
+            <point key="canvasLocation" x="1067" y="1452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OnC-4k-Um2">

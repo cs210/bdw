@@ -51,10 +51,13 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   
   return nearestIndex;
 }
+-(void) viewWillAppear{
+    NSLog(@"transparent view will appear");
+}
 
 -(void) viewDidLoad
 {
-  NSLog(@"view did load");
+  NSLog(@"transparent view did load");
   
   _droneHelper = [DJIDroneHelper sharedHelper];
   
