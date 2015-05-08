@@ -79,7 +79,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     double height = 40.0;
     double width = 200.0;
     double x = self.view.frame.origin.x + 20.0;
-    double y = self.view.frame.origin.y + 60.0;
+    double y = self.view.frame.origin.y + 50.0;
 
     button.titleLabel.font = [UIFont systemFontOfSize:30];
     
@@ -95,12 +95,11 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     UILabel *label = [[UILabel alloc] init];
     label.text = @"Tap an open parking space!";
-    label.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.6];
     [label setTextColor:[UIColor whiteColor]];
     [label setFont:[UIFont systemFontOfSize:30]];
     [label setTextAlignment:NSTextAlignmentCenter];
     label.layer.cornerRadius = 10;
-    label.frame = CGRectMake(self.view.frame.size.width * 1.7, 50.0, 400.0, 60.0);
+    label.frame = CGRectMake(self.view.frame.size.width * 1.7, 40.0, 400.0, 60.0);
     [self.view addSubview:label];
 }
 
