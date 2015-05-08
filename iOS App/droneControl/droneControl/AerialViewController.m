@@ -57,7 +57,7 @@
     //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
     UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
     if (_nextAnnotationIsSpot){
-        image = [UIImage imageNamed:@"parking_spot_icon.png"];
+        image = [UIImage imageNamed:@"car_big.png"];
         _nextAnnotationIsSpot = NO;
     }
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
