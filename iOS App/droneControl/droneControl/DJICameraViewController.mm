@@ -61,6 +61,9 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     _droneHelper.drone.gimbal.delegate = self;
    // _drone.gimbal.delegate = self;
     
+    [_droneHelper onOpenButtonClicked];
+    
+    
     [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
@@ -565,6 +568,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     //gimbal
     [self onGimbalAttitudeScrollDown];
+    
 }
 
 -(void) displayImage

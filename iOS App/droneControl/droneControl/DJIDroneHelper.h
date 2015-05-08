@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <DJISDK/DJISDK.h>
 
-@interface DJIDroneHelper : NSObject<DJIMainControllerDelegate>
+@interface DJIDroneHelper : NSObject<DJIMainControllerDelegate, GroundStationDelegate>
 
 @property (strong, readwrite, nonatomic) DJIDrone * drone;
 
@@ -20,5 +20,7 @@
 -(CLLocationCoordinate2D) getDroneGPS;
 
 -(float) getDroneHeight;
+
+-(IBAction) onOpenButtonClicked;
 
 @end
