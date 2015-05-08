@@ -9,6 +9,7 @@
 #import "DJIDroneHelper.h"
 #import <DJISDK/DJISDK.h>
 //#import <DJISDK/DJIGroundStation.h>
+#define RADIAN(x) ((x)*M_PI/180.0)
 
 @implementation DJIDroneHelper
 {
@@ -102,7 +103,7 @@
 -(float) getDroneYaw
 {
   // Need to combo that shit with the camera yaw
-  return _lastFlyingInfo.attitude.yaw;
+  return RADIAN(_lastFlyingInfo.attitude.yaw);
 }
 
 
