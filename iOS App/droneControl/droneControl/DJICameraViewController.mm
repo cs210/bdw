@@ -75,9 +75,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [button addTarget:self
                action:@selector(goToMap)
      forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@" Map View " forState:UIControlStateNormal];
     double height = 40.0;
-    double width = 200.0;
+    double width = 300.0;
     double x = self.view.frame.origin.x + 20.0;
     double y = self.view.frame.origin.y + 50.0;
 
@@ -88,6 +87,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     button.layer.cornerRadius = 10;
     button.clipsToBounds = YES;
     button.frame = CGRectMake(x,y,width,height);
+    [button setTitle:@" Map View " forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:button];

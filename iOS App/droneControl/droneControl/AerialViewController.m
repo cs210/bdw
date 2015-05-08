@@ -117,7 +117,7 @@
     double x = _mapView.frame.origin.x + 20.0;
     double y = _mapView.frame.origin.y + 50.0;
     double height = 40.0;
-    double width = 200.0;
+    double width = 300.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
   
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
@@ -164,9 +164,10 @@
     [_locationManager startUpdatingLocation];
     
     self.view.backgroundColor = [UIColor blackColor];
+}
 
+-(void) viewDidAppear:(BOOL)animated{
     [self launchDrone];
-    
 }
 
 
