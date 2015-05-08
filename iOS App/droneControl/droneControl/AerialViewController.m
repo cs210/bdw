@@ -33,6 +33,7 @@
     UIView * _dummyTouchView;
     DJICameraViewController* _cameraFeed;
     UIButton * _findClosestParkingButton;
+    bool _nextAnnotationIsSpot;
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -54,11 +55,14 @@
         return nil;
     }
     //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
-    
+    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
+    if (_nextAnnotationIsSpot){
+        image = [UIImage imageNamed:@"parking_spot_icon.png"];
+        _nextAnnotationIsSpot = NO;
+    }
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
     [annotationView setImage:image];
     return annotationView;
 }
@@ -112,8 +116,8 @@
     [button setTitle:@" Find closest parking " forState:UIControlStateNormal];
     double x = _mapView.frame.origin.x + 20.0;
     double y = _mapView.frame.origin.y + 60.0;
-    double height = 150.0;
-    double width = 400.0;
+    double height = 40.0;
+    double width = 200.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
   
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
@@ -123,7 +127,6 @@
     button.frame = CGRectMake(x,y,width,height);
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button sizeToFit];
     
     return button;
 }
@@ -133,7 +136,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shouldShowMaster = YES;
-    
+    _nextAnnotationIsSpot = NO;
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
     _findClosestParkingButton = [self findClosestParkingButton];
@@ -339,13 +342,18 @@
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
+    CLLocationCoordinate2D noLocation;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
+    _nextAnnotationIsSpot = YES;
 
     MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
     newAnnotation.coordinate = spot;
     [_mapView addAnnotation:newAnnotation];
     [_mapView selectAnnotation:newAnnotation animated:YES];
     newAnnotation.title = @"Selected spot";
-  
+    
     //Time to remove the touch view and the camera view and add the new view
     [self.view addSubview:_mapView];
     [_dummyTouchView removeFromSuperview];

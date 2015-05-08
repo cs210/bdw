@@ -75,9 +75,9 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [button addTarget:self
                action:@selector(goToMap)
      forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@" Map View p" forState:UIControlStateNormal];
-    double height = 150.0;
-    double width = 600.0;
+        [button setTitle:@" Map View " forState:UIControlStateNormal];
+    double height = 40.0;
+    double width = 200.0;
     double x = self.view.frame.origin.x + 20.0;
     double y = self.view.frame.origin.y + 60.0;
 
@@ -90,13 +90,12 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     button.frame = CGRectMake(x,y,width,height);
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button sizeToFit];
     [self.view addSubview:button];
 
     
     UILabel *label = [[UILabel alloc] init];
     label.text = @"Tap an open parking space!";
-    label.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+    label.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.6];
     [label setTextColor:[UIColor whiteColor]];
     [label setFont:[UIFont systemFontOfSize:30]];
     [label setTextAlignment:NSTextAlignmentCenter];

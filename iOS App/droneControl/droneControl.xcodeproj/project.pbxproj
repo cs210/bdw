@@ -11,6 +11,7 @@
 		463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */; };
+		4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */; };
 		4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4648C3E31AEA4834005811B7 /* ParkingLot.m */; };
 		466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */; };
 		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
@@ -102,6 +103,8 @@
 		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		4641E43F1AFC6D2A00E2FCC8 /* IntroPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroPageViewController.h; sourceTree = "<group>"; };
 		4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageViewController.m; sourceTree = "<group>"; };
+		4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotAnnotation.m; sourceTree = "<group>"; };
+		4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingSpotAnnotation.h; sourceTree = "<group>"; };
 		4648C3E21AEA47DD005811B7 /* ParkingLot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLot.h; sourceTree = "<group>"; };
 		4648C3E31AEA4834005811B7 /* ParkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLot.m; sourceTree = "<group>"; };
 		466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotTableViewCell.m; sourceTree = "<group>"; };
@@ -647,6 +650,8 @@
 				466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */,
 				466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */,
 				A6F4EF341AAD17D500C81065 /* Images.xcassets */,
+				4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */,
+				4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */,
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
@@ -1028,6 +1033,7 @@
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */,
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
+				4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
 				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
