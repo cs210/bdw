@@ -486,6 +486,12 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+  
+  if (!_coordinatePointTuples)
+  {
+    //LOL What am I doing with my life
+    [self viewDidLoad];
+  }
   NSLog(@"Touches began");
 
   NSLog(@"Click handler");
@@ -522,7 +528,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     //float droneAltitude = _droneHelper.getDroneHeight;
     NSLog(@" IN HERE 3");
     //Hard code the altitude here
-    float droneAltitude = 10.0;
+    float droneAltitude = 20.0;
     
     // Multiply the height of the drone by the xRatio and yRatio of the point
     float xOffset = droneAltitude * nearestIndex.xzRatio;
