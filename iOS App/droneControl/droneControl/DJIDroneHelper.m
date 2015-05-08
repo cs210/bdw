@@ -99,6 +99,12 @@
   //return _lastKnownState.altitude;
 }
 
+-(float) getDroneYaw
+{
+  // Need to combo that shit with the camera yaw
+  return _lastFlyingInfo.attitude.yaw;
+}
+
 
 
 //delegate

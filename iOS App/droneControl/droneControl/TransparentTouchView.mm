@@ -9,10 +9,12 @@
 #import "TransparentTouchView.h"
 #import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
+#import "DJIDroneHelper.h"
 
 @implementation TransparentTouchView
 {
     NSArray * _coordinatePointTuples;
+    DJIDroneHelper *_droneHelper;
 }
 
 CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
@@ -53,6 +55,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
 -(void) viewDidLoad
 {
   NSLog(@"view did load");
+  
+  _droneHelper = [DJIDroneHelper sharedHelper];
   
   _coordinatePointTuples = [NSArray arrayWithObjects:
                             //First row
@@ -521,27 +525,25 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   
   if (aerialController)
   {
-    NSLog(@" IN HERE ");
     CLLocationCoordinate2D droneGPS = [aerialController getUserLocation].coordinate;
-    NSLog(@" IN HERE 2");
     // Get height of the drone
-    //float droneAltitude = _droneHelper.getDroneHeight;
-    NSLog(@" IN HERE 3");
-    //Hard code the altitude here
+    
+    // Hard code the altitude here for now
+    // float droneAltitude = _droneHelper.getDroneHeight;
     float droneAltitude = 20.0;
     
     // Multiply the height of the drone by the xRatio and yRatio of the point
     float xOffset = droneAltitude * nearestIndex.xzRatio;
     float yOffset = droneAltitude * nearestIndex.yzRatio;
     
+    //Now that we have offsets, we need to rotate according to the yaw of the drone
+    
     CLLocationCoordinate2D clickLocation = droneGPS;
     
     clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
     clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
-    NSLog(@" IN HERE 4");
     [aerialController userDidClickOnSpot:clickLocation];
     
-    NSLog(@" IN HERE 5 ");
   }
   
   // Get GPS of the drone

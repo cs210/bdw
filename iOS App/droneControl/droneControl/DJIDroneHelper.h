@@ -23,4 +23,6 @@
 
 -(void) onOpenButtonClicked;
 
+-(float) getDroneYaw;
+
 @end
