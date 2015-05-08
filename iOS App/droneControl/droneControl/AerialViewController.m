@@ -31,7 +31,9 @@
 @implementation AerialViewController
 {
     UIView * _dummyTouchView;
+  DJICameraViewController* _cameraFeed;
 }
+
 - (void) receiveImage:(UIImage *)image
 {
     // check for a parking space using computer vision
@@ -264,28 +266,37 @@
                 MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
                 MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
                 [_mapView setRegion:adjustedRegion animated:YES];
-                DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                [self.navigationController pushViewController:cameraFeed animated:NO];
+                _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+                [self.navigationController pushViewController:_cameraFeed animated:NO];
               
                 // Resize the camera frame
-              CGRect currFrame = cameraFeed.view.frame;
+              CGRect currFrame = _cameraFeed.view.frame;
               currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
               currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
-              cameraFeed.view.frame = currFrame;
+              _cameraFeed.view.frame = currFrame;
               
-              cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
+              //cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
+              
+              _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
               
               //Resize the map view
-              CGRect mapFrame = _mapView.frame;
+              /*CGRect mapFrame = _mapView.frame;
               mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
               mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
               
-              _mapView.frame = mapFrame;
+              _mapView.frame = mapFrame;*/
               
-              [self.view addSubview:cameraFeed.view];
+              //Remove the map view
+              [_mapView removeFromSuperview];
               
-              _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
-              _dummyTouchView.backgroundColor = [UIColor redColor];
+              [self.view addSubview:_cameraFeed.view];
+              
+              //_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
+              
+              _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+              
+              _dummyTouchView.backgroundColor = [UIColor clearColor];
+              
               [self.view addSubview:_dummyTouchView];
 	      //                [self launchDrone];
             }
@@ -333,6 +344,12 @@
   [_mapView addAnnotation:newAnnotation];
   [_mapView selectAnnotation:newAnnotation animated:YES];
   newAnnotation.title = @"Selected spot";
+  
+  //Time to remove the touch view and the camera view and add the new view
+  [self.view addSubview:_mapView];
+  [_dummyTouchView removeFromSuperview];
+  [_cameraFeed.view removeFromSuperview];
+  
 }
 
 @end
