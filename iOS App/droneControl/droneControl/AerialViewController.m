@@ -113,7 +113,7 @@
                action:@selector(launchDrone)
      forControlEvents:UIControlEventTouchUpInside];
     
-    [button setTitle:@"Drone view" forState:UIControlStateNormal];
+    [button setTitle:@"Top view" forState:UIControlStateNormal];
     double x = _mapView.frame.origin.x + 20.0;
     double y = _mapView.frame.origin.y + 50.0;
     double height = 40.0;
@@ -140,7 +140,7 @@
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
     _findClosestParkingButton = [self findClosestParkingButton];
-    _findClosestParkingButton.titleLabel.text = @"Drone View";
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
 
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
@@ -330,7 +330,7 @@
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
   
-    _findClosestParkingButton.titleLabel.text = @"Drone View";
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
     _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 }
 
@@ -339,7 +339,7 @@
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
     
-    _findClosestParkingButton.titleLabel.text = @"Drone View";
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
     _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 
 }
