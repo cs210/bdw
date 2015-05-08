@@ -113,7 +113,6 @@
     button.frame = CGRectMake(x,y,width,height);
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    //[button setBackgroundImage:[UIImage imageNamed:@"drone_white"] forState:UIControlStateNormal];
     [button sizeToFit];
 
     return button;
