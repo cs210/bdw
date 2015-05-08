@@ -529,19 +529,26 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     // Get height of the drone
     
     // Hard code the altitude here for now
-    // float droneAltitude = _droneHelper.getDroneHeight;
-    float droneAltitude = 20.0;
+    float droneAltitude = _droneHelper.getDroneHeight;
+    //float droneAltitude = 20.0;
     
     // Multiply the height of the drone by the xRatio and yRatio of the point
     float xOffset = droneAltitude * nearestIndex.xzRatio;
     float yOffset = droneAltitude * nearestIndex.yzRatio;
     
+    float droneYaw = _droneHelper.getDroneYaw;
+    
+    float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw); // now x is something different than original vector x
+    float newY = xOffset * sin(droneYaw) + yOffset * cos(droneYaw);
+    
     //Now that we have offsets, we need to rotate according to the yaw of the drone
     
     CLLocationCoordinate2D clickLocation = droneGPS;
     
-    clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
-    clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
+    //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
+    clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
+    //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
+    clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
     [aerialController userDidClickOnSpot:clickLocation];
     
   }
