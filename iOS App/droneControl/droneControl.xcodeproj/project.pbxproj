@@ -56,7 +56,6 @@
 		A62B4B551AFC1EF30016ED09 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A62B4B541AFC1EF30016ED09 /* libstdc++.6.0.9.dylib */; };
 		A62B4B5B1AFC71280016ED09 /* TransparentTouchView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A62B4B5A1AFC71280016ED09 /* TransparentTouchView.mm */; };
 		A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */; };
-		A653914D1AEE00C800EA296A /* parking-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A653914C1AEE00C800EA296A /* parking-icon.png */; };
 		A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A66415601AF9448000135A7D /* DJIDroneHelper.m */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
@@ -219,7 +218,6 @@
 		A62B4B5A1AFC71280016ED09 /* TransparentTouchView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TransparentTouchView.mm; sourceTree = "<group>"; };
 		A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkingTableViewController.h; sourceTree = "<group>"; };
 		A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkingTableViewController.m; sourceTree = "<group>"; };
-		A653914C1AEE00C800EA296A /* parking-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parking-icon.png"; sourceTree = "<group>"; };
 		A664155F1AF9448000135A7D /* DJIDroneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJIDroneHelper.h; sourceTree = "<group>"; };
 		A66415601AF9448000135A7D /* DJIDroneHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJIDroneHelper.m; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -663,7 +661,6 @@
 				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
 				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 				463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */,
-				A653914C1AEE00C800EA296A /* parking-icon.png */,
 				463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */,
 				A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */,
 				A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */,
@@ -988,7 +985,6 @@
 				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
-				A653914D1AEE00C800EA296A /* parking-icon.png in Resources */,
 				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,

@@ -29,7 +29,6 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     self.focusAfterStartingInRemoteHmi = NO;
     
     //setup drone integration
-//    NSString* appKey = @"15e1f97fcf7b133c7a1b1ab7";
     NSString* appKey = @"07c6b3c3b6a76db64209d4ce";
     [DJIAppManager registerApp:appKey withDelegate:self];
     

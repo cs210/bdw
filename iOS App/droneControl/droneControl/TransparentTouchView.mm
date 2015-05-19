@@ -522,7 +522,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     if ([nextResponder isKindOfClass:[AerialViewController class]])
     {
-      aerialController = nextResponder;
+      aerialController = (AerialViewController *)nextResponder;
     }
   }
   

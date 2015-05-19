@@ -44,6 +44,7 @@
     // trigger navigation (SpotConfirmViewController)
 }
 
+
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location{
     [self addAnnnotationWithOffset:false location:*location];
 }
@@ -67,6 +68,7 @@
     return annotationView;
 }
 
+
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
     if (isParkingSpot){
         MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
@@ -75,7 +77,6 @@
         
     } else {
         _droneAnnotation.coordinate = location;
-        //[_mapView removeAnnotation:_point];
         [_mapView addAnnotation:_droneAnnotation];
         [_mapView selectAnnotation:_droneAnnotation animated:YES];
         _droneAnnotation.title = @"Drone";
@@ -87,6 +88,7 @@
     
 }
 
+
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
     // Check for iOS 6
     Class mapItemClass = [MKMapItem class];
@@ -95,7 +97,6 @@
         _parkingSpace = destination;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
         [alert show];
-        // Create an MKMapItem to pass to the Maps app
     }
 }
 
@@ -106,6 +107,7 @@
 {
     return !_shouldShowMaster;
 }
+
 
 - (UIButton*) findClosestParkingButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -166,10 +168,10 @@
     self.view.backgroundColor = [UIColor blackColor];
 }
 
+
 -(void) viewDidAppear:(BOOL)animated{
     [self launchDrone];
 }
-
 
 
 -(void) findParkingClicked:(UIButton *) sender
@@ -216,6 +218,7 @@
     [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
 }
 
+
 - (void) lotButtonPressed:(id) sender{ // how to get the name of the parking lot here?
     if ([sender isKindOfClass:[UIButton self]]) {
         // it's a button
@@ -226,16 +229,13 @@
     
 }
 
+
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
     [alert show];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
@@ -247,6 +247,7 @@
     }
     return nil;
 }
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
@@ -288,6 +289,8 @@
         
     }
 }
+
+
 -(void)launchDrone{
     [_mapView removeFromSuperview];
     [self.view addSubview:_dummyTouchView];
@@ -295,6 +298,7 @@
     _shouldShowMaster = NO;
     [self hideMaster];
 }
+
 
 - (void)hideMaster  {
     NSLog(@"hide-unhide master");
@@ -306,10 +310,12 @@
     [spv.view setNeedsLayout];
 }
 
+
 -(CLLocation *) getUserLocation
 {
     return _locationManager.location;
 }
+
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
@@ -333,6 +339,7 @@
     [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
     _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 }
+
 
 -(void) showMap{
     [self.view addSubview:_mapView];

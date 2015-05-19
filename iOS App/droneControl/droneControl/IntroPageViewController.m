@@ -22,11 +22,8 @@ typedef enum
 
 
 @interface IntroPageViewController () <SpeechDelegate>{
-    
-    //@property (weak, nonatomic) IBOutlet UIButton *findParkingButton;
     SpeechController * speechController;
     listeningStates _currentState;
-    
 }
 
 @end
@@ -40,8 +37,8 @@ typedef enum
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:36];
     [self.view addSubview:label];
-    
 }
+
 
 -(void) addParkingButton{
     UIButton *findParkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -58,21 +55,21 @@ typedef enum
     [findParkingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     findParkingButton.layer.cornerRadius = 10.0f;
     [self.view addSubview:findParkingButton];
-    
     UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(self.view.center.x - 200, self.view.center.y * 4 / 5, 400,100)];
     label.text = @"Or say \"Find Parking\".";
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:24];
     [self.view addSubview:label];
-
 }
+
 
 -(void) addDronePicture{
     UIImageView *droneImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"drone_white.png"]];
     [droneImgView setFrame:CGRectMake(self.view.center.x - 150, self.view.center.y * 1.1, 300, 300)];
     [self.view addSubview:droneImgView];
 }
+
 
 - (void)viewDidLoad {
     [self addTitle];
@@ -85,6 +82,7 @@ typedef enum
     _currentState = kListening;
 }
 
+
 -(void) findParkingClicked{
     [speechController stopListening];
     [self performSegueWithIdentifier:@"droneMapView" sender:self];
@@ -93,11 +91,11 @@ typedef enum
 
 
 // SpeechDelegate stuff
-
 -(NSArray * ) listOfWordsToDetect
 {
     return @[ @"FIND PARKING", @"YES", @"CANCEL"];
 }
+
 
 -(void) didReceiveWord: (NSString *) word
 {

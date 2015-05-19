@@ -103,7 +103,12 @@
 -(float) getDroneYaw
 {
   // Need to combo that shit with the camera yaw
-  return RADIAN(_lastFlyingInfo.attitude.yaw);
+    float pi = 3.1415926535;
+  float outt = RADIAN(_lastFlyingInfo.attitude.yaw) - pi;
+    if (outt < -pi){
+        outt += (2 * pi);
+    }
+    return outt;
 }
 
 
