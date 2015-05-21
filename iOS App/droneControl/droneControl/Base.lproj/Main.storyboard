@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5U-t2-2rN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743.375" y="2456"/>
+            <point key="canvasLocation" x="1066.875" y="2516"/>
         </scene>
         <!--Nearby Parking lots-->
         <scene sceneID="qqW-3T-Rkh">
@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMM-0i-kxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2017.5" y="1273"/>
+            <point key="canvasLocation" x="2392.5" y="1452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Psq-nG-fUp">
@@ -142,7 +142,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR5-6J-QJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.25" y="1119"/>
+            <point key="canvasLocation" x="1820.25" y="1452"/>
         </scene>
     </scenes>
 </document>
