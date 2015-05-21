@@ -80,12 +80,17 @@ typedef enum
     [speechController setupSpeechHandler];
     [speechController startListening];
     _currentState = kListening;
+    
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 
 -(void) findParkingClicked{
     [speechController stopListening];
-    [self performSegueWithIdentifier:@"droneMapView" sender:self];
+  
+    // Create a new view controller for the aerial view controller
+    AerialViewController * mapController = [[AerialViewController alloc] init];
+    [self.navigationController pushViewController:mapController animated:YES];
 
 }
 
