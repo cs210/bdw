@@ -153,7 +153,7 @@
     
 #ifdef USING_GMAPS
     _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
-    //_googleMapView.delegate = self;
+    _googleMapView.delegate = self;
 #else
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
@@ -171,13 +171,18 @@
 #ifdef USING_GMAPS
     [_googleMapView addSubview:_findClosestParkingButton];
     [self.view addSubview:_googleMapView];
-    _googleMapView.myLocationEnabled = YES;
     
-    GMSCameraPosition *sydney = [GMSCameraPosition cameraWithLatitude:37.4300
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _googleMapView.myLocationEnabled = YES;
+    });
+    
+    _googleMapView.settings.myLocationButton = YES;
+    
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:37.4300
                                                             longitude:-122.1700
                                                                  zoom:16];
     
-    [_googleMapView setCamera:sydney];
+    [_googleMapView setCamera:stanford];
 #else
     [_mapView addSubview:_findClosestParkingButton];
     [self.view addSubview:_mapView];
@@ -217,7 +222,8 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
 #ifdef USING_GMAPS
-    assert(0);
+    //assert(0);
+    // We don't need to search for parking lots as we aren't doing this anymore
 #else
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
@@ -366,7 +372,23 @@
 {
     
 #ifdef USING_GMAPS
-    assert(0);
+    //assert(0);
+    
+    CLLocationCoordinate2D position = spot;
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.title = @"Hello World";
+    marker.map = _googleMapView;
+    marker.icon = [UIImage imageNamed:@"car_big.png"];
+    
+    CLLocation * myLocation = _googleMapView.myLocation;
+    
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
+                                                              longitude:myLocation.coordinate.longitude
+                                                                   zoom:19];
+    
+    [_googleMapView setCamera:stanford];
+    
+    [self.view addSubview:_googleMapView];
 #else
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
