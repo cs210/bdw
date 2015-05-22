@@ -28,6 +28,7 @@
 #import "TransparentTouchView.h"
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
+
 @implementation AerialViewController
 {
     UIView * _dummyTouchView;
@@ -70,6 +71,10 @@
 
 
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
+    
+#ifdef USING_GMAPS
+    assert(0);
+#else
     if (isParkingSpot){
         MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
         annot.title = @"Parking Lot";
@@ -85,7 +90,7 @@
         [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
         [_mapView deselectAnnotation:_droneAnnotation animated:YES];
     }
-    
+#endif
 }
 
 
@@ -116,8 +121,14 @@
      forControlEvents:UIControlEventTouchUpInside];
     
     [button setTitle:@"Top view" forState:UIControlStateNormal];
+    
+#ifdef USING_GMAPS
+    double x = _googleMapView.frame.origin.x + 20.0;
+    double y = _googleMapView.frame.origin.y + 50.0;
+#else
     double x = _mapView.frame.origin.x + 20.0;
     double y = _mapView.frame.origin.y + 50.0;
+#endif
     double height = 40.0;
     double width = 300.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
@@ -139,8 +150,16 @@
     [super viewDidLoad];
     _shouldShowMaster = YES;
     _nextAnnotationIsSpot = NO;
+    
+#ifdef USING_GMAPS
+    _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+    //_googleMapView.delegate = self;
+#else
     _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     _mapView.delegate = self;
+#endif
+    
+    
     _findClosestParkingButton = [self findClosestParkingButton];
     [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
 
@@ -149,14 +168,29 @@
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
 
+#ifdef USING_GMAPS
+    [_googleMapView addSubview:_findClosestParkingButton];
+    [self.view addSubview:_googleMapView];
+    _googleMapView.myLocationEnabled = YES;
+    
+    GMSCameraPosition *sydney = [GMSCameraPosition cameraWithLatitude:37.4300
+                                                            longitude:-122.1700
+                                                                 zoom:16];
+    
+    [_googleMapView setCamera:sydney];
+#else
     [_mapView addSubview:_findClosestParkingButton];
     [self.view addSubview:_mapView];
-    self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
+    
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
+#endif
+    
+    
+    self.splitViewController.delegate = self;
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
@@ -169,7 +203,7 @@
 
 
 -(void) viewWillAppear:(BOOL)animated{
-    [self launchDrone];
+   // [self launchDrone];
 }
 
 
@@ -182,6 +216,9 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+#ifdef USING_GMAPS
+    assert(0);
+#else
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
         
@@ -215,6 +252,7 @@
     }
     // Update the spots to sort around location
     [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
+#endif
 }
 
 
@@ -264,9 +302,13 @@
                 MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
                 [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
                     if (!error) {
-                        for (MKRoute *route in [response routes]) {
+                        for(MKRoute *route in [response routes]) {
+#ifdef USING_GMAPS
+                            assert(0);
+#else
                             [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
                             // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
+#endif
                         }
                     }
                 }];
@@ -291,7 +333,11 @@
 
 
 -(void)launchDrone{
+#ifdef USING_GMAPS
+    [_googleMapView removeFromSuperview];
+#else
     [_mapView removeFromSuperview];
+#endif
     [self.view addSubview:_dummyTouchView];
     [self.view addSubview:_cameraFeed.view];
     _shouldShowMaster = NO;
@@ -318,6 +364,10 @@
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
+    
+#ifdef USING_GMAPS
+    assert(0);
+#else
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
@@ -330,8 +380,10 @@
     [_mapView selectAnnotation:newAnnotation animated:YES];
     newAnnotation.title = @"Selected spot";
     
-    //Time to remove the touch view and the camera view and add the new view
     [self.view addSubview:_mapView];
+#endif
+    
+    //Time to remove the touch view and the camera view and add the new view
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
   
@@ -341,7 +393,11 @@
 
 
 -(void) showMap{
+#ifdef USING_GMAPS
+    [self.view addSubview:_googleMapView];
+#else
     [self.view addSubview:_mapView];
+#endif
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
     

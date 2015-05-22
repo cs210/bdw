@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+
+#define USING_GMAPS 1
 
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
+
+#ifdef USING_GMAPS
+@property (nonatomic, strong) GMSMapView *googleMapView;
+#else
 @property (nonatomic, strong) MKMapView *mapView;
+#endif
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
 @property (nonatomic, strong) DroneController* drone;
@@ -34,5 +43,6 @@
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
 
 -(void) showMap;
+
 @end
 

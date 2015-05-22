@@ -29,7 +29,7 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     [application setIdleTimerDisabled:YES];
     self.focusAfterStartingInRemoteHmi = NO;
     
-    [GMSServices provideAPIKey:@"AIzaSyBooIc-quWMwsFspVjeKNyi75wQTlbbLZE"];
+    [GMSServices provideAPIKey:@"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
     
     //setup drone integration
     NSString* appKey = @"07c6b3c3b6a76db64209d4ce";

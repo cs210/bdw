@@ -65,6 +65,7 @@
 		A66C6DE51B0EB534008FCE23 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DDE1B0EB534008FCE23 /* OpenGLES.framework */; };
 		A66C6DE61B0EB534008FCE23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DDF1B0EB534008FCE23 /* QuartzCore.framework */; };
 		A66C6DE81B0EB5DD008FCE23 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */; };
+		A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -236,6 +237,7 @@
 		A66C6DDE1B0EB534008FCE23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A66C6DDF1B0EB534008FCE23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
+				A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */,
 				46841DAE1AAD8DE500BB0BF1 /* BMW */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
 				A6F4EF401AAD17D500C81065 /* droneControlTests */,
@@ -1018,6 +1021,7 @@
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
 				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
 				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
+				A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */,
 				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
