@@ -128,6 +128,51 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     //gimbal
     [self onGimbalAttitudeScrollDown];
     
+    //Show location of the car
+    [self showCarLocation];
+}
+
+-(void) showCarLocation
+{
+    //TODO: FIX THIS CLOWNINESS
+    AerialViewController * aerialController;
+    for (UIView* next = [self.view superview]; next; next = next.superview)
+    {
+        UIResponder* nextResponder = [next nextResponder];
+        
+        if ([nextResponder isKindOfClass:[AerialViewController class]])
+        {
+            aerialController = (AerialViewController *)nextResponder;
+        }
+    }
+    
+    CLLocation * carLocation = [aerialController getUserLocation];
+    CLLocationCoordinate2D carCoordinate = carLocation.coordinate;
+    
+    // Basically here take the car location, transform it into a pixel value on screen (hopefully)
+    CLLocationCoordinate2D droneLocation = [[DJIDroneHelper sharedHelper ] getDroneGPS];
+    
+    // Take the long GPS location of the car, and compute a delta long from the Drone GPS
+    float deltaLong = carCoordinate.longitude - droneLocation.longitude;
+    float deltaLat = carCoordinate.latitude - droneLocation.latitude;
+    
+    // Divide the long/lat's by the drone altitude
+    deltaLat = deltaLat / [_droneHelper getDroneHeight];
+    deltaLong = deltaLong / [_droneHelper getDroneHeight];
+    
+    // Rotate by -Yaw
+    float yaw = [_droneHelper getDroneYaw];
+    yaw = -yaw;
+    
+    float newLong = deltaLong * cos(yaw) - deltaLat * sin(yaw); // now x is something different than original vector x
+    float newLat = deltaLat * sin(yaw) + deltaLong * cos(yaw);
+    
+    //Now that we have offsets, we need to rotate according to the yaw of the drone
+    
+    /*CLLocationCoordinate2D carImageLocation = droneLocation;
+    carImageLocation.latitude = droneLocation.latitude + (180/3.1415926)*(newLat/6378137.0);
+    carImageLocation.longitude = droneLocation.longitude +  (180/3.1415926)*(newLong/6378137.0)/cos(droneGPS.latitude);*/
+    
 }
 
 -(void) displayImage

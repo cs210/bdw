@@ -149,7 +149,6 @@
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
 
-    
     [_mapView addSubview:_findClosestParkingButton];
     [self.view addSubview:_mapView];
     self.splitViewController.delegate = self;

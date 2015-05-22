@@ -6,6 +6,7 @@
 #import "LastUserModeDelegate.h"
 #import "AerialViewController.h"
 #import <DJISDK/DJISDK.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 
 @interface AppDelegate () <LastUserModeDelegate>
@@ -27,6 +28,8 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
 {
     [application setIdleTimerDisabled:YES];
     self.focusAfterStartingInRemoteHmi = NO;
+    
+    [GMSServices provideAPIKey:@"AIzaSyBooIc-quWMwsFspVjeKNyi75wQTlbbLZE"];
     
     //setup drone integration
     NSString* appKey = @"07c6b3c3b6a76db64209d4ce";
