@@ -71,7 +71,9 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
     self.view.userInteractionEnabled = NO;
-
+    
+#ifdef SPLITSCREENWITHDRONE
+#else
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
                action:@selector(goToMap)
@@ -92,6 +94,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:button];
+#endif
 
     
     UILabel *label = [[UILabel alloc] init];
@@ -135,18 +138,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
 
 -(void) showCarLocation
 {
-    //TODO: FIX THIS CLOWNINESS
-    AerialViewController * aerialController;
-    for (UIView* next = [self.view superview]; next; next = next.superview)
-    {
-        UIResponder* nextResponder = [next nextResponder];
-        
-        if ([nextResponder isKindOfClass:[AerialViewController class]])
-        {
-            aerialController = (AerialViewController *)nextResponder;
-        }
-    }
-    
     CLLocation * carLocation = [[LocationManager sharedManager] getUserLocation];
     CLLocationCoordinate2D carCoordinate = carLocation.coordinate;
     

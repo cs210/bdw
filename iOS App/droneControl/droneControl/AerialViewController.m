@@ -176,7 +176,7 @@
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     _cameraFeed.view.frame = CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height / 2 );
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 2)];
-    _dummyTouchView.backgroundColor = [UIColor blueColor];
+    _dummyTouchView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:_cameraFeed.view];
     [self.view addSubview:_dummyTouchView];
@@ -423,8 +423,11 @@
 #endif
     
     //Time to remove the touch view and the camera view and add the new view
+#ifdef SPLITSCREENWITHDRONE
+#else
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
+#endif
   
     [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
     _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
