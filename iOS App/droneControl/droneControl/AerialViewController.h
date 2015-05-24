@@ -13,6 +13,8 @@
 
 #define USING_GMAPS 1
 
+#define SPLITSCREENWITHDRONE 1
+
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
 
 #ifdef USING_GMAPS

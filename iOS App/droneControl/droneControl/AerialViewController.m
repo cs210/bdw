@@ -45,12 +45,9 @@
     // trigger navigation (SpotConfirmViewController)
 }
 
-
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location{
     [self addAnnnotationWithOffset:false location:*location];
 }
-
-
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -152,24 +149,52 @@
     _nextAnnotationIsSpot = NO;
     
 #ifdef USING_GMAPS
-    _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+    
+    #ifdef SPLITSCREENWITHDRONE
+        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+        _googleMapView = [[GMSMapView alloc] initWithFrame:mapFrame];
+    #else
+        _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+    #endif
     _googleMapView.delegate = self;
+    
 #else
-    _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    
+    #ifdef SPLITSCREENWITHDRONE
+        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+        _mapView = [[MKMapView alloc] initWithFrame:mapFrame];
+    #else
+        _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    #endif
     _mapView.delegate = self;
 #endif
     
     
     _findClosestParkingButton = [self findClosestParkingButton];
     [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
-
+#ifdef SPLITSCREENWITHDRONE
+    _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    _cameraFeed.view.frame = CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height / 2 );
+    _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 2)];
+    _dummyTouchView.backgroundColor = [UIColor blueColor];
+    
+    [self.view addSubview:_cameraFeed.view];
+    [self.view addSubview:_dummyTouchView];
+    
+#else
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
+#endif
 
 #ifdef USING_GMAPS
+    
+    #ifdef SPLITSCREENWITHDRONE
+    #else
     [_googleMapView addSubview:_findClosestParkingButton];
+    #endif
+    
     [self.view addSubview:_googleMapView];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -184,7 +209,11 @@
     
     [_googleMapView setCamera:stanford];
 #else
+    
+    #ifdef SPLITSCREENWITHDRONE
+    #else
     [_mapView addSubview:_findClosestParkingButton];
+    #endif
     [self.view addSubview:_mapView];
     _mapView.showsUserLocation = YES;
     
