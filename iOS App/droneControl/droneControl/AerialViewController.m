@@ -197,12 +197,6 @@
     
     self.splitViewController.delegate = self;
     
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager requestWhenInUseAuthorization];
-    [_locationManager startUpdatingLocation];
-    
     self.view.backgroundColor = [UIColor blackColor];
 }
 
@@ -222,7 +216,7 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
 #ifdef USING_GMAPS
-    //assert(0);
+    // assert(0);
     // We don't need to search for parking lots as we aren't doing this anymore
 #else
     if (!_didStartLooking){
@@ -359,12 +353,6 @@
     // yes this stuff is deprecated but I cannot acheive my goal (to call shouldHideViewController) otherwise
     [spv willRotateToInterfaceOrientation: (UIInterfaceOrientation)[UIDevice currentDevice].orientation duration:0];
     [spv.view setNeedsLayout];
-}
-
-
--(CLLocation *) getUserLocation
-{
-    return _locationManager.location;
 }
 
 

@@ -13,6 +13,7 @@
 #import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
 #import "TransparentTouchView.h"
+#import "LocationManager.h"
 
 @implementation DJICameraViewController
 {
@@ -146,7 +147,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         }
     }
     
-    CLLocation * carLocation = [aerialController getUserLocation];
+    CLLocation * carLocation = [[LocationManager sharedManager] getUserLocation];
     CLLocationCoordinate2D carCoordinate = carLocation.coordinate;
     
     // Basically here take the car location, transform it into a pixel value on screen (hopefully)

@@ -21,7 +21,6 @@
 @property (nonatomic, strong) MKMapView *mapView;
 #endif
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
 @property (nonatomic, strong) DroneController* drone;
 @property (nonatomic) bool didStartLooking; // true if the drone started looking for parking
@@ -37,8 +36,6 @@
 - (void) goToNavigation: (CLLocationCoordinate2D)destination;
 
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title;
-
--(CLLocation *) getUserLocation;
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
 

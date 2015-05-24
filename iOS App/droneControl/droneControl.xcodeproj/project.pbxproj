@@ -66,6 +66,7 @@
 		A66C6DE61B0EB534008FCE23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DDF1B0EB534008FCE23 /* QuartzCore.framework */; };
 		A66C6DE81B0EB5DD008FCE23 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */; };
 		A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */; };
+		A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A66C6DEC1B116D24008FCE23 /* LocationManager.m */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -238,6 +239,8 @@
 		A66C6DDF1B0EB534008FCE23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		A66C6DEB1B116D24008FCE23 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		A66C6DEC1B116D24008FCE23 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -699,6 +702,8 @@
 				463D6F031ADDC5540011A329 /* SpotConfirmViewController.h */,
 				A65391471AEDFCE100EA296A /* NearbyParkingTableViewController.h */,
 				A65391481AEDFCE100EA296A /* NearbyParkingTableViewController.m */,
+				A66C6DEB1B116D24008FCE23 /* LocationManager.h */,
+				A66C6DEC1B116D24008FCE23 /* LocationManager.m */,
 			);
 			path = droneControl;
 			sourceTree = "<group>";
@@ -1056,6 +1061,7 @@
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
 				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */,
+				A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
 				4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */,

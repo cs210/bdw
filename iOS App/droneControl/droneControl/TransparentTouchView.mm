@@ -10,6 +10,7 @@
 #import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
 #import "DJIDroneHelper.h"
+#import "LocationManager.h"
 
 @implementation TransparentTouchView
 {
@@ -528,7 +529,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   
   if (aerialController)
   {
-    CLLocationCoordinate2D droneGPS = [aerialController getUserLocation].coordinate;
+    CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
     NSLog(@"DroneALtitude: %f, %f",droneGPS.latitude, droneGPS.longitude);
     // test dronealtitude units
     // yaw: clockwise or counterclick
