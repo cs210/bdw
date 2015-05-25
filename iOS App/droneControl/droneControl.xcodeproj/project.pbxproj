@@ -67,6 +67,7 @@
 		A66C6DE81B0EB5DD008FCE23 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */; };
 		A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */; };
 		A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A66C6DEC1B116D24008FCE23 /* LocationManager.m */; };
+		A66C6DF31B12D9D6008FCE23 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DF21B12D9D6008FCE23 /* opencv2.framework */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -241,6 +242,7 @@
 		A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		A66C6DEB1B116D24008FCE23 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		A66C6DEC1B116D24008FCE23 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		A66C6DF21B12D9D6008FCE23 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66C6DF31B12D9D6008FCE23 /* opencv2.framework in Frameworks */,
 				A66C6DE81B0EB5DD008FCE23 /* GoogleMaps.framework in Frameworks */,
 				A66C6DE01B0EB534008FCE23 /* CoreData.framework in Frameworks */,
 				A66C6DE11B0EB534008FCE23 /* CoreLocation.framework in Frameworks */,
@@ -655,6 +658,7 @@
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
+				A66C6DF21B12D9D6008FCE23 /* opencv2.framework */,
 				A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */,
 				46841DAE1AAD8DE500BB0BF1 /* BMW */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
@@ -1215,6 +1219,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
 					"/Users/Mikey/Downloads/GoogleMaps-iOS-1.9.2",
+					/Users/Mikey/Downloads,
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1249,6 +1255,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
 					"/Users/Mikey/Downloads/GoogleMaps-iOS-1.9.2",
+					/Users/Mikey/Downloads,
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
