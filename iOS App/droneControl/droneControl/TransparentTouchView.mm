@@ -610,6 +610,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         
         //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
+        clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
+
         //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
         #ifdef DRONE_GPS_TEST
             if (clickLocation.latitude < droneGPS.latitude){ // should be this on
@@ -617,7 +619,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             } else {
                 NSLog(@"clickLat > droneLat (wrong)");
             }
-            clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
             if (clickLocation.longitude < droneGPS.longitude){ // should be this on
                 NSLog(@"clickLong < droneLong (correct)");
             } else {

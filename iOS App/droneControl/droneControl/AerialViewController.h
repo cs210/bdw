@@ -12,7 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 #define USING_GMAPS 1
-#define DRONE_GPS_TEST 0
+//#define DRONE_GPS_TEST 0
 
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
 
