@@ -16,4 +16,12 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 
+- (void) insertArticifialTouchWithYaw:(float)yaw
+                             altitude:(float)altitude
+                                    X:(float)x
+                                    Y:(float)y
+                     aerialController:(AerialViewController *)aerialController
+                            viewWidth:(float)width
+                           viewHeight:(float)height;
+
 @end

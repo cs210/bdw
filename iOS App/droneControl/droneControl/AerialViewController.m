@@ -110,12 +110,29 @@
     return !_shouldShowMaster;
 }
 
+-(void) testGPS
+{
+    [((TransparentTouchView *)_dummyTouchView) insertArticifialTouchWithYaw:-179.505600
+                                                                   altitude:40.775520
+                                                                          X:534.500000
+                                                                          Y:28.500000
+                                                           aerialController:self
+                                                                  viewWidth:self.view.frame.size.width
+                                                                 viewHeight:self.view.frame.size.height];
+}
+
 
 - (UIButton*) findClosestParkingButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+#ifdef DRONE_GPS_TEST
+    [button addTarget:self
+               action:@selector(testGPS)
+     forControlEvents:UIControlEventTouchUpInside];
+#else
     [button addTarget:self
                action:@selector(launchDrone)
      forControlEvents:UIControlEventTouchUpInside];
+#endif
     
     [button setTitle:@"Top view" forState:UIControlStateNormal];
     

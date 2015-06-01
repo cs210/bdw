@@ -492,6 +492,61 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
                             nil];
 }
 
+- (void) insertArticifialTouchWithYaw:(float)yaw
+                             altitude:(float)altitude
+                                    X:(float)x
+                                    Y:(float)y
+                     aerialController:(AerialViewController *)aerialController
+                            viewWidth:(float)width
+                           viewHeight:(float)height
+{
+    if (!_coordinatePointTuples)
+    {
+        //LOL What am I doing with my life
+        [self viewDidLoad];
+    }
+    
+    float xRatio = x / width;
+    float yRatio = y / height;
+    
+    int pointIndex = [self findIndexOfNearestTuple:xRatio withYRatio:yRatio];
+    CoordinatePointTuple * nearestIndex = _coordinatePointTuples[pointIndex];
+    
+    if (aerialController)
+    {
+        CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
+        NSLog(@"DroneALtitude: %f, %f",droneGPS.latitude, droneGPS.longitude);
+        // test dronealtitude units
+        // yaw: clockwise or counterclick
+        // Get height of the drone
+        
+        // Hard code the altitude here for now
+        float droneAltitude = altitude;
+        NSLog(@"DroneAltitude: %f",droneAltitude);
+        //float droneAltitude = 20.0;
+        
+        // Multiply the height of the drone by the xRatio and yRatio of the point
+        float xOffset = droneAltitude * nearestIndex.xzRatio;
+        float yOffset = droneAltitude * nearestIndex.yzRatio;
+        
+        float droneYaw = yaw;
+        NSLog(@"droneYaw: %f",droneYaw);
+        // if wrong multiply by -1
+        float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw); // now x is something different than original vector x
+        float newY = xOffset * sin(droneYaw) + yOffset * cos(droneYaw);
+        
+        //Now that we have offsets, we need to rotate according to the yaw of the drone
+        
+        CLLocationCoordinate2D clickLocation = droneGPS;
+        
+        //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
+        clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
+        //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
+        clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
+        [aerialController userDidClickOnSpot:clickLocation];
+    }
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
   
