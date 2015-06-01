@@ -31,8 +31,8 @@ int main(int argc, char* argv[])
 
   //------------------- SpaceHighlighter Code -------------------//
 
-  int r = 325;
-  int c = 450;
+  int r = 550;
+  int c = 600;
   bool success = highlightSpace(img, r, c);
   circle(img, Point(c, r), 3, Scalar(0, 0, 255));
 

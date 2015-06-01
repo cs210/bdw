@@ -58,18 +58,12 @@ vector<Point> findSpace(const Mat& img, int row, int col) {
   sort(indices.begin(), indices.end(),
        [&dists](size_t i1, size_t i2) {return dists[i1] < dists[i2];});
 
-  /*
-  for (int i = 0; i < indices.size(); i++) {
-    cout << indices[i] << endl;
-  }
-  */
-
   // Filters out points that are too far from the start point (these
   // likely will not actually be edges of a parking space).
   size_t middle = indices.size() / 2;
   size_t num_to_include = middle + 1;
   for (size_t i = middle + 1; i < indices.size(); i++) {
-    if (dists[i] > 5 * dists[middle]) {
+    if (dists[i] > 3 * dists[middle]) {
       break;
     }
     ++num_to_include;
@@ -79,9 +73,70 @@ vector<Point> findSpace(const Mat& img, int row, int col) {
   for(int i = 0; i < num_to_include; i++) {
     space_vertices.push_back(edge_points[indices[i]]);
   }
-  space_vertices.push_back(edge_points[indices[0]]);
+  //space_vertices.push_back(edge_points[indices[0]]);
 
   return space_vertices;
+}
+
+/**
+ * Given a list of vertices (in clockwise-order and no wrap-around) for
+ * a polygon, computes its area and returns it.
+ */
+double polygonArea(vector<Point> points) {
+  double p1 = 0.0;
+  for (int i = 0; i < points.size() - 1; i++) {
+    p1 += 1.0 * points[i].x * points[i + 1].y;
+  }
+  p1 += points[points.size() - 1].x * points[0].y;
+
+  double p2 = 0.0;
+  for (int i = 0; i < points.size() - 1; i++) {
+    p2 += 1.0 * points[i].y * points[i + 1].x;
+  }
+  p2 += points[points.size() - 1].y * points[0].x;
+
+  return 0.5 * abs(p1 - p2);
+}
+
+/**
+ * Given a set of points, find the set of 4 points that form a quad
+ * with the largest area and returns these.
+ */
+vector<Point> findLargestQuad(vector<Point> points) {
+  if (points.size() < 4) return points;
+
+  double maxArea = 0;
+  vector<Point> best_vertices;
+  for (int i = 0; i < points.size(); i++) {
+    for (int j = i + 1; j < points.size(); j++) {
+      for (int k = j + 1; k < points.size(); k++) {
+        for (int l = k + 1; l < points.size(); l++) {
+          Point vertices_array[] = {points[l], points[k], points[j], points[i]};
+          vector<Point> vertices(vertices_array, vertices_array + 4);
+          double area = polygonArea(vertices);
+          if (area > maxArea) {
+            maxArea = area;
+            best_vertices = vertices;
+          }
+        }
+      }
+    }
+  }
+  return best_vertices;
+}
+
+/**
+ * Given a list of points, find the smallest upright rectangle that
+ * bounds all of those points and returns its vertices.
+ */
+vector<Point> findOuterRectangle(vector<Point> points) {
+  Rect bound = boundingRect(points);
+  vector<Point> vertices;
+  vertices.push_back(bound.tl());
+  vertices.push_back(Point(bound.tl().x, bound.br().y));
+  vertices.push_back(bound.br());
+  vertices.push_back(Point(bound.br().x, bound.tl().y));
+  return vertices;
 }
 
 /**
@@ -125,10 +180,10 @@ bool initialCheck(const Mat& img, int row, int col) {
 bool checkAngles(const vector<Point>& space_vertices) {
   int size = (int)space_vertices.size();
   if (size < 3) return false;
-  for (int i = 0; i < size - 1; i++) {
+  for (int i = 0; i < size; i++) {
     int prev = (i - 1) < 0 ? size - 2 : (i - 1);
     int cur = i;
-    int next = i + 1;
+    int next = i + 1 >= size ? 0 : (i + 1);
     const Point& prevPoint = space_vertices[prev];
     const Point& curPoint = space_vertices[cur];
     const Point& nextPoint = space_vertices[next];
@@ -152,14 +207,24 @@ bool highlightSpace(Mat& img, int row, int col) {
   Mat binary = preprocess(img);
 
   if (!initialCheck(binary, row, col)) return false;
-
+  
   vector<Point> space_vertices = findSpace(binary, row, col);
+  for (Point p : space_vertices) {
+    circle(img, p, 3, Scalar(255,0,0));
+  }
 
   if (!checkAngles(space_vertices)) return false;
 
+  // Only works when the parking spaces are parallel to the sides of
+  // the image.
+  // vector<Point> quad_vertices = findOuterRectangle(space_vertices);
+
+  // Works more generally, but doesn't look great some of the time.
+  vector<Point> quad_vertices = findLargestQuad(space_vertices);
+
   Scalar yellow(0, 255, 255);
-  const Point *points[1] = { &space_vertices[0] };
-  int num_points = (int)space_vertices.size();
+  const Point *points[1] = { &quad_vertices[0] };
+  int num_points = (int)quad_vertices.size();
   fillPoly(img, points, &num_points, 1, yellow);
   return true;
 }
