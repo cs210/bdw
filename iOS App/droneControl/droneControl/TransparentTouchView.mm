@@ -18,7 +18,7 @@
     DJIDroneHelper *_droneHelper;
 }
 
-CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
+CoordinatePointTuple * createTuple(float x, float y, float yzRatio, float xzRatio)
 {
   CoordinatePointTuple * dummy = [[CoordinatePointTuple alloc] init];
   dummy.xPixelRatio = x / (2192 * 2.0);
@@ -515,7 +515,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     if (aerialController)
     {
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
-        NSLog(@"DroneALtitude: %f, %f",droneGPS.latitude, droneGPS.longitude);
+        NSLog(@"DroneGPS: %f, %f",droneGPS.latitude, droneGPS.longitude);
         // test dronealtitude units
         // yaw: clockwise or counterclick
         // Get height of the drone
@@ -529,7 +529,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         float xOffset = droneAltitude * nearestIndex.xzRatio;
         float yOffset = droneAltitude * nearestIndex.yzRatio;
         
-        float droneYaw = yaw;
+        float droneYaw = (yaw+180) * M_PI / 180;
         NSLog(@"droneYaw: %f",droneYaw);
         // if wrong multiply by -1
         float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw); // now x is something different than original vector x
