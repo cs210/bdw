@@ -60,8 +60,7 @@
 {
   // Here we now have access to all GPS information
   _lastKnownState = state;
-    float yaw = [self getDroneYaw];
-   // NSLog(@"didUpdateSystemState , %f",yaw);
+   // NSLog(@"didUpdateSystemState , %f",self getDroneYaw]);
 }
 
 -(void) droneTask:(id)sender

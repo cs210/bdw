@@ -11,7 +11,6 @@
 #import "AerialViewController.h"
 #import "DJIDroneHelper.h"
 #import "LocationManager.h"
-#define DEBUG_DRONE_INFO 1
 
 @implementation TransparentTouchView
 {
@@ -562,9 +561,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint tapLocation = [touch locationInView:touch.view];
-    if (DEBUG_DRONE_INFO){
-        tapLocation = CGPointMake(534.0, 28.5);
-    }
     NSLog(@"X: %f, Y: %f", tapLocation.x, tapLocation.y);
     
     //Time to transfer that point into a ratio of height / width
@@ -597,19 +593,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         // Hard code the altitude here for now
         float droneAltitude = _droneHelper.getDroneHeight;
         float droneYaw = _droneHelper.getDroneYaw;
-        
-        if (DEBUG_DRONE_INFO){
-            droneAltitude = 10.0;
-            droneYaw = -126.0;
-            droneGPS = CLLocationCoordinate2DMake(37.431095, -122.173342);
-            // true click location (gates parking lot) is approx 37.430767, -122.173272 (lower lat, same or slightly lower long)
-        }
-        NSLog(@"droneYaw: %f",droneYaw);
-        
-        NSLog(@"DroneAltitude: %f",droneAltitude);
-        //float droneAltitude = 20.0;
-        
-        // FOR DEBUGGING
+
         //   NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", flyingInfo.attitude.yaw, flyingInfo.altitude, flyingInfo.droneLocation.latitude, flyingInfo.droneLocation.longitude);
         
         // Multiply the height of the drone by the xRatio and yRatio of the point
@@ -627,7 +611,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
         //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
-        if (DEBUG_DRONE_INFO){
+        #ifdef DRONE_GPS_TEST
             if (clickLocation.latitude < droneGPS.latitude){ // should be this on
                 NSLog(@"clickLat < droneLat (correct)");
             } else {
@@ -641,7 +625,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             }
             NSLog(@"DroneGPS: %f, %f",droneGPS.latitude, droneGPS.longitude);
             NSLog(@"ClickLoc: %f, %f",clickLocation.latitude, clickLocation.longitude);
-        }
+        #endif
+        
         // true click location (gates parking lot) is approx 37.430767, -122.173272 (lower lat, same or slightly lower long)
         
         [aerialController userDidClickOnSpot:clickLocation];
