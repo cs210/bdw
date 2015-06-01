@@ -60,9 +60,10 @@
 {
   // Here we now have access to all GPS information
   _lastKnownState = state;
+   // NSLog(@"didUpdateSystemState , %f",self getDroneYaw]);
 }
 
--(IBAction) droneTask:(id)sender
+-(void) droneTask:(id)sender
 {
     const float height = 1;
     DJIGroundStationTask* newTask = [DJIGroundStationTask newTask];
@@ -90,21 +91,25 @@
      NSLog(@"Drone get Camera GPS");
      NSLog(@"Coordinate received: Lat %f Long %f", coordinate.latitude, coordinate.longitude);
    }];*/
+    
   return _lastFlyingInfo.droneLocation;
 //  return _lastKnownState.droneLocation;
 }
 
 -(float) getDroneHeight
 {
+    // FOR DEBUGGING
+  //return 100;
   return _lastFlyingInfo.altitude;
   //return _lastKnownState.altitude;
 }
 
+// at startup: -pi
 -(float) getDroneYaw
 {
   // Need to combo that shit with the camera yaw
     float pi = 3.1415926535;
-  float outt = RADIAN(_lastFlyingInfo.attitude.yaw) - pi;
+    float outt = RADIAN(_lastFlyingInfo.attitude.yaw) + pi;
     if (outt < -pi){
         outt += (2 * pi);
     }
@@ -123,7 +128,8 @@
 {
   //Store the shit here
   _lastFlyingInfo = flyingInfo;
-    
+    NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", flyingInfo.attitude.yaw, flyingInfo.altitude, flyingInfo.droneLocation.latitude, flyingInfo.droneLocation.longitude);
+
     _homeLocation = flyingInfo.homeLocation;
     
 }
@@ -157,6 +163,7 @@
 -(void) onOpenButtonClicked
 {
     [_groundStation openGroundStation];
+    [self droneTask:self];
 }
 
 -(IBAction) onCloseButtonClicked:(id)sender
