@@ -25,4 +25,6 @@
 
 -(float) getDroneYaw;
 
+-(void) droneTask:(id)sender;
+
 @end

@@ -462,7 +462,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             return;
         }
     } else {
-        NSLog(@":::::::: CAMERA MODE ::::::::::");
+       // NSLog(@":::::::: CAMERA MODE ::::::::::");
         if (!systemState.isTimeSynced) {
             [_camera syncTime:nil];
         }
