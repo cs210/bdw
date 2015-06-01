@@ -1,8 +1,10 @@
-﻿Build started 5/12/2015 11:50:51 PM.
+﻿Build started 5/26/2015 12:38:25 AM.
      1>Project "C:\Users\I818433\Documents\CS 210\CV\ParkingDrone\ParkingDrone\ParkingDrone.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\\include /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt ParkingDrone.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\\include /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt ParkingDrone.cpp SpaceHighlighter.cpp
+         SpaceHighlighter.cpp
          ParkingDrone.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\I818433\Documents\CS 210\CV\ParkingDrone\x64\Debug\ParkingDrone.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\opencv\build\\x64\vc11\staticlib opencv_calib3d300d.lib opencv_core300d.lib opencv_features2d300d.lib opencv_flann300d.lib opencv_hal300d.lib opencv_highgui300d.lib opencv_imgcodecs300d.lib opencv_imgproc300d.lib opencv_ml300d.lib opencv_objdetect300d.lib opencv_photo300d.lib opencv_shape300d.lib opencv_stitching300d.lib opencv_superres300d.lib opencv_ts300d.lib opencv_video300d.lib opencv_videoio300d.lib opencv_videostab300d.lib IlmImfd.lib ippicvmt.lib libjasperd.lib libjpegd.lib libpngd.lib libtiffd.lib libwebpd.lib zlibd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\I818433\Documents\CS 210\CV\ParkingDrone\x64\Debug\ParkingDrone.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\I818433\Documents\CS 210\CV\ParkingDrone\x64\Debug\ParkingDrone.lib" /MACHINE:X64 x64\Debug\ParkingDetector.obj
          x64\Debug\ParkingDrone.obj
@@ -14,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.38
+Time Elapsed 00:00:09.23

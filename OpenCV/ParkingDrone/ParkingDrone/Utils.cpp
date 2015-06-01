@@ -29,12 +29,8 @@ Mat rgb2Binary(const Mat& img, int threshold) {
 }
 
 Mat preprocess(const Mat& img) {
-  // Resizes the image to have 720 rows
-	Mat resized(720, 720 * img.cols / img.rows, CV_8UC3);
-	resize(img, resized, resized.size());
-
   // Converts the image to a binary image
-  Mat bin = rgb2Binary(resized, 160);
+  Mat bin = rgb2Binary(img, 160);
 
   // Performs canny edge detection on the image
   Mat edges, im_edges;
@@ -50,7 +46,7 @@ Mat preprocess(const Mat& img) {
   dilate(im_edges, dilated, dilation_elem);
 
   // Removes noise by removing all connected components of size <= 200
-  removeSmallBlobs(dilated, 200);
+  removeSmallBlobs(dilated, 500);
 
   return dilated;
 }
