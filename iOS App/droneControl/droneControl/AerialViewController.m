@@ -35,6 +35,7 @@
     DJICameraViewController* _cameraFeed;
     UIButton * _findClosestParkingButton;
     bool _nextAnnotationIsSpot;
+    bool _firstLocationUpdate;
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -164,6 +165,7 @@
     [super viewDidLoad];
     _shouldShowMaster = YES;
     _nextAnnotationIsSpot = NO;
+    _firstLocationUpdate = NO;
     
 #ifdef USING_GMAPS
     
@@ -260,14 +262,14 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    //if (!_firstLocationUpdate) {
+    if (!_firstLocationUpdate) {
         // If the first location update has not yet been recieved, then jump to that
         // location.
-    //    _firstLocationUpdate = YES;
+        _firstLocationUpdate = YES;
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
         _googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                        zoom:14];
-    //}
+                                        zoom:17];
+    }
 }
 
 
