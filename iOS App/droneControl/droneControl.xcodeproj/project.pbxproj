@@ -68,6 +68,11 @@
 		A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */; };
 		A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A66C6DEC1B116D24008FCE23 /* LocationManager.m */; };
 		A66C6DF31B12D9D6008FCE23 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66C6DF21B12D9D6008FCE23 /* opencv2.framework */; };
+		A6A666931B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6A666921B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm */; };
+		A6A6669A1B1EB86300CFBC48 /* SpaceHighlighter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A666941B1EB86300CFBC48 /* SpaceHighlighter.cpp */; };
+		A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A666951B1EB86300CFBC48 /* ParkingDetector.cpp */; };
+		A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A666981B1EB86300CFBC48 /* Utils.cpp */; };
+		A6A6669F1B1EB89D00CFBC48 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -243,6 +248,16 @@
 		A66C6DEB1B116D24008FCE23 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		A66C6DEC1B116D24008FCE23 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		A66C6DF21B12D9D6008FCE23 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		A6A666911B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotHighlightBridge.h; sourceTree = "<group>"; };
+		A6A666921B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ParkingSpotHighlightBridge.mm; sourceTree = "<group>"; };
+		A6A666941B1EB86300CFBC48 /* SpaceHighlighter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceHighlighter.cpp; sourceTree = "<group>"; };
+		A6A666951B1EB86300CFBC48 /* ParkingDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParkingDetector.cpp; sourceTree = "<group>"; };
+		A6A666961B1EB86300CFBC48 /* ParkingDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingDetector.h; sourceTree = "<group>"; };
+		A6A666971B1EB86300CFBC48 /* SpaceHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceHighlighter.h; sourceTree = "<group>"; };
+		A6A666981B1EB86300CFBC48 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		A6A666991B1EB86300CFBC48 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
+		A6A6669E1B1EB89D00CFBC48 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -655,6 +670,23 @@
 			name = Speech;
 			sourceTree = "<group>";
 		};
+		A6A6668E1B1EB70200CFBC48 /* ComputerVision */ = {
+			isa = PBXGroup;
+			children = (
+				A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */,
+				A6A6669E1B1EB89D00CFBC48 /* stdafx.h */,
+				A6A666941B1EB86300CFBC48 /* SpaceHighlighter.cpp */,
+				A6A666951B1EB86300CFBC48 /* ParkingDetector.cpp */,
+				A6A666961B1EB86300CFBC48 /* ParkingDetector.h */,
+				A6A666971B1EB86300CFBC48 /* SpaceHighlighter.h */,
+				A6A666981B1EB86300CFBC48 /* Utils.cpp */,
+				A6A666991B1EB86300CFBC48 /* Utils.h */,
+				A6A666911B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.h */,
+				A6A666921B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm */,
+			);
+			name = ComputerVision;
+			sourceTree = "<group>";
+		};
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +711,7 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				A6A6668E1B1EB70200CFBC48 /* ComputerVision */,
 				A65391431AEDDF6100EA296A /* Speech */,
 				A65391421AEDDECA00EA296A /* DJI */,
 				46E4D3331AAD856E00C94072 /* Frameworks */,
@@ -1067,6 +1100,8 @@
 				D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */,
 				A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */,
 				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
+				A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */,
+				A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */,
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
 				4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */,
 				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
@@ -1083,7 +1118,10 @@
 				A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
+				A6A6669A1B1EB86300CFBC48 /* SpaceHighlighter.cpp in Sources */,
 				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,
+				A6A6669F1B1EB89D00CFBC48 /* stdafx.cpp in Sources */,
+				A6A666931B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm in Sources */,
 				463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
