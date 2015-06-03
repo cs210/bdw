@@ -37,6 +37,8 @@
     UIButton * _findClosestParkingButton;
     bool _nextAnnotationIsSpot;
     bool _firstLocationUpdate;
+    
+    UIImageView *_parkingLotView;
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -129,10 +131,30 @@
     // Create a UIImage from the "Parking.JPG" file
     UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
     
-    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:image];
+    // Scale the image to fill up the size of the frame
     
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
-    self.view = imageView;
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:scaledImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
+}
+
+-(void) highlightTouchedUserSpot:(float) x withY:(float) y
+{
+    [_parkingLotView removeFromSuperview];
+    
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:scaledImage andClickX:x andClickY: y];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:newImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
 }
 
 

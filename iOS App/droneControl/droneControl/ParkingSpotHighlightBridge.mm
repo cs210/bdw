@@ -20,27 +20,83 @@
 using namespace cv;
 using namespace std;
 
-+(UIImage *) initWithUIImage: (UIImage *) droneImage
++(UIImage *) initWithUIImage: (UIImage *) droneImage andClickX:(float)x andClickY:(float)y
 {
     //Convert the image to a Mat object
     Mat orig = [self cvMatFromUIImage:droneImage];
     
     // Resizes the image to have 720 rows
-    Mat resized(720, 720 * orig.cols / orig.rows, CV_8UC3);
+   // Mat resized(720, 720 * orig.cols / orig.rows, CV_8UC3);
     
-    resize(orig, resized, resized.size());
+    //resize(orig, resized, resized.size());
     
-    Mat img = resized;
+    Mat img = orig;
     
     //------------------- SpaceHighlighter Code -------------------//
     
-    int r = 550;
-    int c = 600;
+    int r = y;
+    int c = x;
     bool success = highlightSpace(img, r, c);
     circle(img, cv::Point(c, r), 3, Scalar(0, 0, 255));
     
     //Now that we have done some work, we need to pass the image back
     UIImage * newImage = [self UIImageFromCVMat:img];
+    return newImage;
+}
+
++ (UIImage*)imageByScalingAndCroppingWithImage:(UIImage *)source forSize:(CGSize)targetSize
+{
+    UIImage *sourceImage = source;
+    UIImage *newImage = nil;
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    
+    if (CGSizeEqualToSize(imageSize, targetSize) == NO)
+    {
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        
+        if (widthFactor > heightFactor)
+            scaleFactor = widthFactor; // scale to fit height
+        else
+            scaleFactor = heightFactor; // scale to fit width
+        scaledWidth  = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        
+        // center the image
+        if (widthFactor > heightFactor)
+        {
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
+        }
+        else
+            if (widthFactor < heightFactor)
+            {
+                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+            }
+    }
+    
+    UIGraphicsBeginImageContext(targetSize); // this will crop
+    
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    
+    [sourceImage drawInRect:thumbnailRect];
+    
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    if(newImage == nil)
+        NSLog(@"could not scale image");
+    
+    //pop the context to get back to the default
+    UIGraphicsEndImageContext();
     return newImage;
 }
 

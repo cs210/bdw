@@ -41,6 +41,8 @@
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
 
+-(void) highlightTouchedUserSpot:(float) x withY:(float) y;
+
 -(void) showMap;
 
 @end

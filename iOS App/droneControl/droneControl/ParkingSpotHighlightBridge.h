@@ -11,6 +11,8 @@
 
 @interface ParkingSpotHighlightBridge : NSObject
 
-+(UIImage *) initWithUIImage: (UIImage *) droneImage;
++(UIImage *) initWithUIImage: (UIImage *) droneImage andClickX:(float)x andClickY:(float)y;
+
++(UIImage*)imageByScalingAndCroppingWithImage:(UIImage *)source forSize:(CGSize)targetSize;
 
 @end
