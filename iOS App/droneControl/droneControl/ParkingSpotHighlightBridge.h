@@ -10,6 +10,6 @@
 
 @interface ParkingSpotHighlightBridge : NSObject
 
--(void) initWithJPG: (NSString *) pathToJPG;
++(void) initWithJPG: (NSString *) pathToJPG;
 
 @end

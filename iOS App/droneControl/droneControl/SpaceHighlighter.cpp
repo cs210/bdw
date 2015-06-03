@@ -226,5 +226,10 @@ bool highlightSpace(Mat& img, int row, int col) {
   const Point *points[1] = { &quad_vertices[0] };
   int num_points = (int)quad_vertices.size();
   fillPoly(img, points, &num_points, 1, yellow);
+    
+  //Pass these points back to the iOS code
   return true;
 }
+
+
+
