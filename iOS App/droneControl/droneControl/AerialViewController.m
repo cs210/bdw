@@ -37,7 +37,6 @@
     UIButton * _findClosestParkingButton;
     bool _nextAnnotationIsSpot;
     bool _firstLocationUpdate;
-    
     UIImageView *_parkingLotView;
 }
 
@@ -97,6 +96,7 @@
 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
     // Check for iOS 6
+    // GOOGLE MAPS STUFF
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
@@ -390,13 +390,34 @@
     }
     return nil;
 }
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+}
 
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
+    NSLog(@"didReceiveData");
+}
+
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
+    NSLog(@"URL Connection Failed!");
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         switch (buttonIndex){
-            case 1:{ // braces needed because objc is stupid
-                MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
+            case 1: {// braces needed because objc is stupid
+                //http://stackoverflow.com/a/20944790/2079349
+                // http://blog.strikeiron.com/bid/63338/Integrate-a-REST-API-into-an-iPhone-App-in-less-than-15-minutes
+                NSString * directionsRequestString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=%@",@"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w" ];
+                NSURL * directionsRequestURL = [NSURL URLWithString:directionsRequestString];
+                NSURLRequest *directionsRequest = [NSURLRequest requestWithURL:directionsRequestURL];
+                NSURLConnection * currentConnection = [[NSURLConnection alloc]   initWithRequest:directionsRequest delegate:self];
+                // If the connection was successful, create the XML that will be returned.
+                /*MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
                                                                addressDictionary:nil];
                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
                 [mapItem setName:@"Stanford"];
@@ -410,18 +431,15 @@
                     if (!error) {
                         for(MKRoute *route in [response routes]) {
 #ifdef USING_GMAPS
-                            assert(0);
+                           // assert(0);
 #else
                             [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
                             // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
 #endif
                         }
                     }
-                }];
+                }];*/
             }
-            case 2:
-                [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
-                // view spot: not implemented yet
             default: ;
                 // "cancel" or other: do nothing / go back to homepage?
         }
@@ -466,9 +484,10 @@
 {
     
 #ifdef USING_GMAPS
-    //assert(0);
     
     CLLocationCoordinate2D position = spot;
+    position.latitude += 0.0001;
+    position.longitude += 0.0005;
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
     marker.title = @"Hello World";
     marker.map = _googleMapView;
@@ -483,6 +502,9 @@
     [_googleMapView setCamera:stanford];
     
     [self.view addSubview:_googleMapView];
+    
+    // navigation here
+    [self goToNavigation:position];
 #else
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
