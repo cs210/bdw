@@ -38,6 +38,9 @@
     bool _nextAnnotationIsSpot;
     bool _firstLocationUpdate;
     UIImageView *_parkingLotView;
+    NSURLConnection *currentConnection;
+    NSXMLParser *xmlParser;
+
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -392,10 +395,14 @@
 }
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");
+    [self.apiReturnXMLData setLength:0];
 }
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
-    NSLog(@"didReceiveData");
+    NSLog(@"didReceiveData, length: %f", data.length);
+
+    [self.apiReturnXMLData appendData:data];
+
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
@@ -404,7 +411,59 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"connectionDidFinishLoading");
+    xmlParser = [[NSXMLParser alloc] initWithData:self.apiReturnXMLData];
+    
+    // setup the delgate (see methods below)
+    
+    [xmlParser setDelegate:self];
+    
+    // start parsing. The delgate methods will be called as it is iterating through the file.
+    [xmlParser parse];
+    
+    currentConnection = nil;
+
+    
 }
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString*)qualifiedName attributes:(NSDictionary *)attributeDict {
+    
+    // Log the error - in this case we are going to let the user pass but log the message
+    if( [elementName isEqualToString:@"Error"])
+    {
+        NSLog(@"Web API Error!");
+    }
+    
+    // Pull out the elements we care about.
+    if( [elementName isEqualToString:@"StatusNbr"] ||
+       [elementName isEqualToString:@"HygieneResult"])
+    {
+        self.currentElement = [[NSString alloc] initWithString:elementName];
+    }
+}
+
+- (void)parser:(NSXMLParser*)parser foundCharacters:(NSString*)string {
+    NSLog(@"parserFoundCharacters: %@",string);
+    if([self.currentElement isEqualToString:@"StatusNbr"])
+    {
+        self.statusNbr = [string intValue];
+        self.currentElement = nil;
+    }
+    else if([self.currentElement isEqualToString:@"HygieneResult"])
+    {
+        self.hygieneResult = [[NSString alloc] initWithString:string];
+        self.currentElement = nil;
+    }
+}
+
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    NSLog(@"didEndElement: %@ %@ %@", elementName, namespaceURI, qName);
+}
+
+-(void)parserDidEndDocument:(NSXMLParser *)parser {
+    self.apiReturnXMLData = nil;
+    NSLog(@"parserDidEndDocument");
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
@@ -413,9 +472,12 @@
                 //http://stackoverflow.com/a/20944790/2079349
                 // http://blog.strikeiron.com/bid/63338/Integrate-a-REST-API-into-an-iPhone-App-in-less-than-15-minutes
                 NSString * directionsRequestString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=%@",@"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w" ];
+                NSLog(@"directionsRequestString: %@",directionsRequestString);
                 NSURL * directionsRequestURL = [NSURL URLWithString:directionsRequestString];
                 NSURLRequest *directionsRequest = [NSURLRequest requestWithURL:directionsRequestURL];
                 NSURLConnection * currentConnection = [[NSURLConnection alloc]   initWithRequest:directionsRequest delegate:self];
+                self.apiReturnXMLData = [NSMutableData data];
+
                 // If the connection was successful, create the XML that will be returned.
                 /*MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
                                                                addressDictionary:nil];

@@ -30,6 +30,12 @@
 @property (nonatomic) bool didStartLooking; // true if the drone started looking for parking
 @property (nonatomic) CLLocationCoordinate2D parkingSpace; // only defined if a parking space has been found.
 @property (nonatomic) bool shouldShowMaster;
+@property (retain, nonatomic) NSMutableData *apiReturnXMLData;
+@property (nonatomic) NSInteger statusNbr;
+@property (copy, nonatomic) NSString *hygieneResult;
+@property (copy, nonatomic) NSString *currentElement;
+
+
 // update the location of the drone icon on the map
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location;
 

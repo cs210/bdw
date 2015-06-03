@@ -585,10 +585,10 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     if (aerialController)
     {
-/*#ifdef PARKING_SPOT_FILL
+#ifdef PARKING_SPOT_FILL
         [aerialController highlightTouchedUserSpot:tapLocation.x withY:tapLocation.y];
         return;
-#endif*/
+#endif
         
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
         // test dronealtitude units
