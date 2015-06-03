@@ -13,6 +13,7 @@
 
 #define USING_GMAPS 1
 //#define DRONE_GPS_TEST 0
+#define PARKING_SPOT_FILL 1
 
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
 

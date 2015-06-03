@@ -28,6 +28,7 @@
 #import "TransparentTouchView.h"
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
+#import "ParkingSpotHighlightBridge.h"
 
 @implementation AerialViewController
 {
@@ -122,12 +123,28 @@
                                                                  viewHeight:self.view.frame.size.height];
 }
 
+-(void) parkingSpotFill
+{
+    // Here we are going to pass in an image to the parking spot fill. This image is supposed to be a simulated image from the drone
+    // Create a UIImage from the "Parking.JPG" file
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:image];
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:newImage];
+    self.view = imageView;
+}
+
 
 - (UIButton*) findClosestParkingButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 #ifdef DRONE_GPS_TEST
     [button addTarget:self
                action:@selector(testGPS)
+     forControlEvents:UIControlEventTouchUpInside];
+#elif PARKING_SPOT_FILL
+    [button addTarget:self
+               action:@selector(parkingSpotFill)
      forControlEvents:UIControlEventTouchUpInside];
 #else
     [button addTarget:self

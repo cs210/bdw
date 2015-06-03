@@ -10,7 +10,6 @@
 
 #include "SpaceHighlighter.h"
 #include "Utils.h"
-#import <UIKit/UIKit.h>
 
 #ifdef __cplusplus
 #import <opencv2/opencv.hpp>
@@ -28,11 +27,10 @@ using namespace std;
     
     // Resizes the image to have 720 rows
     Mat resized(720, 720 * orig.cols / orig.rows, CV_8UC3);
+    
     resize(orig, resized, resized.size());
     
     Mat img = resized;
-    
-    namedWindow("MyWindow", CV_WINDOW_AUTOSIZE); //create a window with the name "MyWindow"
     
     //------------------- SpaceHighlighter Code -------------------//
     

@@ -73,6 +73,7 @@
 		A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A666951B1EB86300CFBC48 /* ParkingDetector.cpp */; };
 		A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A666981B1EB86300CFBC48 /* Utils.cpp */; };
 		A6A6669F1B1EB89D00CFBC48 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */; };
+		A6A666A11B1EC5E200CFBC48 /* Parking.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A6A666A01B1EC5E200CFBC48 /* Parking.JPG */; };
 		A6F4EF2A1AAD17D500C81065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF291AAD17D500C81065 /* main.m */; };
 		A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F4EF2C1AAD17D500C81065 /* AppDelegate.m */; };
 		A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F4EF311AAD17D500C81065 /* Main.storyboard */; };
@@ -258,6 +259,7 @@
 		A6A666991B1EB86300CFBC48 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
 		A6A6669E1B1EB89D00CFBC48 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+		A6A666A01B1EC5E200CFBC48 /* Parking.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Parking.JPG; sourceTree = "<group>"; };
 		A6F4EF241AAD17D500C81065 /* droneControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droneControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F4EF281AAD17D500C81065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F4EF291AAD17D500C81065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 		A6A6668E1B1EB70200CFBC48 /* ComputerVision */ = {
 			isa = PBXGroup;
 			children = (
+				A6A666A01B1EC5E200CFBC48 /* Parking.JPG */,
 				A6A6669D1B1EB89D00CFBC48 /* stdafx.cpp */,
 				A6A6669E1B1EB89D00CFBC48 /* stdafx.h */,
 				A6A666941B1EB86300CFBC48 /* SpaceHighlighter.cpp */,
@@ -1058,6 +1061,7 @@
 			files = (
 				46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */,
 				46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
+				A6A666A11B1EC5E200CFBC48 /* Parking.JPG in Resources */,
 				46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */,
 				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,

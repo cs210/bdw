@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ParkingSpotHighlightBridge : NSObject
 
-+(void) initWithJPG: (NSString *) pathToJPG;
++(UIImage *) initWithUIImage: (UIImage *) droneImage;
 
 @end
