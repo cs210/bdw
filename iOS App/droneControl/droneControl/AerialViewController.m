@@ -436,14 +436,23 @@
                 // http://stackoverflow.com/a/20944790/2079349
                 // http://blog.strikeiron.com/bid/63338/Integrate-a-REST-API-into-an-iPhone-App-in-less-than-15-minutes
                 
-                NSString * directionsRequestString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=%@",@"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w" ];
+                /*NSString * directionsRequestString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=%@",@"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w" ];
                 //directionsRequestString = @"https://www.google.com";
                 NSString *requestString = @"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=";
                 NSLog(@"directionsRequestString: %@",requestString);
                 NSURL * directionsRequestURL = [NSURL URLWithString:directionsRequestString];
                 NSURLRequest *directionsRequest = [NSURLRequest requestWithURL:directionsRequestURL];
                 currentConnection = [[NSURLConnection alloc]   initWithRequest:directionsRequest delegate:self];
-                self.apiReturnXMLData = [NSMutableData data];
+                self.apiReturnXMLData = [NSMutableData data];*/
+                
+                if ([[UIApplication sharedApplication] canOpenURL:
+                     [NSURL URLWithString:@"comgooglemaps://"]]) {
+                    [[UIApplication sharedApplication] openURL:
+                     [NSURL URLWithString:@"comgooglemaps://?saddr=37.434025,-122.172418&daddr=37.434872,-122.173067&directionsmode=driving"]];
+                } else {
+                    NSLog(@"Can't use comgooglemaps://");
+                }
+                //comgooglemaps://?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&daddr=John+F.+Kennedy+International+Airport,+Van+Wyck+Expressway,+Jamaica,+New+York&directionsmode=transit
 
                 // If the connection was successful, create the XML that will be returned.
                 /*MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
