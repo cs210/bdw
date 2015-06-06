@@ -22,6 +22,7 @@
     BOOL _fetchingMedias;
 }
 
+- (void)publicViewWillAppearMethod:(BOOL) animated;
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *lastImage;
 

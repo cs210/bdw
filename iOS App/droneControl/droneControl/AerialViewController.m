@@ -213,7 +213,16 @@
         CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
         _googleMapView = [[GMSMapView alloc] initWithFrame:mapFrame];
     #else
-        _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+            #ifdef MAP_POPOVER
+                _googleMapView = [[GMSMapView alloc] init];
+                //mapview should be a uipopovercontroller
+                UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:self]; // googlemapviewcontroller
+              // Store the popover in a custom property for later use.
+                CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+                [mapPopover presentPopoverFromRect:mapFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+            #else
+                    _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+            #endif
     #endif
     _googleMapView.delegate = self;
     
@@ -254,16 +263,18 @@
     [_googleMapView addSubview:_findClosestParkingButton];
     #endif
     
+    #ifdef MAP_POPOVER
+    #else
     [self.view addSubview:_googleMapView];
-    
+    #endif
     [_googleMapView addObserver:self
                forKeyPath:@"myLocation"
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     
-   // dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         _googleMapView.myLocationEnabled = YES; // THIS DOES NOT WORK
-    //});
+    });
     
     _googleMapView.settings.myLocationButton = YES;
     
@@ -298,6 +309,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
    // [self launchDrone];
+     [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath

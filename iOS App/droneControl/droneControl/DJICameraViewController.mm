@@ -44,6 +44,12 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
   return sqrt(powf(xDist, 2) + powf(yDist, 2));
 }*/
 
+-(void) publicViewWillAppearMethod:(BOOL) animated
+{
+        [self viewWillAppear:animated];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

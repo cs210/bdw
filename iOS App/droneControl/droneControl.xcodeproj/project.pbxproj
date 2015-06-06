@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */; };
 		462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */; };
 		463D6F021ADDC51D0011A329 /* SpotConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
@@ -111,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleMapsViewController.m; path = ../GoogleMapsViewController.m; sourceTree = "<group>"; };
 		462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotFinder.h; sourceTree = "<group>"; };
 		462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotFinder.m; sourceTree = "<group>"; };
 		463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotConfirmViewController.m; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 		A6F4EF261AAD17D500C81065 /* droneControl */ = {
 			isa = PBXGroup;
 			children = (
+				46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */,
 				A6A6668E1B1EB70200CFBC48 /* ComputerVision */,
 				A65391431AEDDF6100EA296A /* Speech */,
 				A65391421AEDDECA00EA296A /* DJI */,
@@ -1122,6 +1125,7 @@
 				A65391491AEDFCE100EA296A /* NearbyParkingTableViewController.m in Sources */,
 				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
 				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
+				46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */,
 				A6A6669A1B1EB86300CFBC48 /* SpaceHighlighter.cpp in Sources */,
 				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,
 				A6A6669F1B1EB89D00CFBC48 /* stdafx.cpp in Sources */,
