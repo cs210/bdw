@@ -589,14 +589,21 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         [aerialController highlightTouchedUserSpot:tapLocation.x withY:tapLocation.y];
         return;
 #endif
-        
+        // PROBLEM: THIS RETURNS 0,0
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
+        if (droneGPS.latitude < 1.0){
+            droneGPS.latitude = 37.431184;
+            droneGPS.longitude = -122.173391;
+        }
         // test dronealtitude units
         // yaw: clockwise or counterclick
         // Get height of the drone
         
         // Hard code the altitude here for now
         float droneAltitude = _droneHelper.getDroneHeight;
+        if (droneAltitude == 0){
+            droneAltitude = 10; // FOR TESTING
+        }
         float droneYaw = _droneHelper.getDroneYaw;
 
         //   NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", flyingInfo.attitude.yaw, flyingInfo.altitude, flyingInfo.droneLocation.latitude, flyingInfo.droneLocation.longitude);

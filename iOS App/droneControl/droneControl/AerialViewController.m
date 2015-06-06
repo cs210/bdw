@@ -97,8 +97,6 @@
 
 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
-    // Check for iOS 6
-    // GOOGLE MAPS STUFF
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
@@ -262,9 +260,9 @@
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _googleMapView.myLocationEnabled = YES;
-    });
+   // dispatch_async(dispatch_get_main_queue(), ^{
+        _googleMapView.myLocationEnabled = YES; // THIS DOES NOT WORK
+    //});
     
     _googleMapView.settings.myLocationButton = YES;
     
@@ -293,6 +291,8 @@
     
     self.view.backgroundColor = [UIColor blackColor];
 }
+
+
 
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -444,11 +444,17 @@
                 NSURLRequest *directionsRequest = [NSURLRequest requestWithURL:directionsRequestURL];
                 currentConnection = [[NSURLConnection alloc]   initWithRequest:directionsRequest delegate:self];
                 self.apiReturnXMLData = [NSMutableData data];*/
-                
-                if ([[UIApplication sharedApplication] canOpenURL:
-                     [NSURL URLWithString:@"comgooglemaps://"]]) {
-                    [[UIApplication sharedApplication] openURL:
-                     [NSURL URLWithString:@"comgooglemaps://?saddr=37.434025,-122.172418&daddr=37.434872,-122.173067&directionsmode=driving"]];
+                CLLocationCoordinate2D myLocation = _googleMapView.myLocation.coordinate;
+                if (myLocation.latitude < 1.0){
+                    myLocation.latitude = 37.431184;
+                    myLocation.longitude = -122.173391;
+
+                }
+                // vs. _parkingSpace
+                if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
+                    NSString * gMapString = [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",myLocation.latitude,myLocation.longitude,_parkingSpace.latitude,_parkingSpace.longitude];
+                    NSLog(@"to google maps: %@",gMapString);
+                    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:gMapString]];
                 } else {
                     NSLog(@"Can't use comgooglemaps://");
                 }
@@ -523,17 +529,12 @@
 {
     
 #ifdef USING_GMAPS
-    
-    CLLocationCoordinate2D position = spot;
-    position.latitude += 0.0001;
-    position.longitude += 0.0005;
-    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    GMSMarker *marker = [GMSMarker markerWithPosition:spot];
     marker.title = @"Hello World";
     marker.map = _googleMapView;
     marker.icon = [UIImage imageNamed:@"car_big.png"];
     
     CLLocation * myLocation = _googleMapView.myLocation;
-    
     GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
                                                               longitude:myLocation.coordinate.longitude
                                                                    zoom:19];
@@ -541,9 +542,7 @@
     [_googleMapView setCamera:stanford];
     
     [self.view addSubview:_googleMapView];
-    
-    // navigation here
-    [self goToNavigation:position];
+    [self goToNavigation:spot];
 #else
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);

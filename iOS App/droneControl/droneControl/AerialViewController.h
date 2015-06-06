@@ -12,8 +12,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 #define USING_GMAPS 1
-#define DRONE_GPS_TEST 0
-#define PARKING_SPOT_FILL 1
+//#define DRONE_GPS_TEST 0
+//#define PARKING_SPOT_FILL 1
 #define GOOGLE_DRECTIONS_SERVER_KEY @"AIzaSyBoy7wXWA4CkYPQ2iMfnmQJ6cz_aTE7B8I";
 #define GOOGLE_DIRECTIONS_IOS_KEY @"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w"; // verified, either of these keys works.
 // url e.g. https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,%20-122.172418&destination=37.434872,%20-122.173067&region=com&key=AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w
