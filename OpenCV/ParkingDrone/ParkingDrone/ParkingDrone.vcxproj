@@ -157,12 +157,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ParkingDetector.h" />
+    <ClInclude Include="SpaceHighlighter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ParkingDetector.cpp" />
     <ClCompile Include="ParkingDrone.cpp" />
+    <ClCompile Include="SpaceHighlighter.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

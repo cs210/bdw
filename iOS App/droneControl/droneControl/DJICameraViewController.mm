@@ -13,6 +13,7 @@
 #import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
 #import "TransparentTouchView.h"
+#import "LocationManager.h"
 
 @implementation DJICameraViewController
 {
@@ -69,13 +70,56 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [self performSelector:@selector(onGimbalAttitudeScrollDown) withObject:nil afterDelay:1];
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
-  self.view.userInteractionEnabled = NO;
+    self.view.userInteractionEnabled = NO;
+    
+#ifdef SPLITSCREENWITHDRONE
+#else
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(goToMap)
+     forControlEvents:UIControlEventTouchUpInside];
+    double height = 40.0;
+    double width = 300.0;
+    double x = self.view.frame.origin.x + 20.0;
+    double y = self.view.frame.origin.y + 50.0;
+
+    button.titleLabel.font = [UIFont systemFontOfSize:30];
+    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
+    button.frame = CGRectMake(x,y,width,height);
+    [button setTitle:@" Map View " forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:button];
+#endif
+
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"Tap an open parking space!";
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont systemFontOfSize:30]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    label.layer.cornerRadius = 10;
+    label.frame = CGRectMake(self.view.frame.size.width * 1.7, 40.0, 400.0, 60.0);
+    [self.view addSubview:label];
 }
 
-/*-(void) dealloc
-{
-    [_drone destroy];
-}*/
+-(void) goToMap{// todo
+    AerialViewController * aerialController;
+    for (UIView* next = [self.view superview]; next; next = next.superview)
+    {
+        UIResponder* nextResponder = [next nextResponder];
+        
+        if ([nextResponder isKindOfClass:[AerialViewController class]])
+        {
+            aerialController = (AerialViewController *)nextResponder;
+        }
+        [aerialController showMap];
+    }
+}
 
 -(void) viewWillAppear:(BOOL)animated
 {
@@ -87,6 +131,39 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     //gimbal
     [self onGimbalAttitudeScrollDown];
+    
+    //Show location of the car
+    [self showCarLocation];
+}
+
+-(void) showCarLocation
+{
+    CLLocation * carLocation = [[LocationManager sharedManager] getUserLocation];
+    CLLocationCoordinate2D carCoordinate = carLocation.coordinate;
+    
+    // Basically here take the car location, transform it into a pixel value on screen (hopefully)
+    CLLocationCoordinate2D droneLocation = [[DJIDroneHelper sharedHelper ] getDroneGPS];
+    
+    // Take the long GPS location of the car, and compute a delta long from the Drone GPS
+    float deltaLong = carCoordinate.longitude - droneLocation.longitude;
+    float deltaLat = carCoordinate.latitude - droneLocation.latitude;
+    
+    // Divide the long/lat's by the drone altitude
+    deltaLat = deltaLat / [_droneHelper getDroneHeight];
+    deltaLong = deltaLong / [_droneHelper getDroneHeight];
+    
+    // Rotate by -Yaw
+    float yaw = [_droneHelper getDroneYaw];
+    yaw = -yaw;
+    
+    float newLong = deltaLong * cos(yaw) - deltaLat * sin(yaw); // now x is something different than original vector x
+    float newLat = deltaLat * sin(yaw) + deltaLong * cos(yaw);
+    
+    //Now that we have offsets, we need to rotate according to the yaw of the drone
+    
+    /*CLLocationCoordinate2D carImageLocation = droneLocation;
+    carImageLocation.latitude = droneLocation.latitude + (180/3.1415926)*(newLat/6378137.0);
+    carImageLocation.longitude = droneLocation.longitude +  (180/3.1415926)*(newLong/6378137.0)/cos(droneGPS.latitude);*/
     
 }
 
@@ -385,7 +462,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             return;
         }
     } else {
-        NSLog(@":::::::: CAMERA MODE ::::::::::");
+       // NSLog(@":::::::: CAMERA MODE ::::::::::");
         if (!systemState.isTimeSynced) {
             [_camera syncTime:nil];
         }

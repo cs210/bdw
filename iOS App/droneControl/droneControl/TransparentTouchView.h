@@ -15,8 +15,13 @@
 @property (nonatomic, readwrite, weak) AerialViewController * delegate;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-/*- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;*/
+
+- (void) insertArticifialTouchWithYaw:(float)yaw
+                             altitude:(float)altitude
+                                    X:(float)x
+                                    Y:(float)y
+                     aerialController:(AerialViewController *)aerialController
+                            viewWidth:(float)width
+                           viewHeight:(float)height;
 
 @end

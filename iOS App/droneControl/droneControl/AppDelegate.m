@@ -5,7 +5,9 @@
 #import "IDNSLoggerAppender.h"
 #import "LastUserModeDelegate.h"
 #import "AerialViewController.h"
+#import "LocationManager.h"
 #import <DJISDK/DJISDK.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 
 @interface AppDelegate () <LastUserModeDelegate>
@@ -28,11 +30,14 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     [application setIdleTimerDisabled:YES];
     self.focusAfterStartingInRemoteHmi = NO;
     
+    [GMSServices provideAPIKey:@"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
+    
     //setup drone integration
-//    NSString* appKey = @"15e1f97fcf7b133c7a1b1ab7";
     NSString* appKey = @"07c6b3c3b6a76db64209d4ce";
     [DJIAppManager registerApp:appKey withDelegate:self];
     
+    //Start up the location manager
+    [[LocationManager sharedManager] init];
     
     // enable BMWAppKit log output
     IDLogger *logger = [IDLogger defaultLogger];

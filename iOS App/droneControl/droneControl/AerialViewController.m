@@ -28,11 +28,19 @@
 #import "TransparentTouchView.h"
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
+#import "ParkingSpotHighlightBridge.h"
+#import "LocationManager.h"
+
 @implementation AerialViewController
 {
     UIView * _dummyTouchView;
     DJICameraViewController* _cameraFeed;
-  UIButton * _findClosestParkingButton;
+    UIButton * _findClosestParkingButton;
+    bool _nextAnnotationIsSpot;
+    bool _firstLocationUpdate;
+    UIImageView *_parkingLotView;
+    NSURLConnection *currentConnection;
+
 }
 
 - (void) receiveImage:(UIImage *)image
@@ -47,23 +55,29 @@
     [self addAnnnotationWithOffset:false location:*location];
 }
 
-
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
     }
     //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
-    
+    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
+    if (_nextAnnotationIsSpot){
+        image = [UIImage imageNamed:@"car_big.png"];
+        _nextAnnotationIsSpot = NO;
+    }
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
     annotationView.canShowCallout = YES;
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
     [annotationView setImage:image];
     return annotationView;
 }
 
+
 - (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
+    
+#ifdef USING_GMAPS
+    assert(0);
+#else
     if (isParkingSpot){
         MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
         annot.title = @"Parking Lot";
@@ -71,7 +85,6 @@
         
     } else {
         _droneAnnotation.coordinate = location;
-        //[_mapView removeAnnotation:_point];
         [_mapView addAnnotation:_droneAnnotation];
         [_mapView selectAnnotation:_droneAnnotation animated:YES];
         _droneAnnotation.title = @"Drone";
@@ -80,18 +93,17 @@
         [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
         [_mapView deselectAnnotation:_droneAnnotation animated:YES];
     }
-    
+#endif
 }
 
+
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
-    // Check for iOS 6
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         _parkingSpace = destination;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
         [alert show];
-        // Create an MKMapItem to pass to the Maps app
     }
 }
 
@@ -103,28 +115,87 @@
     return !_shouldShowMaster;
 }
 
+-(void) testGPS
+{
+    [((TransparentTouchView *)_dummyTouchView) insertArticifialTouchWithYaw:-179.505600
+                                                                   altitude:40.775520
+                                                                          X:534.500000
+                                                                          Y:28.500000
+                                                           aerialController:self
+                                                                  viewWidth:self.view.frame.size.width
+                                                                 viewHeight:self.view.frame.size.height];
+}
+
+-(void) parkingSpotFill
+{
+    // Here we are going to pass in an image to the parking spot fill. This image is supposed to be a simulated image from the drone
+    // Create a UIImage from the "Parking.JPG" file
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    // Scale the image to fill up the size of the frame
+    
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:scaledImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
+}
+
+-(void) highlightTouchedUserSpot:(float) x withY:(float) y
+{
+    [_parkingLotView removeFromSuperview];
+    
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:scaledImage andClickX:x andClickY: y];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:newImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
+}
+
+
 - (UIButton*) findClosestParkingButton{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+#ifdef DRONE_GPS_TEST
+    [button addTarget:self
+               action:@selector(testGPS)
+     forControlEvents:UIControlEventTouchUpInside];
+#elif PARKING_SPOT_FILL
+    [button addTarget:self
+               action:@selector(parkingSpotFill)
+     forControlEvents:UIControlEventTouchUpInside];
+#else
     [button addTarget:self
                action:@selector(launchDrone)
      forControlEvents:UIControlEventTouchUpInside];
+#endif
     
-    [button setTitle:@" Find closest parking " forState:UIControlStateNormal];
+    [button setTitle:@"Top view" forState:UIControlStateNormal];
+    
+#ifdef USING_GMAPS
+    double x = _googleMapView.frame.origin.x + 20.0;
+    double y = _googleMapView.frame.origin.y + 50.0;
+#else
     double x = _mapView.frame.origin.x + 20.0;
-    double y = _mapView.frame.origin.y + 20.0;
-    double height = 150.0;
-    double width = 600.0;
+    double y = _mapView.frame.origin.y + 50.0;
+#endif
+    double height = 40.0;
+    double width = 300.0;
     button.titleLabel.font = [UIFont systemFontOfSize:30];
   
-  button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-  
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
     button.layer.cornerRadius = 10;
     button.clipsToBounds = YES;
     button.frame = CGRectMake(x,y,width,height);
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button sizeToFit];
-
+    
     return button;
 }
 
@@ -133,27 +204,116 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shouldShowMaster = YES;
+    _nextAnnotationIsSpot = NO;
+    _firstLocationUpdate = NO;
     
-    _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+#ifdef USING_GMAPS
+    
+    #ifdef SPLITSCREENWITHDRONE
+        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+        _googleMapView = [[GMSMapView alloc] initWithFrame:mapFrame];
+    #else
+        _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+    #endif
+    _googleMapView.delegate = self;
+    
+#else
+    
+    #ifdef SPLITSCREENWITHDRONE
+        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+        _mapView = [[MKMapView alloc] initWithFrame:mapFrame];
+    #else
+        _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    #endif
     _mapView.delegate = self;
+#endif
+    
+    
     _findClosestParkingButton = [self findClosestParkingButton];
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
+#ifdef SPLITSCREENWITHDRONE
+    _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    _cameraFeed.view.frame = CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height / 2 );
+    _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 2)];
+    _dummyTouchView.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:_cameraFeed.view];
+    [self.view addSubview:_dummyTouchView];
+    
+#else
+    _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
+    _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
+    _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    _dummyTouchView.backgroundColor = [UIColor clearColor];
+#endif
+
+#ifdef USING_GMAPS
+    
+    #ifdef SPLITSCREENWITHDRONE
+    #else
+    [_googleMapView addSubview:_findClosestParkingButton];
+    #endif
+    
+    [self.view addSubview:_googleMapView];
+    
+    [_googleMapView addObserver:self
+               forKeyPath:@"myLocation"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+    
+   // dispatch_async(dispatch_get_main_queue(), ^{
+        _googleMapView.myLocationEnabled = YES; // THIS DOES NOT WORK
+    //});
+    
+    _googleMapView.settings.myLocationButton = YES;
+    
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:37.4300
+                                                            longitude:-122.1700
+                                                                 zoom:16];
+    
+    [_googleMapView setCamera:stanford];
+#else
+    
+    #ifdef SPLITSCREENWITHDRONE
+    #else
     [_mapView addSubview:_findClosestParkingButton];
+    #endif
     [self.view addSubview:_mapView];
-    self.splitViewController.delegate = self;
     _mapView.showsUserLocation = YES;
+    
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
+#endif
     
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager requestWhenInUseAuthorization];
-    [_locationManager startUpdatingLocation];
-  
-  self.view.backgroundColor = [UIColor blackColor];
+    
+    self.splitViewController.delegate = self;
+    
+    self.view.backgroundColor = [UIColor blackColor];
 }
+
+
+
+
+-(void) viewWillAppear:(BOOL)animated{
+   // [self launchDrone];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if (!_firstLocationUpdate) {
+        // If the first location update has not yet been recieved, then jump to that
+        // location.
+        _firstLocationUpdate = YES;
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        _googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+                                        zoom:17];
+    }
+}
+
 
 -(void) findParkingClicked:(UIButton *) sender
 {
@@ -164,6 +324,10 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+#ifdef USING_GMAPS
+    // assert(0);
+    // We don't need to search for parking lots as we aren't doing this anymore
+#else
     if (!_didStartLooking){
         CLLocation *crnLoc = [locations lastObject];
         
@@ -197,7 +361,9 @@
     }
     // Update the spots to sort around location
     [[ParkingLotFinder sharedManager] updateLotsWithLocation: [locations lastObject]];
+#endif
 }
+
 
 - (void) lotButtonPressed:(id) sender{ // how to get the name of the parking lot here?
     if ([sender isKindOfClass:[UIButton self]]) {
@@ -209,16 +375,13 @@
     
 }
 
+
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Find a spot", nil];
     [alert show];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
@@ -230,12 +393,64 @@
     }
     return nil;
 }
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [self.apiReturnXMLData setLength:0];
+}
 
-// BUG: alerts keep showing up many times
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
+    NSLog(@"didReceiveData, length: %lu", (unsigned long)data.length);
+
+    [self.apiReturnXMLData appendData:data];
+
+}
+
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
+    NSLog(@"URL Connection Failed!");
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+
+    NSError *error = nil;
+
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:self.apiReturnXMLData options:kNilOptions error:&error];
+    
+    if (error != nil) {
+        NSLog(@"Error parsing JSON.");
+    }
+    else {
+        NSLog(@"Array: %@", jsonArray);
+    }
+
+    currentConnection = nil;
+
+    
+}
+
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
-        switch (buttonIndex){
-            case 1:{ // braces needed because objc is stupid
+        if (buttonIndex == 1){
+                CLLocation * myLocation1 = [[LocationManager sharedManager] getUserLocation];
+
+                CLLocationCoordinate2D myLocation = _googleMapView.myLocation.coordinate;
+                if (myLocation.latitude < 1.0){
+                    myLocation.latitude = 37.431184;
+                    myLocation.longitude = -122.173391;
+
+                }
+#ifdef USING_GMAPS
+                if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
+                    NSString * gMapString = [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",myLocation.latitude,myLocation.longitude,_parkingSpace.latitude,_parkingSpace.longitude];
+                    NSLog(@"to google maps: %@",gMapString);
+                    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:gMapString]];
+                } else {
+                    NSLog(@"Can't use comgooglemaps://");
+                }
+                return;
+#else
                 MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
                                                                addressDictionary:nil];
                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
@@ -248,93 +463,31 @@
                 MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
                 [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
                     if (!error) {
-                        for (MKRoute *route in [response routes]) {
+                        for(MKRoute *route in [response routes]) {
                             [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
-                            // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
                         }
                     }
                 }];
             }
-            case 2:
-                [self.navigationController pushViewController:[[SpotConfirmViewController alloc] init] animated:NO];
-                // view spot: not implemented yet
-            default: ;
+#endif
                 // "cancel" or other: do nothing / go back to homepage?
-        }
-    } else {
-        switch (buttonIndex){
-            case 1:{
-                _shouldShowMaster = NO;
-                [self hideMaster];
-                //[_drone lookForParking];
-                CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
-                MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
-                MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-                [_mapView setRegion:adjustedRegion animated:YES];
-                _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-                [self.navigationController pushViewController:_cameraFeed animated:NO];
-              
-                // Resize the camera frame
-              CGRect currFrame = _cameraFeed.view.frame;
-              currFrame.size.width = [[UIScreen mainScreen] bounds].size.width * 0.75;
-              currFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 4.0;
-              _cameraFeed.view.frame = currFrame;
-              
-              //cameraFeed.view.frame = CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0 );
-              
-              _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
-              
-              //Resize the map view
-              /*CGRect mapFrame = _mapView.frame;
-              mapFrame.size.height = [[UIScreen mainScreen] bounds].size.height / 2.0;
-              mapFrame.origin.y = [[UIScreen mainScreen] bounds].size.height / 2.0;
-              
-              _mapView.frame = mapFrame;*/
-              
-              //Remove the map view
-              [_mapView removeFromSuperview];
-              
-              [self.view addSubview:_cameraFeed.view];
-              
-              //_dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(200,0,[[UIScreen mainScreen] bounds].size.width / 2 +120, [[UIScreen mainScreen] bounds].size.height / 2.0)];
-              
-              _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-              
-              _dummyTouchView.backgroundColor = [UIColor clearColor];
-              
-              [self.view addSubview:_dummyTouchView];
-	      //                [self launchDrone];
-            }
-            default: ; // they pressed cancel : do nothing
-                
-        }
-        
+    }
     }
 }
 
+
 -(void)launchDrone{
-  
-  // Now we go back here when we turn that button into a "Drone view" button.
-  if ([_findClosestParkingButton.titleLabel.text isEqualToString:@"Drone View"])
-  {
-      [_mapView removeFromSuperview];
-      [self.view addSubview:_dummyTouchView];
-      [self.view addSubview:_cameraFeed.view];
-  }
-  
+#ifdef USING_GMAPS
+    [_googleMapView removeFromSuperview];
+#else
+    [_mapView removeFromSuperview];
+#endif
+    [self.view addSubview:_dummyTouchView];
+    [self.view addSubview:_cameraFeed.view];
     _shouldShowMaster = NO;
     [self hideMaster];
-    //[_drone lookForParking];
-    CLLocationCoordinate2D noLocation = _drone.userLocation.coordinate;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-    [_mapView setRegion:adjustedRegion animated:YES];
-    DJICameraViewController* cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    [self.navigationController pushViewController:cameraFeed animated:NO] ;
-    // TODO make sure this scales the video correctly
-    cameraFeed.view.frame = CGRectMake(0,0,cameraFeed.videoPreviewView.frame.size.width / 4, cameraFeed.videoPreviewView.frame.size.height / 4);
-    [self.view addSubview:cameraFeed.view];
 }
+
 
 - (void)hideMaster  {
     NSLog(@"hide-unhide master");
@@ -346,26 +499,65 @@
     [spv.view setNeedsLayout];
 }
 
--(CLLocation *) getUserLocation
-{
-    return _locationManager.location;
-}
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
-  MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
-  newAnnotation.coordinate = spot;
-  [_mapView addAnnotation:newAnnotation];
-  [_mapView selectAnnotation:newAnnotation animated:YES];
-  newAnnotation.title = @"Selected spot";
+    
+#ifdef USING_GMAPS
+    GMSMarker *marker = [GMSMarker markerWithPosition:spot];
+    marker.title = @"Hello World";
+    marker.map = _googleMapView;
+    marker.icon = [UIImage imageNamed:@"car_big.png"];
+    
+    CLLocation * myLocation = _googleMapView.myLocation;
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
+                                                              longitude:myLocation.coordinate.longitude
+                                                                   zoom:19];
+    
+    [_googleMapView setCamera:stanford];
+    
+    [self.view addSubview:_googleMapView];
+    //[self goToNavigation:spot];
+#else
+    CLLocationCoordinate2D noLocation;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
+    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
+    [_mapView setRegion:adjustedRegion animated:YES];
+    _nextAnnotationIsSpot = YES;
+
+    MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
+    newAnnotation.coordinate = spot;
+    [_mapView addAnnotation:newAnnotation];
+    [_mapView selectAnnotation:newAnnotation animated:YES];
+    newAnnotation.title = @"Selected spot";
+    
+    [self.view addSubview:_mapView];
+#endif
+    
+    //Time to remove the touch view and the camera view and add the new view
+#ifdef SPLITSCREENWITHDRONE
+#else
+    [_dummyTouchView removeFromSuperview];
+    [_cameraFeed.view removeFromSuperview];
+#endif
   
-  //Time to remove the touch view and the camera view and add the new view
-  [self.view addSubview:_mapView];
-  [_dummyTouchView removeFromSuperview];
-  [_cameraFeed.view removeFromSuperview];
-  
-  _findClosestParkingButton.titleLabel.text = @"Drone View";
-  _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
+    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+}
+
+
+-(void) showMap{
+#ifdef USING_GMAPS
+    [self.view addSubview:_googleMapView];
+#else
+    [self.view addSubview:_mapView];
+#endif
+    [_dummyTouchView removeFromSuperview];
+    [_cameraFeed.view removeFromSuperview];
+    
+    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
+    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+
 }
 
 @end

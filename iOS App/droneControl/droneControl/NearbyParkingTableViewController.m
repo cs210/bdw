@@ -12,6 +12,7 @@
 #import "AerialViewController.h"
 #import "ParkingLotTableViewCell.h"
 #import "ParkingLot.h"
+#import "LocationManager.h"
 
 @interface NearbyParkingTableViewController () <ParkingLotFinderDelegate>
 {
@@ -103,15 +104,9 @@
     ParkingLot *currentObject = [_parkingLotsNearby objectAtIndex:[indexPath row]];
     cell.lotNameLabel.text = currentObject->name;
   
-  UINavigationController *navVC = self.navigationController;
-  UISplitViewController *splitVC = navVC.splitViewController;
-  NSArray *viewControllers = splitVC.viewControllers;
-  
-  AerialViewController *aerialVC = [viewControllers objectAtIndex:1];
-  
     //Calculate the distance from current location to parking lot
   CLLocation * parkingLocation = [[CLLocation alloc] initWithLatitude:currentObject->coordinate.latitude longitude:currentObject->coordinate.longitude];
-  CLLocation * myLocation = [aerialVC getUserLocation];
+  CLLocation * myLocation = [[LocationManager sharedManager] getUserLocation];
   CLLocationDistance parkingDistance = [parkingLocation distanceFromLocation:myLocation];
   
   cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f mi", parkingDistance / 1609.34];

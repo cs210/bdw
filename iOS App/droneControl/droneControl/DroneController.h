@@ -19,7 +19,7 @@
 // receive and analyze an image from the drone. This may cause goToNavigation to be called.
 - (void) receiveImage: (UIImage *)image;
 
-// open up Apple Maps navigation to destination.
+// open up Google Maps navigation to destination.
 - (void) goToNavigation: (CLLocationCoordinate2D)destination;
 @end
 // Protocol Definition ends here

@@ -9,15 +9,33 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
+#define USING_GMAPS 1
+//#define DRONE_GPS_TEST 0
+//#define PARKING_SPOT_FILL 1
+#define GOOGLE_DRECTIONS_SERVER_KEY @"AIzaSyBoy7wXWA4CkYPQ2iMfnmQJ6cz_aTE7B8I";
+#define GOOGLE_DIRECTIONS_IOS_KEY @"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w"; // verified, either of these keys works.
+// url e.g. https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,%20-122.172418&destination=37.434872,%20-122.173067&region=com&key=AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
+
+#ifdef USING_GMAPS
+@property (nonatomic, strong) GMSMapView *googleMapView;
+#else
 @property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) CLLocationManager *locationManager;
+#endif
+
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
 @property (nonatomic, strong) DroneController* drone;
 @property (nonatomic) bool didStartLooking; // true if the drone started looking for parking
 @property (nonatomic) CLLocationCoordinate2D parkingSpace; // only defined if a parking space has been found.
 @property (nonatomic) bool shouldShowMaster;
+@property (retain, nonatomic) NSMutableData *apiReturnXMLData;
+@property (nonatomic) NSInteger statusNbr;
+@property (copy, nonatomic) NSString *hygieneResult;
+@property (copy, nonatomic) NSString *currentElement;
+
+
 // update the location of the drone icon on the map
 - (void) updateDroneLocation: (CLLocationCoordinate2D *)location;
 
@@ -29,9 +47,11 @@
 
 -(void) showParkingLotConfirmationWithTitle:(NSString *)title;
 
--(CLLocation *) getUserLocation;
-
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
+
+-(void) highlightTouchedUserSpot:(float) x withY:(float) y;
+
+-(void) showMap;
 
 @end
 

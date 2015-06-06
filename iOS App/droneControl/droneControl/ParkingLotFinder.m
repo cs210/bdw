@@ -62,9 +62,7 @@
     }
   }];
   
-  if ([_lots isEqualToArray:orderedLots]) {
-    // Lot order hasn't changed, don't do anything
-  } else {
+  if (![_lots isEqualToArray:orderedLots]) { // order has changed
     _lots = [NSMutableArray arrayWithArray:orderedLots];
     for ( id<ParkingLotFinderDelegate> listener in _lotListeners)
     {
@@ -90,6 +88,7 @@
     [_lots addObject:[[ParkingLot alloc] initWithCoord:(37.429993) longitude:(-122.177521) lotName:@"Jordan Quad Lot"]];
     
 }
+
 
 -(void) findNearbyLots
 {
@@ -140,10 +139,12 @@
     return degrees * (M_PI/180.0);
 }
 
+
 - (double)degreesFromRadians:(double)radians
 {
     return radians * (180.0/M_PI);
 }
+
 
 - (CLLocationCoordinate2D)coordinateFromCoord:(CLLocationCoordinate2D)fromCoord
                                  atDistanceKm:(double)distanceKm
