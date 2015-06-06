@@ -29,6 +29,7 @@
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 #import "ParkingSpotHighlightBridge.h"
+#import "LocationManager.h"
 
 @implementation AerialViewController
 {
@@ -431,26 +432,16 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
-        switch (buttonIndex){
-            case 1: {// braces needed because objc is stupid
-                // http://stackoverflow.com/a/20944790/2079349
-                // http://blog.strikeiron.com/bid/63338/Integrate-a-REST-API-into-an-iPhone-App-in-less-than-15-minutes
-                
-                /*NSString * directionsRequestString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=%@",@"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w" ];
-                //directionsRequestString = @"https://www.google.com";
-                NSString *requestString = @"https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,-122.172418&destination=37.434872,-122.173067&region=com&key=";
-                NSLog(@"directionsRequestString: %@",requestString);
-                NSURL * directionsRequestURL = [NSURL URLWithString:directionsRequestString];
-                NSURLRequest *directionsRequest = [NSURLRequest requestWithURL:directionsRequestURL];
-                currentConnection = [[NSURLConnection alloc]   initWithRequest:directionsRequest delegate:self];
-                self.apiReturnXMLData = [NSMutableData data];*/
+        if (buttonIndex == 1){
+                CLLocation * myLocation1 = [[LocationManager sharedManager] getUserLocation];
+
                 CLLocationCoordinate2D myLocation = _googleMapView.myLocation.coordinate;
                 if (myLocation.latitude < 1.0){
                     myLocation.latitude = 37.431184;
                     myLocation.longitude = -122.173391;
 
                 }
-                // vs. _parkingSpace
+#ifdef USING_GMAPS
                 if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
                     NSString * gMapString = [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",myLocation.latitude,myLocation.longitude,_parkingSpace.latitude,_parkingSpace.longitude];
                     NSLog(@"to google maps: %@",gMapString);
@@ -458,10 +449,9 @@
                 } else {
                     NSLog(@"Can't use comgooglemaps://");
                 }
-                //comgooglemaps://?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&daddr=John+F.+Kennedy+International+Airport,+Van+Wyck+Expressway,+Jamaica,+New+York&directionsmode=transit
-
-                // If the connection was successful, create the XML that will be returned.
-                /*MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
+                return;
+#else
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
                                                                addressDictionary:nil];
                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
                 [mapItem setName:@"Stanford"];
@@ -474,29 +464,14 @@
                 [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
                     if (!error) {
                         for(MKRoute *route in [response routes]) {
-#ifdef USING_GMAPS
-                            // assert(0);
-#else
-                        
                             [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
-                            // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
-#endif
                         }
                     }
-                }];*/
+                }];
             }
-            default: ;
+#endif
                 // "cancel" or other: do nothing / go back to homepage?
-        }
-    } else {
-        switch (buttonIndex){
-            case 1:{
-                [self launchDrone];
-            }
-            default: ; // they pressed cancel : do nothing
-                
-        }
-        
+    }
     }
 }
 
@@ -542,7 +517,7 @@
     [_googleMapView setCamera:stanford];
     
     [self.view addSubview:_googleMapView];
-    [self goToNavigation:spot];
+    //[self goToNavigation:spot];
 #else
     CLLocationCoordinate2D noLocation;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);

@@ -5,6 +5,7 @@
 #import "IDNSLoggerAppender.h"
 #import "LastUserModeDelegate.h"
 #import "AerialViewController.h"
+#import "LocationManager.h"
 #import <DJISDK/DJISDK.h>
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -35,6 +36,8 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     NSString* appKey = @"07c6b3c3b6a76db64209d4ce";
     [DJIAppManager registerApp:appKey withDelegate:self];
     
+    //Start up the location manager
+    [[LocationManager sharedManager] init];
     
     // enable BMWAppKit log output
     IDLogger *logger = [IDLogger defaultLogger];

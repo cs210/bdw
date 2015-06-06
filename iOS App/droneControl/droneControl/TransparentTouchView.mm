@@ -552,7 +552,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     if (!_coordinatePointTuples)
     {
-        //LOL What am I doing with my life
         [self viewDidLoad];
     }
     NSLog(@"Touches began");
@@ -589,8 +588,12 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         [aerialController highlightTouchedUserSpot:tapLocation.x withY:tapLocation.y];
         return;
 #endif
-        // PROBLEM: THIS RETURNS 0,0
+        float droneAltitude = _droneHelper.getDroneHeight;
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
+        float droneYaw = _droneHelper.getDroneYaw;
+
+        NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", droneYaw, droneAltitude, droneGPS.latitude,droneGPS.longitude);
+
         if (droneGPS.latitude < 1.0){
             droneGPS.latitude = 37.431184;
             droneGPS.longitude = -122.173391;
@@ -600,13 +603,10 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         // Get height of the drone
         
         // Hard code the altitude here for now
-        float droneAltitude = _droneHelper.getDroneHeight;
         if (droneAltitude == 0){
             droneAltitude = 10; // FOR TESTING
         }
-        float droneYaw = _droneHelper.getDroneYaw;
 
-        //   NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", flyingInfo.attitude.yaw, flyingInfo.altitude, flyingInfo.droneLocation.latitude, flyingInfo.droneLocation.longitude);
         
         // Multiply the height of the drone by the xRatio and yRatio of the point
         float xOffset = droneAltitude * nearestIndex.xzRatio;
@@ -622,7 +622,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         
         //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
-        clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
+        clickLocation.longitude = droneGPS.longitude -  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
 
         //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
         #ifdef DRONE_GPS_TEST
