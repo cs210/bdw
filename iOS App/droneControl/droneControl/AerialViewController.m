@@ -412,6 +412,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         if (buttonIndex == 1){
+            _GMViewController.googleMapView.frame = self.view.frame;
+
             CLLocation * myLocation1 = [[LocationManager sharedManager] getUserLocation];
 
             CLLocationCoordinate2D myLocation = _GMViewController.googleMapView.myLocation.coordinate;
@@ -507,15 +509,22 @@
     _shouldShowMaster = NO;
     [self hideMaster];
 #ifdef MAP_POPOVER
-    UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController]; // googlemapviewcontroller
+    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self addChildViewController:_GMViewController];
+    _GMViewController.googleMapView.frame = mapFrame;
+    [self.view addSubview:_dummyTouchView];
+    [self.view addSubview:_cameraFeed.view];
+    [self.view addSubview:_GMViewController.googleMapView];
+
+    [_GMViewController didMoveToParentViewController:self];
+    /*UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController];
+    mapPopover.contentViewController = _GMViewController;
     CGRect mapFrame = _findClosestParkingButton.bounds;
     mapFrame.origin.y += _findClosestParkingButton.frame.origin.y;
     [mapPopover presentPopoverFromRect:mapFrame
-                                inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+                                inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];*/
 #endif
 }
-
-
 - (void)hideMaster  {
     NSLog(@"hide-unhide master");
     UISplitViewController* spv = self.splitViewController;
