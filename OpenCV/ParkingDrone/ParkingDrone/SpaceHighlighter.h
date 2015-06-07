@@ -14,6 +14,6 @@ using namespace cv;
  * if successful and false if the given pixel does not appear to
  * be inside a space.
  */
-bool highlightSpace(Mat& img, int row, int col);
+bool highlightSpace(Mat& img, Mat binary, int row, int col);
 
 #endif

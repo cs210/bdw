@@ -1,4 +1,4 @@
-﻿Build started 6/1/2015 3:43:21 PM.
+﻿Build started 6/6/2015 6:19:06 PM.
      1>Project "C:\Users\I818433\Documents\CS 210\CV\ParkingDrone\ParkingDrone\ParkingDrone.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\\include /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt SpaceHighlighter.cpp
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:12.78
+Time Elapsed 00:00:31.85

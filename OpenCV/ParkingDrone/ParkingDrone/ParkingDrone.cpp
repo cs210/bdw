@@ -30,15 +30,27 @@ int main(int argc, char* argv[])
   namedWindow("MyWindow", CV_WINDOW_AUTOSIZE); //create a window with the name "MyWindow"
 
   //------------------- SpaceHighlighter Code -------------------//
+  
+  Mat binary = preprocess(img);
+  for (int r = 0; r < img.rows; r += 50) {
+    for (int c = 0; c < img.cols; c += 50) {
+      //Mat copy = img.clone();
+      if (highlightSpace(img, binary, r, c)) {
+        circle(img, Point(c, r), 5, Scalar(0, 255, 0));
+      } else {
+        circle(img, Point(c, r), 5, Scalar(0, 0, 255));
+      }
+    }
+  }
 
-  int r = 550;
-  int c = 600;
-  bool success = highlightSpace(img, r, c);
-  circle(img, Point(c, r), 3, Scalar(0, 0, 255));
-
+  /*int r = 100;
+  int c = 700;
+  Mat binary = preprocess(img);
+  bool success = highlightSpace(img, binary, r, c);
+  circle(img, Point(c, r), 5, Scalar(0, 255, 0));
   if (!success) {
     cerr << "No available parking space was found around the chosen point." << endl;
-  }
+  }*/
 
   imshow("MyWindow", img); //display the image which is stored in the 'img' in the "MyWindow" window
   waitKey(0); //wait infinite time for a keypress
