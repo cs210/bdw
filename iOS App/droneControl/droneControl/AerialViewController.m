@@ -508,8 +508,10 @@
     [self hideMaster];
 #ifdef MAP_POPOVER
     UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController]; // googlemapviewcontroller
-    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-    [mapPopover presentPopoverFromRect:mapFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    CGRect mapFrame = _findClosestParkingButton.bounds;
+    mapFrame.origin.y += _findClosestParkingButton.frame.origin.y;
+    [mapPopover presentPopoverFromRect:mapFrame
+                                inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 #endif
 }
 
