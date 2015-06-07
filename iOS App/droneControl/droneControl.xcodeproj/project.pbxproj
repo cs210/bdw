@@ -113,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleMapsViewController.m; path = ../GoogleMapsViewController.m; sourceTree = "<group>"; };
+		46137D8F1B23BEEC00D2BD95 /* GoogleMapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleMapsViewController.h; sourceTree = "<group>"; };
 		462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotFinder.h; sourceTree = "<group>"; };
 		462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotFinder.m; sourceTree = "<group>"; };
 		463D6F011ADDC51D0011A329 /* SpotConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotConfirmViewController.m; sourceTree = "<group>"; };
@@ -717,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */,
+				46137D8F1B23BEEC00D2BD95 /* GoogleMapsViewController.h */,
 				A6A6668E1B1EB70200CFBC48 /* ComputerVision */,
 				A65391431AEDDF6100EA296A /* Speech */,
 				A65391421AEDDECA00EA296A /* DJI */,

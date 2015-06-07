@@ -178,8 +178,8 @@
     [button setTitle:@"Top view" forState:UIControlStateNormal];
     
 #ifdef USING_GMAPS
-    double x = _googleMapView.frame.origin.x + 20.0;
-    double y = _googleMapView.frame.origin.y + 50.0;
+    double x = _GMViewController.googleMapView.frame.origin.x + 20.0;
+    double y = _GMViewController.googleMapView.frame.origin.y + 50.0;
 #else
     double x = _mapView.frame.origin.x + 20.0;
     double y = _mapView.frame.origin.y + 50.0;
@@ -206,7 +206,8 @@
     _shouldShowMaster = YES;
     _nextAnnotationIsSpot = NO;
     _firstLocationUpdate = NO;
-    
+    _GMViewController = [[GoogleMapsViewController alloc] init];
+    [_GMViewController viewDidLoad];
 #ifdef USING_GMAPS
     
     #ifdef SPLITSCREENWITHDRONE
@@ -214,17 +215,16 @@
         _googleMapView = [[GMSMapView alloc] initWithFrame:mapFrame];
     #else
             #ifdef MAP_POPOVER
-                _googleMapView = [[GMSMapView alloc] init];
+    // make sure this inits the view
                 //mapview should be a uipopovercontroller
-                UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:self]; // googlemapviewcontroller
+                UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController]; // googlemapviewcontroller
               // Store the popover in a custom property for later use.
                 CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
                 [mapPopover presentPopoverFromRect:mapFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
             #else
-                    _googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+                    _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
             #endif
     #endif
-    _googleMapView.delegate = self;
     
 #else
     
@@ -260,29 +260,17 @@
     
     #ifdef SPLITSCREENWITHDRONE
     #else
-    [_googleMapView addSubview:_findClosestParkingButton];
+    [_GMViewController.googleMapView addSubview:_findClosestParkingButton];
     #endif
+    
+    GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
+    _GMViewController.googleMapView.camera = pos;
     
     #ifdef MAP_POPOVER
     #else
-    [self.view addSubview:_googleMapView];
+    [self.view addSubview:_GMViewController.googleMapView];
     #endif
-    [_googleMapView addObserver:self
-               forKeyPath:@"myLocation"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _googleMapView.myLocationEnabled = YES; // THIS DOES NOT WORK
-    });
-    
-    _googleMapView.settings.myLocationButton = YES;
-    
-    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:37.4300
-                                                            longitude:-122.1700
-                                                                 zoom:16];
-    
-    [_googleMapView setCamera:stanford];
+
 #else
     
     #ifdef SPLITSCREENWITHDRONE
@@ -310,20 +298,6 @@
 -(void) viewWillAppear:(BOOL)animated{
    // [self launchDrone];
      [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    if (!_firstLocationUpdate) {
-        // If the first location update has not yet been recieved, then jump to that
-        // location.
-        _firstLocationUpdate = YES;
-        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        _googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                        zoom:17];
-    }
 }
 
 
@@ -447,7 +421,7 @@
         if (buttonIndex == 1){
             CLLocation * myLocation1 = [[LocationManager sharedManager] getUserLocation];
 
-            CLLocationCoordinate2D myLocation = _googleMapView.myLocation.coordinate;
+            CLLocationCoordinate2D myLocation = _GMViewController.googleMapView.myLocation.coordinate;
         
             CLLocationCoordinate2D startingLocation = myLocation1.coordinate;
             
@@ -493,7 +467,7 @@
                 GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
                 singleLine.strokeWidth = 7;
                 singleLine.strokeColor = [UIColor greenColor];
-                singleLine.map = _googleMapView;
+                singleLine.map = _GMViewController.googleMapView;
             }
             /*if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
                 NSString * gMapString = [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",myLocation.latitude,myLocation.longitude,_parkingSpace.latitude,_parkingSpace.longitude];
@@ -531,7 +505,7 @@
 
 -(void)launchDrone{
 #ifdef USING_GMAPS
-    [_googleMapView removeFromSuperview];
+    [_GMViewController.googleMapView removeFromSuperview];
 #else
     [_mapView removeFromSuperview];
 #endif
@@ -559,17 +533,17 @@
 #ifdef USING_GMAPS
     GMSMarker *marker = [GMSMarker markerWithPosition:spot];
     marker.title = @"Hello World";
-    marker.map = _googleMapView;
+    marker.map = _GMViewController.googleMapView;
     marker.icon = [UIImage imageNamed:@"car_big.png"];
     
-    CLLocation * myLocation = _googleMapView.myLocation;
+    CLLocation * myLocation = _GMViewController.googleMapView.myLocation;
     GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
                                                               longitude:myLocation.coordinate.longitude
                                                                    zoom:19];
     
-    [_googleMapView setCamera:stanford];
+    [_GMViewController.googleMapView setCamera:stanford];
     
-    [self.view addSubview:_googleMapView];
+    [self.view addSubview:_GMViewController.googleMapView];
     [self goToNavigation:spot];
 #else
     CLLocationCoordinate2D noLocation;
@@ -601,7 +575,7 @@
 
 -(void) showMap{
 #ifdef USING_GMAPS
-    [self.view addSubview:_googleMapView];
+    [self.view addSubview:_GMViewController.googleMapView];
 #else
     [self.view addSubview:_mapView];
 #endif

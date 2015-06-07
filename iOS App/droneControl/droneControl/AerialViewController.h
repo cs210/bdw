@@ -5,6 +5,7 @@
 //  Created by Ellen Sebastian on 4/12/15.
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
+#import "GoogleMapsViewController.h"
 #import "DroneController.h"
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
@@ -17,12 +18,12 @@
 #define GOOGLE_DRECTIONS_SERVER_KEY @"AIzaSyBoy7wXWA4CkYPQ2iMfnmQJ6cz_aTE7B8I";
 #define GOOGLE_DIRECTIONS_IOS_KEY @"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w"; // verified, either of these keys works.
 
-#define MAP_POPOVER 1
+//#define MAP_POPOVER 1
 // url e.g. https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,%20-122.172418&destination=37.434872,%20-122.173067&region=com&key=AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w
 @interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
 
 #ifdef USING_GMAPS
-@property (nonatomic, strong) GMSMapView *googleMapView;
+@property (nonatomic, strong) GoogleMapsViewController *GMViewController;
 #else
 @property (nonatomic, strong) MKMapView *mapView;
 #endif
