@@ -100,7 +100,10 @@
 {
     // FOR DEBUGGING
   //return 100;
-  return _lastFlyingInfo.altitude;
+    if (_lastFlyingInfo.altitude < 0.00000001)
+        return 100.0;
+    else
+        return _lastFlyingInfo.altitude;
   //return _lastKnownState.altitude;
 }
 
