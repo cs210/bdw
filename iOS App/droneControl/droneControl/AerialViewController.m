@@ -51,7 +51,7 @@
     // trigger navigation (SpotConfirmViewController)
 }
 
-- (void) updateDroneLocation: (CLLocationCoordinate2D *)location{
+- (void) updateDroneLocation: (CLLocationCoordinate2D *)location {
     [self addAnnnotationWithOffset:false location:*location];
 }
 
@@ -286,10 +286,7 @@
 }
 
 
-
-
 -(void) viewWillAppear:(BOOL)animated{
-   // [self launchDrone];
      [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
 }
 
@@ -471,6 +468,7 @@
             } else {
                 NSLog(@"Can't use comgooglemaps://");
             }*/
+            [self.view addSubview: _findClosestParkingButton];
             return;
 #else
             MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
@@ -512,11 +510,23 @@
     CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self addChildViewController:_GMViewController];
     _GMViewController.googleMapView.frame = mapFrame;
+    
+    CLLocation * userLocation = [[LocationManager sharedManager] getUserLocation];
+    CLLocationCoordinate2D userLocationCoordinate = userLocation.coordinate;
+
+    
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude: userLocationCoordinate.latitude                                                                longitude:userLocationCoordinate.longitude
+                                                                   zoom:19];
+    
+    [_GMViewController.googleMapView setCamera:stanford];
+    
     [self.view addSubview:_dummyTouchView];
     [self.view addSubview:_cameraFeed.view];
     [self.view addSubview:_GMViewController.googleMapView];
 
     [_GMViewController didMoveToParentViewController:self];
+    [_findClosestParkingButton removeFromSuperview];
+    //[_findClosestParkingButton setTitle:@"Hide Map" forState:UIControlStateNormal];
     /*UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController];
     mapPopover.contentViewController = _GMViewController;
     CGRect mapFrame = _findClosestParkingButton.bounds;
