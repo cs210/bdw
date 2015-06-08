@@ -46,7 +46,7 @@ Mat preprocess(const Mat& img) {
   dilate(im_edges, dilated, dilation_elem);
 
   // Removes noise by removing all connected components of size <= 200
-  removeSmallBlobs(dilated, 500);
+  removeSmallBlobs(dilated, 200);
 
   return dilated;
 }

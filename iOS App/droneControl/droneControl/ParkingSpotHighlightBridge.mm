@@ -34,10 +34,22 @@ using namespace std;
     
     //------------------- SpaceHighlighter Code -------------------//
     
-    int r = y;
-    int c = x;
-    bool success = highlightSpace(img, r, c);
-    circle(img, cv::Point(c, r), 3, Scalar(0, 0, 255));
+    //int r = y;
+    //int c = x;
+    //bool success = highlightSpace(img, r, c);
+    //circle(img, cv::Point(c, r), 3, Scalar(0, 0, 255));
+    
+    Mat binary = preprocess(img);
+    for (int r = 0; r < img.rows; r += 50) {
+        for (int c = 0; c < img.cols; c += 50) {
+            //Mat copy = img.clone();
+            if (highlightSpace(img, binary, r, c)) {
+                circle(img, cv::Point(c, r), 5, Scalar(0, 255, 0));
+            } else {
+                circle(img, cv::Point(c, r), 5, Scalar(0, 0, 255));
+            }
+        }
+    }
     
     //Now that we have done some work, we need to pass the image back
     UIImage * newImage = [self UIImageFromCVMat:img];

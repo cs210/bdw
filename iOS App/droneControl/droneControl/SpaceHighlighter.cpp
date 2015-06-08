@@ -63,7 +63,7 @@ vector<Point> findSpace(const Mat& img, int row, int col) {
   size_t middle = indices.size() / 2;
   size_t num_to_include = middle + 1;
   for (size_t i = middle + 1; i < indices.size(); i++) {
-    if (dists[i] > 3 * dists[middle]) {
+    if (dists[indices[i]] > 3 * dists[middle]) {
       break;
     }
     ++num_to_include;
@@ -79,10 +79,19 @@ vector<Point> findSpace(const Mat& img, int row, int col) {
 }
 
 /**
- * Given a list of vertices (in clockwise-order and no wrap-around) for
- * a polygon, computes its area and returns it.
+ * Given a list of vertices (no wrap-around) and whether they are listed
+ * clockwise or counter-clockwise, returns the area of the polygon.
  */
-double polygonArea(vector<Point> points) {
+double polygonArea(const vector<Point>& vertices, bool clockwise) {
+  vector<Point> points;
+  if (clockwise) {
+    points = vertices;
+  } else {
+    for (int i = (int)vertices.size() - 1; i >= 0; i--) {
+      points.push_back(vertices[i]);
+    }
+  }
+
   double p1 = 0.0;
   for (int i = 0; i < points.size() - 1; i++) {
     p1 += 1.0 * points[i].x * points[i + 1].y;
@@ -102,8 +111,9 @@ double polygonArea(vector<Point> points) {
  * Given a set of points, find the set of 4 points that form a quad
  * with the largest area and returns these.
  */
-vector<Point> findLargestQuad(vector<Point> points) {
-  if (points.size() < 4) return points;
+vector<Point> findLargestPentagon(vector<Point> points) {
+  int num_points = 4;
+  if (points.size() < num_points) return points;
 
   double maxArea = 0;
   vector<Point> best_vertices;
@@ -111,12 +121,14 @@ vector<Point> findLargestQuad(vector<Point> points) {
     for (int j = i + 1; j < points.size(); j++) {
       for (int k = j + 1; k < points.size(); k++) {
         for (int l = k + 1; l < points.size(); l++) {
-          Point vertices_array[] = {points[l], points[k], points[j], points[i]};
-          vector<Point> vertices(vertices_array, vertices_array + 4);
-          double area = polygonArea(vertices);
-          if (area > maxArea) {
-            maxArea = area;
-            best_vertices = vertices;
+          for (int m = l + 1; m < points.size(); m++) {
+            Point vertices_array[] = {points[i], points[j], points[k], points[l], points[m]};
+            vector<Point> vertices(vertices_array, vertices_array + num_points);
+            double area = polygonArea(vertices, false);
+            if (area > maxArea) {
+              maxArea = area;
+              best_vertices = vertices;
+            }
           }
         }
       }
@@ -160,7 +172,7 @@ double angle(const Point& p) {
  * inside a parking space.
  */
 bool initialCheck(const Mat& img, int row, int col) {
-  int thresh = 10;
+  int thresh = 3;
   for (int i = -thresh; i <= thresh; i++) {
     for (int j = -thresh; j <= thresh; j++) {
       int r = row + i;
@@ -177,7 +189,13 @@ bool initialCheck(const Mat& img, int row, int col) {
  * parking space. It takes in a vector of points representing the
  * vertices of the shape and returns true if the check is passed.
  */
-bool checkAngles(const vector<Point>& space_vertices) {
+bool checkVertices(const Mat& img, const vector<Point>& space_vertices) {
+  // Ignores polygons with: poly area > (img area) / areaThresh
+  double areaThresh = 40;
+
+  double area = polygonArea(space_vertices, false);
+  if (area * areaThresh > 1.0 * img.rows * img.cols) return false;
+
   int size = (int)space_vertices.size();
   if (size < 3) return false;
   for (int i = 0; i < size; i++) {
@@ -203,33 +221,33 @@ bool checkAngles(const vector<Point>& space_vertices) {
   return true;
 }
 
-bool highlightSpace(Mat& img, int row, int col) {
-  Mat binary = preprocess(img);
+bool highlightSpace(Mat& img, Mat binary, int row, int col) {
+  //Mat binary = preprocess(img);
 
   if (!initialCheck(binary, row, col)) return false;
   
   vector<Point> space_vertices = findSpace(binary, row, col);
-  for (Point p : space_vertices) {
+  /*for (Point p : space_vertices) {
     circle(img, p, 3, Scalar(255,0,0));
-  }
+  }*/
 
-  if (!checkAngles(space_vertices)) return false;
+  vector<Point> vertices = findLargestPentagon(space_vertices);
+  if (vertices.size() == 0) return false;
+
+  if (!checkVertices(img, vertices)) return false;
 
   // Only works when the parking spaces are parallel to the sides of
   // the image.
   // vector<Point> quad_vertices = findOuterRectangle(space_vertices);
 
-  // Works more generally, but doesn't look great some of the time.
-  vector<Point> quad_vertices = findLargestQuad(space_vertices);
+  // Either of these work more generally, but doesn't look great some of
+  // the time.
+  // vector<Point> quad_vertices = findLargestQuad(space_vertices);
+  // vector<Point> quad_vertices = space_vertices;
 
   Scalar yellow(0, 255, 255);
-  const Point *points[1] = { &quad_vertices[0] };
-  int num_points = (int)quad_vertices.size();
-  fillPoly(img, points, &num_points, 1, yellow);
-    
-  //Pass these points back to the iOS code
+  const Point *points[1] = { &vertices[0] };
+  int num_points = (int)vertices.size();
+  polylines(img, points, &num_points, 1, true, yellow);
   return true;
 }
-
-
-
