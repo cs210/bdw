@@ -105,28 +105,11 @@
     _GMViewController = [[GoogleMapsViewController alloc] init];
     [_GMViewController viewDidLoad];
     
-#ifdef SPLITSCREENWITHDRONE
-    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
-#else
     _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
-#endif
-    
-    
-#ifdef SPLITSCREENWITHDRONE
-    _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
-    _cameraFeed.view.frame = CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height / 2 );
-    _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 2)];
-    _dummyTouchView.backgroundColor = [UIColor clearColor];
-    
-    [self.view addSubview:_cameraFeed.view];
-    [self.view addSubview:_dummyTouchView];
-    
-#else
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     _cameraFeed.view.frame = CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height );
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
-#endif
     
     GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
     _GMViewController.googleMapView.camera = pos;
@@ -301,11 +284,8 @@
 
     
     //Time to remove the touch view and the camera view and add the new view
-#ifdef SPLITSCREENWITHDRONE
-#else
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
-#endif
     
 }
 
