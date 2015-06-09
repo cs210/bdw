@@ -87,7 +87,7 @@ typedef enum
 
 -(void) findParkingClicked{
     [speechController stopListening];
-  
+
     // Create a new view controller for the aerial view controller
     AerialViewController * mapController = [[AerialViewController alloc] init];
     [self.navigationController pushViewController:mapController animated:YES];

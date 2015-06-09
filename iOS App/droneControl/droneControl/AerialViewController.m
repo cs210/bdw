@@ -235,7 +235,6 @@
                 
             }
             [self gotoGoogleMaps:startingLocation destinationLocation:destinationLocation];
-            // "cancel" or other: do nothing / go back to homepage?
         }
     }
 }
@@ -248,22 +247,9 @@
     marker.title = @"Hello World";
     marker.map = _GMViewController.googleMapView;
     marker.icon = [UIImage imageNamed:@"car_big.png"];
-    
-    CLLocation * myLocation = _GMViewController.googleMapView.myLocation;
-    GMSCameraPosition *currentLocation = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
-                                                              longitude:myLocation.coordinate.longitude
-                                                                   zoom:19];
-    
-    [_GMViewController.googleMapView setCamera:currentLocation];
-    
-    [self.view addSubview:_GMViewController.googleMapView];
     [self goToNavigation:spot];
 
-    
-    //Time to remove the touch view and the camera view and add the new view
-    [_dummyTouchView removeFromSuperview];
-    [_cameraFeed.view removeFromSuperview];
-    
+
 }
 
 
