@@ -104,23 +104,11 @@
     _firstLocationUpdate = NO;
     _GMViewController = [[GoogleMapsViewController alloc] init];
     [_GMViewController viewDidLoad];
-#ifdef USING_GMAPS
     
 #ifdef SPLITSCREENWITHDRONE
     CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
 #else
     _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
-#endif
-    
-#else
-    
-#ifdef SPLITSCREENWITHDRONE
-    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
-    _mapView = [[MKMapView alloc] initWithFrame:mapFrame];
-#else
-    _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
-#endif
-    _mapView.delegate = self;
 #endif
     
     
@@ -140,21 +128,10 @@
     _dummyTouchView.backgroundColor = [UIColor clearColor];
 #endif
     
-#ifdef USING_GMAPS
     GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
     _GMViewController.googleMapView.camera = pos;
     [self.view addSubview:_GMViewController.googleMapView];
-    
-#else
-    
-    [self.view addSubview:_mapView];
-    _mapView.showsUserLocation = YES;
-    
-    CLLocationCoordinate2D noLocation;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 1000, 1000);
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-    [_mapView setRegion:adjustedRegion animated:YES];
-#endif
+
 #ifdef MAP_POPOVER
     CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self addChildViewController:_GMViewController];
@@ -246,9 +223,7 @@
         NSLog(googleMapsString);
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:googleMapsString]];
-    } else {
-        NSLog(@"Can't use comgooglemaps://");
-        
+    } else {        
         NSString *urlString = [NSString stringWithFormat:
                                @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
                                @"https://maps.googleapis.com/maps/api/directions/json",
@@ -309,7 +284,6 @@
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
     
-#ifdef USING_GMAPS
     GMSMarker *marker = [GMSMarker markerWithPosition:spot];
     marker.title = @"Hello World";
     marker.map = _GMViewController.googleMapView;
@@ -324,21 +298,7 @@
     
     [self.view addSubview:_GMViewController.googleMapView];
     [self goToNavigation:spot];
-#else
-    CLLocationCoordinate2D noLocation;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 10, 10);
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-    [_mapView setRegion:adjustedRegion animated:YES];
-    _nextAnnotationIsSpot = YES;
-    
-    MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
-    newAnnotation.coordinate = spot;
-    [_mapView addAnnotation:newAnnotation];
-    [_mapView selectAnnotation:newAnnotation animated:YES];
-    newAnnotation.title = @"Selected spot";
-    
-    [self.view addSubview:_mapView];
-#endif
+
     
     //Time to remove the touch view and the camera view and add the new view
 #ifdef SPLITSCREENWITHDRONE
@@ -351,11 +311,7 @@
 
 
 -(void) showMap{
-#ifdef USING_GMAPS
     [self.view addSubview:_GMViewController.googleMapView];
-#else
-    [self.view addSubview:_mapView];
-#endif
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
     
