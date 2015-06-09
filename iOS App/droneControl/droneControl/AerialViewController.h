@@ -99,5 +99,18 @@
  */
 -(void) showMap;
 
+
+/*!
+ * @discussion Cancel navigation to a selected parking spot.
+ */
+-(void) cancelNavigation;
+
+/*!
+ * @discussion Create a button that, when clicked, cancels navigation to the selected parking spot.
+ * @return A UIButton that, when clicked, cancels navigation to the selected parking spot. 
+ */
+- (UIButton*) cancelNavigationButton;
+
+
 @end
 

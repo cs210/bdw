@@ -139,6 +139,8 @@ static NSString * OpenGoogleMapsApp = @"comgooglemaps://";
             singleLine.strokeColor = [UIColor greenColor];
             singleLine.map = _GMViewController.googleMapView;
         }
+        [_GMViewController.googleMapView addSubview:[self cancelNavigationButton]];
+
     }
 }
 
@@ -224,6 +226,36 @@ static NSString * OpenGoogleMapsApp = @"comgooglemaps://";
     
     [self.view addSubview:_parkingLotView];
     [self.view addSubview:_dummyTouchView];
+}
+
+-(void) cancelNavigation{
+    [self viewDidLoad];
+}
+
+- (UIButton*) cancelNavigationButton{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(cancelNavigation)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [button setTitle:@"Cancel Navigation" forState:UIControlStateNormal];
+    
+    double x = _GMViewController.googleMapView.frame.origin.x + 20.0;
+    double y = _GMViewController.googleMapView.frame.origin.y + 50.0;
+
+    double height = 40.0;
+    double width = 300.0;
+    button.titleLabel.font = [UIFont systemFontOfSize:30];
+    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
+    button.frame = CGRectMake(x,y,width,height);
+    button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    return button;
 }
 
 @end
