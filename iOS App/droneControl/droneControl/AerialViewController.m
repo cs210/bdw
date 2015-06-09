@@ -35,7 +35,6 @@
 {
     UIView * _dummyTouchView;
     DJICameraViewController* _cameraFeed;
-    UIButton * _findClosestParkingButton;
     bool _nextAnnotationIsSpot;
     bool _firstLocationUpdate;
     UIImageView *_parkingLotView;
@@ -159,46 +158,6 @@
 }
 
 
-- (UIButton*) findClosestParkingButton{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-#ifdef DRONE_GPS_TEST
-    [button addTarget:self
-               action:@selector(testGPS)
-     forControlEvents:UIControlEventTouchUpInside];
-#elif PARKING_SPOT_FILL
-    [button addTarget:self
-               action:@selector(parkingSpotFill)
-     forControlEvents:UIControlEventTouchUpInside];
-#else
-    [button addTarget:self
-               action:@selector(launchDrone)
-     forControlEvents:UIControlEventTouchUpInside];
-#endif
-    
-    [button setTitle:@"Top view" forState:UIControlStateNormal];
-    
-#ifdef USING_GMAPS
-    double x = _GMViewController.googleMapView.frame.origin.x + 20.0;
-    double y = _GMViewController.googleMapView.frame.origin.y + 50.0;
-#else
-    double x = _mapView.frame.origin.x + 20.0;
-    double y = _mapView.frame.origin.y + 50.0;
-#endif
-    double height = 40.0;
-    double width = 300.0;
-    button.titleLabel.font = [UIFont systemFontOfSize:30];
-  
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [ button.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    button.layer.cornerRadius = 10;
-    button.clipsToBounds = YES;
-    button.frame = CGRectMake(x,y,width,height);
-    button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    return button;
-}
-
 
 
 - (void)viewDidLoad {
@@ -235,8 +194,6 @@
 #endif
     
     
-    _findClosestParkingButton = [self findClosestParkingButton];
-    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
 #ifdef SPLITSCREENWITHDRONE
     _cameraFeed = [[DJICameraViewController alloc] initWithNibName:@"DJICameraViewController" bundle:nil];
     _cameraFeed.view.frame = CGRectMake(0,[[UIScreen mainScreen] bounds].size.height / 2,[[UIScreen mainScreen] bounds].size.width , [[UIScreen mainScreen] bounds].size.height / 2 );
@@ -254,22 +211,12 @@
 #endif
 
 #ifdef USING_GMAPS
-    
-    #ifdef SPLITSCREENWITHDRONE
-    #else
-    //[_GMViewController.googleMapView addSubview:_findClosestParkingButton];
-    #endif
-    
-    GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
+        GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
     _GMViewController.googleMapView.camera = pos;
     [self.view addSubview:_GMViewController.googleMapView];
 
 #else
     
-    #ifdef SPLITSCREENWITHDRONE
-    #else
-    //[_mapView addSubview:_findClosestParkingButton];
-    #endif
     [self.view addSubview:_mapView];
     _mapView.showsUserLocation = YES;
     
@@ -297,14 +244,6 @@
     [self.view addSubview:_GMViewController.googleMapView];
     
     [_GMViewController didMoveToParentViewController:self];
-    //[_findClosestParkingButton removeFromSuperview];
-    //[_findClosestParkingButton setTitle:@"Hide Map" forState:UIControlStateNormal];
-    /*UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController];
-     mapPopover.contentViewController = _GMViewController;
-     CGRect mapFrame = _findClosestParkingButton.bounds;
-     mapFrame.origin.y += _findClosestParkingButton.frame.origin.y;
-     [mapPopover presentPopoverFromRect:mapFrame
-     inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];*/
 #endif
     
     self.splitViewController.delegate = self;
@@ -488,14 +427,6 @@
                 singleLine.strokeColor = [UIColor greenColor];
                 singleLine.map = _GMViewController.googleMapView;
             }
-            /*if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
-                NSString * gMapString = [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",myLocation.latitude,myLocation.longitude,_parkingSpace.latitude,_parkingSpace.longitude];
-                NSLog(@"to google maps: %@",gMapString);
-                [[UIApplication sharedApplication] openURL: [NSURL URLWithString:gMapString]];
-            } else {
-                NSLog(@"Can't use comgooglemaps://");
-            }*/
-            [self.view addSubview: _findClosestParkingButton];
             return;
 #else
             MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
@@ -522,46 +453,6 @@
     }
 }
 
-
--(void)launchDrone{
-#ifdef USING_GMAPS
-    [_GMViewController.googleMapView removeFromSuperview];
-#else
-    [_mapView removeFromSuperview];
-#endif
-    [self.view addSubview:_dummyTouchView];
-    [self.view addSubview:_cameraFeed.view];
-    _shouldShowMaster = NO;
-    [self hideMaster];
-#ifdef MAP_POPOVER
-    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-    [self addChildViewController:_GMViewController];
-    _GMViewController.googleMapView.frame = mapFrame;
-    
-    CLLocation * userLocation = [[LocationManager sharedManager] getUserLocation];
-    CLLocationCoordinate2D userLocationCoordinate = userLocation.coordinate;
-
-    
-    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude: userLocationCoordinate.latitude                                                                longitude:userLocationCoordinate.longitude
-                                                                   zoom:19];
-    
-    [_GMViewController.googleMapView setCamera:stanford];
-    
-    [self.view addSubview:_dummyTouchView];
-    [self.view addSubview:_cameraFeed.view];
-    [self.view addSubview:_GMViewController.googleMapView];
-
-    [_GMViewController didMoveToParentViewController:self];
-    [_findClosestParkingButton removeFromSuperview];
-    //[_findClosestParkingButton setTitle:@"Hide Map" forState:UIControlStateNormal];
-    /*UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController];
-    mapPopover.contentViewController = _GMViewController;
-    CGRect mapFrame = _findClosestParkingButton.bounds;
-    mapFrame.origin.y += _findClosestParkingButton.frame.origin.y;
-    [mapPopover presentPopoverFromRect:mapFrame
-                                inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];*/
-#endif
-}
 - (void)hideMaster  {
     NSLog(@"hide-unhide master");
     UISplitViewController* spv = self.splitViewController;
@@ -614,8 +505,6 @@
     [_cameraFeed.view removeFromSuperview];
 #endif
   
-    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
-    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 }
 
 
@@ -628,9 +517,6 @@
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
     
-    [_findClosestParkingButton setTitle:@"Drone view" forState:UIControlStateNormal];
-    _findClosestParkingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-
 }
 
 @end
