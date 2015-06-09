@@ -26,24 +26,6 @@
   UIView * _dummyTouchView;
 }
 
-/*CoordinatePointTuple * createTuple(float x, float y, float xzRatio, float yzRatio)
-{
-  CoordinatePointTuple * dummy = [[CoordinatePointTuple alloc] init];
-  dummy.xPixelRatio = x / (2192 * 2.0);
-  dummy.yPixelRatio = y / (1233 * 2.0);
-  dummy.xzRatio = xzRatio;
-  dummy.yzRatio = yzRatio;
-  return dummy;
-}
-
-float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRatio)
-{
-  float xDist = currTuple.xPixelRatio - xRatio;
-  float yDist = currTuple.yPixelRatio - yRatio;
-  
-  return sqrt(powf(xDist, 2) + powf(yDist, 2));
-}*/
-
 -(void) publicViewWillAppearMethod:(BOOL) animated
 {
         [self viewWillAppear:animated];
@@ -55,9 +37,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [super viewDidLoad];
     switch_to_usb = false;
     
-    //_drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
-    //_camera = _drone.camera;
-  
     _droneHelper = [DJIDroneHelper sharedHelper];
     _camera = _droneHelper.drone.camera;
     _camera.delegate = self;
@@ -68,7 +47,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     _fetchingMedias = NO;
   
     _droneHelper.drone.gimbal.delegate = self;
-   // _drone.gimbal.delegate = self;
     
     [_droneHelper onOpenButtonClicked];
     
@@ -77,9 +55,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [self performSelector:@selector(gimball_reset) withObject:nil afterDelay:5];
   
     self.view.userInteractionEnabled = NO;
-    
-#ifdef SPLITSCREENWITHDRONE
-#else
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
                action:@selector(goToMap)
@@ -100,7 +76,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     button.backgroundColor = [UIColor colorWithRed:46.00/255.0f green:155.0f/255.0f blue:218.0f/255.0f alpha:1.0f];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:button];
-#endif
 
     
     UILabel *label = [[UILabel alloc] init];
@@ -221,10 +196,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     [_camera stopCameraSystemStateUpdates];
     [[VideoPreviewer instance] setView:nil];
     
-    //gimabl
     [_droneHelper.drone.camera stopCameraSystemStateUpdates];
-    //[_drone disconnectToDrone];
-    //[_drone destroy];
+
 }
 
 
@@ -468,7 +441,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             return;
         }
     } else {
-       // NSLog(@":::::::: CAMERA MODE ::::::::::");
         if (!systemState.isTimeSynced) {
             [_camera syncTime:nil];
         }

@@ -60,7 +60,6 @@
 {
   // Here we now have access to all GPS information
   _lastKnownState = state;
-   // NSLog(@"didUpdateSystemState , %f",self getDroneYaw]);
 }
 
 -(void) droneTask:(id)sender
@@ -69,8 +68,6 @@
     DJIGroundStationTask* newTask = [DJIGroundStationTask newTask];
     
     if (CLLocationCoordinate2DIsValid(_homeLocation)) {
-        NSLog(@"HOME LOCATION EXISTS");
-        
         CLLocationCoordinate2D point1 = CLLocationCoordinate2DMake(_homeLocation.latitude, _homeLocation.longitude);
         
         DJIGroundStationWaypoint* wp1 = [[DJIGroundStationWaypoint alloc] initWithCoordinate:point1];
@@ -99,18 +96,15 @@
 -(float) getDroneHeight
 {
     // FOR DEBUGGING
-  //return 100;
     if (_lastFlyingInfo.altitude < 0.00000001)
         return 100.0;
     else
         return _lastFlyingInfo.altitude;
-  //return _lastKnownState.altitude;
 }
 
 // at startup: -pi
 -(float) getDroneYaw
 {
-  // Need to combo that shit with the camera yaw
     float pi = 3.1415926535;
     float outt = RADIAN(_lastFlyingInfo.attitude.yaw) + pi;
     if (outt < -pi){

@@ -574,10 +574,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     
     if (aerialController)
     {
-#ifdef PARKING_SPOT_FILL
-        [aerialController highlightTouchedUserSpot:tapLocation.x withY:tapLocation.y];
-        return;
-#endif
         float droneAltitude = _droneHelper.getDroneHeight;
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
         float droneYaw = _droneHelper.getDroneYaw;
@@ -593,7 +589,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         float xOffset = droneAltitude * nearestIndex.xzRatio;
         float yOffset = droneAltitude * nearestIndex.yzRatio;
         
-        // if wrong multiply by -1
         float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw); // now x is something different than original vector x
         float newY = xOffset * sin(droneYaw) + yOffset * cos(droneYaw);
         
@@ -601,27 +596,10 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         
         CLLocationCoordinate2D clickLocation = droneGPS;
         
-        //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
         clickLocation.longitude = droneGPS.longitude -  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
 
-        //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
-        #ifdef DRONE_GPS_TEST
-            if (clickLocation.latitude < droneGPS.latitude){ // should be this on
-                NSLog(@"clickLat < droneLat (correct)");
-            } else {
-                NSLog(@"clickLat > droneLat (wrong)");
-            }
-            if (clickLocation.longitude < droneGPS.longitude){ // should be this on
-                NSLog(@"clickLong < droneLong (correct)");
-            } else {
-                NSLog(@"clickLong > droneLong (wrong)");
-            }
-            NSLog(@"DroneGPS: %f, %f",droneGPS.latitude, droneGPS.longitude);
-            NSLog(@"ClickLoc: %f, %f",clickLocation.latitude, clickLocation.longitude);
-        #endif
-        
-        
+              
         [aerialController userDidClickOnSpot:clickLocation];
         
     }
