@@ -20,7 +20,7 @@
 //#define SPLITSCREENWITHDRONE 1
 #define MAP_POPOVER 1
 // url e.g. https://maps.googleapis.com/maps/api/directions/json?origin=37.434025,%20-122.172418&destination=37.434872,%20-122.173067&region=com&key=AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w
-@interface AerialViewController : UIViewController <DroneDelegate,  MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
+@interface AerialViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UISplitViewControllerDelegate>
 
 #ifdef USING_GMAPS
 @property (nonatomic, strong) GoogleMapsViewController *GMViewController;
@@ -36,17 +36,8 @@
 @property (copy, nonatomic) NSString *hygieneResult;
 @property (copy, nonatomic) NSString *currentElement;
 
-
-// update the location of the drone icon on the map
-- (void) updateDroneLocation: (CLLocationCoordinate2D *)location;
-
-// receive and analyze an image from the drone. This may cause goToNavigation to be called.
-- (void) receiveImage: (UIImage *)image;
-
 // open up Apple Maps navigation to destination. 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination;
-
--(void) showParkingLotConfirmationWithTitle:(NSString *)title;
 
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot;
 

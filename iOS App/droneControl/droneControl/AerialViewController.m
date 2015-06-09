@@ -187,13 +187,6 @@
 }
 
 
--(void) findParkingClicked:(UIButton *) sender
-{
-    //Perform segue here manually to table view controller
-    [self performSegueWithIdentifier:@"NearbyParkingSegue" sender:self];
-}
-
-
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
