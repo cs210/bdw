@@ -2,79 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="igv-8L-uNG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Aerial View Controller-->
-        <scene sceneID="NSd-Ma-x62">
-            <objects>
-                <viewController id="gab-cC-B2M" customClass="AerialViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q44-SM-jKw"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZeN-mb-lnJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OD4-I0-jD9">
-                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="meh-tz-MFr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d5U-t2-2rN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1066.875" y="2516"/>
-        </scene>
-        <!--Nearby Parking lots-->
-        <scene sceneID="qqW-3T-Rkh">
-            <objects>
-                <tableViewController id="NJM-tr-yvI" customClass="NearbyParkingTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iPi-8L-Q0I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Parking lot" id="ahh-BQ-tcX" customClass="ParkingLotTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahh-BQ-tcX" id="Kf3-Hj-01y">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am3-vS-Ln2">
-                                            <rect key="frame" x="8" y="14" width="304" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-E3-RVk">
-                                            <rect key="frame" x="8" y="13" width="298" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="top" secondItem="Kf3-Hj-01y" secondAttribute="topMargin" constant="5" id="6Fa-Tx-0jb"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4Ng-E3-RVk" secondAttribute="trailing" constant="6" id="L4G-Mu-4ZT"/>
-                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="top" secondItem="Kf3-Hj-01y" secondAttribute="topMargin" constant="5" id="NWb-V0-eWX"/>
-                                        <constraint firstItem="4Ng-E3-RVk" firstAttribute="leading" secondItem="Kf3-Hj-01y" secondAttribute="leadingMargin" id="nce-5Y-lEp"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="distanceLabel" destination="4Ng-E3-RVk" id="xdp-vJ-bwk"/>
-                                    <outlet property="lotNameLabel" destination="Am3-vS-Ln2" id="WF2-kC-JIv"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="NJM-tr-yvI" id="KAQ-k6-T9V"/>
-                            <outlet property="delegate" destination="NJM-tr-yvI" id="nOC-HS-aIT"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Nearby Parking lots" id="SeG-oG-cqy"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eMM-0i-kxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2392.5" y="1452"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Psq-nG-fUp">
             <objects>
@@ -109,40 +38,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-a8-oZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85.5" y="1476"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="mtF-X3-4QF">
-            <objects>
-                <splitViewController id="p5u-vl-xho" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="hlH-g0-wzZ"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <connections>
-                        <segue destination="gab-cC-B2M" kind="relationship" relationship="detailViewController" id="klo-Ja-2NY"/>
-                        <segue destination="MQO-zU-GwU" kind="relationship" relationship="masterViewController" id="Af2-8s-wRf"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gFM-Wr-lli" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1067" y="1452"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="OnC-4k-Um2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MQO-zU-GwU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RQ1-GT-dr2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="NJM-tr-yvI" kind="relationship" relationship="rootViewController" id="hVC-ch-9J5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JR5-6J-QJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1820.25" y="1452"/>
         </scene>
     </scenes>
 </document>

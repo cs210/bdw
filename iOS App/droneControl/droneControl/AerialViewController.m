@@ -5,26 +5,12 @@
 //  Created by Michael Weingert on 2015-03-16.
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
-// parkwhiz key: 62d882d8cfe5680004fa849286b6ce20
-/*This is going to be a map interface
- NSMutableArray* lots = [ParkingLotFinder parkingLotsNearby:crnLoc.coordinate radius:500];
- for (ParkingLot *parkingLot in lots){
- MKPointAnnotation *lotAnnotation = [[MKPointAnnotation alloc] init];
- lotAnnotation.coordinate = parkingLot->coordinate;
- [_mapView addAnnotation:lotAnnotation];
- [_mapView selectAnnotation:lotAnnotation animated:YES];
- lotAnnotation.title = @"Parking spot";
- UIImage *image1 = [UIImage imageNamed:@"parking_spot_icon.png"];
- [[_mapView viewForAnnotation:lotAnnotation] setImage:image1];
- }
- 
- */
+
 
 #import "AerialViewController.h"
 #import "ParkingLotFinder.h"
-#import "SpotConfirmViewController.h"
 #import "DJICameraViewController.h"
-#import "NearbyParkingTableViewController.h"
+
 #import "TransparentTouchView.h"
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
