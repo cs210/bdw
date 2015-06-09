@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TransparentTouchView.h"
+#import "CoordinatePointTuple.h"
+#import "AerialViewController.h"
+#import "DJIDroneHelper.h"
+#import "LocationManager.h"
 
 @class AerialViewController;
 
 @interface TransparentTouchView : UIView
 
 @property (nonatomic, readwrite, weak) AerialViewController * delegate;
+@property NSArray * coordinatePointTuples;
+@property DJIDroneHelper * droneHelper;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 

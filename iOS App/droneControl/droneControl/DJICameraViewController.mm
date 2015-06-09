@@ -6,25 +6,11 @@
 //  Copyright (c) 2014年 DJI. All rights reserved.
 //
 
-#import "DJICameraViewController.h"
-#import "VideoPreviewer.h"
-#import "DJIDroneHelper.h"
-#import <DJISDK/DJISDK.h>
-#import "CoordinatePointTuple.h"
 #import "AerialViewController.h"
 #import "TransparentTouchView.h"
-#import "LocationManager.h"
 
 @implementation DJICameraViewController
-{
-    BOOL _gimbalAttitudeUpdateFlag;
-    BOOL switch_to_usb;
-    DJIDroneHelper *_droneHelper;
-  
-  NSArray * _coordinatePointTuples;
-  
-  UIView * _dummyTouchView;
-}
+
 
 -(void) publicViewWillAppearMethod:(BOOL) animated
 {
@@ -35,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    switch_to_usb = false;
+    _switch_to_usb = false;
     
     _droneHelper = [DJIDroneHelper sharedHelper];
     _camera = _droneHelper.drone.camera;
@@ -203,7 +189,7 @@
 
 -(void) updateMedias
 {
-    switch_to_usb = true;
+    _switch_to_usb = true;
     NSLog(@"Start Fetch Medias");
 }
 
@@ -226,7 +212,7 @@
 
 -(void) switch_back_to_camera
 {
-    switch_to_usb = false;
+    _switch_to_usb = false;
 }
 
 
@@ -421,7 +407,7 @@
 
 -(void) camera:(DJICamera*)camera didUpdateSystemState:(DJICameraSystemState*)systemState
 {
-    if (switch_to_usb) {
+    if (_switch_to_usb) {
         NSLog(@":::::::: USB MODE ::::::::");
         if (!systemState.isUSBMode) {
             NSLog(@"Set USB Mode");

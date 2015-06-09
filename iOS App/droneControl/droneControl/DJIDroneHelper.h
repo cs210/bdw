@@ -12,6 +12,11 @@
 @interface DJIDroneHelper : NSObject<DJIMainControllerDelegate, GroundStationDelegate>
 
 @property (strong, readwrite, nonatomic) DJIDrone * drone;
+@property DJIMCSystemState *lastKnownState;
+@property NSObject<DJIGroundStation>* groundStation;
+@property CLLocationCoordinate2D homeLocation;
+@property DJIGroundStationFlyingInfo * lastFlyingInfo;
+
 
 + (instancetype)sharedHelper;
 

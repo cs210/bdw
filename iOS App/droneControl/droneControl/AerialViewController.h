@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 #import "GoogleMapsViewController.h"
+#import "DJICameraViewController.h"
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>

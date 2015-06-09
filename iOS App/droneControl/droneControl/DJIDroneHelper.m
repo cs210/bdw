@@ -7,21 +7,11 @@
 //
 
 #import "DJIDroneHelper.h"
-#import <DJISDK/DJISDK.h>
-//#import <DJISDK/DJIGroundStation.h>
+
 #define RADIAN(x) ((x)*M_PI/180.0)
 
 @implementation DJIDroneHelper
-{
-  DJIMCSystemState *_lastKnownState;
-  
-  DJIDrone *_drone;
-  
-  NSObject<DJIGroundStation>* _groundStation;
-    CLLocationCoordinate2D _homeLocation;
-  
-  DJIGroundStationFlyingInfo * _lastFlyingInfo;
-}
+
 
 + (id)sharedHelper {
   static DJIDroneHelper *sharedDroneHelper = nil;

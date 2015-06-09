@@ -7,16 +7,9 @@
 //
 
 #import "TransparentTouchView.h"
-#import "CoordinatePointTuple.h"
-#import "AerialViewController.h"
-#import "DJIDroneHelper.h"
-#import "LocationManager.h"
 
 @implementation TransparentTouchView
-{
-    NSArray * _coordinatePointTuples;
-    DJIDroneHelper *_droneHelper;
-}
+
 
 CoordinatePointTuple * createTuple(float x, float y, float yzRatio, float xzRatio)
 {
