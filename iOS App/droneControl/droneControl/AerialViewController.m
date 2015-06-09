@@ -232,7 +232,53 @@
     
 }
 
-
+- (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation{
+    
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        NSString *googleMapsString = [NSString stringWithFormat:
+                                      @"%@?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                                      @"comgooglemaps://",
+                                      startingLocation.latitude,
+                                      startingLocation.longitude,
+                                      destinationLocation.latitude,
+                                      destinationLocation.longitude];
+        NSLog(googleMapsString);
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:googleMapsString]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+        
+        NSString *urlString = [NSString stringWithFormat:
+                               @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
+                               @"https://maps.googleapis.com/maps/api/directions/json",
+                               startingLocation.latitude,
+                               startingLocation.longitude,
+                               destinationLocation.latitude,
+                               destinationLocation.longitude,
+                               @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
+        NSURL *directionsURL = [NSURL URLWithString:urlString];
+        
+        //Build the Request
+        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:directionsURL];
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+        
+        //Get the Result of Request
+        if (!error) {
+            //NSString *response = [request responseString];
+            //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
+            NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+            GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+            singleLine.strokeWidth = 7;
+            singleLine.strokeColor = [UIColor greenColor];
+            singleLine.map = _GMViewController.googleMapView;
+        }
+        return;
+    }
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
@@ -253,75 +299,10 @@
                 myLocation.longitude = -122.173391;
                 
             }
-#ifdef USING_GMAPS
-            
-            if ([[UIApplication sharedApplication] canOpenURL:
-                 [NSURL URLWithString:@"comgooglemaps://"]]) {
-                NSString *googleMapsString = [NSString stringWithFormat:
-                                       @"%@?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
-                                       @"comgooglemaps://",
-                                       startingLocation.latitude,
-                                       startingLocation.longitude,
-                                       destinationLocation.latitude,
-                                       destinationLocation.longitude];
-                NSLog(googleMapsString);
-                [[UIApplication sharedApplication] openURL:
-                 [NSURL URLWithString:googleMapsString]];
-            } else {
-                NSLog(@"Can't use comgooglemaps://");
-                
-                NSString *urlString = [NSString stringWithFormat:
-                                       @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
-                                       @"https://maps.googleapis.com/maps/api/directions/json",
-                                       startingLocation.latitude,
-                                       startingLocation.longitude,
-                                       destinationLocation.latitude,
-                                       destinationLocation.longitude,
-                                       @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
-                NSURL *directionsURL = [NSURL URLWithString:urlString];
-                
-                //Build the Request
-                NSURLRequest * urlRequest = [NSURLRequest requestWithURL:directionsURL];
-                NSURLResponse * response = nil;
-                NSError * error = nil;
-                NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-                
-                //Get the Result of Request
-                if (!error) {
-                    //NSString *response = [request responseString];
-                    //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
-                    NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                    GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
-                    GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-                    singleLine.strokeWidth = 7;
-                    singleLine.strokeColor = [UIColor greenColor];
-                    singleLine.map = _GMViewController.googleMapView;
-                }
-                return;
-            }
-#else
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
-                                                           addressDictionary:nil];
-            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-            [mapItem setName:@"Stanford"];
-            MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-            [request setSource:[MKMapItem mapItemForCurrentLocation]];
-            [request setDestination:mapItem];
-            [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
-            [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
-            MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-            [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-                if (!error) {
-                    for(MKRoute *route in [response routes]) {
-                        [_mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
-                    }
-                }
-            }];
+            [self gotoGoogleMaps:startingLocation destinationLocation:destinationLocation];
+            // "cancel" or other: do nothing / go back to homepage?
         }
-#endif
-        // "cancel" or other: do nothing / go back to homepage?
     }
-}
 }
 
 
