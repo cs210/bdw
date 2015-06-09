@@ -11,10 +11,8 @@
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */; };
 		4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */; };
-		466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
-		46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AA69F01ADBB9E9009E0583 /* DroneController.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -99,13 +97,9 @@
 		4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageViewController.m; sourceTree = "<group>"; };
 		4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotAnnotation.m; sourceTree = "<group>"; };
 		4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingSpotAnnotation.h; sourceTree = "<group>"; };
-		466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotTableViewCell.m; sourceTree = "<group>"; };
-		466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotTableViewCell.h; sourceTree = "<group>"; };
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
-		46AA69EF1ADBB9D4009E0583 /* DroneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneController.h; sourceTree = "<group>"; };
-		46AA69F01ADBB9E9009E0583 /* DroneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneController.m; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -555,8 +549,6 @@
 				A6F4EF311AAD17D500C81065 /* Main.storyboard */,
 				4641E43F1AFC6D2A00E2FCC8 /* IntroPageViewController.h */,
 				4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */,
-				466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */,
-				466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */,
 				A6F4EF341AAD17D500C81065 /* Images.xcassets */,
 				4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */,
 				4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */,
@@ -564,8 +556,6 @@
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
-				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
-				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 				A66C6DEB1B116D24008FCE23 /* LocationManager.h */,
 				A66C6DEC1B116D24008FCE23 /* LocationManager.m */,
 			);
@@ -918,8 +908,6 @@
 				A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */,
 				A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */,
 				A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */,
-				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
-				466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */,
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */,

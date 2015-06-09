@@ -502,7 +502,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
 {
     if (!_coordinatePointTuples)
     {
-        //LOL What am I doing with my life
         [self viewDidLoad];
     }
     
@@ -525,18 +524,14 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         float yOffset = droneAltitude * nearestIndex.yzRatio;
         
         float droneYaw = (yaw+180) * M_PI / 180;
-        NSLog(@"droneYaw: %f",droneYaw);
-        // if wrong multiply by -1
-        float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw); // now x is something different than original vector x
+        float newX = xOffset * cos(droneYaw) - yOffset * sin(droneYaw);
         float newY = xOffset * sin(droneYaw) + yOffset * cos(droneYaw);
         
         //Now that we have offsets, we need to rotate according to the yaw of the drone
         
         CLLocationCoordinate2D clickLocation = droneGPS;
         
-        //clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
-        //clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);
         clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
         [aerialController userDidClickOnSpot:clickLocation];
     }
@@ -593,16 +588,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             droneGPS.latitude = 37.431184;
             droneGPS.longitude = -122.173391;
         }
-        // test dronealtitude units
-        // yaw: clockwise or counterclick
-        // Get height of the drone
-        
-        // Hard code the altitude here for now
-        
-        if (droneAltitude == 0){
-            droneAltitude = 10; // FOR TESTING
-        }
-
         
         // Multiply the height of the drone by the xRatio and yRatio of the point
         float xOffset = droneAltitude * nearestIndex.xzRatio;
@@ -636,64 +621,12 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
             NSLog(@"ClickLoc: %f, %f",clickLocation.latitude, clickLocation.longitude);
         #endif
         
-        // true click location (gates parking lot) is approx 37.430767, -122.173272 (lower lat, same or slightly lower long)
         
         [aerialController userDidClickOnSpot:clickLocation];
         
     }
     
-    // Get GPS of the drone
-    /*CLLocationCoordinate2D droneGPS = _droneHelper.getDroneGPS;
-     
-     // Get height of the drone
-     float droneAltitude = _droneHelper.getDroneHeight;
-     
-     // Multiply the height of the drone by the xRatio and yRatio of the point
-     float xOffset = droneAltitude * nearestIndex.xzRatio;
-     float yOffset = droneAltitude * nearestIndex.yzRatio;
-     
-     CLLocationCoordinate2D clickLocation = droneGPS;
-     
-     clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(yOffset/6378137.0);
-     clickLocation.longitude = droneGPS.longitude +  (180/3.1415926)*(xOffset/6378137.0)/cos(droneGPS.latitude);*/
-    
-    // Add marker on map where user clicked.
-    // Ugh stupid controller shit.
-    
-    //AerialViewController * aerialController = [self.view.superview nextResponder];
-    //[aerialController userDidClickOnSpot:clickLocation];
-    
-    
-    
-    /*UINavigationController * navCont = self.navigationController;
-     for (UIViewController * controller in [navCont viewControllers])
-     {
-     AerialViewController * aerialVC = (AerialViewController *) controller;
-     if (aerialVC)
-     {
-     [aerialVC userDidClickOnSpot:clickLocation];
-     }
-     }*/
 }
-/*- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
- {
- NSLog(@"Touches moved");
- }
- - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
- {
- NSLog(@"Touches ended");
- }
- - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
- {
- NSLog(@"Touches cancelled");
- }*/
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 @end

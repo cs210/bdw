@@ -9,6 +9,7 @@
 
 static NSString *const RemoteApplicationStateKeyPath = @"remoteApplicationState";
 static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjour_service_name";
+static NSString *const DJIappKey = @"07c6b3c3b6a76db64209d4ce";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -17,11 +18,7 @@ static NSString *const LoggerHostBonjourServiceNameKeyPath = @"logger_host_bonjo
     [GMSServices provideAPIKey:@"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
     
     //setup drone integration
-    NSString* appKey = @"07c6b3c3b6a76db64209d4ce";
-    [DJIAppManager registerApp:appKey withDelegate:self];
-    
-    //Start up the location manager
-    [[LocationManager sharedManager] init];
+    [DJIAppManager registerApp:DJIappKey withDelegate:self];
     
     return YES;
 }

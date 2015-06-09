@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 #import "GoogleMapsViewController.h"
-#import "DroneController.h"
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
@@ -21,7 +20,6 @@
 
 @property (nonatomic, strong) GoogleMapsViewController *GMViewController;
 @property (nonatomic, strong) MKPointAnnotation *droneAnnotation;
-@property (nonatomic, strong) DroneController* drone;
 @property (nonatomic) CLLocationCoordinate2D parkingSpace; // only defined if a parking space has been found.
 @property (retain, nonatomic) NSMutableData *apiReturnXMLData;
 @property (nonatomic) NSInteger statusNbr;
