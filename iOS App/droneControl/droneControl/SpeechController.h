@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <OpenEars/OEEventsObserver.h>
 
+
 @protocol SpeechDelegate
 
 /*!
@@ -26,6 +27,11 @@
 
 @end
 
+/*!
+ @class SpeechController
+ @abstract A class to control all of the voice control
+ @discussion This class acts as a wrapper around a voice to text API. By instructing the class to listen for certain words, the program can react accordingly to voice commands. Initialize the class, set it up, and then call the 'start listening' function to begin to listen for keywords.
+ */
 @interface SpeechController : NSObject < OEEventsObserverDelegate >
 
 /*!
