@@ -47,7 +47,7 @@
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         _parkingSpace = destination;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot",@"View spot", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Parking spot found!" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Navigate to spot", nil];
         [alert show];
     }
 }
@@ -113,11 +113,8 @@
     
     GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
     _GMViewController.googleMapView.camera = pos;
-    [self.view addSubview:_GMViewController.googleMapView];
 
-#ifdef MAP_POPOVER
     CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-    [self addChildViewController:_GMViewController];
     _GMViewController.googleMapView.frame = mapFrame;
     
     CLLocation * userLocation = [[LocationManager sharedManager] getUserLocation];
@@ -128,15 +125,11 @@
                                                                    zoom:19];
     
     [_GMViewController.googleMapView setCamera:stanford];
-    
+
+    [self.view addSubview:_GMViewController.googleMapView];
     [self.view addSubview:_dummyTouchView];
     [self.view addSubview:_cameraFeed.view];
     [self.view addSubview:_GMViewController.googleMapView];
-    
-    [_GMViewController didMoveToParentViewController:self];
-#endif
-    
-    self.splitViewController.delegate = self;
     
     self.view.backgroundColor = [UIColor blackColor];
 }
@@ -273,11 +266,11 @@
     marker.icon = [UIImage imageNamed:@"car_big.png"];
     
     CLLocation * myLocation = _GMViewController.googleMapView.myLocation;
-    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
+    GMSCameraPosition *currentLocation = [GMSCameraPosition cameraWithLatitude:myLocation.coordinate.latitude
                                                               longitude:myLocation.coordinate.longitude
                                                                    zoom:19];
     
-    [_GMViewController.googleMapView setCamera:stanford];
+    [_GMViewController.googleMapView setCamera:currentLocation];
     
     [self.view addSubview:_GMViewController.googleMapView];
     [self goToNavigation:spot];
