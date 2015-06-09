@@ -7,9 +7,10 @@
 #define PI 3.14159265
 
 /**
- * For the given image img, starts at the given row and col and keeps
+ * @discussion For the given image img, starts at the given row and col and keeps
  * adding delta_r to the row and delta_c to the col until it reaches a
- * white pixel or the edge of the image. Returns the row and col of the
+ * white pixel or the edge of the image. 
+ * @return the row and col of the
  * last black pixel found.
  */
 pair<int, int> findEdge(const Mat& img, int row, int col,
@@ -26,11 +27,15 @@ pair<int, int> findEdge(const Mat& img, int row, int col,
 }
 
 /**
- * Given the image img and a given pixel's row and col, finds the
+ * @discussion Given the image img and a given pixel's row and col, finds the
  * parking space containing the pixel. It returns the vertices of a
  * polygon covering most of the space as a vector of points.
  *
  * Note: The returned points have xy-coordinates, not row-col.
+ * @return vertices of a polygon covering most of the space as a vector of points.
+ * @param an image
+ * @param a pixel's row
+ * @param a pixel's column
  */
 vector<Point> findSpace(const Mat& img, int row, int col) {
   int deltas[][2] = {
@@ -79,8 +84,11 @@ vector<Point> findSpace(const Mat& img, int row, int col) {
 }
 
 /**
- * Given a list of vertices (no wrap-around) and whether they are listed
+ * @discussion Given a list of vertices (no wrap-around) and whether they are listed
  * clockwise or counter-clockwise, returns the area of the polygon.
+ * @return the area of the polygon
+ * @param vertices of a polygon
+ * @param the order in which to traverse the points.
  */
 double polygonArea(const vector<Point>& vertices, bool clockwise) {
   vector<Point> points;
@@ -108,8 +116,10 @@ double polygonArea(const vector<Point>& vertices, bool clockwise) {
 }
 
 /**
- * Given a set of points, find the set of 4 points that form a quad
+ * @discussion Given a set of points, find the set of 4 points that form a quad
  * with the largest area and returns these.
+ * @return the set of 4 points that form a quadrilateral
+ * @param a set of points forming a polygon
  */
 vector<Point> findLargestPentagon(vector<Point> points) {
   int num_points = 4;
@@ -138,8 +148,10 @@ vector<Point> findLargestPentagon(vector<Point> points) {
 }
 
 /**
- * Given a list of points, find the smallest upright rectangle that
+ * @discussion Given a list of points, find the smallest upright rectangle that
  * bounds all of those points and returns its vertices.
+ * @return the vertices smallest upright rectangle that bounds all points in the parameter
+ * @param vector of points
  */
 vector<Point> findOuterRectangle(vector<Point> points) {
   Rect bound = boundingRect(points);
@@ -152,8 +164,10 @@ vector<Point> findOuterRectangle(vector<Point> points) {
 }
 
 /**
- * Returns the direction (angle) of a vector in degrees (0 <= theta < 360),
+ * @discussion Returns the direction (angle) of a vector in degrees (0 <= theta < 360),
  * where the vector is passed in as a Point object.
+ * @return angle of a vector in degrees, between 0 and 360
+ * @param a vector
  */
 double angle(const Point& p) {
   // Avoids divide-by-zero error
@@ -168,8 +182,12 @@ double angle(const Point& p) {
 }
 
 /**
- * Performs some initial checks of whether the chosen point is
+ * @discussion Performs some initial checks of whether the chosen point is
  * inside a parking space.
+ * @return whether or not the chosen point is inside a parking space.
+ * @param an image
+ * @param a pixel's row
+ * @param a pixel's column
  */
 bool initialCheck(const Mat& img, int row, int col) {
   int thresh = 3;
@@ -185,9 +203,12 @@ bool initialCheck(const Mat& img, int row, int col) {
 }
 
 /**
- * Does some angular checks to see if the chosen point is inside a
+ * @discussion Does some angular checks to see if the chosen point is inside a
  * parking space. It takes in a vector of points representing the
  * vertices of the shape and returns true if the check is passed.
+ * @return whether or not the chosen shape is inside a parking space. 
+ * @param an image.
+ * @param a shape in the imag.
  */
 bool checkVertices(const Mat& img, const vector<Point>& space_vertices) {
   // Ignores polygons with: poly area > (img area) / areaThresh
@@ -220,6 +241,7 @@ bool checkVertices(const Mat& img, const vector<Point>& space_vertices) {
   }
   return true;
 }
+
 
 bool highlightSpace(Mat& img, Mat binary, int row, int col) {
   //Mat binary = preprocess(img);

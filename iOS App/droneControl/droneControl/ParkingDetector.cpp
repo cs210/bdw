@@ -1,7 +1,7 @@
 #include "ParkingDetector.h"
 
 /**
- * Perform one thinning iteration.
+ * @discussion Perform one thinning iteration.
  * Normally you wouldn't call this function directly from your code.
  *
  * @param  im    Binary image with range = 0-1

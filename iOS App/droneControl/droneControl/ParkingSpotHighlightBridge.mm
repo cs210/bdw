@@ -20,6 +20,12 @@
 using namespace cv;
 using namespace std;
 
+/** @discussion Preprocess a UIImage that has been clicked at x,y and return the result. 
+ * @return a preprocessed UIImage.
+ * @param image taken by drone. 
+ * @param x-coordinate of click in pixels.
+ * @param y-coordinate of click in pixels.
+ */
 +(UIImage *) initWithUIImage: (UIImage *) droneImage andClickX:(float)x andClickY:(float)y
 {
     //Convert the image to a Mat object
@@ -58,6 +64,11 @@ using namespace std;
     return newImage;
 }
 
+/** @discussion Scale and crop an UIImage to fix targetSize.
+ * @return a scaled UIImage.
+ * @param image to scale.
+ * @param size to which to scale.
+ */
 + (UIImage*)imageByScalingAndCroppingWithImage:(UIImage *)source forSize:(CGSize)targetSize
 {
     UIImage *sourceImage = source;
@@ -116,6 +127,11 @@ using namespace std;
     return newImage;
 }
 
+
+/** @discussion Create a cvMat from a UIImage.
+ * @return a cvMat representing the UIImage parameter.
+ * @param image to convert to a cvMat.
+ */
 + (cv::Mat)cvMatFromUIImage:(UIImage *)image
 {
     CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
@@ -139,6 +155,10 @@ using namespace std;
     return cvMat;
 }
 
+/** @discussion Create a grayscaled cvMat from a UIImage.
+ * @return a grayscaled cvMat representing the UIImage parameter.
+ * @param image to convert to a cvMat.
+ */
 + (cv::Mat)cvMatGrayFromUIImage:(UIImage *)image
 {
     CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
@@ -162,6 +182,10 @@ using namespace std;
     return cvMat;
 }
 
+/** @discussion Create a UIImage from a cvMat.
+ * @return a UIImage representingi the cvMat parameter.
+ * @param a cvMat image.
+ */
 +(UIImage *)UIImageFromCVMat:(cv::Mat)cvMat
 {
     NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
