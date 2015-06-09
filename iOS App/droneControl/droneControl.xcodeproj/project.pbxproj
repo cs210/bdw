@@ -182,10 +182,10 @@
 		A66C6DDE1B0EB534008FCE23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A66C6DDF1B0EB534008FCE23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../GoogleMaps.bundle; sourceTree = "<group>"; };
 		A66C6DEB1B116D24008FCE23 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		A66C6DEC1B116D24008FCE23 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
-		A66C6DF21B12D9D6008FCE23 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		A66C6DF21B12D9D6008FCE23 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../opencv2.framework; sourceTree = "<group>"; };
 		A6A666911B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotHighlightBridge.h; sourceTree = "<group>"; };
 		A6A666921B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ParkingSpotHighlightBridge.mm; sourceTree = "<group>"; };
 		A6A666941B1EB86300CFBC48 /* SpaceHighlighter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceHighlighter.cpp; sourceTree = "<group>"; };
@@ -372,6 +372,8 @@
 		46E4D3331AAD856E00C94072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A66C6DF21B12D9D6008FCE23 /* opencv2.framework */,
+				A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */,
 				A66C6DE71B0EB5DD008FCE23 /* GoogleMaps.framework */,
 				A66C6DD91B0EB534008FCE23 /* CoreData.framework */,
 				A66C6DDA1B0EB534008FCE23 /* CoreLocation.framework */,
@@ -515,8 +517,6 @@
 		A6F4EF1B1AAD17D500C81065 = {
 			isa = PBXGroup;
 			children = (
-				A66C6DF21B12D9D6008FCE23 /* opencv2.framework */,
-				A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
 				A6F4EF401AAD17D500C81065 /* droneControlTests */,
 				A6F4EF251AAD17D500C81065 /* Products */,
