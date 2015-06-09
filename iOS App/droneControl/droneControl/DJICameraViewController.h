@@ -27,13 +27,9 @@
 
 
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
-<<<<<<< HEAD
-=======
-
 /*!
  * @brief IBOutlet to the view which will display the live video feed.
  */
->>>>>>> more documentation
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
 
 /*!
