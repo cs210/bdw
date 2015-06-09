@@ -572,7 +572,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         float droneYaw = _droneHelper.getDroneYaw;
 
         NSLog(@"Yaw: %f, Altitude: %f, Latitude: %f, Longitude: %f", droneYaw, droneAltitude, droneGPS.latitude,droneGPS.longitude);
-
         if (droneGPS.latitude < 1.0){
             droneGPS.latitude = 37.431184;
             droneGPS.longitude = -122.173391;
