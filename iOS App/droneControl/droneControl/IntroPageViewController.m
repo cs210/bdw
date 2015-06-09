@@ -13,15 +13,15 @@
 #import "DJICameraViewController.h"
 #import "TransparentTouchView.h"
 #import "AerialViewController.h"
+
 typedef enum
 {
     kListening,
     kNotListening
 } listeningStates;
 
-
-
-@interface IntroPageViewController () <SpeechDelegate>{
+@interface IntroPageViewController () <SpeechDelegate>
+{
     SpeechController * speechController;
     listeningStates _currentState;
 }
@@ -30,7 +30,8 @@ typedef enum
 
 @implementation IntroPageViewController : UIViewController
 
--(void) addTitle{
+-(void) addTitle
+{
     UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(self.view.center.x - 200, self.view.center.y / 5, 400,100)];
     label.text = @"ConnectedDrone";
     label.textColor = [UIColor whiteColor];
@@ -40,7 +41,8 @@ typedef enum
 }
 
 
--(void) addParkingButton{
+-(void) addParkingButton
+{
     UIButton *findParkingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [findParkingButton addTarget:self
                           action:@selector(findParkingClicked)
@@ -63,15 +65,15 @@ typedef enum
     [self.view addSubview:label];
 }
 
-
--(void) addDronePicture{
+-(void) addDronePicture
+{
     UIImageView *droneImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"drone_white.png"]];
     [droneImgView setFrame:CGRectMake(self.view.center.x - 150, self.view.center.y * 1.1, 300, 300)];
     [self.view addSubview:droneImgView];
 }
 
-
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [self addTitle];
     [self addParkingButton];
     [self addDronePicture];
@@ -84,8 +86,8 @@ typedef enum
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-
--(void) findParkingClicked{
+-(void) findParkingClicked
+{
     [speechController stopListening];
 
     // Create a new view controller for the aerial view controller
@@ -94,22 +96,18 @@ typedef enum
 
 }
 
-
 // SpeechDelegate stuff
 -(NSArray * ) listOfWordsToDetect
 {
     return @[ @"FIND PARKING", @"YES", @"CANCEL"];
 }
 
-
 -(void) didReceiveWord: (NSString *) word
 {
-    
     NSLog(@"Word heard:%@", word);
     if ([word containsString:@"FIND PARKING"]){
         [self findParkingClicked];
     }
-    
 }
 
 @end

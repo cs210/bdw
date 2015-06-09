@@ -12,8 +12,8 @@
 
 @implementation DJIDroneHelper
 
-
-+ (id)sharedHelper {
++ (id)sharedHelper
+{
   static DJIDroneHelper *sharedDroneHelper = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -22,8 +22,10 @@
   return sharedDroneHelper;
 }
 
-- (id)init {
-  if (self = [super init]) {
+- (id) init
+{
+  if (self = [super init])
+  {
       _drone = [[DJIDrone alloc] initWithType:DJIDrone_Phantom];
       [_drone connectToDrone];
       _drone.mainController.mcDelegate = self;
@@ -103,11 +105,6 @@
     return outt;
 }
 
-
-
-//delegate
-
-
 /**
  *  Ground station flying status.
  */
@@ -121,10 +118,10 @@
     
 }
 
-
 -(void) groundStation:(id<DJIGroundStation>)gs didExecuteWithResult:(GroundStationExecuteResult*)result
 {
-    switch (result.currentAction) {
+    switch (result.currentAction)
+    {
         case GSActionOpen:
         {
             [self onGroundStationOpenWithResult:result];
@@ -145,8 +142,6 @@
     }
 }
 
-
-
 -(void) onOpenButtonClicked
 {
     [_groundStation openGroundStation];
@@ -158,10 +153,10 @@
     [_groundStation closeGroundStation];
 }
 
-
 -(void) onGroundStationOpenWithResult:(GroundStationExecuteResult*)result
 {
-    if (result.executeStatus == GSExecStatusBegan) {
+    if (result.executeStatus == GSExecStatusBegan)
+    {
         NSLog(@"Ground Station Open Began");
     }
     else if (result.executeStatus == GSExecStatusSuccessed)
@@ -176,7 +171,8 @@
 
 -(void) onGroundStationCloseWithResult:(GroundStationExecuteResult*)result
 {
-    if (result.executeStatus == GSExecStatusBegan) {
+    if (result.executeStatus == GSExecStatusBegan)
+    {
         
     }
     else if (result.executeStatus == GSExecStatusSuccessed)
@@ -192,7 +188,8 @@
 
 -(void) onGroundStationUploadTaskWithResult:(GroundStationExecuteResult*)result
 {
-    if (result.executeStatus == GSExecStatusBegan) {
+    if (result.executeStatus == GSExecStatusBegan)
+    {
         NSLog(@"Upload Task Began");
     }
     else if (result.executeStatus == GSExecStatusSuccessed)
@@ -204,8 +201,5 @@
         NSLog(@"Upload Task Failed: %d", (int)result.error);
     }
 }
-
-
-
 
 @end

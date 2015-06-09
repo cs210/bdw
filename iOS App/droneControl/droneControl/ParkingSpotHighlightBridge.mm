@@ -40,8 +40,10 @@ using namespace std;
     //circle(img, cv::Point(c, r), 3, Scalar(0, 0, 255));
     
     Mat binary = preprocess(img);
-    for (int r = 0; r < img.rows; r += 50) {
-        for (int c = 0; c < img.cols; c += 50) {
+    for (int r = 0; r < img.rows; r += 50)
+    {
+        for (int c = 0; c < img.cols; c += 50)
+        {
             //Mat copy = img.clone();
             if (highlightSpace(img, binary, r, c)) {
                 circle(img, cv::Point(c, r), 5, Scalar(0, 255, 0));
@@ -88,10 +90,12 @@ using namespace std;
             thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
         }
         else
+        {
             if (widthFactor < heightFactor)
             {
                 thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
             }
+        }
     }
     
     UIGraphicsBeginImageContext(targetSize); // this will crop
@@ -163,9 +167,12 @@ using namespace std;
     NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
     CGColorSpaceRef colorSpace;
     
-    if (cvMat.elemSize() == 1) {
+    if (cvMat.elemSize() == 1)
+    {
         colorSpace = CGColorSpaceCreateDeviceGray();
-    } else {
+    }
+    else
+    {
         colorSpace = CGColorSpaceCreateDeviceRGB();
     }
     

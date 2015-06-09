@@ -11,7 +11,8 @@
 
 @implementation AerialViewController
 
-- (void) goToNavigation: (CLLocationCoordinate2D)destination {
+- (void) goToNavigation: (CLLocationCoordinate2D)destination
+{
     Class mapItemClass = [MKMapItem class];
     
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
@@ -23,7 +24,8 @@
 }
 
 
-- (void)viewDidLoad {
+- (void) viewDidLoad
+{
     [super viewDidLoad];
     _firstLocationUpdate = NO;
     _GMViewController = [[GoogleMapsViewController alloc] init];
@@ -53,15 +55,16 @@
     self.view.backgroundColor = [UIColor blackColor];
 }
 
-
--(void) viewWillAppear:(BOOL)animated{
+-(void) viewWillAppear:(BOOL)animated
+{
     [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
 }
 
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    if ([overlay isKindOfClass:[MKPolyline class]]) {
+    if ([overlay isKindOfClass:[MKPolyline class]])
+    {
         MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         [renderer setStrokeColor:[UIColor blueColor]];
         [renderer setLineWidth:5.0];
@@ -70,10 +73,11 @@
     return nil;
 }
 
-- (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation{
+- (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation
+{
     
-    if ([[UIApplication sharedApplication] canOpenURL:
-         [NSURL URLWithString:@"comgooglemaps://"]]) {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]])
+    {
         NSString *googleMapsString = [NSString stringWithFormat:
                                       @"%@?center=%f,%f&saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                                       @"comgooglemaps://",
@@ -85,7 +89,9 @@
                                       destinationLocation.longitude];
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:googleMapsString]];
-    } else {
+    }
+    else
+    {
         NSString *urlString = [NSString stringWithFormat:
                                @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
                                @"https://maps.googleapis.com/maps/api/directions/json",
@@ -103,7 +109,8 @@
         NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
         
         //Get the Result of Request
-        if (!error) {
+        if (!error)
+        {
             NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
             GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
@@ -114,7 +121,8 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         if (buttonIndex == 1){
             _GMViewController.googleMapView.frame = self.view.frame;
@@ -138,28 +146,21 @@
     }
 }
 
-
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
-    
     GMSMarker *marker = [GMSMarker markerWithPosition:spot];
     marker.title = @"Hello World";
     marker.map = _GMViewController.googleMapView;
     marker.icon = [UIImage imageNamed:@"car_big.png"];
     [self goToNavigation:spot];
-
-
 }
 
-
--(void) showMap{
+-(void) showMap
+{
     [self.view addSubview:_GMViewController.googleMapView];
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
-    
 }
-
-
 
 -(void) testGPS
 {
@@ -203,6 +204,5 @@
     [self.view addSubview:_parkingLotView];
     [self.view addSubview:_dummyTouchView];
 }
-
 
 @end

@@ -11,12 +11,10 @@
 
 @implementation DJICameraViewController
 
-
 -(void) publicViewWillAppearMethod:(BOOL) animated
 {
         [self viewWillAppear:animated];
 }
-
 
 - (void)viewDidLoad
 {
@@ -164,7 +162,8 @@
             }
             else
             {
-                if (data && data.length > 0) {
+                if (data && data.length > 0)
+                {
                     [mediaData appendData:data];
                     totalDownload += data.length;
                     int progress = (int)(totalDownload*100 / fileSize);
@@ -186,7 +185,6 @@
 
 }
 
-
 -(void) updateMedias
 {
     _switch_to_usb = true;
@@ -196,10 +194,13 @@
 -(void) pull_image
 {
     [_droneHelper.drone.camera fetchMediaListWithResultBlock:^(NSArray *mediaList, NSError *error) {
-        if (mediaList) {
+        if (mediaList)
+        {
             _mediasList = mediaList;
             NSLog(@"MediaDirs: %@", _mediasList);
-        } else {
+        }
+        else
+        {
             NSLog(@"NO MEDIALIST");
         }
         
@@ -250,7 +251,8 @@
     yaw.angle = 0;
     
     [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-        if (error.errorCode == ERR_Successed) {
+        if (error.errorCode == ERR_Successed)
+        {
             
         }
         else
@@ -278,7 +280,8 @@
     yaw.angle = 0;
 
     [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-      if (error.errorCode == ERR_Successed) {
+        if (error.errorCode == ERR_Successed)
+        {
         }
         else
         {
@@ -304,7 +307,8 @@
     DJIGimbalRotation yaw = {YES, 0, RelativeAngle, RotationForward};
     while (_gimbalAttitudeUpdateFlag) {
         [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-            if (error.errorCode == ERR_Successed) {
+            if (error.errorCode == ERR_Successed)
+            {
                 
             }
         }];
@@ -323,9 +327,12 @@
     DJIGimbalRotation pitch = {YES, 0, RelativeAngle, RotationBackward};
     DJIGimbalRotation roll = {NO, 0, RelativeAngle, RotationBackward};
     DJIGimbalRotation yaw = {YES, 16, RelativeAngle, RotationBackward};
-    while (_gimbalAttitudeUpdateFlag) {
-        [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-            if (error.errorCode == ERR_Successed) {
+    while (_gimbalAttitudeUpdateFlag)
+    {
+        [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error)
+        {
+            if (error.errorCode == ERR_Successed)
+            {
                 
             }
         }];
@@ -346,7 +353,8 @@
     DJIGimbalRotation yaw = {YES, 16, RelativeAngle, RotationForward};
     while (_gimbalAttitudeUpdateFlag) {
         [_droneHelper.drone.gimbal setGimbalPitch:pitch Roll:roll Yaw:yaw withResult:^(DJIError *error) {
-            if (error.errorCode == ERR_Successed) {
+            if (error.errorCode == ERR_Successed)
+            {
                 
             }
         }];
@@ -364,16 +372,19 @@
 
 -(void) gimbalController:(DJIGimbal*)controller didGimbalError:(DJIGimbalError)error
 {
-    if (error == GimbalClamped) {
+    if (error == GimbalClamped)
+    {
         NSLog(@"Gimbal Clamped");
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Gimbal Clamped" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
-    if (error == GimbalErrorNone) {
+    if (error == GimbalErrorNone)
+    {
         NSLog(@"Gimbal Error None");
         
     }
-    if (error == GimbalMotorAbnormal) {
+    if (error == GimbalMotorAbnormal)
+    {
         NSLog(@"Gimbal Motor Abnormal");
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Gimbal Motor Abnormal" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
@@ -411,27 +422,35 @@
         NSLog(@":::::::: USB MODE ::::::::");
         if (!systemState.isUSBMode) {
             NSLog(@"Set USB Mode");
-            [_droneHelper.drone.camera setCamerMode:CameraUSBMode withResultBlock:^(DJIError *error) {
-                if (error.errorCode == ERR_Successed) {
+            [_droneHelper.drone.camera setCamerMode:CameraUSBMode withResultBlock:^(DJIError *error)
+            {
+                if (error.errorCode == ERR_Successed)
+                {
                     NSLog(@"Set USB Mode Successed");
                     [self performSelector:@selector(pull_image) withObject:nil afterDelay:3];
                 }
             }];
         }
-        if (!systemState.isSDCardExist) {
+        if (!systemState.isSDCardExist)
+        {
             NSLog(@"SD Card Not Insert");
             return;
         }
-        if (systemState.isConnectedToPC) {
+        if (systemState.isConnectedToPC)
+        {
             NSLog(@"USB Connected To PC");
             return;
         }
-    } else {
-        if (!systemState.isTimeSynced) {
+    }
+    else
+    {
+        if (!systemState.isTimeSynced)
+        {
             [_camera syncTime:nil];
         }
         
-        if (systemState.isUSBMode) {
+        if (systemState.isUSBMode)
+        {
             [_camera setCamerMode:CameraCameraMode withResultBlock:Nil];
         }
     }

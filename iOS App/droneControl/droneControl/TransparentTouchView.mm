@@ -592,12 +592,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         clickLocation.latitude = droneGPS.latitude + (180/3.1415926)*(newY/6378137.0);
         clickLocation.longitude = droneGPS.longitude -  (180/3.1415926)*(newX/6378137.0)/cos(droneGPS.latitude);
 
-              
         [aerialController userDidClickOnSpot:clickLocation];
-        
     }
-    
 }
-
 
 @end

@@ -13,7 +13,8 @@
     bool _firstLocationUpdate;
 }
 
--(void) viewDidLoad{
+-(void) viewDidLoad
+{
     [super viewDidLoad];
     [_googleMapView addObserver:self
                      forKeyPath:@"myLocation"
@@ -30,8 +31,10 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
-                       context:(void *)context {
-    if (!_firstLocationUpdate) {
+                       context:(void *)context
+{
+    if (!_firstLocationUpdate)
+    {
         // If the first location update has not yet been recieved, then jump to that
         // location.
         _firstLocationUpdate = YES;
