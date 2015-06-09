@@ -14,26 +14,10 @@
 		4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */; };
 		4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4648C3E31AEA4834005811B7 /* ParkingLot.m */; };
 		466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */; };
-		46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */; };
-		46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */; };
-		46841DCE1AAD8DE500BB0BF1 /* .project in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB51AAD8DE500BB0BF1 /* .project */; };
-		46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */ = {isa = PBXBuildFile; fileRef = 46841DB71AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs */; };
-		46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 46841DBC1AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png */; };
-		46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */ = {isa = PBXBuildFile; fileRef = 46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */; };
-		46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */ = {isa = PBXBuildFile; fileRef = 46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
 		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
-		46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */; };
-		46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */; };
 		46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AA69F01ADBB9E9009E0583 /* DroneController.m */; };
-		46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */; };
-		46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC89611ABB11F0009339BC /* BMWFindParkingView.m */; };
-		46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */; };
-		46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */; };
-		46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46CC89651ABB11FB009339BC /* ConnectedDrone.plist */; };
-		46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */; };
-		46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
 		46E4D37E1AAD859900C94072 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36D1AAD859900C94072 /* SystemConfiguration.framework */; };
@@ -124,39 +108,13 @@
 		4648C3E31AEA4834005811B7 /* ParkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLot.m; sourceTree = "<group>"; };
 		466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotTableViewCell.m; sourceTree = "<group>"; };
 		466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotTableViewCell.h; sourceTree = "<group>"; };
-		46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld_SAS.txt; sourceTree = "<group>"; };
-		46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteApplicationManager.h; sourceTree = "<group>"; };
-		46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteApplicationManager.m; sourceTree = "<group>"; };
-		46841DB51AAD8DE500BB0BF1 /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
-		46841DB71AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = org.eclipse.core.resources.prefs; sourceTree = "<group>"; };
-		46841DBC1AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorldAppIcon_appswitcher.png; sourceTree = "<group>"; };
-		46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json"; sourceTree = "<group>"; };
-		46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png"; sourceTree = "<group>"; };
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
-		46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LastUserModeDelegate.h; sourceTree = "<group>"; };
 		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechDisplayViewController.h; path = ../BMW/SpeechDisplayViewController.h; sourceTree = "<group>"; };
 		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechDisplayViewController.m; path = ../BMW/SpeechDisplayViewController.m; sourceTree = "<group>"; };
-		46841DEB1AAD91C900BB0BF1 /* LoggerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerClient.h; sourceTree = "<group>"; };
-		46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggerClient.m; sourceTree = "<group>"; };
-		46841DED1AAD91C900BB0BF1 /* LoggerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerCommon.h; sourceTree = "<group>"; };
-		46841DF01AAD91EC00BB0BF1 /* IDNSLoggerAppender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNSLoggerAppender.h; sourceTree = "<group>"; };
-		46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNSLoggerAppender.m; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
 		46AA69EF1ADBB9D4009E0583 /* DroneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneController.h; sourceTree = "<group>"; };
 		46AA69F01ADBB9E9009E0583 /* DroneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneController.m; sourceTree = "<group>"; };
-		46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneHmiProvider.h; sourceTree = "<group>"; };
-		46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectedDroneHmiProvider.m; sourceTree = "<group>"; };
-		46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedDroneIdentifiers.h; sourceTree = "<group>"; };
-		46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMWConnectedDroneViewController.h; sourceTree = "<group>"; };
-		46CC89601ABB11F0009339BC /* BMWFindParkingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWFindParkingView.h; sourceTree = "<group>"; };
-		46CC89611ABB11F0009339BC /* BMWFindParkingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWFindParkingView.m; sourceTree = "<group>"; };
-		46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ConnectedDrone_common_Images.zip; sourceTree = "<group>"; };
-		46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ConnectedDrone_HMI.xml; sourceTree = "<group>"; };
-		46CC89651ABB11FB009339BC /* ConnectedDrone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConnectedDrone.plist; sourceTree = "<group>"; };
-		46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMWConnectedDroneDataSource.h; sourceTree = "<group>"; };
-		46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWConnectedDroneDataSource.m; sourceTree = "<group>"; };
-		46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWConnectedDroneViewController.m; sourceTree = "<group>"; };
 		46E4D3341AAD859900C94072 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46E4D3391AAD859900C94072 /* CDSPropertyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefines.h; sourceTree = "<group>"; };
 		46E4D33A1AAD859900C94072 /* CDSPropertyDefinesControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPropertyDefinesControls.h; sourceTree = "<group>"; };
@@ -429,119 +387,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46841DAE1AAD8DE500BB0BF1 /* BMW */ = {
-			isa = PBXGroup;
-			children = (
-				46841DAF1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt */,
-				46841DEF1AAD91CF00BB0BF1 /* IDNSLoggerAppender */,
-				46841DEA1AAD91A800BB0BF1 /* NSLogger */,
-				46CC89691ABB1491009339BC /* BMWConnectedDroneDataSource.h */,
-				46CC896A1ABB14AE009339BC /* BMWConnectedDroneDataSource.m */,
-				46CC895F1ABB117E009339BC /* BMWConnectedDroneViewController.h */,
-				46CC896C1ABB160A009339BC /* BMWConnectedDroneViewController.m */,
-				46841DE31AAD8F6A00BB0BF1 /* LastUserModeDelegate.h */,
-				46841DB21AAD8DE500BB0BF1 /* RemoteApplicationManager.h */,
-				46841DB31AAD8DE500BB0BF1 /* RemoteApplicationManager.m */,
-				46841DB41AAD8DE500BB0BF1 /* RHMI */,
-			);
-			path = BMW;
-			sourceTree = "<group>";
-		};
-		46841DB41AAD8DE500BB0BF1 /* RHMI */ = {
-			isa = PBXGroup;
-			children = (
-				46841DB51AAD8DE500BB0BF1 /* .project */,
-				46841DB61AAD8DE500BB0BF1 /* .settings */,
-				46841DBA1AAD8DE500BB0BF1 /* resources */,
-				46841DBD1AAD8DE500BB0BF1 /* target */,
-			);
-			path = RHMI;
-			sourceTree = "<group>";
-		};
-		46841DB61AAD8DE500BB0BF1 /* .settings */ = {
-			isa = PBXGroup;
-			children = (
-				46841DB71AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs */,
-			);
-			path = .settings;
-			sourceTree = "<group>";
-		};
-		46841DBA1AAD8DE500BB0BF1 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				46841DBB1AAD8DE500BB0BF1 /* common */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
-		46841DBB1AAD8DE500BB0BF1 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				46841DBC1AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		46841DBD1AAD8DE500BB0BF1 /* target */ = {
-			isa = PBXGroup;
-			children = (
-				46841DBE1AAD8DE500BB0BF1 /* objc */,
-				46841DC41AAD8DE500BB0BF1 /* res */,
-			);
-			path = target;
-			sourceTree = "<group>";
-		};
-		46841DBE1AAD8DE500BB0BF1 /* objc */ = {
-			isa = PBXGroup;
-			children = (
-				46CC89601ABB11F0009339BC /* BMWFindParkingView.h */,
-				46CC89611ABB11F0009339BC /* BMWFindParkingView.m */,
-				46CC89581ABB1100009339BC /* ConnectedDroneHmiProvider.h */,
-				46CC89591ABB1100009339BC /* ConnectedDroneHmiProvider.m */,
-				46CC895A1ABB1100009339BC /* ConnectedDroneIdentifiers.h */,
-			);
-			path = objc;
-			sourceTree = "<group>";
-		};
-		46841DC41AAD8DE500BB0BF1 /* res */ = {
-			isa = PBXGroup;
-			children = (
-				46841DC51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json */,
-				46CC89631ABB11FB009339BC /* ConnectedDrone_common_Images.zip */,
-				46CC89641ABB11FB009339BC /* ConnectedDrone_HMI.xml */,
-				46CC89651ABB11FB009339BC /* ConnectedDrone.plist */,
-				46841DC91AAD8DE500BB0BF1 /* img */,
-			);
-			path = res;
-			sourceTree = "<group>";
-		};
-		46841DC91AAD8DE500BB0BF1 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				46841DCA1AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png */,
-			);
-			path = img;
-			sourceTree = "<group>";
-		};
-		46841DEA1AAD91A800BB0BF1 /* NSLogger */ = {
-			isa = PBXGroup;
-			children = (
-				46841DEB1AAD91C900BB0BF1 /* LoggerClient.h */,
-				46841DEC1AAD91C900BB0BF1 /* LoggerClient.m */,
-				46841DED1AAD91C900BB0BF1 /* LoggerCommon.h */,
-			);
-			name = NSLogger;
-			sourceTree = "<group>";
-		};
-		46841DEF1AAD91CF00BB0BF1 /* IDNSLoggerAppender */ = {
-			isa = PBXGroup;
-			children = (
-				46841DF01AAD91EC00BB0BF1 /* IDNSLoggerAppender.h */,
-				46841DF11AAD91EC00BB0BF1 /* IDNSLoggerAppender.m */,
-			);
-			name = IDNSLoggerAppender;
-			sourceTree = "<group>";
-		};
 		46E4D3331AAD856E00C94072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,7 +537,6 @@
 			children = (
 				A66C6DF21B12D9D6008FCE23 /* opencv2.framework */,
 				A66C6DE91B0EBE8B008FCE23 /* GoogleMaps.bundle */,
-				46841DAE1AAD8DE500BB0BF1 /* BMW */,
 				A6F4EF261AAD17D500C81065 /* droneControl */,
 				A6F4EF401AAD17D500C81065 /* droneControlTests */,
 				A6F4EF251AAD17D500C81065 /* Products */,
@@ -1054,24 +898,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46841DCB1AAD8DE500BB0BF1 /* HelloWorld_SAS.txt in Resources */,
 				46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */,
 				A6A666A11B1EC5E200CFBC48 /* Parking.JPG in Resources */,
-				46CC89661ABB11FB009339BC /* ConnectedDrone_common_Images.zip in Resources */,
-				46841DD91AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.png in Resources */,
 				A6F4EF331AAD17D500C81065 /* Main.storyboard in Resources */,
-				46841DD21AAD8DE500BB0BF1 /* HelloWorldAppIcon_appswitcher.png in Resources */,
-				46CC89671ABB11FB009339BC /* ConnectedDrone_HMI.xml in Resources */,
 				A66C6DEA1B0EBE8B008FCE23 /* GoogleMaps.bundle in Resources */,
-				46841DCF1AAD8DE500BB0BF1 /* org.eclipse.core.resources.prefs in Resources */,
 				A600578D1AB163EB00BA64BF /* SiriMicrophone.png in Resources */,
 				A6F4EF521AAD417200C81065 /* AcousticModelEnglish.bundle in Resources */,
 				A6F4EF381AAD17D500C81065 /* LaunchScreen.xib in Resources */,
 				D9FCDA561ADD8F6500D91DB7 /* DJICameraViewController.xib in Resources */,
 				A6F4EF351AAD17D500C81065 /* Images.xcassets in Resources */,
-				46841DCE1AAD8DE500BB0BF1 /* .project in Resources */,
-				46841DD51AAD8DE500BB0BF1 /* FA28E2F2-ACBE-4A8C-8A9B-CC8EB3472F7A.json in Resources */,
-				46CC89681ABB11FB009339BC /* ConnectedDrone.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,19 +926,15 @@
 			files = (
 				D9FCDA551ADD8F6500D91DB7 /* DJICameraViewController.mm in Sources */,
 				A66415611AF9448000135A7D /* DJIDroneHelper.m in Sources */,
-				46CC896B1ABB14AE009339BC /* BMWConnectedDroneDataSource.m in Sources */,
 				D9D648E11ADDAB0400459A16 /* VideoFrameExtractor.m in Sources */,
 				A62B4B5B1AFC71280016ED09 /* TransparentTouchView.mm in Sources */,
 				4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */,
-				46841DCD1AAD8DE500BB0BF1 /* RemoteApplicationManager.m in Sources */,
 				D9D648E21ADDAB0400459A16 /* VideoPreviewer.m in Sources */,
 				A66C6DED1B116D24008FCE23 /* LocationManager.m in Sources */,
-				46CC89621ABB11F0009339BC /* BMWFindParkingView.m in Sources */,
 				A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */,
 				A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */,
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
 				4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */,
-				46841DEE1AAD91C900BB0BF1 /* LoggerClient.m in Sources */,
 				466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */,
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
@@ -1111,11 +942,8 @@
 				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
-				46CC896D1ABB160A009339BC /* BMWConnectedDroneViewController.m in Sources */,
 				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
-				46CC895D1ABB1100009339BC /* ConnectedDroneHmiProvider.m in Sources */,
-				46841DF21AAD91EC00BB0BF1 /* IDNSLoggerAppender.m in Sources */,
 				46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */,
 				A6A6669A1B1EB86300CFBC48 /* SpaceHighlighter.cpp in Sources */,
 				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,

@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RemoteApplicationManager.h"
-#import "BMWFindParkingView.h"
 #import <DJISDK/DJISDK.h>
 
 typedef enum {
@@ -26,10 +24,6 @@ typedef enum {
 
 - (IBAction)handleClickCountButton;
 - (void)updateConnectionState:(ConnectionState)state;
-- (void)updateRemoteApplicationState:(RemoteApplicationState)state;
-
-
-@property (weak, readwrite) id<LastUserModeDelegate> lumDelegate;
 
 
 @end
