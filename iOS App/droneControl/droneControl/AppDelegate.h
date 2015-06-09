@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpeechDisplayViewController.h"
 #import <DJISDK/DJISDK.h>
 
 @class RemoteApplicationManager;

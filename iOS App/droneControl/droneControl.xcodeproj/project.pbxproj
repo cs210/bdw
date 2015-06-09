@@ -8,15 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */; };
-		462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */; };
 		4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */; };
-		4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4648C3E31AEA4834005811B7 /* ParkingLot.m */; };
 		466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
-		46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */; };
 		46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AA69F01ADBB9E9009E0583 /* DroneController.m */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
 		46E4D37D1AAD859900C94072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D36C1AAD859900C94072 /* libz.dylib */; };
@@ -96,22 +93,16 @@
 /* Begin PBXFileReference section */
 		46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleMapsViewController.m; path = ../GoogleMapsViewController.m; sourceTree = "<group>"; };
 		46137D8F1B23BEEC00D2BD95 /* GoogleMapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleMapsViewController.h; sourceTree = "<group>"; };
-		462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotFinder.h; sourceTree = "<group>"; };
-		462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotFinder.m; sourceTree = "<group>"; };
 		4641635B1ADB3179004B75D0 /* AerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AerialViewController.m; sourceTree = "<group>"; };
 		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		4641E43F1AFC6D2A00E2FCC8 /* IntroPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroPageViewController.h; sourceTree = "<group>"; };
 		4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageViewController.m; sourceTree = "<group>"; };
 		4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotAnnotation.m; sourceTree = "<group>"; };
 		4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingSpotAnnotation.h; sourceTree = "<group>"; };
-		4648C3E21AEA47DD005811B7 /* ParkingLot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLot.h; sourceTree = "<group>"; };
-		4648C3E31AEA4834005811B7 /* ParkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLot.m; sourceTree = "<group>"; };
 		466856961AF534A100AF1504 /* ParkingLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotTableViewCell.m; sourceTree = "<group>"; };
 		466856981AF5352800AF1504 /* ParkingLotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingLotTableViewCell.h; sourceTree = "<group>"; };
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
-		46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechDisplayViewController.h; path = ../BMW/SpeechDisplayViewController.h; sourceTree = "<group>"; };
-		46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechDisplayViewController.m; path = ../BMW/SpeechDisplayViewController.m; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
 		46AA69EF1ADBB9D4009E0583 /* DroneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneController.h; sourceTree = "<group>"; };
 		46AA69F01ADBB9E9009E0583 /* DroneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DroneController.m; sourceTree = "<group>"; };
@@ -506,8 +497,6 @@
 		A65391431AEDDF6100EA296A /* Speech */ = {
 			isa = PBXGroup;
 			children = (
-				46841DE61AAD8FA400BB0BF1 /* SpeechDisplayViewController.h */,
-				46841DE71AAD8FA400BB0BF1 /* SpeechDisplayViewController.m */,
 				A600578E1AB169B200BA64BF /* SpeechController.h */,
 				A600578F1AB169B200BA64BF /* SpeechController.m */,
 			);
@@ -575,10 +564,6 @@
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
 				4641635D1ADB31C1004B75D0 /* AerialViewController.h */,
-				462954F41AEA1F5A00B5CF4B /* ParkingLotFinder.h */,
-				4648C3E21AEA47DD005811B7 /* ParkingLot.h */,
-				4648C3E31AEA4834005811B7 /* ParkingLot.m */,
-				462954F51AEA1F6D00B5CF4B /* ParkingLotFinder.m */,
 				46AA69EF1ADBB9D4009E0583 /* DroneController.h */,
 				46AA69F01ADBB9E9009E0583 /* DroneController.m */,
 				A66C6DEB1B116D24008FCE23 /* LocationManager.h */,
@@ -934,19 +919,16 @@
 				A6A6669B1B1EB86300CFBC48 /* ParkingDetector.cpp in Sources */,
 				A6A6669C1B1EB86300CFBC48 /* Utils.cpp in Sources */,
 				46AA69F11ADBB9E9009E0583 /* DroneController.m in Sources */,
-				4648C3E41AEA4834005811B7 /* ParkingLot.m in Sources */,
 				466856971AF534A200AF1504 /* ParkingLotTableViewCell.m in Sources */,
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */,
-				46841DE91AAD8FA400BB0BF1 /* SpeechDisplayViewController.m in Sources */,
 				4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
 				46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */,
 				A6A6669A1B1EB86300CFBC48 /* SpaceHighlighter.cpp in Sources */,
-				462954F61AEA1F6D00B5CF4B /* ParkingLotFinder.m in Sources */,
 				A6A6669F1B1EB89D00CFBC48 /* stdafx.cpp in Sources */,
 				A6A666931B1EB77A00CFBC48 /* ParkingSpotHighlightBridge.mm in Sources */,
 			);
