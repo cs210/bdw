@@ -96,22 +96,17 @@
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
     
-    GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
-    _GMViewController.googleMapView.camera = pos;
-
     CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     _GMViewController.googleMapView.frame = mapFrame;
     
     CLLocation * userLocation = [[LocationManager sharedManager] getUserLocation];
     CLLocationCoordinate2D userLocationCoordinate = userLocation.coordinate;
     
-    
     GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude: userLocationCoordinate.latitude                                                                longitude:userLocationCoordinate.longitude
-                                                                   zoom:19];
+                                                                   zoom:18];
     
     [_GMViewController.googleMapView setCamera:stanford];
 
-    [self.view addSubview:_GMViewController.googleMapView];
     [self.view addSubview:_dummyTouchView];
     [self.view addSubview:_cameraFeed.view];
     [self.view addSubview:_GMViewController.googleMapView];
