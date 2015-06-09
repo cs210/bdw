@@ -11,25 +11,66 @@
 
 @interface DJIDroneHelper : NSObject<DJIMainControllerDelegate, GroundStationDelegate>
 
+/*!
+ * @brief A reference to the sole instance of the drone
+ */
 @property (strong, readwrite, nonatomic) DJIDrone * drone;
+
+/*!
+ * @brief The last known system state
+ */
 @property DJIMCSystemState *lastKnownState;
+
+/*!
+ * @brief The ground station responsible for controlling drone flying
+ */
 @property NSObject<DJIGroundStation>* groundStation;
+
+/*!
+ * @brief The location of the base station
+ */
 @property CLLocationCoordinate2D homeLocation;
+
+/*!
+ * @brief The last known flying information (altitude, yaw, gps, etc)
+ */
 @property DJIGroundStationFlyingInfo * lastFlyingInfo;
 
-
+/*!
+ * @discussion Return a singleton reference to the drone helper class
+ */
 + (instancetype)sharedHelper;
 
+/*!
+ * @discussion Method called when the main dji controller has updated the system state
+ * @param mc The dji main controller that controls the drone state
+ * @param state The updated drone system state
+ */
 -(void) mainController:(DJIMainController*)mc didUpdateSystemState:(DJIMCSystemState*)state;
 
+/*!
+ * @discussion Return the last recorded drone GPS location
+ */
 -(CLLocationCoordinate2D) getDroneGPS;
 
+/*!
+ * @discussion Return the last recorded drone height
+ */
 -(float) getDroneHeight;
 
+/*!
+ * @discussion A public method to be called when the drone is first launched
+ */
 -(void) onOpenButtonClicked;
 
+/*!
+ * @discussion Return the last recorded drone yaw
+ */
 -(float) getDroneYaw;
 
+/*!
+ * @discussion Create a basic drone task (as a drone task is required in order for system state to get updated)
+ */
 -(void) droneTask:(id)sender;
 
 @end
