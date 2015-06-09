@@ -47,7 +47,12 @@
                                                                    zoom:18];
     
     [_GMViewController.googleMapView setCamera:stanford];
-
+    
+    [_GMViewController.googleMapView addObserver:self
+                     forKeyPath:@"myLocation"
+                        options:NSKeyValueObservingOptionNew
+                        context:NULL];
+    
     [self.view addSubview:_dummyTouchView];
     [self.view addSubview:_cameraFeed.view];
     [self.view addSubview:_GMViewController.googleMapView];
@@ -72,6 +77,18 @@
     }
     return nil;
 }
+
+// update the map location
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        _GMViewController.googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+                                                               zoom:17];
+}
+
+
 
 - (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation
 {
