@@ -170,8 +170,10 @@
     if ([[UIApplication sharedApplication] canOpenURL:
          [NSURL URLWithString:@"comgooglemaps://"]]) {
         NSString *googleMapsString = [NSString stringWithFormat:
-                                      @"%@?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                                      @"%@?center=%f,%f&saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                                       @"comgooglemaps://",
+                                      startingLocation.latitude,
+                                      startingLocation.longitude,
                                       startingLocation.latitude,
                                       startingLocation.longitude,
                                       destinationLocation.latitude,
@@ -197,8 +199,6 @@
         
         //Get the Result of Request
         if (!error) {
-            //NSString *response = [request responseString];
-            //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
             NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
             GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];

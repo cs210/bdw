@@ -10,7 +10,6 @@
 		46137D8E1B23BE9A00D2BD95 /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46137D8D1B23BE9A00D2BD95 /* GoogleMapsViewController.m */; };
 		4641635C1ADB3179004B75D0 /* AerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641635B1ADB3179004B75D0 /* AerialViewController.m */; };
 		4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */; };
-		4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */; };
 		46841DDB1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */; };
 		46841DDD1AAD8E9A00BB0BF1 /* BMWAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */; };
 		46E4D37A1AAD859900C94072 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E4D3341AAD859900C94072 /* libc++.dylib */; };
@@ -95,8 +94,6 @@
 		4641635D1ADB31C1004B75D0 /* AerialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialViewController.h; sourceTree = "<group>"; };
 		4641E43F1AFC6D2A00E2FCC8 /* IntroPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroPageViewController.h; sourceTree = "<group>"; };
 		4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageViewController.m; sourceTree = "<group>"; };
-		4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotAnnotation.m; sourceTree = "<group>"; };
-		4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingSpotAnnotation.h; sourceTree = "<group>"; };
 		46841DDA1AAD8E8F00BB0BF1 /* BMWAppKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BMWAppKitResources.bundle; sourceTree = "<group>"; };
 		46841DDC1AAD8E9A00BB0BF1 /* BMWAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMWAppKit.framework; sourceTree = "<group>"; };
 		46841DF31AAD94C800BB0BF1 /* HelloWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Prefix.pch"; sourceTree = "<group>"; };
@@ -550,8 +547,6 @@
 				4641E43F1AFC6D2A00E2FCC8 /* IntroPageViewController.h */,
 				4641E4401AFC6D3E00E2FCC8 /* IntroPageViewController.m */,
 				A6F4EF341AAD17D500C81065 /* Images.xcassets */,
-				4641E4481AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m */,
-				4641E44A1AFCEC4700E2FCC8 /* ParkingSpotAnnotation.h */,
 				A6F4EF361AAD17D500C81065 /* LaunchScreen.xib */,
 				A6F4EF271AAD17D500C81065 /* Supporting Files */,
 				4641635B1ADB3179004B75D0 /* AerialViewController.m */,
@@ -911,7 +906,6 @@
 				D9D648E01ADDAB0400459A16 /* MovieGLView.m in Sources */,
 				A60057901AB169B200BA64BF /* SpeechController.m in Sources */,
 				4641E4411AFC6D3E00E2FCC8 /* IntroPageViewController.m in Sources */,
-				4641E4491AFCEBFD00E2FCC8 /* ParkingSpotAnnotation.m in Sources */,
 				A6F4EF2D1AAD17D500C81065 /* AppDelegate.m in Sources */,
 				A61493F81AFB246E0020F616 /* CoordinatePointTuple.m in Sources */,
 				A6F4EF2A1AAD17D500C81065 /* main.m in Sources */,
