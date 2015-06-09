@@ -26,9 +26,7 @@
  The user is prompted to touch a parking space. When the user touches the drone video feed, 
  the touch location is translated into a GPS coordinate. The user is asked for a confirmation, 
  and the app transitions to 
-
  */
-
 @interface AerialViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
 /*!

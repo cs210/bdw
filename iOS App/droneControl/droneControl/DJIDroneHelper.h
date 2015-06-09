@@ -12,7 +12,7 @@
 /*!
  @class DJIDroneHelper
  @abstract A wrapper class around drone functionality
- @discussion This class acts as a wrapper around the drone functionality. This class receives drone events and, behind the scenes, processes it so that the yaw, altitude, and other information is available to the program through a singleton. This class was designed to provide a single point of access to drone code, and to obscure many of the unnecessary elements of the drone and to provide a simple, clear, interface to interact with. 
+ @discussion This class acts as a wrapper around the drone functionality. This class receives drone events and, behind the scenes, processes it so that the yaw, altitude, and other information is available to the program through a singleton. This class was designed to provide a single point of access to drone code, and to obscure many of the unnecessary elements of the drone and to provide a simple, clear, interface to interact with.
  */
 @interface DJIDroneHelper : NSObject<DJIMainControllerDelegate, GroundStationDelegate>
 

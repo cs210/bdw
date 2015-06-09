@@ -15,9 +15,6 @@
 #import <Slt/Slt.h>
 
 @interface SpeechController ()
-{
-  
-}
 
 @property (nonatomic, strong) Slt *slt;
 

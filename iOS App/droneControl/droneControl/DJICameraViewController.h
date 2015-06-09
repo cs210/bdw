@@ -19,8 +19,6 @@
 
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
 
-
-- (void)publicViewWillAppearMethod:(BOOL) animated;
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *lastImage;
 @property BOOL gimbalAttitudeUpdateFlag;
@@ -34,7 +32,7 @@
 @property NSArray* mediasList;
 @property BOOL fetchingMedias;
 
-
+- (void)publicViewWillAppearMethod:(BOOL) animated;
 
 -(IBAction) onTakePhotoButtonClicked:(id)sender;
 

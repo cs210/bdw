@@ -6,20 +6,19 @@
 //  Copyright (c) 2015 bdw. All rights reserved.
 //
 #import "GoogleMapsViewController.h"
-
 #import <Foundation/Foundation.h>
+
 @implementation GoogleMapsViewController
 {
     bool _firstLocationUpdate;
 }
 
-
 -(void) viewDidLoad{
     [super viewDidLoad];
     [_googleMapView addObserver:self
-                                      forKeyPath:@"myLocation"
-                                         options:NSKeyValueObservingOptionNew
-                                         context:NULL];
+                     forKeyPath:@"myLocation"
+                        options:NSKeyValueObservingOptionNew
+                        context:NULL];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         _googleMapView.myLocationEnabled = YES; // THIS DOES NOT WORK

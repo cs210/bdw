@@ -9,8 +9,8 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 
-
 @interface GoogleMapsViewController : UIViewController
+
 @property (nonatomic, strong) GMSMapView *googleMapView;
 
 @end

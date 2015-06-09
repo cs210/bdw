@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface IntroPageViewController : UIViewController
 
+@interface IntroPageViewController : UIViewController
 
 @end
