@@ -181,7 +181,6 @@
                                       startingLocation.longitude,
                                       destinationLocation.latitude,
                                       destinationLocation.longitude];
-        NSLog(googleMapsString);
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:googleMapsString]];
     } else {        
