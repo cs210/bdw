@@ -516,11 +516,6 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     {
         CLLocationCoordinate2D droneGPS = [[LocationManager sharedManager] getUserLocation].coordinate;
         NSLog(@"DroneGPS: %f, %f",droneGPS.latitude, droneGPS.longitude);
-        // test dronealtitude units
-        // yaw: clockwise or counterclick
-        // Get height of the drone
-        
-        // Hard code the altitude here for now
         float droneAltitude = altitude;
         NSLog(@"DroneAltitude: %f",droneAltitude);
         //float droneAltitude = 20.0;
@@ -603,6 +598,7 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
         // Get height of the drone
         
         // Hard code the altitude here for now
+        
         if (droneAltitude == 0){
             droneAltitude = 10; // FOR TESTING
         }

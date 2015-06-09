@@ -35,69 +35,15 @@
 {
     UIView * _dummyTouchView;
     DJICameraViewController* _cameraFeed;
-    bool _nextAnnotationIsSpot;
     bool _firstLocationUpdate;
     UIImageView *_parkingLotView;
     NSURLConnection *currentConnection;
 
 }
 
-- (void) receiveImage:(UIImage *)image
-{
-    // check for a parking space using computer vision
-    // if there is a parking space:
-    // tell the drone to go to the parking space
-    // trigger navigation (SpotConfirmViewController)
-}
-
-- (void) updateDroneLocation: (CLLocationCoordinate2D *)location {
-    [self addAnnnotationWithOffset:false location:*location];
-}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
-    if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        return nil;
-    }
-    //MKPointAnnotation *annot = (MKPointAnnotation *)annotation;
-    UIImage *image = [UIImage imageNamed:@"parking-icon.png"];
-    if (_nextAnnotationIsSpot){
-        image = [UIImage imageNamed:@"car_big.png"];
-        _nextAnnotationIsSpot = NO;
-    }
-    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingLot"];
-    annotationView.canShowCallout = YES;
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [annotationView setImage:image];
-    return annotationView;
-}
-
-
-- (void) addAnnnotationWithOffset:(bool)isParkingSpot location:(CLLocationCoordinate2D)location{
-    
-#ifdef USING_GMAPS
-    assert(0);
-#else
-    if (isParkingSpot){
-        MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
-        annot.title = @"Parking Lot";
-        [_mapView selectAnnotation:annot animated:YES];
-        
-    } else {
-        _droneAnnotation.coordinate = location;
-        [_mapView addAnnotation:_droneAnnotation];
-        [_mapView selectAnnotation:_droneAnnotation animated:YES];
-        _droneAnnotation.title = @"Drone";
-        [[_mapView viewForAnnotation:_droneAnnotation] setTag:1];
-        UIImage *image = [UIImage imageNamed:@"drone_small.png"];
-        [[_mapView viewForAnnotation:_droneAnnotation] setImage:image];
-        [_mapView deselectAnnotation:_droneAnnotation animated:YES];
-    }
-#endif
-}
-
-
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
     Class mapItemClass = [MKMapItem class];
+ 
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         _parkingSpace = destination;
@@ -106,13 +52,6 @@
     }
 }
 
-
-- (BOOL)splitViewController:(UISplitViewController*)svc
-   shouldHideViewController:(UIViewController *)vc
-              inOrientation:(UIInterfaceOrientation)orientation
-{
-    return !_shouldShowMaster;
-}
 
 -(void) testGPS
 {
@@ -162,8 +101,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _shouldShowMaster = YES;
-    _nextAnnotationIsSpot = NO;
     _firstLocationUpdate = NO;
     _GMViewController = [[GoogleMapsViewController alloc] init];
     [_GMViewController viewDidLoad];
@@ -172,14 +109,7 @@
     #ifdef SPLITSCREENWITHDRONE
         CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
     #else
-            /*#ifdef MAP_POPOVER
-                UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController]; // googlemapviewcontroller
-              // Store the popover in a custom property for later use.
-                CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-                [mapPopover presentPopoverFromRect:mapFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
-            #else*/
         _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
-            //#endif
     #endif
     
 #else
@@ -401,13 +331,6 @@
                                    @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
             NSURL *directionsURL = [NSURL URLWithString:urlString];
             
-            
-            //ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:directionsURL];
-            //[request startSynchronous];
-            
-            //Response data object
-            NSData *returnData = [[NSData alloc]init];
-            
             //Build the Request
             NSURLRequest * urlRequest = [NSURLRequest requestWithURL:directionsURL];
             NSURLResponse * response = nil;
@@ -415,8 +338,6 @@
             NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
             
             //Get the Result of Request
-            NSString *stringResponse = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
-
             if (!error) {
                 //NSString *response = [request responseString];
                 //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
@@ -451,16 +372,6 @@
                 // "cancel" or other: do nothing / go back to homepage?
     }
     }
-}
-
-- (void)hideMaster  {
-    NSLog(@"hide-unhide master");
-    UISplitViewController* spv = self.splitViewController;
-    spv.delegate=self;
-    _shouldShowMaster = NO;
-    // yes this stuff is deprecated but I cannot acheive my goal (to call shouldHideViewController) otherwise
-    [spv willRotateToInterfaceOrientation: (UIInterfaceOrientation)[UIDevice currentDevice].orientation duration:0];
-    [spv.view setNeedsLayout];
 }
 
 
