@@ -18,9 +18,17 @@
 #import "ParkingSpotHighlightBridge.h"
 #import "LocationManager.h"
 
-#define GOOGLE_DRECTIONS_SERVER_KEY @"AIzaSyBoy7wXWA4CkYPQ2iMfnmQJ6cz_aTE7B8I";
-#define GOOGLE_DIRECTIONS_IOS_KEY @"AIzaSyAWvZ5yLxkfc-UVSiKNLBinnnJD-fIH38w"; // verified, either of these keys works.
-#define MAP_POPOVER 1
+/*!
+ @class AerialViewController
+ @abstract Combined Google Map view and drone live video feed.
+ @discussion The AerialViewController displays a GoogleMapsViewController in the 
+ upper-left quadrant of the screen, and a live video feed from the drone in the rest of the screen.
+ The user is prompted to touch a parking space. When the user touches the drone video feed, 
+ the touch location is translated into a GPS coordinate. The user is asked for a confirmation, 
+ and the app transitions to 
+
+ */
+
 @interface AerialViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
 /*!
