@@ -38,6 +38,7 @@
 
 /*!
  * @discussion Return a singleton reference to the drone helper class
+ * @return A reference to the helper class
  */
 + (instancetype)sharedHelper;
 
@@ -49,12 +50,14 @@
 -(void) mainController:(DJIMainController*)mc didUpdateSystemState:(DJIMCSystemState*)state;
 
 /*!
- * @discussion Return the last recorded drone GPS location
+ * @discussion Getter for the last recorded drone GPS location
+ * @return The last recorded drone GPS location
  */
 -(CLLocationCoordinate2D) getDroneGPS;
 
 /*!
- * @discussion Return the last recorded drone height
+ * @discussion Getter for the last recorded drone height
+ * @return The last recorded drone height
  */
 -(float) getDroneHeight;
 
@@ -64,7 +67,8 @@
 -(void) onOpenButtonClicked;
 
 /*!
- * @discussion Return the last recorded drone yaw
+ * @discussion Getter for the last recorded drone yaw
+ * @return The last recorded drone yaw
  */
 -(float) getDroneYaw;
 
