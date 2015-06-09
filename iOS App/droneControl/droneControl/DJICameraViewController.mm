@@ -13,7 +13,7 @@
 
 -(void) publicViewWillAppearMethod:(BOOL) animated
 {
-        [self viewWillAppear:animated];
+    [self viewWillAppear:animated];
 }
 
 - (void)viewDidLoad

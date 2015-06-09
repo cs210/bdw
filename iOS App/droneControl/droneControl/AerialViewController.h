@@ -18,14 +18,16 @@
 #import "ParkingSpotHighlightBridge.h"
 #import "LocationManager.h"
 
+
 /*!
  @class AerialViewController
  @abstract Combined Google Map view and drone live video feed.
  @discussion The AerialViewController displays a GoogleMapsViewController in the 
  upper-left quadrant of the screen, and a live video feed from the drone in the rest of the screen.
  The user is prompted to touch a parking space. When the user touches the drone video feed, 
- the touch location is translated into a GPS coordinate. The user is asked for a confirmation, 
- and the app transitions to 
+ the touch location is translated into a GPS coordinate. The user is asked for a confirmation,
+ and the app provides directions to the selected spot either by transitioning to the Google Maps app (if available)
+ or highlighting the route on the existing GoogleMapsView.
  */
 @interface AerialViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -50,7 +52,7 @@
 @property UIView * dummyTouchView;
 
 /*!
- * @brief A reference to the camera view controller that displays the drone's camer afeed
+ * @brief A reference to the camera view controller that displays the drone's camera feed
  */
 @property DJICameraViewController* cameraFeed;
 

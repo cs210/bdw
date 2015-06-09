@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+
+/*!
+ @class LocationManager
+ @abstract Fetches and manages the user's location, making it available to the entire app.
+ */
+
+
+
 @protocol LocationManagerProtocol
 
 /*!

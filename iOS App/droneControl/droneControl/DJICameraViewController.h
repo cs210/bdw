@@ -20,30 +20,66 @@
 /*!
  @class DJICameraViewController
  @abstract Live video feed view from drone.
- @discussion The AerialViewController displays a GoogleMapsViewController in the
- upper-left quadrant of the screen, and a live video feed from the drone in the rest of the screen.
- The user is prompted to touch a parking space. When the user touches the drone video feed,
- the touch location is translated into a GPS coordinate. The user is asked for a confirmation,
- and the app provides directions to the selected spot either by transitioning to the Google Maps app (if available)
- or highlighting the route on the existing GoogleMapsView.
+ @discussion The DJICameraViewController connects to the drone using a DJIDroneHelper
+ and creates a view that displays a live video feed from the drone's camera. 
+ It also provides utilities for saving images taken through the app.
  */
 
 
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
+<<<<<<< HEAD
+=======
+
+/*!
+ * @brief IBOutlet to the view which will display the live video feed.
+ */
+>>>>>>> more documentation
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
+
+/*!
+ * @brief True if the gimbal is in the process of changing orientation.
+ */
 @property BOOL gimbalAttitudeUpdateFlag;
 @property BOOL switch_to_usb;
+
+/*!
+ * @brief DJIDroneHelper to connect to the drone, fetch images and set gimbal orientation.
+ */
 @property DJIDroneHelper *droneHelper;
-@property NSArray * coordinatePointTuples;
-@property UIView * dummyTouchView;
+
+/*!
+ * @brief Pointer to the drone's camera, used to take and fetch still photos.
+ */
 @property DJICamera* camera;
+
 //media
+/*!
+ * @brief Last media fetched from the camera.
+ */
 @property DJIMedia* media;
+
+/*!
+ * @brief List of all medias fetched from the camera.
+ */
 @property NSArray* mediasList;
+
+/*!
+ * @brief True if we should fetch media from the camera.
+ */
 @property BOOL fetchingMedias;
 
+
+/*!
+ * @discussion Public method to call [self viewWillAppear]
+ * @param animated: passed to [self viewWillAppear]
+ */
 - (void)publicViewWillAppearMethod:(BOOL) animated;
 
+/*!
+ * @discussion IBAction triggered when the Take Photo button is clicked. 
+ * Triggers a photo to be taken and saved in mediasList.
+ * @param sender: IBElement that was clicked
+ */
 -(IBAction) onTakePhotoButtonClicked:(id)sender;
 
 -(IBAction) onGimbalScrollDownTouchDown:(id)sender;
