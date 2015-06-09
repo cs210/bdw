@@ -162,8 +162,8 @@ float distanceToTuple(CoordinatePointTuple * currTuple, float xRatio, float yRat
     float yaw = [_droneHelper getDroneYaw];
     yaw = -yaw;
     
-    float newLong = deltaLong * cos(yaw) - deltaLat * sin(yaw); // now x is something different than original vector x
-    float newLat = deltaLat * sin(yaw) + deltaLong * cos(yaw);
+    //float newLong = deltaLong * cos(yaw) - deltaLat * sin(yaw); // now x is something different than original vector x
+    //float newLat = deltaLat * sin(yaw) + deltaLong * cos(yaw);
     
     //Now that we have offsets, we need to rotate according to the yaw of the drone
     

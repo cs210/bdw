@@ -1064,6 +1064,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
+					"/Users/Mikey/Downloads/GoogleMaps-iOS-1.9.2",
+					/Users/Mikey/Downloads,
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1098,6 +1100,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/droneControl",
+					"/Users/Mikey/Downloads/GoogleMaps-iOS-1.9.2",
+					/Users/Mikey/Downloads,
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
