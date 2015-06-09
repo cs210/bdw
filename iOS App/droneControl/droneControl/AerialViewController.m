@@ -257,7 +257,7 @@
     
     #ifdef SPLITSCREENWITHDRONE
     #else
-    [_GMViewController.googleMapView addSubview:_findClosestParkingButton];
+    //[_GMViewController.googleMapView addSubview:_findClosestParkingButton];
     #endif
     
     GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
@@ -268,7 +268,7 @@
     
     #ifdef SPLITSCREENWITHDRONE
     #else
-    [_mapView addSubview:_findClosestParkingButton];
+    //[_mapView addSubview:_findClosestParkingButton];
     #endif
     [self.view addSubview:_mapView];
     _mapView.showsUserLocation = YES;
@@ -278,7 +278,34 @@
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
 #endif
+#ifdef MAP_POPOVER
+    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self addChildViewController:_GMViewController];
+    _GMViewController.googleMapView.frame = mapFrame;
     
+    CLLocation * userLocation = [[LocationManager sharedManager] getUserLocation];
+    CLLocationCoordinate2D userLocationCoordinate = userLocation.coordinate;
+    
+    
+    GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude: userLocationCoordinate.latitude                                                                longitude:userLocationCoordinate.longitude
+                                                                   zoom:19];
+    
+    [_GMViewController.googleMapView setCamera:stanford];
+    
+    [self.view addSubview:_dummyTouchView];
+    [self.view addSubview:_cameraFeed.view];
+    [self.view addSubview:_GMViewController.googleMapView];
+    
+    [_GMViewController didMoveToParentViewController:self];
+    //[_findClosestParkingButton removeFromSuperview];
+    //[_findClosestParkingButton setTitle:@"Hide Map" forState:UIControlStateNormal];
+    /*UIPopoverController* mapPopover = [[UIPopoverController alloc] initWithContentViewController:_GMViewController];
+     mapPopover.contentViewController = _GMViewController;
+     CGRect mapFrame = _findClosestParkingButton.bounds;
+     mapFrame.origin.y += _findClosestParkingButton.frame.origin.y;
+     [mapPopover presentPopoverFromRect:mapFrame
+     inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];*/
+#endif
     
     self.splitViewController.delegate = self;
     
