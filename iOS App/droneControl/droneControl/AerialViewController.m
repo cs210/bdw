@@ -38,12 +38,12 @@
     bool _firstLocationUpdate;
     UIImageView *_parkingLotView;
     NSURLConnection *currentConnection;
-
+    
 }
 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
     Class mapItemClass = [MKMapItem class];
- 
+    
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         _parkingSpace = destination;
@@ -106,20 +106,20 @@
     [_GMViewController viewDidLoad];
 #ifdef USING_GMAPS
     
-    #ifdef SPLITSCREENWITHDRONE
-        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
-    #else
-        _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
-    #endif
+#ifdef SPLITSCREENWITHDRONE
+    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+#else
+    _GMViewController.googleMapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
+#endif
     
 #else
     
-    #ifdef SPLITSCREENWITHDRONE
-        CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
-        _mapView = [[MKMapView alloc] initWithFrame:mapFrame];
-    #else
-        _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
-    #endif
+#ifdef SPLITSCREENWITHDRONE
+    CGRect mapFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+    _mapView = [[MKMapView alloc] initWithFrame:mapFrame];
+#else
+    _mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+#endif
     _mapView.delegate = self;
 #endif
     
@@ -139,12 +139,12 @@
     _dummyTouchView = [[TransparentTouchView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
     _dummyTouchView.backgroundColor = [UIColor clearColor];
 #endif
-
+    
 #ifdef USING_GMAPS
-        GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
+    GMSCameraPosition * pos = [GMSCameraPosition cameraWithLatitude:37.43 longitude:-122.17 zoom:17];
     _GMViewController.googleMapView.camera = pos;
     [self.view addSubview:_GMViewController.googleMapView];
-
+    
 #else
     
     [self.view addSubview:_mapView];
@@ -183,7 +183,7 @@
 
 
 -(void) viewWillAppear:(BOOL)animated{
-     [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
+    [(DJICameraViewController *)_cameraFeed publicViewWillAppearMethod:animated];
 }
 
 
@@ -204,9 +204,9 @@
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
     NSLog(@"didReceiveData, length: %lu", (unsigned long)data.length);
-
+    
     [self.apiReturnXMLData appendData:data];
-
+    
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
@@ -215,9 +215,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"connectionDidFinishLoading");
-
+    
     NSError *error = nil;
-
+    
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:self.apiReturnXMLData options:kNilOptions error:&error];
     
     if (error != nil) {
@@ -226,9 +226,9 @@
     else {
         NSLog(@"Array: %@", jsonArray);
     }
-
+    
     currentConnection = nil;
-
+    
     
 }
 
@@ -238,49 +238,67 @@
     if ([alertView.title isEqualToString:@"Parking spot found!"]){
         if (buttonIndex == 1){
             _GMViewController.googleMapView.frame = self.view.frame;
-
+            
             CLLocation * myLocation1 = [[LocationManager sharedManager] getUserLocation];
-
+            
             CLLocationCoordinate2D myLocation = _GMViewController.googleMapView.myLocation.coordinate;
-        
+            
             CLLocationCoordinate2D startingLocation = myLocation1.coordinate;
             
             CLLocationCoordinate2D destinationLocation = _parkingSpace;
             
             if (myLocation.latitude < 1.0){
+                NSLog(@"no location detected; setting to default");
                 myLocation.latitude = 37.431184;
                 myLocation.longitude = -122.173391;
-
+                
             }
 #ifdef USING_GMAPS
-            NSString *urlString = [NSString stringWithFormat:
-                                   @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
-                                   @"https://maps.googleapis.com/maps/api/directions/json",
-                                   startingLocation.latitude,
-                                   startingLocation.longitude,
-                                   destinationLocation.latitude,
-                                   destinationLocation.longitude,
-                                   @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
-            NSURL *directionsURL = [NSURL URLWithString:urlString];
             
-            //Build the Request
-            NSURLRequest * urlRequest = [NSURLRequest requestWithURL:directionsURL];
-            NSURLResponse * response = nil;
-            NSError * error = nil;
-            NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-            
-            //Get the Result of Request
-            if (!error) {
-                //NSString *response = [request responseString];
-                //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
-                NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
-                GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-                singleLine.strokeWidth = 7;
-                singleLine.strokeColor = [UIColor greenColor];
-                singleLine.map = _GMViewController.googleMapView;
+            if ([[UIApplication sharedApplication] canOpenURL:
+                 [NSURL URLWithString:@"comgooglemaps://"]]) {
+                NSString *googleMapsString = [NSString stringWithFormat:
+                                       @"%@?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                                       @"comgooglemaps://",
+                                       startingLocation.latitude,
+                                       startingLocation.longitude,
+                                       destinationLocation.latitude,
+                                       destinationLocation.longitude];
+                NSLog(googleMapsString);
+                [[UIApplication sharedApplication] openURL:
+                 [NSURL URLWithString:googleMapsString]];
+            } else {
+                NSLog(@"Can't use comgooglemaps://");
+                
+                NSString *urlString = [NSString stringWithFormat:
+                                       @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
+                                       @"https://maps.googleapis.com/maps/api/directions/json",
+                                       startingLocation.latitude,
+                                       startingLocation.longitude,
+                                       destinationLocation.latitude,
+                                       destinationLocation.longitude,
+                                       @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
+                NSURL *directionsURL = [NSURL URLWithString:urlString];
+                
+                //Build the Request
+                NSURLRequest * urlRequest = [NSURLRequest requestWithURL:directionsURL];
+                NSURLResponse * response = nil;
+                NSError * error = nil;
+                NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+                
+                //Get the Result of Request
+                if (!error) {
+                    //NSString *response = [request responseString];
+                    //NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
+                    NSDictionary *json =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                    GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+                    GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+                    singleLine.strokeWidth = 7;
+                    singleLine.strokeColor = [UIColor greenColor];
+                    singleLine.map = _GMViewController.googleMapView;
+                }
+                return;
             }
-            return;
 #else
             MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:_parkingSpace
                                                            addressDictionary:nil];
@@ -301,9 +319,9 @@
             }];
         }
 #endif
-                // "cancel" or other: do nothing / go back to homepage?
+        // "cancel" or other: do nothing / go back to homepage?
     }
-    }
+}
 }
 
 
@@ -331,7 +349,7 @@
     MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
     [_mapView setRegion:adjustedRegion animated:YES];
     _nextAnnotationIsSpot = YES;
-
+    
     MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
     newAnnotation.coordinate = spot;
     [_mapView addAnnotation:newAnnotation];
@@ -347,7 +365,7 @@
     [_dummyTouchView removeFromSuperview];
     [_cameraFeed.view removeFromSuperview];
 #endif
-  
+    
 }
 
 
