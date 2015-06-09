@@ -20,6 +20,7 @@
  @abstract A transparent UIView placed on top of the drone's camera to capture touch events
  @discussion The transparent touch view is designed to capture all touch events on top of the drone's camera view. The camera view has some weird touch logic built into it from the Drone SDK, so this was an easy (albeit a bit hacky) way to implement our own touch behaviour. Touch events are transformed from pixel locations into GPS coordinates to show users where the parking spots they clicked on are located.
  */
+
 @interface TransparentTouchView : UIView
 
 /*!

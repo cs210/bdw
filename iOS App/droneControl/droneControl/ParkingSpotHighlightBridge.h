@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
+/** @abstract ComputerVision-app bridge
+ * @discussion converts between UIImages from the app and cvMat from the Computer Vision modules.
+ */
 @interface ParkingSpotHighlightBridge : NSObject
 
 /*!

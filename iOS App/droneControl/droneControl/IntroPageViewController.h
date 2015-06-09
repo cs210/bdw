@@ -12,15 +12,14 @@
 #import "DJICameraViewController.h"
 #import "TransparentTouchView.h"
 #import "AerialViewController.h"
-
-@interface IntroPageViewController : UIViewController
-
 /*!
  @class IntroPageViewController
  @abstract Start page of ConnectedDrone app, with a "find parking spot" button and speech detection.
- @discussion Displays an intro page with name and logo. When "Find Parking Spot" is clicked or the user says "find parking", 
+ @discussion Displays an intro page with name and logo. When "Find Parking Spot" is clicked or the user says "find parking",
  the app segues to AerialViewController.
  */
+
+@interface IntroPageViewController : UIViewController
 
 /** 
  * @discussion Adds a "ConnectedDrone" title to the view.
@@ -62,13 +61,6 @@
  * @param word that was detected.
  */
 -(void) didReceiveWord: (NSString *) word;
-
-
-typedef enum
-{
-    kListening,
-    kNotListening
-} listeningStates;
 
 
 @end

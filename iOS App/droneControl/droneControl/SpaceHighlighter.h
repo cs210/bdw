@@ -9,7 +9,6 @@ using namespace std;
 using namespace cv;
 
 /*!
- @class SpaceHighlighter
  @abstract Highlights parking spaces in an image surrounding a selected pixel
  */
 
