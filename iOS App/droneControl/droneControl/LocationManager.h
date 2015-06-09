@@ -21,7 +21,6 @@
 
 + (instancetype)sharedManager;
 
--(void) subscribeToLocationEvents: (id<LocationManagerProtocol>) newSubscriber;
 
 -(CLLocation *) getUserLocation;
 
