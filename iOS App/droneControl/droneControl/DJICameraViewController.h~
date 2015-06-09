@@ -30,6 +30,11 @@
 
 
 @interface DJICameraViewController : UIViewController<DJICameraDelegate,  DJIGimbalDelegate>
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> DJICameraViewController cleanup
 @property(nonatomic, retain) IBOutlet UIView* videoPreviewView;
 @property BOOL gimbalAttitudeUpdateFlag;
 @property BOOL switch_to_usb;

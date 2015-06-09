@@ -146,19 +146,6 @@
                 if (error) {
                     NSLog(@"MEDIA ERROR ::::::: fetchMediaDataError:%@", error);
                 }
-                else
-                {
-                  NSLog(@"Removed this code because it wasn't being used");
-                  assert(0);
-                  
-                    /*dispatch_async(dispatch_get_main_queue(), ^{
-                        self.lastImage.image = [UIImage imageWithData:mediaData];
-                        //                        [self.progressIndicator stopAnimating];
-                        //                        [self.progressIndicator removeFromSuperview];
-                        //UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:mediaData]);
-
-                    });*/
-                }
             }
             else
             {
@@ -398,11 +385,8 @@
     [_camera startTakePhoto:CameraSingleCapture withResult:^(DJIError *error) {
         if (error.errorCode != ERR_Successed) {
             NSLog(@"Take Photo Error : %@", error.errorDescription);
-        } else {
-            NSLog(@"TOOK PHOTO SUCCCEEEESSSSSFULLYYYYYYYYYYYY");
         }
     }];
-    NSLog(@"Photo button clicked");
     
     [self performSelector:@selector(updateMedias) withObject:nil afterDelay:2];
 }
