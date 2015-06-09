@@ -1,12 +1,5 @@
 #include "ParkingDetector.h"
 
-/**
- * @discussion Perform one thinning iteration.
- * Normally you wouldn't call this function directly from your code.
- *
- * @param  im    Binary image with range = 0-1
- * @param  iter  0=even, 1=odd
- */
 void thinningIteration(cv::Mat& im, int iter)
 {
     cv::Mat marker = cv::Mat::zeros(im.size(), CV_8UC1);
