@@ -11,6 +11,11 @@
 
 @implementation AerialViewController
 
+static const int ZOOM = 18;
+static const NSString * GoogleDirectionsApiKey = @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0";
+static const NSString * GoogleDirectionsURL = @"https://maps.googleapis.com/maps/api/directions/json";
+static NSString * OpenGoogleMapsApp = @"comgooglemaps://";
+
 - (void) goToNavigation: (CLLocationCoordinate2D)destination
 {
     Class mapItemClass = [MKMapItem class];
@@ -44,7 +49,7 @@
     CLLocationCoordinate2D userLocationCoordinate = userLocation.coordinate;
     
     GMSCameraPosition *stanford = [GMSCameraPosition cameraWithLatitude: userLocationCoordinate.latitude                                                                longitude:userLocationCoordinate.longitude
-                                                                   zoom:18];
+                                                                   zoom:ZOOM];
     
     [_GMViewController.googleMapView setCamera:stanford];
     
@@ -84,8 +89,7 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        _GMViewController.googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                                               zoom:17];
+        _GMViewController.googleMapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:ZOOM];
 }
 
 
@@ -93,11 +97,11 @@
 - (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation
 {
     
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]])
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:OpenGoogleMapsApp]])
     {
         NSString *googleMapsString = [NSString stringWithFormat:
                                       @"%@?center=%f,%f&saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
-                                      @"comgooglemaps://",
+                                      OpenGoogleMapsApp,
                                       startingLocation.latitude,
                                       startingLocation.longitude,
                                       startingLocation.latitude,
@@ -111,12 +115,12 @@
     {
         NSString *urlString = [NSString stringWithFormat:
                                @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
-                               @"https://maps.googleapis.com/maps/api/directions/json",
+                               GoogleDirectionsURL,
                                startingLocation.latitude,
                                startingLocation.longitude,
                                destinationLocation.latitude,
                                destinationLocation.longitude,
-                               @"AIzaSyBhGlOQOhHiPR9VPXS1QDoxCYbxB2Y5yG0"];
+                               GoogleDirectionsApiKey];
         NSURL *directionsURL = [NSURL URLWithString:urlString];
         
         //Build the Request
@@ -166,7 +170,7 @@
 -(void) userDidClickOnSpot: (CLLocationCoordinate2D) spot
 {
     GMSMarker *marker = [GMSMarker markerWithPosition:spot];
-    marker.title = @"Hello World";
+    marker.title = @"Selected parking spot";
     marker.map = _GMViewController.googleMapView;
     marker.icon = [UIImage imageNamed:@"car_big.png"];
     [self goToNavigation:spot];

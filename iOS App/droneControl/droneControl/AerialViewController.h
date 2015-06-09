@@ -19,6 +19,7 @@
 #import "LocationManager.h"
 
 
+
 /*!
  @class AerialViewController
  @abstract Combined Google Map view and drone live video feed.
@@ -85,6 +86,14 @@
  */
 -(void) highlightTouchedUserSpot:(float) x withY:(float) y;
 
+
+/*!
+ * @discussion Update the map's center location when the user moves.
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context;
 /*!
  * @discussion Show the map (if it was hidden)
  */
