@@ -14,11 +14,6 @@
 #import "TransparentTouchView.h"
 #import "AerialViewController.h"
 
-typedef enum
-{
-    kListening,
-    kNotListening
-} listeningStates;
 
 @interface IntroPageViewController () <SpeechDelegate>
 {
