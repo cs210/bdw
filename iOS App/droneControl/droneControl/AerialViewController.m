@@ -8,23 +8,8 @@
 
 
 #import "AerialViewController.h"
-#import "DJICameraViewController.h"
-
-#import "TransparentTouchView.h"
-#import <MapKit/MapKit.h>
-#import <UIKit/UIKit.h>
-#import "ParkingSpotHighlightBridge.h"
-#import "LocationManager.h"
 
 @implementation AerialViewController
-{
-    UIView * _dummyTouchView;
-    DJICameraViewController* _cameraFeed;
-    bool _firstLocationUpdate;
-    UIImageView *_parkingLotView;
-    NSURLConnection *currentConnection;
-    
-}
 
 - (void) goToNavigation: (CLLocationCoordinate2D)destination {
     Class mapItemClass = [MKMapItem class];
@@ -36,52 +21,6 @@
         [alert show];
     }
 }
-
-
--(void) testGPS
-{
-    [((TransparentTouchView *)_dummyTouchView) insertArticifialTouchWithYaw:-179.505600
-                                                                   altitude:40.775520
-                                                                          X:534.500000
-                                                                          Y:28.500000
-                                                           aerialController:self
-                                                                  viewWidth:self.view.frame.size.width
-                                                                 viewHeight:self.view.frame.size.height];
-}
-
--(void) parkingSpotFill
-{
-    // Here we are going to pass in an image to the parking spot fill. This image is supposed to be a simulated image from the drone
-    // Create a UIImage from the "Parking.JPG" file
-    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
-    
-    // Scale the image to fill up the size of the frame
-    
-    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
-    
-    _parkingLotView = [[UIImageView alloc] initWithImage:scaledImage];
-    
-    [self.view addSubview:_parkingLotView];
-    [self.view addSubview:_dummyTouchView];
-}
-
--(void) highlightTouchedUserSpot:(float) x withY:(float) y
-{
-    [_parkingLotView removeFromSuperview];
-    
-    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
-    
-    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
-    
-    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:scaledImage andClickX:x andClickY: y];
-    
-    _parkingLotView = [[UIImageView alloc] initWithImage:newImage];
-    
-    [self.view addSubview:_parkingLotView];
-    [self.view addSubview:_dummyTouchView];
-}
-
-
 
 
 - (void)viewDidLoad {
@@ -130,40 +69,6 @@
     }
     return nil;
 }
-- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
-    [self.apiReturnXMLData setLength:0];
-}
-
-- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
-    NSLog(@"didReceiveData, length: %lu", (unsigned long)data.length);
-    
-    [self.apiReturnXMLData appendData:data];
-    
-}
-
-- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
-    NSLog(@"URL Connection Failed!");
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    
-    NSError *error = nil;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:self.apiReturnXMLData options:kNilOptions error:&error];
-    
-    if (error != nil) {
-        NSLog(@"Error parsing JSON.");
-    }
-    else {
-        NSLog(@"Array: %@", jsonArray);
-    }
-    
-    currentConnection = nil;
-    
-    
-}
 
 - (void) gotoGoogleMaps: (CLLocationCoordinate2D) startingLocation destinationLocation:(CLLocationCoordinate2D) destinationLocation{
     
@@ -180,7 +85,7 @@
                                       destinationLocation.longitude];
         [[UIApplication sharedApplication] openURL:
          [NSURL URLWithString:googleMapsString]];
-    } else {        
+    } else {
         NSString *urlString = [NSString stringWithFormat:
                                @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
                                @"https://maps.googleapis.com/maps/api/directions/json",
@@ -206,7 +111,6 @@
             singleLine.strokeColor = [UIColor greenColor];
             singleLine.map = _GMViewController.googleMapView;
         }
-        return;
     }
 }
 
@@ -254,5 +158,51 @@
     [_cameraFeed.view removeFromSuperview];
     
 }
+
+
+
+-(void) testGPS
+{
+    [((TransparentTouchView *)_dummyTouchView) insertArticifialTouchWithYaw:-179.505600
+                                                                   altitude:40.775520
+                                                                          X:534.500000
+                                                                          Y:28.500000
+                                                           aerialController:self
+                                                                  viewWidth:self.view.frame.size.width
+                                                                 viewHeight:self.view.frame.size.height];
+}
+
+-(void) parkingSpotFill
+{
+    // Here we are going to pass in an image to the parking spot fill. This image is supposed to be a simulated image from the drone
+    // Create a UIImage from the "Parking.JPG" file
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    // Scale the image to fill up the size of the frame
+    
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:scaledImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
+}
+
+-(void) highlightTouchedUserSpot:(float) x withY:(float) y
+{
+    [_parkingLotView removeFromSuperview];
+    
+    UIImage *image = [UIImage imageNamed:@"Parking.JPG"];
+    
+    UIImage *scaledImage = [ParkingSpotHighlightBridge imageByScalingAndCroppingWithImage:image forSize:self.view.frame.size];
+    
+    UIImage * newImage = [ParkingSpotHighlightBridge initWithUIImage:scaledImage andClickX:x andClickY: y];
+    
+    _parkingLotView = [[UIImageView alloc] initWithImage:newImage];
+    
+    [self.view addSubview:_parkingLotView];
+    [self.view addSubview:_dummyTouchView];
+}
+
 
 @end

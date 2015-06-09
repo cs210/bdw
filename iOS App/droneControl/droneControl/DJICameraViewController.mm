@@ -88,7 +88,7 @@
     [self.view addSubview:label];
 }
 
--(void) goToMap{// todo
+-(void) goToMap{
     AerialViewController * aerialController;
     for (UIView* next = [self.view superview]; next; next = next.superview)
     {
