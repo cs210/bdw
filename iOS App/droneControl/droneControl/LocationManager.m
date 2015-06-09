@@ -21,6 +21,8 @@
     return sharedLocationHelper;
 }
 
+
+
 -(void) initLocationHelper
 {
     _locationManager = [[CLLocationManager alloc] init];
